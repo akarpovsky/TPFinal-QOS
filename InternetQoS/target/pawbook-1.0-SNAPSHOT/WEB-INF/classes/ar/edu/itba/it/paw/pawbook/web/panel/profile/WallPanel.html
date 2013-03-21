@@ -1,0 +1,25 @@
+<wicket:panel>
+	<div class="row-fluid">
+		<span class="span12" style="margin-bottom: 5px;">
+			<h3 wicket:id="title">Pepe Argento</h3>
+		</span> 
+		<br />
+	</div>
+	<span style="margin-left: 0;" class="span12 breadcrumb">
+		<div wicket:id="wallPanel">
+            
+		</div>
+		<br />
+		<div>
+			<wicket:enclosure child="publicationList">
+			    <br>
+			    <wicket:container wicket:id="publicationList">
+					<div wicket:id="publication">Lista de publicaciones</div>
+					<hr />
+			    </wicket:container>
+			    <span wicket:id="publicationNavigator"></span>
+			</wicket:enclosure>
+			<span class="label label-important" wicket:id="emptyPublicationList">La lista esta vacia</span>
+		</div>
+	</span>
+</wicket:panel>

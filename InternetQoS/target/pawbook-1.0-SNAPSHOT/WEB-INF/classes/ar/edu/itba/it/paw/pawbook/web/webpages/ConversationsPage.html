@@ -1,0 +1,69 @@
+<wicket:extend>
+	<h2>Conversaciones</h2>
+	<br />
+	<i class="icon-pencil"></i> 
+	<a href="#" wicket:id="showHideMessageCreationPanel">Iniciar nuevo chat (mostrar/ocultar)</a>
+	<div wicket:id="messageCreationPanelContainer">
+		<div wicket:id="messageCreationPanel">
+        </div>
+	</div>
+	<br />
+	<div class="span4">
+		<div class="nav nav-list">
+			<h5>Conversaciones activas</h5>
+			<hr />
+			<wicket:enclosure child="conversationsList">
+				<wicket:container wicket:id="conversationsList">
+					<div id="conversationBlock">
+						<div class="span2">
+							<img style="height: 5%;" wicket:id="conversationStatusImage" />
+							<a wicket:id="participants">Gonzalo, Pepe</a>
+						</div>
+						<div class="span1">
+							<form wicket:id="deleteConversationForm" style="float: right">
+								<button wicket:id="submit">
+									<i class="icon-trash"></i>
+								</button>
+							</form>
+						</div>
+						<br /> 
+						Ultimo Mensaje: <span wicket:id="lastUpdate">10/10/2012</span>
+						<br/><br/>
+                        <span>Agregar a un amigo:</span> <br />
+                        <div wicket:id="addFriendErrors"></div>
+                        <form wicket:id="addFriendForm" style="margin-bottom: 0px;">
+                            <input wicket:id="friendName" />
+                            <input type="submit" value="+"/>
+                        </form> 
+					</div>
+				</wicket:container>
+				<span wicket:id="conversationsListNavigator"></span>
+			</wicket:enclosure>
+		</div>
+		<span class="label label-important" wicket:id="emptyConversationsList">Lalista esta vacia</span>
+	</div>
+	<div class="span4">
+		<h5>Historial de mensajes</h5>
+		<hr />
+		<wicket:enclosure child="conversationItemList">
+			<wicket:container wicket:id="conversationItemList">
+				<div wicket:id="conversationItem" style="margin-bottom: 10px;">
+					<span wicket:id="writer">Gonzalo Castiglione: </span> (<span
+						wicket:id="date">10/10/2012</span>) dijo: <br /> <span
+						wicket:id="message" class="offset1">Hola como estas?</span>
+				</div>
+			</wicket:container>
+			<span wicket:id="conversationItemListNavigator"></span>
+			<span class="label label-important"
+				wicket:id="emptyConversationItemList">La lista esta vacia</span>
+		</wicket:enclosure>
+	</div>
+	<div class="span2">
+		<h5>Responder</h5>
+		<hr>
+		<form wicket:id="respondForm">
+			<i>Escriba su mensaje y presione enter</i> <input wicket:id="message"
+				style="margin-top: 10px;" />
+		</form>
+	</div>
+</wicket:extend>

@@ -1,0 +1,109 @@
+<html>
+	<body>
+		<wicket:extend>
+			<div class="container"></div>
+			<div class="hero-unit" style="z-index: 1; position: relative;">
+				<div class="row-fluid" style="margin-bottom: 8px;">
+					<div class="span3">
+						<div style="text-align: center;">
+						</div>
+						<div class="event_pic_container">
+						</div>
+					</div>
+					<div class="span9">
+						<div class="row-fluid">
+							<span class="span12" style="margin-bottom: 5px;">
+							</span>
+							<br />
+							<span style="margin-left: 0;" class="span12 well">
+								<h4 wicket:id="newEvent">Crear evento</h4>
+								<span class="label label-important" wicket:id="noFriends">No puede
+									crear un evento si no tiene amigos :(
+								</span>
+								<div class="row-fluid">
+									<div wicket:id="newEventErrors"></div>
+									<form wicket:id="newEventForm">
+										<div class="row-fluid">
+											<div class="span3">
+												<strong wicket:id="nameLabel">Nombre: </strong>
+												<br />
+											</div>
+											<div class="span4">
+												<input type="text" wicket:id="name" />
+												<br />
+											</div>
+										</div>
+										<div class="row-fluid">
+											<div class="span3">
+												<strong wicket:id="descriptionLabel">Descripci&oacute;n:
+												</strong>
+												<br />
+											</div>
+											<div class="span4">
+												<input type="text" wicket:id="description" />
+												<br />
+											</div>
+										</div>
+
+										<div class="row-fluid">
+											<div class="span3">
+												<strong wicket:id="dateLabel">Fecha: </strong>
+												<br />
+											</div>
+											<div class="span4">
+												<input type="text" wicket:id="date" />
+												<br />
+											</div>
+										</div>
+
+										<div class="row-fluid">
+											<div class="span3">
+												<strong wicket:id="imageLabel">Imagen: </strong>
+												<br />
+											</div>
+											<div class="span4">
+												<input type="file" wicket:id="image" />
+												<br />
+											</div>
+										</div>
+
+										<div class="row-fluid">
+											<div class="span3">
+												<strong wicket:id="guestsLabel">Invitados: </strong>
+												<br />
+											</div>
+											<br />
+										</div>
+										<div class="row-fluid">
+											<!-- <span wicket:id="group"> <input type="checkbox" wicket:id="groupselector">check/uncheck 
+												all </input> <div wicket:id="friends"> <input type="checkbox" wicket:id="checkbox" 
+												/> <span wicket:id="firstName"></span> <span wicket:id="lastName"></span> 
+												</div> </span> -->
+											<span wicket:id="group">
+												<input type="checkbox" wicket:id="groupselector">check/uncheck all
+												</input>
+												<br />
+												<div wicket:id="friends">
+													<input type="checkbox" wicket:id="checkbox" />
+													<!-- <span wicket:id="firstName">[this is where name will be]
+													</span>
+													<span wicket:id="lastName">[this is where lastname will be]
+													</span> -->
+													<span wicket:id="userLink"></span>
+												</div>
+											</span>
+										</div>
+										<br/>
+										<input type="submit" class="btn btn-primary btn-mini"
+											wicket:id="newEventButton">
+										</input>
+									</form>
+								</div>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</wicket:extend>
+	</body>
+</html>

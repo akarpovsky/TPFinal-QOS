@@ -1,0 +1,37 @@
+<html>
+<body>
+	<wicket:extend>
+		<div class="hero-unit" style="z-index: 1; position: relative;">
+            <h3>Notificaciones</h3>
+            <div class="row-fluid" style="margin-bottom: 8px;">
+				<div class="span10">
+					<wicket:enclosure child="notificationsList">
+					    <br>
+					    <wicket:container wicket:id="notificationsList">
+                            <div wicket:id="tinyNotification">Informacion de la notificacion</div>
+					    </wicket:container>
+					    <span wicket:id="notificationsListNavigator"></span>
+					</wicket:enclosure>
+					<span class="label label-important" wicket:id="emptyNotificationsList">La lista esta vacia</span>
+				</div>
+			</div>
+		</div>
+		<br />
+		<div class="hero-unit" style="z-index: 1; position: relative;">
+            <h3>Solicitudes</h3>
+			<div class="row-fluid" style="margin-bottom: 8px;">
+				<div class="span10">
+                    <wicket:enclosure child="requestsList">
+                        <br>
+                        <wicket:container wicket:id="requestsList">
+                            <div wicket:id="tinyRequest">Informacion de la solicitud</div>
+                        </wicket:container>
+                        <span wicket:id="requestsListNavigator"></span>
+                    </wicket:enclosure>
+                    <span class="label label-important" wicket:id="emptyRequestsList">La lista esta vacia</span>				    
+				</div>
+			</div>
+		</div>
+	</wicket:extend>
+</body>
+</html>

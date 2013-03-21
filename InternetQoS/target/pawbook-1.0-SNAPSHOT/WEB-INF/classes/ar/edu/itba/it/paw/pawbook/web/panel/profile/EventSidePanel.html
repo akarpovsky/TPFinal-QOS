@@ -1,0 +1,23 @@
+<wicket:panel>
+	<hr />
+	<h4>Estado de asistencia</h4>
+	<form wicket:id="statusForm">
+		<input type="submit" wicket:id="dontKnow" />
+		<input type="submit" wicket:id="going" />
+		<input type="submit" wicket:id="notGoing" />
+	</form>
+	<hr />
+	<h4>Invitados</h4>
+	<div>
+        <wicket:enclosure child="guestsList">
+            <br>
+            <wicket:container wicket:id="guestsList">
+                <div wicket:id="user">Lista de usuarios</div>
+                <hr />
+            </wicket:container>
+            <span wicket:id="guestsListNavigator"></span>
+        </wicket:enclosure>
+        <span class="label label-important" wicket:id="emptyGuestsList">La lista esta vacia</span>
+	</div>
+	<hr />
+</wicket:panel>

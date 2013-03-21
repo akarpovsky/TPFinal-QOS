@@ -1,0 +1,64 @@
+<html>
+	<body>
+		<wicket:extend>
+			<div class="container"></div>
+			<div class="hero-unit" style="z-index: 1; position: relative;">
+				<div class="row-fluid" style="margin-bottom: 8px;">
+					<div class="span3">
+						<div style="text-align: center;">
+							<!-- <img src="<c:url value='/img/pawbook_logo.png'/>" class="img-rounded" 
+								style="height: 60px;"> -->
+						</div>
+						<div class="event_pic_container">
+						</div>
+					</div>
+					<div class="span9">
+						<div class="row-fluid">
+							<span class="span12" style="margin-bottom: 5px;">
+							</span>
+							<br />
+							<span style="margin-left: 0;" class="span12 breadcrumb">
+								<h4 wicket:id="myEvents">Mis eventos</h4>
+								<div wicket:id="eventsList">
+									<div class="row-fluid span11 event-preview-row">
+										<div class="row-fluid">
+											<div class="span3">
+												<strong wicket:id="nameLabel">Nombre: </strong>
+												<br />
+											</div>
+											<div class="span4">
+												<span wicket:id="name"></span>
+											</div>
+										</div>
+
+										<div class="row-fluid">
+											<div class="span3">
+												<strong wicket:id="dateLabel">Fecha: </strong>
+												<br />
+											</div>
+											<div class="span4">
+												<span class="label notice" wicket:id="date"></span>
+												<br />
+											</div>
+										</div>
+
+										<div class="row-fluid">
+											<div class="span3">
+												<form wicket:id="moreForm">
+													<input type="submit" wicket:id="moreButton" class="btn btn-small">
+													</input>
+												</form>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</span>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</wicket:extend>
+	</body>
+</html>

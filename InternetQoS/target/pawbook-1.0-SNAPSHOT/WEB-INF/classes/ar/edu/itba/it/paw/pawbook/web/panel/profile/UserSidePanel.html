@@ -1,0 +1,25 @@
+<wicket:panel>
+    <hr />
+    <span wicket:id="statusRequested" class="alert alert-info"></span>
+    <span wicket:id="statusFriend" class="alert alert-info"></span>
+    <form wicket:id="form">
+    	<input type="submit" wicket:id="statusAccept" class="btn btn-primary btn-success"></input>
+    	<input type="submit" wicket:id="statusReject" class="btn btn-primary btn-danger"></input>
+    	<input type="submit" wicket:id="statusRequestFriendship" class="btn btn-primary"></input>
+    </form>
+    <hr />
+    <wicket:child />
+    <hr />
+    <h4>Amigos de <span wicket:id="username">Moni Argento</span></h4>
+    <div>
+        <wicket:enclosure child="friendList">
+            <br>
+                <wicket:container wicket:id="friendList">
+                    <div wicket:id="tinyUser">Info del usuario</div>
+                </wicket:container>
+                <span wicket:id="userFriendsNavigator"></span>
+        </wicket:enclosure>
+        <span class="label label-important" wicket:id="emptyFriendsList">La lista esta vacia
+        </span>
+    </div>
+</wicket:panel>

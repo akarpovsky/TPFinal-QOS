@@ -1,0 +1,47 @@
+package ar.edu.itba.it.proyectofinal.internetqos.domain.model;
+
+import org.joda.time.LocalDate;
+
+public class UserValidator {
+	
+	private static final int NICKNAME_LENTGH = 40;
+	private static final int NAME_LENTGH = 40;
+	private static final int lastName_LENTGH = 40;
+	private static final int PASSWORD_LENTGH = 40;
+	
+	public boolean emailValid(String email) {
+		return email.matches("[A-Za-z0-9\\._\\-%\\+]+@[A-Za-z0-9\\-\\.]+\\.[A-Za-z]{2,4}");
+	}
+
+	public boolean birthdateValid(LocalDate date) {
+		return date != null;
+	}
+
+	public boolean nicknameValid(String nickname) {
+		return genericStringValid(nickname, NICKNAME_LENTGH, "[A-Za-z_\\$][A-Za-z_\\.0-9\\$]*");
+	}
+
+	public boolean nameValid(String firstName) {
+		return genericStringValid(firstName, NAME_LENTGH, "[A-Za-z][A-Za-z\\s]*");
+	}
+
+	public boolean lastNameValid(String lastName) {
+		return genericStringValid(lastName, lastName_LENTGH, "[A-Za-z][A-Za-z\\s]*");
+	}
+
+	public boolean passwordValid(String password) {
+		return genericStringValid(password, PASSWORD_LENTGH, ".+");
+	}
+
+	private boolean genericStringValid(String field, int fieldLength, String pattern) {
+		if (field == null)
+			return false;
+		if (field.length() > fieldLength)
+			return false;
+		return field.matches(pattern);
+	}
+
+	public boolean daysAheadToShowBDaysValid(int days) {
+		return days >= 0;
+	}
+}

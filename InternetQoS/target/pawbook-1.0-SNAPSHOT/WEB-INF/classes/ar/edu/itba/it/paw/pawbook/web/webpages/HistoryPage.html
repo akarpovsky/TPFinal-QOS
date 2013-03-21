@@ -1,0 +1,18 @@
+<wicket:extend>
+	<h2>Historial</h2>
+	<div class="hero-unit" style="z-index: 1; position: relative;">
+		<h3>Notificaciones</h3>
+		<div class="row-fluid" style="margin-bottom: 8px;">
+			<div class="span10">
+	            <wicket:enclosure child="notificationsList">
+	                <br>
+	                <wicket:container wicket:id="notificationsList">
+	                    <div wicket:id="tinyNotification">Informacion de la notificacion</div>
+	                </wicket:container>
+	                <span wicket:id="notificationsListNavigator"></span>
+	            </wicket:enclosure>
+	            <span class="label label-important" wicket:id="emptyNotificationsList">La lista esta vacia</span>
+			</div>
+		</div>
+	</div>
+</wicket:extend>
