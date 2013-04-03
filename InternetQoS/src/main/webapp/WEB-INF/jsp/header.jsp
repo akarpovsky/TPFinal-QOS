@@ -18,7 +18,7 @@
 								<li class=""><a href="../account/edit">Configuraci&oacute;n</a></li>
 							</ul>
 							<p class="navbar-text pull-right">
-								<a href="../login/logout" class="navbar-link">Cerrar sesi&oacute;n (${currUser.firstName})</a>
+								<a href="../login/logout" class="navbar-link">Cerrar sesi&oacute;n (${currUser.nickname})</a>
 							</p>
 						</c:when>
 						<c:otherwise>

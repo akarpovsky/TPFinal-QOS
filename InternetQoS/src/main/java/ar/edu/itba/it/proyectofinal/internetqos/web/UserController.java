@@ -26,7 +26,7 @@ public class UserController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView profile(HttpSession session,
+	public ModelAndView dashboard(HttpSession session,
 			@RequestParam(value = "nickname", defaultValue = "") String nickname) {
 		ModelAndView mav = new ModelAndView();
 		Integer userId = (Integer) session.getAttribute("userId");
@@ -45,7 +45,7 @@ public class UserController {
 		} else {
 			if (reqProfile == null) {
 				User me = userRepo.get(userId);
-				mav.setView(ControllerUtil.redirectView("/user/profile?nickname=" + me.getNickname()));
+				mav.setView(ControllerUtil.redirectView("/user/dashboard?nickname=" + me.getNickname()));
 				return mav;
 			}
 		}
@@ -53,33 +53,6 @@ public class UserController {
 		return mav;
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView search(HttpSession session, @RequestParam("query") String query) {
-		User me = userRepo.get((Integer) session.getAttribute("userId"));
-		List<User> users = userRepo.getMathcingUsersByNameOrSurname(query);
-//		Map<User, FriendshipStatus> searchResultMap = new HashMap<User, FriendshipStatus>();
-		/*for (User r : users) {
-			if (me.equals(r)) {
-				searchResultMap.put(r, FriendshipStatus.MYSELF);
-			} else if (me.isFriendOf(r)) {
-				// His friend is my friend
-				searchResultMap.put(r, FriendshipStatus.FRIENDS);
-			} else if (userRepo.existsRequest(r, me, FriendRequest.class)) {
-				// friendship request waiting here...
-				searchResultMap.put(r, FriendshipStatus.FRIENDSHIP_REQUEST_PENDING);
-			} else if (userRepo.existsRequest(me, r, FriendRequest.class)) {
-				// He wants to be my friend
-				searchResultMap.put(r, FriendshipStatus.REVERSE_FRIENDSHIP_REQUEST_PENDING);
-			} else {
-				searchResultMap.put(r, FriendshipStatus.NOT_FRIENDS);
-			}
-		}*/
-		ModelAndView mav = new ModelAndView();
-//		mav.addObject("searchResultMap", searchResultMap);
-		mav.setViewName("user/search");
-		return mav;
-	}
-	
 	
 	private int[] getDaysAheadList(){
 		return new int[] {0,1, 2, 3, 5, 15, 30, 60, 90, 120, 365};

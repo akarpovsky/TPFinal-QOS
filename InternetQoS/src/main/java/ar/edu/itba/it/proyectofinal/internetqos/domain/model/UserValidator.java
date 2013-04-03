@@ -17,10 +17,6 @@ public class UserValidator {
 		return date != null;
 	}
 
-	public boolean nicknameValid(String nickname) {
-		return genericStringValid(nickname, NICKNAME_LENTGH, "[A-Za-z_\\$][A-Za-z_\\.0-9\\$]*");
-	}
-
 	public boolean nameValid(String firstName) {
 		return genericStringValid(firstName, NAME_LENTGH, "[A-Za-z][A-Za-z\\s]*");
 	}

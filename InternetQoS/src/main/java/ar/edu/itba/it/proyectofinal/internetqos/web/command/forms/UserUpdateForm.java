@@ -1,6 +1,7 @@
 package ar.edu.itba.it.proyectofinal.internetqos.web.command.forms;
 
-import org.joda.time.LocalDate;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.validation.Errors;
 
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.InvalidParametersException;
@@ -13,11 +14,9 @@ import ar.edu.itba.it.proyectofinal.internetqos.domain.util.ErrorUtil;
 
 public class UserUpdateForm {
 
+	@Email
 	private String nickname;
-	private String firstName;
-	private String lastName;
-	private String email;
-	private LocalDate birthdate;
+	
 	private String password1;
 
 
@@ -26,10 +25,6 @@ public class UserUpdateForm {
 
 	public UserUpdateForm(User user) {
 		setNickname(user.getNickname());
-		setFirstName(user.getFirstName());
-		setLastName(user.getLastName());
-		setEmail(user.getEmail());
-		setBirthdate(user.getBirthdate());
 	}
 	
 	public String getNickname() {
@@ -40,37 +35,6 @@ public class UserUpdateForm {
 		this.nickname = nickname;
 	}
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	
-	public String getLastName() {
-		return lastName;
-	}
-	
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setBirthdate(LocalDate birthdate) {
-		this.birthdate = birthdate;
-	}
-
-	public LocalDate getBirthdate() {
-		return birthdate;
-	}
 	
 	public String getPassword1() {
 		return password1;
@@ -87,15 +51,12 @@ public class UserUpdateForm {
 	public User build(Errors errors, UserRepository userRepo) {
 		User user = null;
 		try {
-			user = new User(nickname, firstName, lastName, email, birthdate, password1);
+			user = new User(nickname, password1);
 		} catch (InvalidParametersException e) {
 			ErrorUtil.rejectAll(errors, e.getErrors());
 		}
 		if (userRepo.existsNickname(nickname)) {
 			errors.reject("nicknameExists");
-		}
-		if (userRepo.existsEmail(email)) {
-			errors.reject("emailExists");
 		}
 		return errors.hasErrors() ? null : user;
 	}
@@ -106,26 +67,14 @@ public class UserUpdateForm {
 			errors.reject(AppError.INCORRECT_PASSWORD.translationKey);
 		}
 		UserValidator userValidator = new UserValidator();
-		if (!userValidator.nicknameValid(nickname)) {
+		if (!userValidator.emailValid(nickname)) {
 			errors.reject(AppError.NICKNAME.translationKey);
-		}
-		if (!userValidator.nameValid(firstName)) {
-			errors.reject(AppError.NAME.translationKey);
-		}
-		if (!userValidator.lastNameValid(lastName)) {
-			errors.reject(AppError.LAST_NAME.translationKey);
-		}
-		if (!userValidator.emailValid(email)) {
-			errors.reject(AppError.EMAIL.translationKey);
 		}
 		if (passworchMatches && !userValidator.passwordValid(password1)) {
 			errors.reject(AppError.INVALID_PASSWORD.translationKey);
 		}
-		if (!userValidator.birthdateValid(birthdate)) {
-			errors.reject(AppError.INVALID_BIRTH_DATE.translationKey);
-		}
 		if (!errors.hasErrors()) {
-			UserBuilder.build(user, nickname, firstName, lastName, email, birthdate, user.getPassword());
+			UserBuilder.build(user, nickname, user.getPassword());
 		}
 	}
 }

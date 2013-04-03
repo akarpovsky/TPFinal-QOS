@@ -12,7 +12,7 @@
 
 <link rel="icon" type="image/ico" href="<c:url value='/img/favicon.ico2'/>">
 
-<title>Internet QoS</title>
+<title>TiX - Internet QoS</title>
 
 <!-- CSS bootstrap styles -->
 <link href="<c:url value='/css/bootstrap.css'/>" rel="stylesheet">
@@ -34,12 +34,4 @@ body {
 <!-- Javascript -->
 <script type="text/javascript" src="<c:url value='/js/jquery-1.8.1.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/bootstrap.js'/>"></script>
-
-
-<c:if test="${isLogged}">
-	<script type="text/javascript" src="<c:url value='/js/pawbook.js'/>"></script>
-</c:if>
-
-
-
 

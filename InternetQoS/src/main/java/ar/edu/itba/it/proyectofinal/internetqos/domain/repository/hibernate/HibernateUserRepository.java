@@ -21,7 +21,7 @@ public class HibernateUserRepository extends AbstractHibernateRepo implements Us
 
 	@Override
 	public void add(User user) {
-		if (exists("id", user.getId()) || exists("nickname", user.getNickname()) || exists("email", user.getEmail()) ) {
+		if (exists("id", user.getId()) || exists("nickname", user.getNickname()) ) {
 			throw new UserExistsException();
 		}
 		save(user);
@@ -36,11 +36,6 @@ public class HibernateUserRepository extends AbstractHibernateRepo implements Us
 		return find("from User");
 	}
 
-
-	@Override
-	public boolean existsEmail(String email) {
-		return exists("email", email);
-	}
 
 	@Override
 	public boolean existsNickname(String nickname) {

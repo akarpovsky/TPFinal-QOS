@@ -10,18 +10,9 @@
 					<div class="hero-unit">
 					<form:form method="POST" action="../account/register" commandName="userCreationForm">
 						<form:errors path="*" cssClass="label label-important"/>
-						<label for="nickname">Nickname:</label> 
+						<label for="nickname">Email:</label> 
 						<form:input type="text" path="nickname" value="${nickname}" />
 						<br/>
-						<label for="firstName">Nombre:</label> 
-						<form:input type="text" path="firstName" value="${firstName}" />
-						<br/> 
-						<label for="lastName">Apellido:</label>
-						<form:input type="text" path="lastName" value="${lastName}" />
-						<br/>
-						<label for="email">Email:</label> 
-						<form:input type="text" path="email" value="${email}" />
-						<br/> 
 						<label for="password1">Contrase&ntilde;a:</label>
 						<form:input type="password" path="password1" />
 						<br/> 

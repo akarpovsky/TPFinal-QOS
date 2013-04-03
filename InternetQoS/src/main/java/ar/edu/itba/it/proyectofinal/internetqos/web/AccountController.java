@@ -2,6 +2,7 @@ package ar.edu.itba.it.proyectofinal.internetqos.web;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.postgresql.util.Base64;
@@ -19,7 +20,6 @@ import ar.edu.itba.it.proyectofinal.internetqos.web.command.forms.PasswordRecove
 import ar.edu.itba.it.proyectofinal.internetqos.web.command.forms.PasswordRecoveryForm;
 import ar.edu.itba.it.proyectofinal.internetqos.web.command.forms.PasswordUpdateForm;
 import ar.edu.itba.it.proyectofinal.internetqos.web.command.forms.UserCreationForm;
-import ar.edu.itba.it.proyectofinal.internetqos.web.command.forms.UserLoginForm;
 import ar.edu.itba.it.proyectofinal.internetqos.web.command.forms.UserUpdateForm;
 import ar.edu.itba.it.proyectofinal.internetqos.web.command.validators.PasswordRecoveryFormValidator;
 import ar.edu.itba.it.proyectofinal.internetqos.web.util.ControllerUtil;
@@ -52,15 +52,23 @@ public class AccountController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView register(UserCreationForm userCreationForm,
+	public ModelAndView register(HttpSession session, @Valid UserCreationForm userCreationForm,
 			Errors errors) {
-		ModelAndView mav = new ModelAndView("account/register");
 		User u = userCreationForm.build(errors, userRepo);
 		if (errors.hasErrors()) {
-			return mav;
+			return null;
 		}
 		userRepo.add(u);
-		mav.setView(ControllerUtil.redirectView("/account/register"));
+
+		ModelAndView mav = new ModelAndView();
+		User recentlyCreatedUser = userRepo.authenticate(userCreationForm.getNickname(), userCreationForm.getPassword1());
+		if (recentlyCreatedUser != null) {
+			session.setAttribute("userId", recentlyCreatedUser.getId());
+			mav.setView(ControllerUtil.redirectView("/user/dashboard"));
+			return mav;
+		}else{
+			mav.setView(ControllerUtil.redirectView("/login/login"));
+		}
 		return mav;
 	}
 

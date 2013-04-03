@@ -9,8 +9,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
+import org.hibernate.validator.constraints.Email;
 import org.postgresql.util.Base64;
 
 import ar.edu.itba.it.proyectofinal.internetqos.domain.service.MailBuilder;
@@ -26,20 +25,12 @@ public class User extends DBPersistentObject {
 	
 	@Column(nullable=false, unique=true)
 	private String nickname;
-
-	@Column(nullable=false)
-	private String firstName;
 	
-	@Column(nullable=false)
-	private String lastName;
+//	@Column(nullable=false)
+//	@Type(type = "org.joda.time.contrib.hibernate.PersistentLocalDate")
+//	private LocalDate birthdate;
 	
-	@Column(nullable=false, unique=true)
-	private String email;
-	
-	@Column(nullable=false)
-	@Type(type = "org.joda.time.contrib.hibernate.PersistentLocalDate")
-	private LocalDate birthdate;
-	
+	@Email
 	@Column(nullable=false)
 	private String password;
 	
@@ -50,9 +41,9 @@ public class User extends DBPersistentObject {
 		// required by hibernate 
 	}
 	
-	public User(String nickname, String firstName, String lastName, String email, LocalDate birthdate, String password) {
+	public User(String nickname, String password) {
 		this();
-		UserBuilder.build(this, nickname, firstName, lastName, email, birthdate, password);
+		UserBuilder.build(this, nickname, password);
 	}
 	
 	@Override
@@ -79,55 +70,12 @@ public class User extends DBPersistentObject {
 	}
 
 	public void setNickname(String nickname) {
-		if (!uv.nicknameValid(nickname)) {
+		if (!uv.emailValid(nickname)) {
 			throw new InvalidParametersException(Collections.singletonList(AppError.NICKNAME));
 		}
 		this.nickname = nickname;
 	}
 	
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setName(String firstName) {
-		if (!uv.nameValid(firstName)){
-			throw new InvalidParametersException(Collections.singletonList(AppError.NAME));
-		}
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		if (!uv.lastNameValid(lastName)) {
-			throw new InvalidParametersException(Collections.singletonList(AppError.LAST_NAME));
-		}
-		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		if (!uv.emailValid(email)) {
-			throw new InvalidParametersException(Collections.singletonList(AppError.EMAIL));
-		}
-		this.email = email;
-	}
-
-	public LocalDate getBirthdate() {
-		return birthdate;
-	}
-
-	public void setBirthdate(LocalDate birthdate) {
-		if (!uv.birthdateValid(birthdate)) {
-			throw new InvalidParametersException(Collections.singletonList(AppError.INVALID_BIRTH_DATE));
-		}
-		this.birthdate = birthdate;
-	}
 
 	public String getPassword() {
 		return password;

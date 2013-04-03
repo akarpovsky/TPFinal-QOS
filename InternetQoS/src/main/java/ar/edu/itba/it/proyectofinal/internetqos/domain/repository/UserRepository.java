@@ -10,8 +10,6 @@ public interface UserRepository {
 	
 	public List<? extends User> getAll();
 
-	public boolean existsEmail(String email);
-
 	public boolean existsNickname(String nickname);
 	
 	public User get(String nickname);

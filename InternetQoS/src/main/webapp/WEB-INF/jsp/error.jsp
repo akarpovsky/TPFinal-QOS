@@ -4,20 +4,14 @@
 
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div class="container">
-
-		<div class="row-fluid">
-			<div class="span12" style="padding-bottom: 30px">
-				<div class="span6">
-				
-					<img src="<c:url value='/img/pawbook_logo.png'/>" class="img-rounded" style="height: 70px;">
-
-				</div>
-				<span class="span6 lead">La red social de la que habla toda la facultad!</span>
-			</div>
-		</div>
+		<p>Lo sentimos pero se ha producido un error inesperado en el sistema.</p>
+		
+		<p>Puede que la p&aacute;gina a la que intenta acceder no est&eacute; disponible o que no tenga los permisos suficientes para acceder a ella.</p><br />
 		<c:if test="${!empty errorDescription}">
-			<div class="error-header">${errorDescription}</div>
+			<div class="error-header">Descripci&oacute;n del error: ${errorDescription}</div>
 		</c:if>
+		<br />
+		<p>Ante cualquier duda visite nuestra <a href="#">secci&oacute;n de contacto</a>.</p>
 		
 	</div>
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>

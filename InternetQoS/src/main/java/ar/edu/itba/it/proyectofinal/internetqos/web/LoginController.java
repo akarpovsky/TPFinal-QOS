@@ -30,7 +30,7 @@ public class LoginController {
 	public ModelAndView login(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		if (session.getAttribute("userId") != null) {
-			mav.setView(ControllerUtil.redirectView("/user/profile"));
+			mav.setView(ControllerUtil.redirectView("/user/dashboard"));
 			return mav;
 		}
 		mav.setViewName("login/login");
@@ -45,7 +45,7 @@ public class LoginController {
 		User user = userRepo.authenticate(userLoginForm.getNickname(), userLoginForm.getPassword());
 		if (user != null) {
 			session.setAttribute("userId", user.getId());
-			mav.setView(ControllerUtil.redirectView("/user/profile"));
+			mav.setView(ControllerUtil.redirectView("/user/dashboard"));
 			return mav;
 		}
 		mav.addObject("userCreationForm", new UserCreationForm());
