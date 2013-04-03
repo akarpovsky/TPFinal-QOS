@@ -39,18 +39,28 @@ public class AccountController {
 		this.changePasswordFormValidator = new PasswordRecoveryFormValidator();
 	}
 
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView register(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		if (session.getAttribute("userId") != null) {
+			mav.setView(ControllerUtil.redirectView("/user/profile"));
+			return mav;
+		}
+		mav.setViewName("account/register");
+		mav.addObject("userCreationForm", new UserCreationForm());
+		return mav;
+	}
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView register(UserCreationForm userCreationForm,
 			Errors errors) {
-		ModelAndView mav = new ModelAndView("login/login");
+		ModelAndView mav = new ModelAndView("account/register");
 		User u = userCreationForm.build(errors, userRepo);
 		if (errors.hasErrors()) {
-			mav.addObject("userLoginForm", new UserLoginForm());
-			mav.setViewName("/login/login");
 			return mav;
 		}
 		userRepo.add(u);
-		mav.setView(ControllerUtil.redirectView("/login/"));
+		mav.setView(ControllerUtil.redirectView("/account/register"));
 		return mav;
 	}
 
