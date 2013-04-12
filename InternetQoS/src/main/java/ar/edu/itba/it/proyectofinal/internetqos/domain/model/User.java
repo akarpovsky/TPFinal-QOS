@@ -1,14 +1,21 @@
 package ar.edu.itba.it.proyectofinal.internetqos.domain.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.Email;
 import org.postgresql.util.Base64;
 
@@ -26,9 +33,10 @@ public class User extends DBPersistentObject {
 	@Column(nullable=false, unique=true)
 	private String nickname;
 	
-//	@Column(nullable=false)
-//	@Type(type = "org.joda.time.contrib.hibernate.PersistentLocalDate")
-//	private LocalDate birthdate;
+	@OneToMany(fetch=FetchType.LAZY) // Lazy loading
+	@JoinColumn(name="record_id", nullable=false)
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	private List<Record> records = new ArrayList<Record>();
 	
 	@Email
 	@Column(nullable=false)

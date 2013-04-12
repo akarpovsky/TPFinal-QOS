@@ -14,7 +14,7 @@
 					<c:choose>
 						<c:when test="${isLogged}">
 							<ul class="nav">
-								<li class=""><a href="../event/">Estad&iacute;sticas</a></li>
+								<li class=""><a href="../stats/">Estad&iacute;sticas</a></li>
 								<li class=""><a href="../account/edit">Configuraci&oacute;n</a></li>
 							</ul>
 							<p class="navbar-text pull-right">
