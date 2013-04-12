@@ -32,6 +32,6 @@ body {
 </style>
 
 <!-- Javascript -->
-<script type="text/javascript" src="<c:url value='/js/jquery-1.8.1.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/bootstrap.js'/>"></script>
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
