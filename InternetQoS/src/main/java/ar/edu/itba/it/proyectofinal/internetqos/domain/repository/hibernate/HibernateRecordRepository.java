@@ -35,7 +35,7 @@ public class HibernateRecordRepository extends AbstractHibernateRepo implements 
 	
 
 	public List<? extends Record> getAll(User user) {
-		return find("from Record where user_id = ? ", user.getId());
+		return find("from Record r where user_id = ? order by r.timestamp desc ", user.getId());
 	}
 
 

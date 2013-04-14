@@ -7,8 +7,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="/WEB-INF/jsp/head.jsp"%>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
-	<div class="container"></div>
-	<div id="container" style="width:100%; background-color:yellow; height:400px;"></div>
+	<div class="row">
+		<div id="graphcontainer" class="span12 offset2" style="padding: 10px"></div>
+	</div>
 	<div class="hero-unit" style="z-index: 1; position: relative;">
 	</div>
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
@@ -20,31 +21,31 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                 for (var i=0;i<fechas.length;i++){
                 	fechas[i] = new Date(fechas[i]);
                 }
-                alert(fechas);
                 var chart;
                 $(document).ready(function() {
                     chart = new Highcharts.Chart({
                         chart: {
-                            renderTo: 'container',
-                            type: 'line',
-                            marginRight: 130,
-                            marginBottom: 25
+                            renderTo: 'graphcontainer',
+                          	marginRight: 130,
+                           	marginBottom: 25
                         },
                         title: {
-                            text: 'Porcentaje de Utilizacion de Ancho de Banda',
+                            text: 'Porcentaje de Utilización de Ancho de Banda',
                             x: -20 //center
                         },
                         subtitle: {
-                            text: 'Grafico General',
+                            text: 'Gráfico General',
                             x: -20
                         },
-                        xAxis: {
-                       		type: 'datetime',                       		
-                       		categories: fechas
-                 
-        },
-                            
-                       
+                        xAxis: {        
+                            type: 'datetime',
+                            categories: fechas,
+                            labels: {
+                                formatter: function() {
+                                    return Highcharts.dateFormat('%d/%m/%Y', this.value);
+                                },
+                            },
+                        },
                         yAxis: {
                             title: {
                                 text: '% de utilizacion'
@@ -56,10 +57,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                                 }]
                         },
                         tooltip: {
-                            formatter: function() {
-                                return '<b>'+ this.series.name +'</b><br/>'+
-                                    this.x +': '+ this.y +'%';
-                            }
+                           
+                            shared: true,
+                            crosshairs: true
                         },
                         legend: {
                             layout: 'vertical',
