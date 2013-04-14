@@ -1,0 +1,9 @@
+INSERT INTO records VALUES (1,20,80,now(),30,70,1,1);
+INSERT INTO records VALUES (2,20,80,now(),30,70,1,1);
+INSERT INTO records VALUES (3,20,80,now(),30,70,1,1);
+INSERT INTO records VALUES (4,20,80,now(),30,70,1,1);
+INSERT INTO records VALUES (5,20,80,now(),30,70,1,1);
+INSERT INTO records VALUES (6,20,80,now(),30,70,1,1);
+INSERT INTO records VALUES (7,20,80,now(),30,70,1,1);
+INSERT INTO records VALUES (8,20,80,now(),30,70,1,1);
+INSERT INTO records VALUES (9,20,80,now(),30,70,1,1);
