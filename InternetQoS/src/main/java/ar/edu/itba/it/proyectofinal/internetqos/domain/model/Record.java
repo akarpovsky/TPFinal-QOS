@@ -36,10 +36,10 @@ public class Record extends DBPersistentObject {
 	private float downstream;
 	
 	@Column(nullable=false)
-	private float downstreamCongestion;
+	private boolean downstreamCongestion;
 	
 	@Column(nullable=false)
-	private float upstreamCongestion;
+	private boolean upstreamCongestion;
 	
 	Record() {
 		// required by hibernate 
@@ -96,19 +96,19 @@ public class Record extends DBPersistentObject {
 		this.downstream = downstream;
 	}
 
-	public float getDownstreamCongestion() {
+	public boolean getDownstreamCongestion() {
 		return downstreamCongestion;
 	}
 
-	public void setDownstreamCongestion(float downstreamCongestion) {
+	public void setDownstreamCongestion(boolean downstreamCongestion) {
 		this.downstreamCongestion = downstreamCongestion;
 	}
 
-	public float getUpstreamCongestion() {
+	public boolean getUpstreamCongestion() {
 		return upstreamCongestion;
 	}
 
-	public void setUpstreamCongestion(float upstreamCongestion) {
+	public void setUpstreamCongestion(boolean upstreamCongestion) {
 		this.upstreamCongestion = upstreamCongestion;
 	}
 	

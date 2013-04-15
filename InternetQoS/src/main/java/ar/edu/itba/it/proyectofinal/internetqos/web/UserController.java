@@ -87,26 +87,39 @@ public class UserController {
 				Record record = it.next();
 				downStream.add(record.getDownstream());
 				upStream.add(record.getUpstream());
-				congestionDown.add(record.getDownstreamCongestion());
-				congestionUp.add(record.getUpstreamCongestion());
+				congestionDown.add(record.getDownstreamCongestion() ?
+						record.getDownstream() : null);
+				congestionUp.add(record.getUpstreamCongestion() ? 
+						record.getUpstream() : null);
 				timestamps.add(record.getTimestamp().getMillis());
 			}
-
+			
+			JSONObject lineMarkerOptions = new JSONObject();
+			lineMarkerOptions.put("symbol", "circle");
 			j = new JSONObject();
 			j.put("name", metricas.get(0));
 			j.put("data", upStream);
-			js.put(j);
-			j = new JSONObject();
-			j.put("name", metricas.get(1));
-			j.put("data", congestionUp);
+			j.put("marker", lineMarkerOptions);
 			js.put(j);
 			j = new JSONObject();
 			j.put("name", metricas.get(2));
 			j.put("data", downStream);
+			j.put("marker", lineMarkerOptions);
 			js.put(j);
 			j = new JSONObject();
 			j.put("name", metricas.get(3));
 			j.put("data", congestionDown);
+			JSONObject congestionMarkerOptions = new JSONObject();
+			congestionMarkerOptions.put("radius", 7);
+			congestionMarkerOptions.put("symbol", "diamond");
+			j.put("type", "scatter");
+			j.put("marker", congestionMarkerOptions);
+			js.put(j);
+			j = new JSONObject();
+			j.put("name", metricas.get(1));
+			j.put("data", congestionUp);
+			j.put("type", "scatter");
+			j.put("marker", congestionMarkerOptions);
 			js.put(j);
 			json = js.toString();
 		} catch (Exception e) {
