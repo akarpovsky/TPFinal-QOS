@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
@@ -30,16 +31,20 @@ public class Record extends DBPersistentObject {
 	private DateTime timestamp;
 	
 	@Column(nullable=false)
+	@Max(value=100)
 	private float upstream;
 	
 	@Column(nullable=false)
+	@Max(value=100)
 	private float downstream;
 	
 	@Column(nullable=false)
-	private boolean downstreamCongestion;
+	@Max(value=100)
+	private float downstreamCongestion;
 	
 	@Column(nullable=false)
-	private boolean upstreamCongestion;
+	@Max(value=100)
+	private float upstreamCongestion;
 	
 	Record() {
 		// required by hibernate 
@@ -85,7 +90,11 @@ public class Record extends DBPersistentObject {
 	}
 
 	public void setUpstream(float upstream) {
-		this.upstream = upstream;
+		if(upstream <= 100){
+			this.upstream = upstream;
+		}else{
+			throw new IllegalArgumentException("Percentage must be between 0 and 100");
+		}
 	}
 
 	public float getDownstream() {
@@ -93,23 +102,35 @@ public class Record extends DBPersistentObject {
 	}
 
 	public void setDownstream(float downstream) {
-		this.downstream = downstream;
+		if(downstream <= 100){
+			this.downstream = downstream;
+		}else{
+			throw new IllegalArgumentException("Percentage must be between 0 and 100");
+		}
 	}
 
-	public boolean getDownstreamCongestion() {
+	public float getDownstreamCongestion() {
 		return downstreamCongestion;
 	}
 
-	public void setDownstreamCongestion(boolean downstreamCongestion) {
-		this.downstreamCongestion = downstreamCongestion;
+	public void setDownstreamCongestion(float downstreamCongestion) {
+		if(downstreamCongestion <= 100){
+			this.downstreamCongestion = downstreamCongestion;
+		}else{
+			throw new IllegalArgumentException("Percentage must be between 0 and 100");
+		}
 	}
 
-	public boolean getUpstreamCongestion() {
+	public float getUpstreamCongestion() {
 		return upstreamCongestion;
 	}
 
-	public void setUpstreamCongestion(boolean upstreamCongestion) {
-		this.upstreamCongestion = upstreamCongestion;
+	public void setUpstreamCongestion(float upstreamCongestion) {
+		if(upstreamCongestion <= 100){
+			this.upstreamCongestion = upstreamCongestion;
+		}else{
+			throw new IllegalArgumentException("Percentage must be between 0 and 100");
+		}
 	}
 	
 }

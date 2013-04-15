@@ -22,6 +22,9 @@ import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Record;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.User;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.RecordRepository;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.UserRepository;
+import ar.edu.itba.it.proyectofinal.internetqos.domain.util.ChartUtils;
+import ar.edu.itba.it.proyectofinal.internetqos.domain.util.ChartType;
+import ar.edu.itba.it.proyectofinal.internetqos.domain.util.HighChart;
 import ar.edu.itba.it.proyectofinal.internetqos.web.util.ControllerUtil;
 
 @Controller
@@ -39,7 +42,8 @@ public class UserController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView dashboard(HttpSession session,
-			@RequestParam(value = "nickname", defaultValue = "") String nickname) {
+			@RequestParam(value = "nickname", defaultValue = "") String nickname, 
+			@RequestParam(value = "graphtype", defaultValue = "GENERAL_GRAPH") ChartType graphtype) {
 		ModelAndView mav = new ModelAndView();
 		Integer userId = (Integer) session.getAttribute("userId");
 
@@ -60,74 +64,29 @@ public class UserController {
 				User me = userRepo.get(userId);
 				mav.setView(ControllerUtil
 						.redirectView("/user/dashboard?nickname="
-								+ me.getNickname()));
+								+ me.getNickname() + "&graphtype=" + graphtype ));
 				return mav;
 			}
 		}
 
 		List<Record> records = (List<Record>) recordRepo.getAll(reqProfile);
-		String json = null;
-		ArrayList<Long> timestamps = new ArrayList<Long>();
-		try {
-			JSONArray js = new JSONArray();
-			ArrayList<String> metricas;
-			metricas = new ArrayList<String>();
-			metricas.add("Upstream");
-			metricas.add("CongesitonUp");
-			metricas.add("Downstream");
-			metricas.add("CongestionDown");
-			JSONObject j;
-			Iterator<Record> it = records.iterator();
-			ArrayList<Float> downStream = new ArrayList<Float>();
-			ArrayList<Float> congestionDown = new ArrayList<Float>();
-			ArrayList<Float> upStream = new ArrayList<Float>();
-			ArrayList<Float> congestionUp = new ArrayList<Float>();
-
-			while (it.hasNext()) {
-				Record record = it.next();
-				downStream.add(record.getDownstream());
-				upStream.add(record.getUpstream());
-				congestionDown.add(record.getDownstreamCongestion() ?
-						record.getDownstream() : null);
-				congestionUp.add(record.getUpstreamCongestion() ? 
-						record.getUpstream() : null);
-				timestamps.add(record.getTimestamp().getMillis());
-			}
-			
-			JSONObject lineMarkerOptions = new JSONObject();
-			lineMarkerOptions.put("symbol", "circle");
-			j = new JSONObject();
-			j.put("name", metricas.get(0));
-			j.put("data", upStream);
-			j.put("marker", lineMarkerOptions);
-			js.put(j);
-			j = new JSONObject();
-			j.put("name", metricas.get(2));
-			j.put("data", downStream);
-			j.put("marker", lineMarkerOptions);
-			js.put(j);
-			j = new JSONObject();
-			j.put("name", metricas.get(3));
-			j.put("data", congestionDown);
-			JSONObject congestionMarkerOptions = new JSONObject();
-			congestionMarkerOptions.put("radius", 7);
-			congestionMarkerOptions.put("symbol", "diamond");
-			j.put("type", "scatter");
-			j.put("marker", congestionMarkerOptions);
-			js.put(j);
-			j = new JSONObject();
-			j.put("name", metricas.get(1));
-			j.put("data", congestionUp);
-			j.put("type", "scatter");
-			j.put("marker", congestionMarkerOptions);
-			js.put(j);
-			json = js.toString();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+		HighChart chart = null;
+		
+		if(graphtype == null){
+			graphtype = ChartType.GENERAL_GRAPH;
 		}
-		mav.addObject("timestamps", timestamps);
-		mav.addObject("json", json);
-
+		switch (graphtype) {
+		case UPSTREAM_GRAPH:
+			chart =	ChartUtils.generateHighChart(records, "Porcentaje de Utilización de Ancho de Banda", "Gráfico del Upstream", ChartType.UPSTREAM_GRAPH);
+			break;
+		case DOWNSTREAM_GRAPH:
+			chart = ChartUtils.generateHighChart(records, "Porcentaje de Utilización de Ancho de Banda", "Gráfico del Downstream", ChartType.DOWNSTREAM_GRAPH);
+			break;
+		default:
+			chart = ChartUtils.generateHighChart(records, "Porcentaje de Utilización de Ancho de Banda", "Gráfico General", ChartType.GENERAL_GRAPH);
+			break;
+		}
+		mav.addObject("javaChart", chart);
 		mav.addObject("user", reqProfile);
 		return mav;
 	}
@@ -137,8 +96,5 @@ public class UserController {
 		System.out.println(ans);
 		return ans;
 	}
-
-	private int[] getDaysAheadList() {
-		return new int[] { 0, 1, 2, 3, 5, 15, 30, 60, 90, 120, 365 };
-	}
+	
 }

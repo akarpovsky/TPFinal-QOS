@@ -7,6 +7,14 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="/WEB-INF/jsp/head.jsp"%>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	
+	<div class="row">
+		<div class="text-center" >
+			<a class="btn btn-info btn-large" href="./dashboard?graphtype=GENERAL_GRAPH">General</a>
+			<a class="btn btn-info btn-large" href="./dashboard?graphtype=UPSTREAM_GRAPH">Upstream</a>
+			<a class="btn btn-info btn-large" href="./dashboard?graphtype=DOWNSTREAM_GRAPH">Downstream</a>
+		</div>
+	</div>
 	<div class="row">
 		<div id="graphcontainer" class="span12 offset2" style="padding: 10px"></div>
 	</div>
@@ -16,8 +24,10 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 </body>
       <script type="text/javascript">                        
             $(function () {
-                var datos =  ${json};
-                var fechas = ${timestamps};
+                var datos =  ${javaChart.JSONString};
+                var fechas = ${javaChart.timestamps};
+                var title = "${javaChart.title}";
+                var subtitle = "${javaChart.subtitle}";
                 for (var i=0;i<fechas.length;i++){
                 	fechas[i] = new Date(fechas[i]);
                 }
@@ -30,11 +40,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                            	marginBottom: 25
                         },
                         title: {
-                            text: 'Porcentaje de Utilización de Ancho de Banda',
+                            text: title,
                             x: -20 //center
                         },
                         subtitle: {
-                            text: 'Gráfico General',
+                            text: subtitle,
                             x: -20
                         },
                         xAxis: {        
@@ -54,7 +64,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                                     value: 0,
                                     width: 1,
                                     color: '#808080'
-                                }]
+                                }],
+                           	min: 0, max: 100    
                         },
                         tooltip: {
                            
