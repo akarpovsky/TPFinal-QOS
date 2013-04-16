@@ -7,6 +7,7 @@ import org.springframework.validation.Errors;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.InvalidParametersException;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.User;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.UserBuilder;
+import ar.edu.itba.it.proyectofinal.internetqos.domain.model.UserType;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.UserValidator;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.UserRepository;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.util.AppError;
@@ -51,7 +52,7 @@ public class UserUpdateForm {
 	public User build(Errors errors, UserRepository userRepo) {
 		User user = null;
 		try {
-			user = new User(nickname, password1);
+			user = new User(nickname, password1, UserType.REGULAR);
 		} catch (InvalidParametersException e) {
 			ErrorUtil.rejectAll(errors, e.getErrors());
 		}
@@ -74,7 +75,7 @@ public class UserUpdateForm {
 			errors.reject(AppError.INVALID_PASSWORD.translationKey);
 		}
 		if (!errors.hasErrors()) {
-			UserBuilder.build(user, nickname, user.getPassword());
+			UserBuilder.build(user, nickname, user.getPassword(), user.getType());
 		}
 	}
 }

@@ -7,6 +7,8 @@ import java.util.List;
 import javax.mail.MessagingException;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -33,11 +35,11 @@ public class User extends DBPersistentObject {
 	@Column(nullable=false, unique=true)
 	private String nickname;
 	
-	@OneToMany(fetch=FetchType.LAZY) // Lazy loading
-	@JoinColumn(name="record_id", nullable=false)
-	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
-	private List<Record> records = new ArrayList<Record>();
-	
+//	@OneToMany(fetch=FetchType.LAZY) // Lazy loading
+//	@JoinColumn(name="record_id", nullable=false)
+//	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+//	private List<Record> records = new ArrayList<Record>();
+
 	@Email
 	@Column(nullable=false)
 	private String password;
@@ -45,13 +47,17 @@ public class User extends DBPersistentObject {
 	@Column(nullable=true, unique=true)
 	private String passwordRecoveryRequestCode;
 	
+	@Enumerated(EnumType.STRING)
+	@Column(nullable=false)
+	private UserType type;
+	
 	User() {
 		// required by hibernate 
 	}
 	
-	public User(String nickname, String password) {
+	public User(String nickname, String password, UserType type) {
 		this();
-		UserBuilder.build(this, nickname, password);
+		UserBuilder.build(this, nickname, password, type);
 	}
 	
 	@Override
@@ -114,6 +120,14 @@ public class User extends DBPersistentObject {
 		return passwordRecoveryRequestCode;
 	}
 	
+	public UserType getType() {
+		return type;
+	}
+
+	public void setType(UserType type) {
+		this.type = type;
+	}
+
 	public void setPasswordRecoveryRequestCode(String getPasswordRecoveryRequestCode) {
 		this.passwordRecoveryRequestCode = getPasswordRecoveryRequestCode;
 	}

@@ -7,12 +7,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="/WEB-INF/jsp/head.jsp"%>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
-	
 	<div class="row">
 		<div class="text-center" >
-			<a class="btn btn-info btn-large" href="./dashboard?graphtype=GENERAL_GRAPH">General</a>
-			<a class="btn btn-info btn-large" href="./dashboard?graphtype=UPSTREAM_GRAPH">Upstream</a>
-			<a class="btn btn-info btn-large" href="./dashboard?graphtype=DOWNSTREAM_GRAPH">Downstream</a>
+			<a class="btn btn-info btn-large" href="./dashboard?nickname=${user.nickname}&graphtype=GENERAL_GRAPH">General</a>
+			<a class="btn btn-info btn-large" href="./dashboard?nickname=${user.nickname}&graphtype=UPSTREAM_GRAPH">Upstream</a>
+			<a class="btn btn-info btn-large" href="./dashboard?nickname=${user.nickname}&graphtype=DOWNSTREAM_GRAPH">Downstream</a>
 		</div>
 	</div>
 	<div class="row">

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.User;
+import ar.edu.itba.it.proyectofinal.internetqos.domain.model.UserType;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.UserRepository;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.util.AppError;
 import ar.edu.itba.it.proyectofinal.internetqos.web.command.forms.UserCreationForm;
@@ -45,7 +46,11 @@ public class LoginController {
 		User user = userRepo.authenticate(userLoginForm.getNickname(), userLoginForm.getPassword());
 		if (user != null) {
 			session.setAttribute("userId", user.getId());
-			mav.setView(ControllerUtil.redirectView("/user/dashboard"));
+			if(user.getType().equals(UserType.ADMIN)){
+				mav.setView(ControllerUtil.redirectView("/user/adminpanel"));
+			}else{
+				mav.setView(ControllerUtil.redirectView("/user/dashboard"));
+			}
 			return mav;
 		}
 		mav.addObject("userCreationForm", new UserCreationForm());

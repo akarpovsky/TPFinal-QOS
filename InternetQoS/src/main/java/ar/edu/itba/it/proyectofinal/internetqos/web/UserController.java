@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Record;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.User;
+import ar.edu.itba.it.proyectofinal.internetqos.domain.model.UserType;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.RecordRepository;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.UserRepository;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.util.ChartUtils;
@@ -38,52 +39,93 @@ public class UserController {
 		this.userRepo = userRepo;
 		this.recordRepo = recordRepo;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView adminpanel(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Integer userId = (Integer) session.getAttribute("userId");
+		User me = userRepo.get(userId);
+
+		if(!me.getType().equals(UserType.ADMIN)){
+			 mav.addObject("errorDescription", "No tiene permisos para acceder aquí.");
+			 mav.setViewName("error");
+			 return mav;
+		}
+		List<? extends User> allUsersExceptAdmin = userRepo.getAll();
+		allUsersExceptAdmin.remove(me);
+		mav.addObject("userList", allUsersExceptAdmin);
+		return mav;
+	
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView home(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Integer userId = (Integer) session.getAttribute("userId");
+		
+		if(userId == null){
+			mav.setView(ControllerUtil.redirectView("/login/login"));
+			return mav;
+		}
+		
+		User me = userRepo.get(userId);
+
+		
+		if(me.getType().equals(UserType.ADMIN)){
+			mav.setView(ControllerUtil.redirectView("/user/adminpanel"));
+		}else{
+			mav.setView(ControllerUtil.redirectView("/user/dashboard"));
+		}
+		return mav;
+	
+	}
+	
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView dashboard(HttpSession session,
-			@RequestParam(value = "nickname", defaultValue = "") String nickname, 
+	public ModelAndView dashboard(
+			HttpSession session,
+			@RequestParam(value = "nickname", defaultValue = "") String nickname,
 			@RequestParam(value = "graphtype", defaultValue = "GENERAL_GRAPH") ChartType graphtype) {
 		ModelAndView mav = new ModelAndView();
 		Integer userId = (Integer) session.getAttribute("userId");
 
-		boolean isLoggedIn = userId != null;
 		User reqProfile = userRepo.get(nickname);
-		if (!isLoggedIn) {
-			if (nickname.isEmpty()) {
-				mav.setView(ControllerUtil.redirectView("/login/login"));
-				return mav;
-			}
-			if (reqProfile == null) {
-				mav.addObject("errorDescription", "Usuario no encontrado");
-				mav.setViewName("error");
-				return mav;
-			}
-		} else {
-			if (reqProfile == null) {
-				User me = userRepo.get(userId);
-				mav.setView(ControllerUtil
-						.redirectView("/user/dashboard?nickname="
-								+ me.getNickname() + "&graphtype=" + graphtype ));
-				return mav;
-			}
-		}
+		User me = userRepo.get(userId);
 
+		if(reqProfile == null){
+				mav.setView(ControllerUtil.redirectView("/user/dashboard?nickname="
+						+ me.getNickname() + "&graphtype=" + graphtype));
+				return mav;
+		} else if(!reqProfile.equals(me) && !me.getType().equals(UserType.ADMIN)){
+			 mav.addObject("errorDescription", "No tiene permisos para acceder aquí.");
+			 mav.setViewName("error");
+			 return mav;
+		}
+		
 		List<Record> records = (List<Record>) recordRepo.getAll(reqProfile);
 		HighChart chart = null;
-		
-		if(graphtype == null){
+
+		if (graphtype == null) {
 			graphtype = ChartType.GENERAL_GRAPH;
 		}
 		switch (graphtype) {
 		case UPSTREAM_GRAPH:
-			chart =	ChartUtils.generateHighChart(records, "Porcentaje de Utilización de Ancho de Banda", "Gráfico del Upstream", ChartType.UPSTREAM_GRAPH);
+			chart = ChartUtils.generateHighChart(records,
+					"Porcentaje de Utilización de Ancho de Banda",
+					"Gráfico del Upstream para " + reqProfile.getNickname(), ChartType.UPSTREAM_GRAPH);
 			break;
 		case DOWNSTREAM_GRAPH:
-			chart = ChartUtils.generateHighChart(records, "Porcentaje de Utilización de Ancho de Banda", "Gráfico del Downstream", ChartType.DOWNSTREAM_GRAPH);
+			chart = ChartUtils.generateHighChart(records,
+					"Porcentaje de Utilización de Ancho de Banda",
+					"Gráfico del Downstream para " + reqProfile.getNickname(), ChartType.DOWNSTREAM_GRAPH);
 			break;
 		default:
-			chart = ChartUtils.generateHighChart(records, "Porcentaje de Utilización de Ancho de Banda", "Gráfico General", ChartType.GENERAL_GRAPH);
+			chart = ChartUtils.generateHighChart(records,
+					"Porcentaje de Utilización de Ancho de Banda",
+					"Gráfico General para " + reqProfile.getNickname(), ChartType.GENERAL_GRAPH);
 			break;
 		}
 		mav.addObject("javaChart", chart);
@@ -96,5 +138,5 @@ public class UserController {
 		System.out.println(ans);
 		return ans;
 	}
-	
+
 }
