@@ -8,6 +8,7 @@
 <%-- <c:set var="url">${req.requestURL}</c:set> --%>
 <%-- <base href="${fn:substring(url, 0, fn:length(url) - fn:length(uri))}${req.contextPath}/" /> --%>
 
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <link rel="icon" type="image/ico" href="<c:url value='/img/favicon.ico2'/>">
@@ -34,5 +35,6 @@ body {
 <!-- Javascript -->
 <script type="text/javascript" src="<c:url value='/js/bootstrap.js'/>"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
 <script type="text/javascript" src="<c:url value='/js/graychartstheme.js'/>"></script>

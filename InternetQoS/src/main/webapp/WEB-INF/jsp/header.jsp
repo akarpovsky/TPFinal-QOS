@@ -8,7 +8,7 @@
 				<spanclass="icon-bar"></span> 
 				<span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="../user/home">TiX</a>
+			<a class="brand" href="${pageContext.servletContext.contextPath}/bin/user/home">TiX</a>
 			
 			<div class="nav-collapse">
 					<c:choose>

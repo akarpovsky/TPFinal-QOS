@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -41,6 +43,8 @@ public class ChartUtils {
 			List<Float> congestionDown = new ArrayList<Float>();
 			List<Float> upStream = new ArrayList<Float>();
 			List<Float> congestionUp = new ArrayList<Float>();
+			List<HighchartPoint> highchartPoints = new ArrayList<HighchartPoint>();
+			List<List<Long>> points = new ArrayList<List<Long>>();
 			Iterator<Record> it = records.iterator();
 			JSONObject j;
 
@@ -50,8 +54,15 @@ public class ChartUtils {
 				upStream.add(record.getUpstream());
 				congestionDown.add(record.getDownstreamCongestion());
 				congestionUp.add(record.getUpstreamCongestion());
-				timestamps.add(record.getTimestamp().getMillis());
+				DateTime dt = new DateTime(record.getTimestamp());
+				timestamps.add(dt.getMillis());
+				List<Long> point = new ArrayList<Long>();
+				point.add((DateTimeUtils.getInstantMillis(dt)));
+				point.add((long) record.getUpstreamCongestion());
+				points.add(point);
 			}
+			
+			
 
 			JSONObject lineMarkerOptions = new JSONObject();
 			lineMarkerOptions.put("symbol", "circle");
