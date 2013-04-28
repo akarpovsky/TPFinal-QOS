@@ -3,8 +3,8 @@ package ar.edu.itba.it.proyectofinal.internetqos.domain.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joda.time.DateTime;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class HighChart {
 	
@@ -15,14 +15,14 @@ public class HighChart {
 
 
 	public HighChart(List<Long> timestamps, JSONArray js, String title, String subtitle) {
-		this.timestamps = new ArrayList<Long>();
+		this.timestamps = timestamps;
 		this.json = js;
 		this.title = title;
 		this.subtitle = subtitle;
 	}
 
 
-	public Object getJSONString() {
+	public String getJSONString() {
 		return json.toString();
 	}
 
@@ -42,13 +42,9 @@ public class HighChart {
 	}
 
 
-	public Object getTimestamps() {
+	public List<Long> getTimestamps() {
 		return timestamps;
 	}
 	
-	
-	
-	
-
 
 }

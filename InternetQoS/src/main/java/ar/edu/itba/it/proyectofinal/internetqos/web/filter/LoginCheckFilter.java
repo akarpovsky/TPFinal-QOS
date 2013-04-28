@@ -42,7 +42,7 @@ public class LoginCheckFilter extends OncePerRequestFilter {
 
 	private boolean isAvaiableWithoutLogin(String requestUrl) {
 		String[] availableUrl = {
-			"login/", "account/register","account/recover",
+			"login/", "login/login", "user/home","account/register","account/recover",
 			"account/login", "account/recoverpassword"
 		};
 		for (String url: availableUrl) {
