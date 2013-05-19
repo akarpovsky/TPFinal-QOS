@@ -34,7 +34,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 	        	</c:when>
 	        	<c:otherwise>
 		   			<div id="graphcontainer"></div><!-- Here the graph will be rendered -->
-
+					<hr>
 			        <div class="row" style="margin-top: 10px;">
 						<div class="text-center">
 									<a class="btn btn-info btn-large"
@@ -47,7 +47,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 					</div>
         		</c:otherwise>
 	        </c:choose>	
-			<hr>
+		
         </div><!--/span-->
       </div><!--/row-->
     </div>
