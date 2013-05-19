@@ -34,7 +34,7 @@ public class UserController {
 		this.userRepo = userRepo;
 		this.recordRepo = recordRepo;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView adminpanel(HttpSession session) {
@@ -42,41 +42,40 @@ public class UserController {
 		Integer userId = (Integer) session.getAttribute("userId");
 		User me = userRepo.get(userId);
 
-		if(!me.getType().equals(UserType.ADMIN)){
-			 mav.addObject("errorDescription", "No tiene permisos para acceder aquí.");
-			 mav.setViewName("error");
-			 return mav;
+		if (!me.getType().equals(UserType.ADMIN)) {
+			mav.addObject("errorDescription",
+					"No tiene permisos para acceder aquí.");
+			mav.setViewName("error");
+			return mav;
 		}
 		List<? extends User> allUsersExceptAdmin = userRepo.getAll();
 		allUsersExceptAdmin.remove(me);
 		mav.addObject("userList", allUsersExceptAdmin);
 		return mav;
-	
+
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView home(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Integer userId = (Integer) session.getAttribute("userId");
-		
-		if(userId == null){
+
+		if (userId == null) {
 			mav.setView(ControllerUtil.redirectView("/login/login"));
 			return mav;
 		}
-		
+
 		User me = userRepo.get(userId);
 
-		
-		if(me.getType().equals(UserType.ADMIN)){
+		if (me.getType().equals(UserType.ADMIN)) {
 			mav.setView(ControllerUtil.redirectView("/user/adminpanel"));
-		}else{
+		} else {
 			mav.setView(ControllerUtil.redirectView("/user/dashboard"));
 		}
 		return mav;
-	
+
 	}
-	
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
@@ -84,8 +83,8 @@ public class UserController {
 			HttpSession session,
 			@RequestParam(value = "nickname", defaultValue = "") String nickname,
 			@RequestParam(value = "graphtype", defaultValue = "GENERAL_GRAPH") ChartType graphtype,
-			@RequestParam(value = "ins", required=false) Installation requiredInstallation){
-//			@RequestParam(value = "isp", required=false) ISP requiredISP){
+			@RequestParam(value = "ins", required = false) Installation requiredInstallation) {
+		// @RequestParam(value = "isp", required=false) ISP requiredISP){
 
 		ModelAndView mav = new ModelAndView();
 		Integer userId = (Integer) session.getAttribute("userId");
@@ -93,55 +92,78 @@ public class UserController {
 		User reqProfile = userRepo.get(nickname);
 		User me = userRepo.get(userId);
 
-		if(reqProfile == null){
-				mav.setView(ControllerUtil.redirectView("/user/dashboard?nickname="
-						+ me.getNickname() + "&graphtype=" + graphtype));
-				return mav;
-		} else if(!reqProfile.equals(me) && !me.getType().equals(UserType.ADMIN)){
-			 mav.addObject("errorDescription", "No tiene permisos para acceder aquí.");
-			 mav.setViewName("error");
-			 return mav;
+		if (reqProfile == null) {
+			mav.setView(ControllerUtil.redirectView("/user/dashboard?nickname="
+					+ me.getNickname() + "&graphtype=" + graphtype));
+			return mav;
+		} else if (!reqProfile.equals(me)
+				&& !me.getType().equals(UserType.ADMIN)) {
+			mav.addObject("errorDescription",
+					"No tiene permisos para acceder aquí.");
+			mav.setViewName("error");
+			return mav;
 		}
-		
+
 		List<Installation> userInstallations = reqProfile.getInstallations();
-		
-		if(userInstallations.isEmpty()){ // No installation or data to show for current user
+
+		if (userInstallations.isEmpty()) { // No installation or data to show
+											// for current user
 			mav.setViewName("newuser");
 			return mav;
 		}
-		
-		if(requiredInstallation == null){ // URL param "ins" not found, set default installation
+
+		if (requiredInstallation == null) { // URL param "ins" not found, set
+											// default installation
 			requiredInstallation = userInstallations.get(0);
 		}
-		
 
 		HighChart chart = null;
 
 		if (graphtype == null) {
 			graphtype = ChartType.GENERAL_GRAPH;
 		}
-		
-		List<Record> records = (List<Record>) recordRepo.getAll(reqProfile, requiredInstallation);
-		
-		switch (graphtype) {
+
+		List<Record> records = (List<Record>) recordRepo.getAll(reqProfile,
+				requiredInstallation);
+		boolean noRecords = false;
+		if (records.isEmpty()) {
+			noRecords = true;
+		} else {
+
+			switch (graphtype) {
 			case UPSTREAM_GRAPH:
-				chart = ChartUtils.generateHighChart(records,
-						"Porcentaje de Utilización de Ancho de Banda en " + requiredInstallation.getName(),
-						"Gráfico del Upstream para " + reqProfile.getNickname(), ChartType.UPSTREAM_GRAPH);
+				chart = ChartUtils
+						.generateHighChart(
+								records,
+								"Porcentaje de Utilización de Ancho de Banda en "
+										+ requiredInstallation.getName(),
+								"Gráfico del Upstream para "
+										+ reqProfile.getNickname(),
+								ChartType.UPSTREAM_GRAPH);
 				break;
 			case DOWNSTREAM_GRAPH:
-				chart = ChartUtils.generateHighChart(records,
-						"Porcentaje de Utilización de Ancho de Banda en " + requiredInstallation.getName(),						"Gráfico del Downstream para " + reqProfile.getNickname(), ChartType.DOWNSTREAM_GRAPH);
+				chart = ChartUtils.generateHighChart(
+						records,
+						"Porcentaje de Utilización de Ancho de Banda en "
+								+ requiredInstallation.getName(),
+						"Gráfico del Downstream para "
+								+ reqProfile.getNickname(),
+						ChartType.DOWNSTREAM_GRAPH);
 				break;
 			default:
 				chart = ChartUtils.generateHighChart(records,
-						"Porcentaje de Utilización de Ancho de Banda en " + requiredInstallation.getName(),						"Gráfico General para " + reqProfile.getNickname(), ChartType.GENERAL_GRAPH);
+						"Porcentaje de Utilización de Ancho de Banda en "
+								+ requiredInstallation.getName(),
+						"Gráfico General para " + reqProfile.getNickname(),
+						ChartType.GENERAL_GRAPH);
 				break;
+			}
+			mav.addObject("javaChart", chart);
 		}
 		mav.addObject("currentGraphType", graphtype.getTranslationKey());
 		mav.addObject("currentInstallation", requiredInstallation);
-//		mav.addObject("currentISP", requiredISP);
-		mav.addObject("javaChart", chart);
+		mav.addObject("noRecords", noRecords);
+		// mav.addObject("currentISP", requiredISP);
 		mav.addObject("user", reqProfile);
 		return mav;
 	}
