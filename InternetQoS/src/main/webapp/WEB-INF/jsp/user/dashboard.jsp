@@ -25,11 +25,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
    			<div id="graphcontainer"></div><!-- Here the graph will be rendered -->
 	        <div class="row" style="margin-top: 10px;">
 				<div class="text-center">
-							<a class="btn btn-info btn-large"
+							<a class="btn btn-primary"
 								href="./dashboard?nickname=${user.nickname}&graphtype=GENERAL_GRAPH&ins=${currentInstallation}">General</a>
-							<a class="btn btn-info btn-large"
+							<a class="btn btn-primary"
 								href="./dashboard?nickname=${user.nickname}&graphtype=UPSTREAM_GRAPH&ins=${currentInstallation}">Upstream</a>
-							<a class="btn btn-info btn-large"
+							<a class="btn btn-primary"
 								href="./dashboard?nickname=${user.nickname}&graphtype=DOWNSTREAM_GRAPH&ins=${currentInstallation}">Downstream</a>
 						</div><!-- Graph buttons -->
 			</div>
