@@ -21,6 +21,10 @@ public class Record extends DBPersistentObject {
 	@OneToOne
 	private Installation installation;
 	
+//	@Column(nullable=false)
+//	@OneToOne
+//	private ISP isp;
+	
 	@Column(nullable=false)
 	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
 	private DateTime timestamp;
@@ -135,5 +139,14 @@ public class Record extends DBPersistentObject {
 	public void setInstallation(Installation installation) {
 		this.installation = installation;
 	}
+
+//	public ISP getIsp() {
+//		return isp;
+//	}
+//
+//	public void setIsp(ISP isp) {
+//		this.isp = isp;
+//	}
+//	
 	
 }

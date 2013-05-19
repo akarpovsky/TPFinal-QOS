@@ -1,7 +1,8 @@
 package ar.edu.itba.it.proyectofinal.internetqos.web.command.forms;
 
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.validation.Errors;
 
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.InvalidParametersException;
@@ -18,6 +19,8 @@ public class UserUpdateForm {
 	@Email
 	private String nickname;
 	
+	private Integer birthyear;
+	
 	private String password1;
 
 
@@ -26,8 +29,13 @@ public class UserUpdateForm {
 
 	public UserUpdateForm(User user) {
 		setNickname(user.getNickname());
+		setBirthyear(user.getBirthYear());
 	}
 	
+	public void setBirthyear(Integer birthyear) {
+		this.birthyear = birthyear;
+	}
+
 	public String getNickname() {
 		return nickname;
 	}
@@ -37,6 +45,10 @@ public class UserUpdateForm {
 	}
 
 	
+	public Integer getBirthyear() {
+		return birthyear;
+	}
+
 	public String getPassword1() {
 		return password1;
 	}
@@ -52,7 +64,7 @@ public class UserUpdateForm {
 	public User build(Errors errors, UserRepository userRepo) {
 		User user = null;
 		try {
-			user = new User(nickname, password1, UserType.REGULAR);
+			user = new User(nickname, password1, birthyear, UserType.REGULAR);
 		} catch (InvalidParametersException e) {
 			ErrorUtil.rejectAll(errors, e.getErrors());
 		}
@@ -74,8 +86,13 @@ public class UserUpdateForm {
 		if (passworchMatches && !userValidator.passwordValid(password1)) {
 			errors.reject(AppError.INVALID_PASSWORD.translationKey);
 		}
+		
+		if (!userValidator.birthyearValid(birthyear)) {
+			errors.reject(AppError.BIRTHYEAR.translationKey);
+		}
+		
 		if (!errors.hasErrors()) {
-			UserBuilder.build(user, nickname, user.getPassword(), user.getType());
+			UserBuilder.build(user, nickname, user.getPassword(), birthyear, user.getType());
 		}
 	}
 }

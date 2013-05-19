@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import ar.edu.itba.it.proyectofinal.internetqos.domain.model.ISP;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Installation;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Record;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.User;
@@ -38,6 +39,10 @@ public class HibernateRecordRepository extends AbstractHibernateRepo implements 
 	public List<? extends Record> getAll(User user, Installation installation) {
 		return find("from Record r where user_id = ? and installation = ? order by r.timestamp desc ", user.getId(), installation);
 	}
+	
+//	public List<? extends Record> getAllForISP(User user, Installation installation, ISP isp) {
+//		return find("from Record r where user_id = ? and installation = ? and isp = ? order by r.timestamp desc ", user.getId(), installation, isp);
+//	}
 
 
 	@Override

@@ -40,4 +40,8 @@ public class UserValidator {
 	public boolean daysAheadToShowBDaysValid(int days) {
 		return days >= 0;
 	}
+
+	public boolean birthyearValid(int birthyear) {
+		return birthyear > 1900 && birthyear < 2100;
+	}
 }

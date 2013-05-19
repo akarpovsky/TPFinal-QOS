@@ -32,6 +32,8 @@ public class User extends DBPersistentObject {
 	@Column(nullable=false, unique=true)
 	private String nickname;
 	
+	private Integer birthyear;
+	
 	@OneToMany(fetch=FetchType.LAZY) // Lazy loading
 //	@JoinColumn(name="record_id", nullable=false)
 //	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
@@ -52,9 +54,9 @@ public class User extends DBPersistentObject {
 		// required by hibernate 
 	}
 	
-	public User(String nickname, String password, UserType type) {
+	public User(String nickname, String password, Integer birthyear, UserType type) {
 		this();
-		UserBuilder.build(this, nickname, password, type);
+		UserBuilder.build(this, nickname, password, birthyear, type);
 	}
 	
 	@Override
@@ -145,5 +147,17 @@ public class User extends DBPersistentObject {
 	public void setInstallations(List<Installation> installations) {
 		this.installations = installations;
 	}
+
+	public Integer getBirthYear() {
+		return birthyear;
+	}
+
 	
+	public void setBirhYear(Integer birthyear) {
+		
+		if (birthyear == null || !uv.birthyearValid(birthyear)) {
+			throw new InvalidParametersException(Collections.singletonList(AppError.BIRTHYEAR));
+		}
+		this.birthyear = birthyear;
+	}
 }
