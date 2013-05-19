@@ -1,13 +1,18 @@
 package ar.edu.itba.it.proyectofinal.internetqos.domain.model;
 
-import org.joda.time.LocalDate;
 
 public class UserBuilder {
 
-	public static void build(User user, String nickname, String password, UserType type) {
+	public static void build(User user, String nickname, String password, Integer birthyear, UserType type) {
 		InvalidParametersException ansException = new InvalidParametersException();
 		try {
 			user.setNickname(nickname);
+		} catch (InvalidParametersException e) {
+			ansException.addAll(e.getErrors());
+		}
+		
+		try {
+			user.setBirhYear(birthyear);
 		} catch (InvalidParametersException e) {
 			ansException.addAll(e.getErrors());
 		}

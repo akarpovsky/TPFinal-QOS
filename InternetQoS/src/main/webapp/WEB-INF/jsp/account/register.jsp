@@ -13,6 +13,9 @@
 						<label for="nickname">Email:</label> 
 						<form:input type="text" path="nickname" value="${nickname}" />
 						<br/>
+						<label for="birthyear">A&ntilde;o de nacimiento:</label> 
+						<form:input path="birthyear"/>
+						<br/>
 						<label for="password1">Contrase&ntilde;a:</label>
 						<form:input type="password" path="password1" />
 						<br/> 

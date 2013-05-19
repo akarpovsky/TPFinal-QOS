@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.itba.it.proyectofinal.internetqos.domain.model.ISP;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Installation;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Record;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.User;
@@ -87,6 +88,8 @@ public class UserController {
 			@RequestParam(value = "nickname", defaultValue = "") String nickname,
 			@RequestParam(value = "graphtype", defaultValue = "GENERAL_GRAPH") ChartType graphtype,
 			@RequestParam(value = "ins", required=false) Installation requiredInstallation){
+//			@RequestParam(value = "isp", required=false) ISP requiredISP){
+
 		ModelAndView mav = new ModelAndView();
 		Integer userId = (Integer) session.getAttribute("userId");
 
@@ -104,13 +107,16 @@ public class UserController {
 		}
 		
 		List<Installation> userInstallations = reqProfile.getInstallations();
-		if(requiredInstallation == null){
+		
+		if(userInstallations.isEmpty()){ // No installation or data to show for current user
+			mav.setViewName("newuser");
+			return mav;
+		}
+		
+		if(requiredInstallation == null){ // URL param "ins" not found, set default installation
 			requiredInstallation = userInstallations.get(0);
 		}
-		Map<Installation, List<Record>> installationRecordMap = new HashMap<Installation, List<Record>>();
-		for(Installation installation: userInstallations){
-			installationRecordMap.put(installation, (List<Record>) recordRepo.getAll(reqProfile, installation));
-		}
+		
 
 		HighChart chart = null;
 
@@ -118,24 +124,26 @@ public class UserController {
 			graphtype = ChartType.GENERAL_GRAPH;
 		}
 		
-		//TODO: Desharcodear la instalación a mostrar!!
+		List<Record> records = (List<Record>) recordRepo.getAll(reqProfile, requiredInstallation);
+		
 		switch (graphtype) {
 			case UPSTREAM_GRAPH:
-				chart = ChartUtils.generateHighChart(installationRecordMap.get(requiredInstallation),
+				chart = ChartUtils.generateHighChart(records,
 						"Porcentaje de Utilización de Ancho de Banda en " + requiredInstallation.getName(),
 						"Gráfico del Upstream para " + reqProfile.getNickname(), ChartType.UPSTREAM_GRAPH);
 				break;
 			case DOWNSTREAM_GRAPH:
-				chart = ChartUtils.generateHighChart(installationRecordMap.get(requiredInstallation),
+				chart = ChartUtils.generateHighChart(records,
 						"Porcentaje de Utilización de Ancho de Banda en " + requiredInstallation.getName(),						"Gráfico del Downstream para " + reqProfile.getNickname(), ChartType.DOWNSTREAM_GRAPH);
 				break;
 			default:
-				chart = ChartUtils.generateHighChart(installationRecordMap.get(requiredInstallation),
+				chart = ChartUtils.generateHighChart(records,
 						"Porcentaje de Utilización de Ancho de Banda en " + requiredInstallation.getName(),						"Gráfico General para " + reqProfile.getNickname(), ChartType.GENERAL_GRAPH);
 				break;
 		}
 		mav.addObject("currentGraphType", graphtype.getTranslationKey());
 		mav.addObject("currentInstallation", requiredInstallation);
+//		mav.addObject("currentISP", requiredISP);
 		mav.addObject("javaChart", chart);
 		mav.addObject("user", reqProfile);
 		return mav;
