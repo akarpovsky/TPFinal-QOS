@@ -7,21 +7,36 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="/WEB-INF/jsp/head.jsp"%>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
-	<div class="row">
-		<div class="text-center">
-			<a class="btn btn-info btn-large"
-				href="./dashboard?nickname=${user.nickname}&graphtype=GENERAL_GRAPH">General</a>
-			<a class="btn btn-info btn-large"
-				href="./dashboard?nickname=${user.nickname}&graphtype=UPSTREAM_GRAPH">Upstream</a>
-			<a class="btn btn-info btn-large"
-				href="./dashboard?nickname=${user.nickname}&graphtype=DOWNSTREAM_GRAPH">Downstream</a>
-		</div>
-	</div>
-	<div class="row">
-		<div id="graphcontainer" class="span12 offset2" style="padding: 10px"></div>
-		<br />
-		<div id="container" class="span12 offset2" style="padding: 10px"></div>
-	</div>
+	<div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Instalaciones</li>
+              	<c:forEach var="installation" items="${user.installations}">
+	              <li class='<c:if test="${installation.id == currentInstallation.id}">active</c:if>'><a href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${installation.id}">${installation.name}</a></li>
+              	</c:forEach>
+	          <li class="divider"></li>
+	          <li><a href="#">Ayuda</a></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+   			<div id="graphcontainer"></div><!-- Here the graph will be rendered -->
+	        <div class="row" style="margin-top: 10px;">
+				<div class="text-center">
+							<a class="btn btn-info btn-large"
+								href="./dashboard?nickname=${user.nickname}&graphtype=GENERAL_GRAPH&ins=${currentInstallation}">General</a>
+							<a class="btn btn-info btn-large"
+								href="./dashboard?nickname=${user.nickname}&graphtype=UPSTREAM_GRAPH&ins=${currentInstallation}">Upstream</a>
+							<a class="btn btn-info btn-large"
+								href="./dashboard?nickname=${user.nickname}&graphtype=DOWNSTREAM_GRAPH&ins=${currentInstallation}">Downstream</a>
+						</div><!-- Graph buttons -->
+			</div>
+			<hr>
+        </div><!--/span-->
+      </div><!--/row-->
+    </div>
 	<div class="hero-unit" style="z-index: 1; position: relative;"></div>
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>

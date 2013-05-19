@@ -12,12 +12,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.Email;
 import org.postgresql.util.Base64;
 
@@ -35,10 +32,10 @@ public class User extends DBPersistentObject {
 	@Column(nullable=false, unique=true)
 	private String nickname;
 	
-//	@OneToMany(fetch=FetchType.LAZY) // Lazy loading
+	@OneToMany(fetch=FetchType.LAZY) // Lazy loading
 //	@JoinColumn(name="record_id", nullable=false)
 //	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
-//	private List<Record> records = new ArrayList<Record>();
+	private List<Installation> installations = new ArrayList<Installation>();
 
 	@Email
 	@Column(nullable=false)
@@ -139,6 +136,14 @@ public class User extends DBPersistentObject {
 			return true;
 		}
 		return false;
+	}
+
+	public List<Installation> getInstallations() {
+		return installations;
+	}
+
+	public void setInstallations(List<Installation> installations) {
+		this.installations = installations;
 	}
 	
 }
