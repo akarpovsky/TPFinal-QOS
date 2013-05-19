@@ -2,6 +2,7 @@ package ar.edu.itba.it.proyectofinal.internetqos.domain.repository;
 
 import java.util.List;
 
+import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Installation;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.User;
 
 public interface UserRepository {
@@ -23,5 +24,7 @@ public interface UserRepository {
 	public boolean mailIsAvailable(String email);
 
 	public boolean nicknameIsAvailable(String nickname);
+
+	public Installation getInstallation(Integer installationId);
 	
 }

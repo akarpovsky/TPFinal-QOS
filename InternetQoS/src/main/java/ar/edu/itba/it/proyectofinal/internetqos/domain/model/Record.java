@@ -1,22 +1,14 @@
 package ar.edu.itba.it.proyectofinal.internetqos.domain.model;
 
-import java.util.Collections;
-
-import javax.mail.MessagingException;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
-import org.postgresql.util.Base64;
-
-import ar.edu.itba.it.proyectofinal.internetqos.domain.service.MailBuilder;
-import ar.edu.itba.it.proyectofinal.internetqos.domain.service.MailService;
-import ar.edu.itba.it.proyectofinal.internetqos.domain.util.AppError;
 
 @Entity
 @Table(name = "records")
@@ -25,6 +17,9 @@ public class Record extends DBPersistentObject {
 	
 	@ManyToOne
 	private User user;
+	
+	@OneToOne
+	private Installation installation;
 	
 	@Column(nullable=false)
 	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
@@ -131,6 +126,14 @@ public class Record extends DBPersistentObject {
 		}else{
 			throw new IllegalArgumentException("Percentage must be between 0 and 100");
 		}
+	}
+	
+	public Installation getInstallation() {
+		return installation;
+	}
+
+	public void setInstallation(Installation installation) {
+		this.installation = installation;
 	}
 	
 }
