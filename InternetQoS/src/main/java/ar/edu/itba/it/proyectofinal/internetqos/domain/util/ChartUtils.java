@@ -15,11 +15,17 @@ public class ChartUtils {
 
 	public static HighChart generateHighChart(List<Record> records,
 			String title, String subtitle, ChartType graphType) {
+		
+		float CONGESTION_VALUE = (float) 20;
 		String json = null;
 		List<Long> timestamps = new ArrayList<Long>();
 		HighChart chart = null;
 		try {
 			JSONArray js = new JSONArray();
+			JSONArray congestionup_js = new JSONArray();
+			JSONArray congestiondown_js = new JSONArray();
+			JSONArray congestion_js = new JSONArray();
+			JSONArray congestion_final = new JSONArray();
 			ArrayList<String> metricas;
 			metricas = new ArrayList<String>();
 			switch (graphType) {
@@ -61,6 +67,33 @@ public class ChartUtils {
 				point.add((long) record.getUpstreamCongestion());
 				points.add(point);
 			}
+			int i = 0;
+			for (Float valor : congestionUp) {
+				if(valor>CONGESTION_VALUE && i > 0) {
+					JSONObject a;
+					a = new JSONObject();
+					a.put("from", i-1);
+					a.put("to", i);
+					a.put("color", "rgba(255, 0, 0, .25)");
+					congestionup_js.put(a);
+					congestion_js.put(a);
+				}
+				i++;
+			}
+			i=0;
+			
+			for (Float valor : congestionDown) {
+				if(valor>CONGESTION_VALUE && i > 0) {
+					JSONObject a;
+					a = new JSONObject();
+					a.put("from", i-1);
+					a.put("to", i);
+					a.put("color", "rgba(0, 125, 125, .25)");
+					congestiondown_js.put(a);
+					congestion_js.put(a);
+				}
+				i++;
+			}
 			
 			
 
@@ -83,6 +116,7 @@ public class ChartUtils {
 				// j.put("type", "scatter");
 				j.put("marker", congestionMarkerOptions);
 				js.put(j);
+				congestion_final = congestionup_js;
 				break;
 			case DOWNSTREAM_GRAPH:
 				j = new JSONObject();
@@ -96,6 +130,7 @@ public class ChartUtils {
 				// j.put("type", "scatter");
 				j.put("marker", congestionMarkerOptions);
 				js.put(j);
+				congestion_final = congestiondown_js;
 				break;
 			default:
 				j = new JSONObject();
@@ -120,10 +155,11 @@ public class ChartUtils {
 				// j.put("type", "scatter");
 				j.put("marker", congestionMarkerOptions);
 				js.put(j);
-				break;
+				congestion_final = congestion_js;
+				
 			}
 
-			chart = new HighChart(timestamps, js, title, subtitle);
+			chart = new HighChart(timestamps, js, title, subtitle,congestion_final);
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

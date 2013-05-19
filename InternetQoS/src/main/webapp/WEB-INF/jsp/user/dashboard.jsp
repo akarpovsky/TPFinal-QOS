@@ -30,6 +30,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
             	 var datos =  ${javaChart.JSONString};
                  var fechas = ${javaChart.timestamps};
                  var title = "${javaChart.title}";
+                 var redmarker = ${javaChart.redmarker};
                  var subtitle = "${javaChart.subtitle}";
                 for (var i=0;i<fechas.length;i++){
                 	fechas[i] = new Date(fechas[i]);
@@ -53,6 +54,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                         xAxis: {        
                             type: 'datetime',
                             max: 6,
+                            plotBands: redmarker, 
                             categories: fechas,
                             labels: {
                                 formatter: function() {
