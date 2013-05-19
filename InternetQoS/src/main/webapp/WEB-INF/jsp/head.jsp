@@ -37,4 +37,4 @@ body {
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="http://code.highcharts.com/stock/highstock.js"></script>
 <script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
-<script type="text/javascript" src="<c:url value='/js/graychartstheme.js'/>"></script>
+<!-- <script type="text/javascript" src="<c:url value='/js/graychartstheme.js'/>"></script> -->
