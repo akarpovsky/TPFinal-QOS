@@ -16,7 +16,7 @@ public class ChartUtils {
 	public static HighChart generateHighChart(List<Record> records,
 			String title, String subtitle, ChartType graphType) {
 		
-		float CONGESTION_VALUE = (float) 20;
+		float CONGESTION_VALUE = (float) 80;
 		String json = null;
 		List<Long> timestamps = new ArrayList<Long>();
 		HighChart chart = null;
