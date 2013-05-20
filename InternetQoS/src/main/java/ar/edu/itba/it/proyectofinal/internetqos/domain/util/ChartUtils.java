@@ -31,17 +31,17 @@ public class ChartUtils {
 			switch (graphType) {
 			case UPSTREAM_GRAPH:
 				metricas.add("Upstream");
-				metricas.add("CongesitónUp");
+				//metricas.add("CongesitónUp");
 				break;
 			case DOWNSTREAM_GRAPH:
 				metricas.add("Downstream");
-				metricas.add("CongestiónDown");
+				//metricas.add("CongestiónDown");
 				break;
 			default:
 				metricas.add("Upstream");
-				metricas.add("CongesitónUp");
+				//metricas.add("CongesitónUp");
 				metricas.add("Downstream");
-				metricas.add("CongestiónDown");
+				//metricas.add("CongestiónDown");
 				break;
 			}
 
@@ -110,12 +110,11 @@ public class ChartUtils {
 				j.put("data", upStream);
 				j.put("marker", lineMarkerOptions);
 				js.put(j);
-				j = new JSONObject();
-				j.put("name", metricas.get(1));
-				j.put("data", congestionUp);
-				// j.put("type", "scatter");
-				j.put("marker", congestionMarkerOptions);
-				js.put(j);
+//				j = new JSONObject();
+//				j.put("name", metricas.get(1));
+//				j.put("data", congestionUp);
+//				j.put("marker", congestionMarkerOptions);
+//				js.put(j);
 				congestion_final = congestionup_js;
 				break;
 			case DOWNSTREAM_GRAPH:
@@ -124,12 +123,11 @@ public class ChartUtils {
 				j.put("data", downStream);
 				j.put("marker", lineMarkerOptions);
 				js.put(j);
-				j = new JSONObject();
-				j.put("name", metricas.get(1));
-				j.put("data", congestionDown);
-				// j.put("type", "scatter");
-				j.put("marker", congestionMarkerOptions);
-				js.put(j);
+//				j = new JSONObject();
+//				j.put("name", metricas.get(1));
+//				j.put("data", congestionDown);
+//				j.put("marker", congestionMarkerOptions);
+//				js.put(j);
 				congestion_final = congestiondown_js;
 				break;
 			default:
@@ -138,23 +136,21 @@ public class ChartUtils {
 				j.put("data", upStream);
 				j.put("marker", lineMarkerOptions);
 				js.put(j);
+//				j = new JSONObject();
+//				j.put("name", metricas.get(1));
+//				j.put("data", congestionUp);
+//				j.put("marker", congestionMarkerOptions);
+//				js.put(j);
 				j = new JSONObject();
 				j.put("name", metricas.get(1));
-				j.put("data", congestionUp);
-				// j.put("type", "scatter");
-				j.put("marker", congestionMarkerOptions);
-				js.put(j);
-				j = new JSONObject();
-				j.put("name", metricas.get(2));
 				j.put("data", downStream);
 				j.put("marker", lineMarkerOptions);
 				js.put(j);
-				j = new JSONObject();
-				j.put("name", metricas.get(3));
-				j.put("data", congestionDown);
-				// j.put("type", "scatter");
-				j.put("marker", congestionMarkerOptions);
-				js.put(j);
+//				j = new JSONObject();
+//				j.put("name", metricas.get(3));
+//				j.put("data", congestionDown);
+//				j.put("marker", congestionMarkerOptions);
+//				js.put(j);
 				congestion_final = congestion_js;
 				
 			}
