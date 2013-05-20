@@ -36,22 +36,27 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 		   			<div id="graphcontainer"></div><!-- Here the graph will be rendered -->
 					<hr>
 			        <div class="row" style="margin: 10 0 20 0;">
+						<div class="text-center"><p><img src="../../img/congestiondown.png"/> Congestion Upstream <img src="../../img/congestionup.png"/> Congestion Downstream</div></p>
+					</div>
+					<div class="hero-unit" style="z-index: 1;height: 53px;margin: 0px;padding: 0px;">
+			        <div class="row" style="margin-top: 10px; margin-bottom:20px;">
 						<div class="text-center">
-									<a class="btn btn-info btn-large"
+									<a class="btn btn-primary"
 										href="./dashboard?nickname=${user.nickname}&graphtype=GENERAL_GRAPH&ins=${currentInstallation.id}">General</a>
-									<a class="btn btn-info btn-large"
+									<a class="btn btn-primary"
 										href="./dashboard?nickname=${user.nickname}&graphtype=UPSTREAM_GRAPH&ins=${currentInstallation.id}">Upstream</a>
-									<a class="btn btn-info btn-large"
+									<a class="btn btn-primary"
 										href="./dashboard?nickname=${user.nickname}&graphtype=DOWNSTREAM_GRAPH&ins=${currentInstallation.id}">Downstream</a>
 								</div><!-- Graph buttons -->
+					</div>
 					</div>
         		</c:otherwise>
 	        </c:choose>	
 		
         </div><!--/span-->
       </div><!--/row-->
-    </div>
-	<div class="hero-unit" style="z-index: 1; position: relative;"></div>
+    
+	</div>
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 <script type="text/javascript">                        
