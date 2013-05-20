@@ -35,6 +35,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 	        	<c:otherwise>
 		   			<div id="graphcontainer"></div><!-- Here the graph will be rendered -->
 					<hr>
+					<div class="row" style="margin-top: 10px; margin-bottom:20px;">
+						<div class="text-center"><p><img src="../../img/congestiondown.png"/> Congestion Upstream <img src="../../img/congestionup.png"/> Congestion Downstream</div></p>
+					</div>
 					<div class="hero-unit" style="z-index: 1;height: 53px;margin: 0px;padding: 0px;">
 			        <div class="row" style="margin-top: 10px; margin-bottom:20px;">
 						<div class="text-center">
