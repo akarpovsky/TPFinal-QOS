@@ -15,5 +15,11 @@
 
 	<!-- Beans realcionados con Hibernate -->
 	<import resource="classpath:data.xml" />
+	
+	<!-- ReCaptcha -->
+	<bean id="recaptcharegisterform" class="net.tanesha.recaptcha.ReCaptchaImpl">
+		<property name="privateKey" value="6LdZe8QSAAAAAA8DQu_WXpuxQpTVaQM0EYPvO1M5"></property>
+	</bean>
+	
 
 </beans>

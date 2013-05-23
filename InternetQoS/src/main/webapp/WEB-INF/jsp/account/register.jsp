@@ -1,3 +1,5 @@
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
+
 <html>
 <%@ include file="/WEB-INF/jsp/head.jsp"%>
 <body>
@@ -22,6 +24,7 @@
 						<label for="password2">Repetir contrase&ntilde;a:</label> 
 						<form:input type="password" path="password2" />
 						<br/> 
+						<tags:captcha privateKey="6LdZe8QSAAAAAA8DQu_WXpuxQpTVaQM0EYPvO1M5" publicKey="6LdZe8QSAAAAANw5tJUftmtx1m45kYk3fw8aNd1N"></tags:captcha>
 						<input type="submit"  class="btn btn-primary btn-large" value="Enviar">
 					</form:form>
 				</div>
