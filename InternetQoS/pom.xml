@@ -149,7 +149,14 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.2.0.Final</version>
 		</dependency>
-
+		
+		<!-- Recaptcha -->
+		<dependency>
+			<groupId>net.tanesha.recaptcha4j</groupId>
+			<artifactId>recaptcha4j</artifactId>
+			<version>0.0.7</version>
+		</dependency>
+            
 	</dependencies>
 	<build>
 		<!-- For annotations and other Java5 stuff -->

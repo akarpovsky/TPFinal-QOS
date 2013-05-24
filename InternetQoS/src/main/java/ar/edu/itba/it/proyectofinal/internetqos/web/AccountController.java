@@ -1,8 +1,13 @@
 package ar.edu.itba.it.proyectofinal.internetqos.web;
 
 import javax.mail.MessagingException;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
+import net.tanesha.recaptcha.ReCaptcha;
+import net.tanesha.recaptcha.ReCaptchaImpl;
+import net.tanesha.recaptcha.ReCaptchaResponse;
 
 import org.apache.log4j.Logger;
 import org.postgresql.util.Base64;
@@ -32,6 +37,9 @@ public class AccountController {
 	private UserRepository userRepo;
 
 	private PasswordRecoveryFormValidator changePasswordFormValidator;
+	
+	@Autowired
+	ReCaptcha reCaptchaRegisterForm = null;
 
 	@Autowired
 	public AccountController(UserRepository userRepo) {
@@ -53,8 +61,20 @@ public class AccountController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView register(HttpSession session, @Valid UserCreationForm userCreationForm,
-			Errors errors) {
+			Errors errors,
+			@RequestParam("recaptcha_challenge_field") String challangeField, 
+			@RequestParam("recaptcha_response_field") String responseField, 
+			ServletRequest servletRequest) {
 		User u = userCreationForm.build(errors, userRepo);
+		
+		 String remoteAddress = servletRequest.getRemoteAddr();
+		
+		 ReCaptchaResponse reCaptchaResponse  = this.reCaptchaRegisterForm.checkAnswer(remoteAddress, challangeField, responseField);
+
+		 if(!reCaptchaResponse.isValid()) {
+			 errors.reject("invalidCaptcha");
+		 }
+		
 		if (errors.hasErrors()) {
 			return null;
 		}
