@@ -14,14 +14,17 @@
 					<c:choose>
 						<c:when test="${isLogged}">
 							<ul class="nav">
-								<li class=""><a href="../stats/">Estad&iacute;sticas</a></li>
 								<li class=""><a href="../account/edit">Configuraci&oacute;n</a></li>
+								<li class=""><a href="../static/about">Sobre el proyecto</a></li>
 							</ul>
 							<p class="navbar-text pull-right">
 								<a href="../login/logout" class="navbar-link">Cerrar sesi&oacute;n (${currUser.nickname})</a>
 							</p>
 						</c:when>
 						<c:otherwise>
+							<ul class="nav">
+								<li class=""><a href="../static/about">Sobre el proyecto</a></li>
+							</ul>
 						</c:otherwise>
 					</c:choose>
 			</div>

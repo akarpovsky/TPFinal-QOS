@@ -1,5 +1,22 @@
 <html>
 <%@ include file="/WEB-INF/jsp/head.jsp"%>
+<style>
+.caption {
+    float:left;
+    width: 270px;
+}
+.span8{
+    width:350px;
+}
+.thumb_image {
+    width:187x;
+    height:187px;
+    float: left;
+}
+.clear {
+    clear:both;
+}
+</style>
 <body>
 
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
@@ -8,6 +25,15 @@
 		<div class="row-fluid">
 			<div class="span6">
 				<h3>Proyecto TiX_</h3>
+				<div class="thumb_image">
+					<img alt="Logo Tix" src="<c:url value='/img/logo_TiX.png'/>">
+				</div>
+           		<div class="caption pull-left">
+           			<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+					<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui.</p>
+  			  	</div>
+         	   	<div class="clear"></div>
+         	   	
 				<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 				<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui.</p>
 				<a class="btn btn-info btn-large" href="../account/register">Crear nueva cuenta_</a>
