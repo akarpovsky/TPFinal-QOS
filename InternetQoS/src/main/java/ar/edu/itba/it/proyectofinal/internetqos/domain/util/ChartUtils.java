@@ -15,7 +15,7 @@ public class ChartUtils {
 
 	public static HighChart generateHighChart(List<Record> records,
 			String title, String subtitle, ChartType graphType) {
-		
+
 		float CONGESTION_VALUE = (float) 80;
 		String json = null;
 		List<Long> timestamps = new ArrayList<Long>();
@@ -31,33 +31,54 @@ public class ChartUtils {
 			switch (graphType) {
 			case UPSTREAM_GRAPH:
 				metricas.add("Upstream");
-				//metricas.add("CongesitónUp");
+				// metricas.add("CongesitónUp");
 				break;
 			case DOWNSTREAM_GRAPH:
 				metricas.add("Downstream");
-				//metricas.add("CongestiónDown");
+				// metricas.add("CongestiónDown");
 				break;
 			default:
 				metricas.add("Upstream");
-				//metricas.add("CongesitónUp");
+				// metricas.add("CongesitónUp");
 				metricas.add("Downstream");
-				//metricas.add("CongestiónDown");
+				// metricas.add("CongestiónDown");
 				break;
 			}
 
 			List<Float> downStream = new ArrayList<Float>();
 			List<Float> congestionDown = new ArrayList<Float>();
-			List<Float> upStream = new ArrayList<Float>();
+			List<Object> upStream = new ArrayList<Object>();
 			List<Float> congestionUp = new ArrayList<Float>();
 			List<HighchartPoint> highchartPoints = new ArrayList<HighchartPoint>();
 			List<List<Long>> points = new ArrayList<List<Long>>();
 			Iterator<Record> it = records.iterator();
 			JSONObject j;
-
+			JSONObject upStream_json = new JSONObject();
+			JSONArray upStream_array = new JSONArray();
+			JSONObject downStream_json = new JSONObject();
+			JSONArray downStream_array = new JSONArray();
+			
 			while (it.hasNext()) {
 				Record record = it.next();
-				downStream.add(record.getDownstream());
-				upStream.add(record.getUpstream());
+				if (record.isUserDownCongestion()) {
+					downStream_json = new JSONObject();
+					downStream_json.put("y", record.getDownstream());
+					downStream_json.put("marker", new JSONObject().put("symbol", "url(http://www.highcharts.com/demo/gfx/sun.png)"));
+					downStream_array.put(downStream_json);
+				} else {
+					downStream_array.put(record.getDownstream());
+				}
+				
+				if (record.isUserUpCongestion()) {
+					upStream_json = new JSONObject();
+					upStream_json.put("y", record.getUpstream());
+					upStream_json.put("marker", new JSONObject().put("symbol", "url(http://www.highcharts.com/demo/gfx/sun.png)"));
+					upStream_array.put(upStream_json);
+				} else {
+					upStream_array.put(record.getUpstream());
+					upStream.add(record.getUpstream());
+				}
+				System.out.println(upStream_array);
 				congestionDown.add(record.getDownstreamCongestion());
 				congestionUp.add(record.getUpstreamCongestion());
 				DateTime dt = new DateTime(record.getTimestamp());
@@ -69,10 +90,10 @@ public class ChartUtils {
 			}
 			int i = 0;
 			for (Float valor : congestionUp) {
-				if(valor>CONGESTION_VALUE && i > 0) {
+				if (valor > CONGESTION_VALUE && i > 0) {
 					JSONObject a;
 					a = new JSONObject();
-					a.put("from", i-1);
+					a.put("from", i - 1);
 					a.put("to", i);
 					a.put("color", "rgba(255, 0, 0, .25)");
 					congestionup_js.put(a);
@@ -80,13 +101,13 @@ public class ChartUtils {
 				}
 				i++;
 			}
-			i=0;
-			
+			i = 0;
+
 			for (Float valor : congestionDown) {
-				if(valor>CONGESTION_VALUE && i > 0) {
+				if (valor > CONGESTION_VALUE && i > 0) {
 					JSONObject a;
 					a = new JSONObject();
-					a.put("from", i-1);
+					a.put("from", i - 1);
 					a.put("to", i);
 					a.put("color", "rgba(0, 125, 125, .25)");
 					congestiondown_js.put(a);
@@ -94,8 +115,6 @@ public class ChartUtils {
 				}
 				i++;
 			}
-			
-			
 
 			JSONObject lineMarkerOptions = new JSONObject();
 			lineMarkerOptions.put("symbol", "circle");
@@ -107,55 +126,58 @@ public class ChartUtils {
 			case UPSTREAM_GRAPH:
 				j = new JSONObject();
 				j.put("name", metricas.get(0));
-				j.put("data", upStream);
+				//j.put("data", upStream);
+				j.put("data", upStream_array);
 				j.put("marker", lineMarkerOptions);
+				System.out.println(j.get("data"));
 				js.put(j);
-//				j = new JSONObject();
-//				j.put("name", metricas.get(1));
-//				j.put("data", congestionUp);
-//				j.put("marker", congestionMarkerOptions);
-//				js.put(j);
+				// j = new JSONObject();
+				// j.put("name", metricas.get(1));
+				// j.put("data", congestionUp);
+				// j.put("marker", congestionMarkerOptions);
+				// js.put(j);
 				congestion_final = congestionup_js;
 				break;
 			case DOWNSTREAM_GRAPH:
 				j = new JSONObject();
 				j.put("name", metricas.get(0));
-				j.put("data", downStream);
+				j.put("data", downStream_array);
 				j.put("marker", lineMarkerOptions);
 				js.put(j);
-//				j = new JSONObject();
-//				j.put("name", metricas.get(1));
-//				j.put("data", congestionDown);
-//				j.put("marker", congestionMarkerOptions);
-//				js.put(j);
+				// j = new JSONObject();
+				// j.put("name", metricas.get(1));
+				// j.put("data", congestionDown);
+				// j.put("marker", congestionMarkerOptions);
+				// js.put(j);
 				congestion_final = congestiondown_js;
 				break;
 			default:
 				j = new JSONObject();
 				j.put("name", metricas.get(0));
-				j.put("data", upStream);
+				j.put("data", upStream_array);
 				j.put("marker", lineMarkerOptions);
 				js.put(j);
-//				j = new JSONObject();
-//				j.put("name", metricas.get(1));
-//				j.put("data", congestionUp);
-//				j.put("marker", congestionMarkerOptions);
-//				js.put(j);
+				// j = new JSONObject();
+				// j.put("name", metricas.get(1));
+				// j.put("data", congestionUp);
+				// j.put("marker", congestionMarkerOptions);
+				// js.put(j);
 				j = new JSONObject();
 				j.put("name", metricas.get(1));
-				j.put("data", downStream);
+				j.put("data", downStream_array);
 				j.put("marker", lineMarkerOptions);
 				js.put(j);
-//				j = new JSONObject();
-//				j.put("name", metricas.get(3));
-//				j.put("data", congestionDown);
-//				j.put("marker", congestionMarkerOptions);
-//				js.put(j);
+				// j = new JSONObject();
+				// j.put("name", metricas.get(3));
+				// j.put("data", congestionDown);
+				// j.put("marker", congestionMarkerOptions);
+				// js.put(j);
 				congestion_final = congestion_js;
-				
+
 			}
 
-			chart = new HighChart(timestamps, js, title, subtitle,congestion_final);
+			chart = new HighChart(timestamps, js, title, subtitle,
+					congestion_final);
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

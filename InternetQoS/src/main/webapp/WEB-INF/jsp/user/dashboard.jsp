@@ -62,6 +62,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript">                        
             $(function () {
             	 var datos =  ${javaChart.JSONString};
+            	 
                  var fechas = ${javaChart.timestamps};
                  var title = "${javaChart.title}";
                  var redmarker = ${javaChart.redmarker};

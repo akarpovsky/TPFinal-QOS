@@ -45,6 +45,12 @@ public class Record extends DBPersistentObject {
 	@Max(value=100)
 	private float upstreamCongestion;
 	
+	@Column(nullable=false, columnDefinition="boolean default false")
+	private boolean userDownCongestion;
+	
+	@Column(nullable=false, columnDefinition="boolean default false")
+	private boolean userUpCongestion;
+	
 	Record() {
 		// required by hibernate 
 	}
@@ -86,6 +92,22 @@ public class Record extends DBPersistentObject {
 
 	public float getUpstream() {
 		return upstream;
+	}
+
+	public boolean isUserDownCongestion() {
+		return userDownCongestion;
+	}
+
+	public void setUserDownCongestion(boolean userDownCongestion) {
+		this.userDownCongestion = userDownCongestion;
+	}
+
+	public boolean isUserUpCongestion() {
+		return userUpCongestion;
+	}
+
+	public void setUserUpCongestion(boolean userUpCongestion) {
+		this.userUpCongestion = userUpCongestion;
 	}
 
 	public void setUpstream(float upstream) {
