@@ -35,12 +35,14 @@
 				</div>
 			</div>
 			<hr/>	
-			<div class="row">
-				<div class="span12 offset3">
-					<a class="btn btn-info btn-large" href="../account/register">Comenz&aacute;_ ahora creando tu cuenta</a>	
+			<c:if test="${!isLogged}">
+				<div class="row">
+					<div class="span12 offset4">
+						<a class="btn btn-info btn-large" href="../account/register">Comenz&aacute;_ ahora creando tu cuenta</a>	
+					</div>
 				</div>
-			</div>
 			<hr/>		
+			</c:if>
 
 		</section>
 	</div>
