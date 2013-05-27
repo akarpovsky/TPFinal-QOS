@@ -187,7 +187,7 @@ public class AccountController {
 			mav.setView(ControllerUtil.redirectView("/user/profile"));
 		} catch (MessagingException e) {
 			mav.addObject("errorDescription",
-					"Error: No se pudo enviar el mail");
+					"No se pudo enviar el mail de recuperación de password");
 			mav.setViewName("error");
 		}
 		return mav;
