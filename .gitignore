@@ -2,3 +2,7 @@
 .class
 *.class
 *.DS_Store
+*.classpath
+*.project
+target/
+InternetQoS/target/
