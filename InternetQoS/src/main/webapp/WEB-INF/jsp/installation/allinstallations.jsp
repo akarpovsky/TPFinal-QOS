@@ -11,28 +11,26 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 	<div class="hero-unit" style="z-index: 1; position: relative;">
 		<section id="tables">
 			<div class="page-header">
-				<h2>Usuarios del sistema</h2>
+				<h2>Mis instalaciones_</h2>
 			</div>
 
 			<c:choose>
-				<c:when test="${empty userList}">
-					<span class="label label-important">No hay usuarios registrados en el sistema.</span>
+				<c:when test="${empty installationsList}">
+					<span class="label label-important">No hay instalaciones registradas en el sistema.</span>
 				</c:when>
 				<c:otherwise>
 					<table class="table table-bordered table-striped table-hover">
 						<thead>
 							<tr>
-								<th>#</th>
-								<th>Nickname</th>
+								<th>Nombre</th>
 								<th>Acciones</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${userList}" var="user">
+							<c:forEach items="${installationsList}" var="installation">
 								<tr>
-									<td>${user.id}</td>
-									<td>${user.nickname}</td>
-									<td><a class="btn btn-info" href="./dashboard?nickname=${user.nickname}">Estad&iacute;sticas</a></td>
+									<td>${installation.name}</td>
+									<td><a class="btn btn-info" href="./edit?id=${installation.id}">Editar</a>  <a class="btn btn-danger" href="./delete?id=${installation.id}">Eliminar</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

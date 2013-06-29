@@ -17,7 +17,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 	              <li class='<c:if test="${installation.id == currentInstallation.id}">active</c:if>'><a href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${installation.id}">${installation.name}</a></li>
               	</c:forEach>
   	          <li class="divider"></li>
-              	<li><a href="../installation/newinstallation"><i class="icon-plus-sign"></i>Nueva instalación</a></li>
+              	<li><a href="../installation/newinstallation"><i class="icon-plus-sign"></i>Nueva instalaci&oacute;n</a></li>
+              	<li><a href="../installation/allinstallations"><i class="icon-pencil"></i>Editar instalaci&oacute;nes</a></li>
 	          <li class="divider"></li>
 	          <li><a href="#">Ayuda</a></li>
             </ul>

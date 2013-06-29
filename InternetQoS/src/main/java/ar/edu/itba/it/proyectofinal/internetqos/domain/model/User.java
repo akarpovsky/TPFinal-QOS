@@ -15,6 +15,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.Email;
 import org.postgresql.util.Base64;
 
@@ -37,7 +38,7 @@ public class User extends DBPersistentObject {
 	
 	@OneToMany(fetch=FetchType.LAZY) // Lazy loading
 //	@JoinColumn(name="record_id", nullable=false)
-//	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<Installation> installations = new ArrayList<Installation>();
 
 	@Email
@@ -173,5 +174,17 @@ public class User extends DBPersistentObject {
 
 	public void addInstallation(Installation newInstallation) {
 		this.installations.add(newInstallation);
+	}
+
+	public void deleteInstallation(Installation i) {
+		this.installations.remove(i);
+	}
+
+	public boolean hasInstallation(Installation i) {
+		return this.installations.contains(i);
+	}
+
+	public Installation getInstallation(Installation i) {
+		return this.installations.get(this.installations.indexOf(i));
 	}
 }

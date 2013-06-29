@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Installation;
@@ -89,6 +90,104 @@ public class InstallationController {
 
 	}
 
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView allinstallations(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		User me = getSessionUser(session);
+		
+		if (me == null) {
+			mav.setView(ControllerUtil.redirectView("/login/login"));
+			return mav;
+		}
+		
+		if (me.getType().equals(UserType.ADMIN)) {
+			mav.addObject("errorDescription",
+					"No tiene permisos para acceder aquí.");
+			mav.setViewName("error");
+			return mav;
+		}
+		
+		mav.addObject("installationsList", me.getInstallations());
+		return mav;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView edit(HttpSession session, @RequestParam("id") Integer id) {
+		ModelAndView mav = new ModelAndView();
+		User me = getSessionUser(session);
+		
+		if (me == null) {
+			mav.setView(ControllerUtil.redirectView("/login/login"));
+			return mav;
+		}
+		
+		if (me.getType().equals(UserType.ADMIN)) {
+			mav.addObject("errorDescription",
+					"No tiene permisos para acceder aquí.");
+			mav.setViewName("error");
+			return mav;
+		}
+		
+		Installation i = installationRepo.get(id);
+		mav.addObject("installationEditForm", new InstallationCreationForm(i));
+		return mav;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView edit(HttpSession session, 
+		@Valid InstallationCreationForm installationEditForm,
+			Errors errors) {
+		ModelAndView mav = new ModelAndView();
+		User me = getSessionUser(session);
+		
+		if (me == null) {
+			mav.setView(ControllerUtil.redirectView("/login/login"));
+			return mav;
+		}
+		
+		if (me.getType().equals(UserType.ADMIN)) {
+			mav.addObject("errorDescription",
+					"No tiene permisos para acceder aquí.");
+			mav.setViewName("error");
+			return mav;
+		}
+		
+		if (errors.hasErrors() || !installationEditForm.validate(me, errors)) {
+			mav.addObject("installationEditForm", installationEditForm);
+			return mav;
+		}
+		
+		installationEditForm.update(me, installationRepo, errors);
+		mav.setView(ControllerUtil.redirectView("/installation/allinstallations"));
+		return mav;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView delete(HttpSession session, @RequestParam("id") Integer id) {
+		ModelAndView mav = new ModelAndView();
+		User me = getSessionUser(session);
+		
+		if (me == null) {
+			mav.setView(ControllerUtil.redirectView("/login/login"));
+			return mav;
+		}
+		
+		if (me.getType().equals(UserType.ADMIN)) {
+			mav.addObject("errorDescription",
+					"No tiene permisos para acceder aquí.");
+			mav.setViewName("error");
+			return mav;
+		}
+		
+		Installation i = installationRepo.get(id);
+		me.deleteInstallation(i);
+		mav.setView(ControllerUtil.redirectView("/installation/allinstallations"));
+		return mav;
+	}
 
 	private User getSessionUser(HttpSession session) {
 		Integer userId = (Integer) session.getAttribute("userId");
