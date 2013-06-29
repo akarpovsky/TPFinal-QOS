@@ -10,7 +10,8 @@ import ar.edu.itba.it.proyectofinal.internetqos.domain.model.ISP;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Installation;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Record;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.User;
-import ar.edu.itba.it.proyectofinal.internetqos.domain.model.UserExistsException;
+import ar.edu.itba.it.proyectofinal.internetqos.domain.model.exception.RecordExistsException;
+import ar.edu.itba.it.proyectofinal.internetqos.domain.model.exception.UserExistsException;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.RecordRepository;
 
 @Repository
@@ -24,7 +25,7 @@ public class HibernateRecordRepository extends AbstractHibernateRepo implements 
 	@Override
 	public void add(Record record) {
 		if (exists("id", record.getId()) ) {
-			throw new UserExistsException();
+			throw new RecordExistsException();
 		}
 		save(record);
 	}

@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.Email;
 import org.postgresql.util.Base64;
 
+import ar.edu.itba.it.proyectofinal.internetqos.domain.model.exception.InvalidParametersException;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.service.MailBuilder;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.service.MailService;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.util.AppError;
@@ -159,5 +160,18 @@ public class User extends DBPersistentObject {
 			throw new InvalidParametersException(Collections.singletonList(AppError.BIRTHYEAR));
 		}
 		this.birthyear = birthyear;
+	}
+
+	public boolean hasInstallation(String name) {
+		for(Installation i: this.installations){
+			if(i.getName().equals(name)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public void addInstallation(Installation newInstallation) {
+		this.installations.add(newInstallation);
 	}
 }

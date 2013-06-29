@@ -5,21 +5,23 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Installation;
+import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.InstallationRepository;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.UserRepository;
 
 @Component
 public class IdToInstallationConverter implements Converter<String, Installation> {
 	
-	private UserRepository userRepository;
+	private InstallationRepository installationRepository;
 	
 	@Autowired
-	public IdToInstallationConverter(UserRepository userRepository) {
-		this.userRepository = userRepository;
+	public IdToInstallationConverter(InstallationRepository installationRepository) {
+		this.installationRepository = installationRepository;
 	}
 	
 	@Override
 	public Installation convert(String installationId) {
-		return userRepository.getInstallation(Integer.valueOf(installationId));
+		System.out.println();
+		return installationRepository.get(Integer.valueOf(installationId));
 	}
 	
 	

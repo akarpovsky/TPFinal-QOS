@@ -6,44 +6,89 @@
 	<div class="container">
 		<section id="typography">
 			<div class="page-header">
-				<h1>Bienvenido al Proyecto Tix_</h1>
+				<h1>Bienvenido al Proyecto TiX_</h1>
 			</div>
 
 			<!-- Headings & Paragraph Copy -->
 			<div class="row">
 				<div class="span12">
-					<h3>&iquest;Qu&eacute; es el Proyecto Tix?</h3>
-					<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui.</p>
+					<h3>Sobre el Proyecto TiX</h3>
+					<p>El proyecto TiX nace de un subsidio de LACNIC con el fin de diponer de
+						una herramienta para medir la calidad de los accesos a Internet.</p> 
+					<p>Del mismo participan las siguintes instituciones:</p>
 				</div>
-
-			</div>
-			<hr/>
-			<div class="row">
 				<div class="span12">
-					<h3>&iquest;Cu&aacute;l es el objetivo?</h3>
-					<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui.</p>
-				</div>
-			</div>
-			<hr/>
-			<div class="row">
-				<div class="span12">
-					<h3>&iquest;C&oacute;mo colaborar?</h3>
-					<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui.</p>
-				</div>
-			</div>
-			<hr/>	
-			<c:if test="${!isLogged}">
-				<div class="row">
-					<div class="span12 offset4">
-						<a class="btn btn-info btn-large" href="../account/register">Comenz&aacute;_ ahora creando tu cuenta</a>	
+					<div class="row-fluid">
+						<ul class="thumbnails">
+							<li class="span4" style="text-align: center;"><a href="http://lacnic.net/" target="_blank"> <img
+									alt="LacNIC"
+									class="img-polaroid"
+									style=""
+									src="<c:url value='/img/lacnic.jpg'/>">
+							</a></li>
+							<li class="span4" style="text-align: center;"><a href="http://www.uba.ar/" target="_blank"> <img
+									alt="UBA"
+									class="img-polaroid"
+									style=""
+									src="<c:url value='/img/uba2.jpg'/>">
+							</a></li>
+							<li class="span4" style="text-align: center;"><a href="http://www.itba.edu.ar/" target="_blank"> <img
+									alt="ITBA"
+									class="img-polaroid"
+									style=""
+									src="<c:url value='/img/itba.jpg'/>">
+							</a></li>
+							</ul>
+						</div>
 					</div>
-				</div>
-			<hr/>		
-			</c:if>
+					
+					<div class="span12">
+						<div class="row-fluid">	
+							<ul class="thumbnails">
+								<li class="span4" style="text-align: center;"><a href="http://www.cabase.org.ar/" target="_blank"> <img
+										alt="cabase"
+										class="img-polaroid"
+										style=""
+										src="<c:url value='/img/cabase.jpg'/>">
+								</a></li>
+								
+								<li class="span4" style="text-align: center;"><a href="http://www.innova-red.net/" target="_blank"> <img
+											alt="InnovaRED"
+											class="img-polaroid"
+											style=""
+											src="<c:url value='/img/innovared.jpg'/>">
+								</a></li>
 
+								<li class="span4" style="text-align: center;"><a href="http://www.udesa.edu.ar/" target="_blank"> <img
+										alt="cabase"
+										class="img-polaroid"
+										style=""
+										src="<c:url value='/img/UdeSA.jpg'/>">
+								</a></li>
+							</ul>
+				</div>
+			</div>
+
+			</div>
+			<hr/>
+			<div class="row">
+				<div class="span12">
+					<h3>Investigadores responsables</h3>
+					<p>Dr. Hern&aacute;n Galperin (<a href="http://www.conicet.gov.ar/" target="_blank">CONICET</a> y <a href="http://www.unsa.edu.ar/" target="_blank">UnSA</a>)</p>
+					<p>Dr. Ing. Jos&eacute; Ignacio Alvarez-Hamelin (<a href="http://www.conicet.gov.ar/" target="_blank">CONICET</a>, <a href="http://www.uba.ar/" target="_blank">UBA</a> e <a href="http://www.itba.edu.ar/" target="_blank">ITBA</a>)</p>
+				</div>
+			</div>
+			<hr/>
+			<div class="row">
+				<div class="span12">
+					<h3>Colaboradores</h3>
+					<p>Alan Karpovsky (<a href="http://www.itba.edu.ar/" target="_blank">ITBA</a>)</p> 
+					<p>Nicolas Loreti (<a href="http://www.itba.edu.ar/" target="_blank">ITBA</a>)</p>
+					<p>Paula Verghelet (<a href="http://www.uba.ar/" target="_blank">UBA</a>)</p>
+					<p>Ing. Esteban Poggio (<a href="http://www.uba.ar/" target="_blank">UBA</a>)</p>
+					<p>Estudiantes de Introducci&oacute;n a los sistemas distribuidos, 2do cuatrimestre 2012.</p>
+				</div>
+			</div>
 		</section>
 	</div>
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>

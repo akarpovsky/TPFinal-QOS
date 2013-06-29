@@ -1,15 +1,13 @@
 package ar.edu.itba.it.proyectofinal.internetqos.web.command.forms;
 
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.Email;
 import org.springframework.validation.Errors;
 
-import ar.edu.itba.it.proyectofinal.internetqos.domain.model.InvalidParametersException;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.User;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.UserBuilder;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.UserType;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.UserValidator;
+import ar.edu.itba.it.proyectofinal.internetqos.domain.model.exception.InvalidParametersException;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.UserRepository;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.util.AppError;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.util.ErrorUtil;

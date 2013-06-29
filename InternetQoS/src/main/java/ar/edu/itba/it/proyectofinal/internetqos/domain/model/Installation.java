@@ -16,6 +16,10 @@ public class Installation extends DBPersistentObject {
 		// required by hibernate 
 	}
 	
+	public Installation(String name){
+		this.name = name;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null || !(obj instanceof Installation)) {

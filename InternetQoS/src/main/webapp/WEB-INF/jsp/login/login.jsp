@@ -2,19 +2,22 @@
 <%@ include file="/WEB-INF/jsp/head.jsp"%>
 <style>
 .caption {
-    float:left;
-    width: 270px;
+	float: left;
+	width: 270px;
 }
-.span8{
-    width:350px;
+
+.span8 {
+	width: 350px;
 }
+
 .thumb_image {
-    width:187x;
-    height:187px;
-    float: left;
+	width: 187x;
+	height: 187px;
+	float: left;
 }
+
 .clear {
-    clear:both;
+	clear: both;
 }
 </style>
 <body>
@@ -28,53 +31,90 @@
 				<div class="thumb_image">
 					<img alt="Logo Tix" src="<c:url value='/img/logo_TiX.png'/>">
 				</div>
-           		<div class="caption pull-left">
-           			<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui.</p>
-  			  	</div>
-         	   	<div class="clear"></div>
-         	   	
-				<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-				<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui.</p>
-				<a class="btn btn-info btn-large" href="../account/register">Crear nueva cuenta_</a>
-		    </div>
+				<div class="row caption pull-left" style="margin-left: 3px;">
+					<div class="span12">
+						<h4>&iquest;Qu&eacute; es el Proyecto Tix?</h4>
+						<p>TiX (Traffic information eXchange) es una herramienta que
+							permite efectuar una medici&oacute;n de la calidad de su acceso a
+							Internet. .</p>
+						<a class="btn btn-info btn-large" href="../account/register">Crear
+							nueva cuenta_</a>
+					</div>
+				</div>
+				<div class="clear"></div>
+
+
+			</div>
 			<div class="span6">
 				<h1>Iniciar sesi&oacute;n_</h1>
 				<div class="form-horizontal well">
-					<form:form action="../login/login" method="POST" commandName="userLoginForm">
+					<form:form action="../login/login" method="POST"
+						commandName="userLoginForm">
 						<fieldset>
 							<div class="control-group">
-					            <div class="controls">
-									<form:errors path="*" cssClass="label label-important"/>
-					            </div>
-	          				</div>
-	          				
+								<div class="controls">
+									<form:errors path="*" cssClass="label label-important" />
+								</div>
+							</div>
+
 							<div class="control-group">
-	            				<label class="control-label" for="nickname">Email</label>
-					            <div class="controls">
-	         						<form:input type="text" id="nickname" class="" path="nickname" />
-					            </div>
-	          				</div>	          				
-	
+								<label class="control-label" for="nickname">Email</label>
+								<div class="controls">
+									<form:input type="text" id="nickname" class="" path="nickname" />
+								</div>
+							</div>
+
 							<div class="control-group">
-	            				<label class="control-label" for="password">Contrase&ntilde;a</label>
-					            <div class="controls">
-	         						<form:input type="password" id="password" class="" path="password" />
-									<br />
-									<a href="<c:url value='/bin/account/recover'/>">
-										&iquest;Olvid&oacute; su contrase&ntilde;a?
-									</a>
-					            </div>
-	          				</div>
+								<label class="control-label" for="password">Contrase&ntilde;a</label>
+								<div class="controls">
+									<form:input type="password" id="password" class=""
+										path="password" />
+									<br /> <a href="<c:url value='/bin/account/recover'/>">
+										&iquest;Olvid&oacute; su contrase&ntilde;a? </a>
+								</div>
+							</div>
 							<div class="control-group">
-					            <div class="controls">
-									<input class="btn btn-primary btn-large" type="submit" value="Enviar" />
-					            </div>
-	          				</div>
+								<div class="controls">
+									<input class="btn btn-primary btn-large" type="submit"
+										value="Enviar" />
+								</div>
+							</div>
 						</fieldset>
 					</form:form>
 				</div>
 			</div>
+			<div class="row">
+				<div class="span4">
+					<h3>
+						&iquest;Cu&aacute;l es el objetivo?
+					</h3>
+					<p>El algoritmo ejecuta la medici&oacute;n enviando un paquete
+						de datos por segundo, asegurando un consumo inperceptible de su
+						conexi&oacute;n a Internet y permitiendo un monitoreo las 24hs del
+						d&iacute;a y los 365 d&iacute;as del a&ntilde;o.</p>
+				</div>
+				<div class="span4">
+					<h3>
+						&iquest;Qu&eacute; resultados arroja?
+					</h3>
+					<p>Las mediciones se realizan todo el tiempo, generando un
+						informe, tanto en formato web interactivo como en PDF mensual,
+						detallando los momentos en que su proveedor de Internet no pude
+						entregarle el tr&aacute;fico m&aacute;ximo contratado.</p>
+				</div>
+				<div class="span4">
+					<h3>
+						&iquest;C&oacute;mo puedo usar TiX?
+					</h3>
+					<p>
+						Puede crear su cuenta e instalar el software de medici&oacute;n en
+						su PC y/o computadora port&aacute;til aqu&iacute;: <a
+							class="btn btn-primary btn-small" href="../account/register">Instalar
+							TiX_</a>
+					</p>
+				</div>
+			</div>
+			<hr />
 		</div>
 	</div>
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>

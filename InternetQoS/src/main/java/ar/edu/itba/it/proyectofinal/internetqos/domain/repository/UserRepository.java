@@ -25,6 +25,4 @@ public interface UserRepository {
 
 	public boolean nicknameIsAvailable(String nickname);
 
-	public Installation getInstallation(Integer installationId);
-	
 }

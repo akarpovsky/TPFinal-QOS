@@ -78,7 +78,7 @@ public class ChartUtils {
 					upStream_array.put(record.getUpstream());
 					upStream.add(record.getUpstream());
 				}
-				System.out.println(upStream_array);
+//				System.out.println(upStream_array);
 				congestionDown.add(record.getDownstreamCongestion());
 				congestionUp.add(record.getUpstreamCongestion());
 				DateTime dt = new DateTime(record.getTimestamp());
@@ -129,7 +129,7 @@ public class ChartUtils {
 				//j.put("data", upStream);
 				j.put("data", upStream_array);
 				j.put("marker", lineMarkerOptions);
-				System.out.println(j.get("data"));
+//				System.out.println(j.get("data"));
 				js.put(j);
 				// j = new JSONObject();
 				// j.put("name", metricas.get(1));
@@ -180,6 +180,7 @@ public class ChartUtils {
 					congestion_final);
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
 		return chart;

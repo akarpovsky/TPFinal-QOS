@@ -1,5 +1,7 @@
 package ar.edu.itba.it.proyectofinal.internetqos.domain.model;
 
+import ar.edu.itba.it.proyectofinal.internetqos.domain.model.exception.InvalidParametersException;
+
 
 public class UserBuilder {
 

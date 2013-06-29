@@ -22,7 +22,6 @@ public class StaticController {
 	public ModelAndView about(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("static/about");
-//		mav.addObject("userCreationForm", new UserCreationForm());
 		return mav;
 	}
 }

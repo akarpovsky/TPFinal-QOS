@@ -39,9 +39,13 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView adminpanel(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		Integer userId = (Integer) session.getAttribute("userId");
-		User me = userRepo.get(userId);
-
+		User me = getSessionUser(session);
+		
+		if (me == null) {
+			mav.setView(ControllerUtil.redirectView("/login/login"));
+			return mav;
+		}
+		
 		if (!me.getType().equals(UserType.ADMIN)) {
 			mav.addObject("errorDescription",
 					"No tiene permisos para acceder aquí.");
@@ -59,14 +63,12 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView home(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		Integer userId = (Integer) session.getAttribute("userId");
-
-		if (userId == null) {
+		User me = getSessionUser(session);
+		
+		if (me == null) {
 			mav.setView(ControllerUtil.redirectView("/login/login"));
 			return mav;
 		}
-
-		User me = userRepo.get(userId);
 
 		if (me.getType().equals(UserType.ADMIN)) {
 			mav.setView(ControllerUtil.redirectView("/user/adminpanel"));
@@ -87,10 +89,9 @@ public class UserController {
 		// @RequestParam(value = "isp", required=false) ISP requiredISP){
 
 		ModelAndView mav = new ModelAndView();
-		Integer userId = (Integer) session.getAttribute("userId");
 
 		User reqProfile = userRepo.get(nickname);
-		User me = userRepo.get(userId);
+		User me = getSessionUser(session);
 
 		if (reqProfile == null) {
 			mav.setView(ControllerUtil.redirectView("/user/dashboard?nickname="
@@ -166,6 +167,11 @@ public class UserController {
 		// mav.addObject("currentISP", requiredISP);
 		mav.addObject("user", reqProfile);
 		return mav;
+	}
+
+	private User getSessionUser(HttpSession session) {
+		Integer userId = (Integer) session.getAttribute("userId");
+		return (userId == null) ? null:userRepo.get(userId);
 	}
 
 	private String getDateString(DateTime timestamp) {

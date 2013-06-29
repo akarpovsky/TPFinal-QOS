@@ -1,4 +1,4 @@
-package ar.edu.itba.it.proyectofinal.internetqos.domain.model;
+package ar.edu.itba.it.proyectofinal.internetqos.domain.model.exception;
 
 public class InvalidDateFormatException extends RuntimeException {
 

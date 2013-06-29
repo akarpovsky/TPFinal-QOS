@@ -16,6 +16,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
               	<c:forEach var="installation" items="${user.installations}">
 	              <li class='<c:if test="${installation.id == currentInstallation.id}">active</c:if>'><a href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${installation.id}">${installation.name}</a></li>
               	</c:forEach>
+  	          <li class="divider"></li>
+              	<li><a href="../installation/newinstallation"><i class="icon-plus-sign"></i>Nueva instalación</a></li>
 	          <li class="divider"></li>
 	          <li><a href="#">Ayuda</a></li>
             </ul>
@@ -36,7 +38,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 		   			<div id="graphcontainer"></div><!-- Here the graph will be rendered -->
 					<hr>
 			        <div class="row" style="margin: 10 0 20 0;">
-						<div class="text-center"><p><img src="../../img/congestiondown.png"/> Congestion Upstream <img src="../../img/congestionup.png"/> Congestion Downstream</div></p>
+						<div class="text-center">
+							<p>
+								<img src="<c:url value='/img/congestiondown.png'/>"/> Congestion Upstream <img src="<c:url value='/img/congestionup.png'/>"/> Congestion Downstream
+							</p>
+						</div>
 					</div>
 					<div class="hero-unit" style="z-index: 1;height: 53px;margin: 0px;padding: 0px;">
 			        <div class="row" style="margin-top: 10px; margin-bottom:20px;">

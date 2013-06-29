@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Installation;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.User;
-import ar.edu.itba.it.proyectofinal.internetqos.domain.model.UserExistsException;
+import ar.edu.itba.it.proyectofinal.internetqos.domain.model.exception.UserExistsException;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.UserRepository;
 
 @Repository
@@ -85,13 +85,4 @@ public class HibernateUserRepository extends AbstractHibernateRepo implements Us
 		return get(User.class, id);
 	}
 
-	@Override
-	public Installation getInstallation(Integer installationId) {
-		List<Installation> installations = find("from Installation where id = ?", installationId);
-		if (installations.size() == 0) {
-			return null;
-		}
-		return installations.get(0);	
-	}
-	
 }
