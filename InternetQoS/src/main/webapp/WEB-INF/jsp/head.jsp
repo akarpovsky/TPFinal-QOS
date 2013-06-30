@@ -19,6 +19,9 @@
 <link href="<c:url value='/css/bootstrap.css'/>" rel="stylesheet">
 <!-- CSS PawBook styles -->
 <link href="<c:url value='/css/pawbook.css'/>" rel="stylesheet">
+<!-- CSS Datepicker styles -->
+<link href="<c:url value='/css/datepicker.css'/>" rel="stylesheet">
+
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -33,8 +36,9 @@ body {
 </style>
 
 <!-- Javascript -->
+<script type="text/javascript" src="<c:url value='/js/jquery-1.10.1.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/bootstrap.js'/>"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="<c:url value='/js/bootstrap-datepicker.js'/>"></script>
 <script src="http://code.highcharts.com/stock/highstock.js"></script>
 <script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
 <!-- <script type="text/javascript" src="<c:url value='/js/graychartstheme.js'/>"></script> -->

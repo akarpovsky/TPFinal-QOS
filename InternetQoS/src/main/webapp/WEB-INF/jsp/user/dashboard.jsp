@@ -5,6 +5,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <html>
 <%@ include file="/WEB-INF/jsp/head.jsp"%>
+
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div class="container-fluid">
@@ -69,6 +70,14 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
         </div><!--/span-->
       </div><!--/row-->
     
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Check in: <input type="text" class="span2" value="" id="dpd1"></th>
+            <th>Check out: <input type="text" class="span2" value="" id="dpd2"></th>
+          </tr>
+        </thead>
+      </table>
 	</div>
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
@@ -143,4 +152,31 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
             });
         
         </script>
+        <script type="text/javascript">
+        var nowTemp = new Date();
+var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+ 
+var checkin = $('#dpd1').datepicker({
+  onRender: function(date) {
+    return date.valueOf() < now.valueOf() ? 'disabled' : '';
+  }
+}).on('changeDate', function(ev) {
+  if (ev.date.valueOf() > checkout.date.valueOf()) {
+    var newDate = new Date(ev.date)
+    newDate.setDate(newDate.getDate() + 1);
+    checkout.setValue(newDate);
+  }
+  checkin.hide();
+  $('#dpd2')[0].focus();
+}).data('datepicker');
+var checkout = $('#dpd2').datepicker({
+  onRender: function(date) {
+    return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+  }
+}).on('changeDate', function(ev) {
+  checkout.hide();
+}).data('datepicker');
+
+</script>
+
 </html>
