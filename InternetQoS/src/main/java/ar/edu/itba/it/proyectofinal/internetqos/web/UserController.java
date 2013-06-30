@@ -91,8 +91,8 @@ public class UserController {
 			HttpSession session,
 			@RequestParam(value = "nickname", defaultValue = "") String nickname,
 			@RequestParam(value = "graphtype", defaultValue = "GENERAL_GRAPH") ChartType graphtype,
-			@RequestParam(value = "ins", required = false) Installation requiredInstallation) {
-		// @RequestParam(value = "isp", required=false) ISP requiredISP){
+			@RequestParam(value = "ins", required = false) Installation requiredInstallation,
+			@RequestParam(value = "isp", required = false) ISP requiredISP) {
 
 		ModelAndView mav = new ModelAndView();
 
@@ -149,8 +149,16 @@ public class UserController {
 			graphtype = ChartType.GENERAL_GRAPH;
 		}
 
-		List<Record> records = (List<Record>) recordRepo.getAll(reqProfile,
-				requiredInstallation);
+		List<Record> records;
+		
+		if(requiredISP == null){ // No specified ISP, get all records
+			records = (List<Record>) recordRepo.getAll(reqProfile,
+					requiredInstallation);
+		}else{
+			records = (List<Record>) recordRepo.getAllForISP(reqProfile,
+					requiredInstallation, requiredISP);
+		}
+		
 		boolean noRecords = false;
 		if (records.isEmpty()) {
 			noRecords = true;
@@ -162,7 +170,7 @@ public class UserController {
 						.generateHighChart(
 								records,
 								"Porcentaje de Utilización de Ancho de Banda en "
-										+ requiredInstallation.getName(),
+										+ requiredInstallation.getName() + ((requiredISP == null) ? "":" [" + requiredISP.getName() + "]"),
 								"Gráfico del Upstream para "
 										+ reqProfile.getNickname(),
 								ChartType.UPSTREAM_GRAPH);
@@ -171,7 +179,7 @@ public class UserController {
 				chart = ChartUtils.generateHighChart(
 						records,
 						"Porcentaje de Utilización de Ancho de Banda en "
-								+ requiredInstallation.getName(),
+								+ requiredInstallation.getName() + ((requiredISP == null) ? "":" [" + requiredISP.getName() + "]"),
 						"Gráfico del Downstream para "
 								+ reqProfile.getNickname(),
 						ChartType.DOWNSTREAM_GRAPH);
@@ -179,7 +187,7 @@ public class UserController {
 			default:
 				chart = ChartUtils.generateHighChart(records,
 						"Porcentaje de Utilización de Ancho de Banda en "
-								+ requiredInstallation.getName(),
+								+ requiredInstallation.getName() + ((requiredISP == null) ? "":" [" + requiredISP.getName() + "]"),
 						"Gráfico General para " + reqProfile.getNickname(),
 						ChartType.GENERAL_GRAPH);
 				break;
@@ -189,7 +197,7 @@ public class UserController {
 		mav.addObject("currentGraphType", graphtype.getTranslationKey());
 		mav.addObject("currentInstallation", requiredInstallation);
 		mav.addObject("noRecords", noRecords);
-		// mav.addObject("currentISP", requiredISP);
+		mav.addObject("requiredISP", requiredISP);
 		mav.addObject("user", reqProfile);
 		return mav;
 	}

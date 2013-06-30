@@ -17,10 +17,9 @@
 
 <!-- CSS bootstrap styles -->
 <link href="<c:url value='/css/bootstrap.css'/>" rel="stylesheet">
-<!-- CSS PawBook styles -->
-<link href="<c:url value='/css/pawbook.css'/>" rel="stylesheet">
 <!-- CSS Datepicker styles -->
 <link href="<c:url value='/css/datepicker.css'/>" rel="stylesheet">
+<link href="<c:url value='/css/tix.css'/>" rel="stylesheet">
 
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -28,12 +27,6 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]
 -->
-<style type="text/css">
-body {
-	padding-top: 60px;
-	padding-bottom: 40px;
-}
-</style>
 
 <!-- Javascript -->
 <script type="text/javascript" src="<c:url value='/js/jquery-1.10.1.min.js'/>"></script>
@@ -41,4 +34,5 @@ body {
 <script type="text/javascript" src="<c:url value='/js/bootstrap-datepicker.js'/>"></script>
 <script src="http://code.highcharts.com/stock/highstock.js"></script>
 <script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
-<!-- <script type="text/javascript" src="<c:url value='/js/graychartstheme.js'/>"></script> -->
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="<c:url value='/js/tix.js'/>"></script>
