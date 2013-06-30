@@ -12,13 +12,20 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Instalaciones</li>
+              <li class="nav-header">Instalaciones </li>
               	<c:forEach items="${installationISPMap}" var="entry">
-            		<li class='<c:if test="${entry.key.id == currentInstallation.id}">active</c:if>'><a href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${entry.key.id}">${entry.key.name}</a></li>
-    				<ul>
+            		<li class='<c:if test="${entry.key.id == currentInstallation.id}">active listExpanded</c:if><c:if test="${entry.key.id != currentInstallation.id}">listCollapsed</c:if>'>
+<!--             		<li class="listCollapsed"> -->
+						<a id="toggler" href="#" data-toggle="collapse" class="toggler active" data-target="#${entry.key.id}_isps">
+							<i class="icon-folder-open"></i>
+							<i class="icon-folder-close"></i>
+							${entry.key.name}
+						</a>
+					</li>
+    				<ul id="${entry.key.id}_isps" class="<c:if test="${entry.key.id != currentInstallation.id}">collapse</c:if>">
+    					<li><a  href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${entry.key.id}" class='<c:if test="${entry.key.id == currentInstallation.id && requiredISP == null}">activeISP</c:if>'>General</a></li>
 	    				<c:forEach var="isp" items="${entry.value}">
-	<%-- 	              		<li class='<c:if test="${installation.id == currentInstallation.id}">active</c:if>'><a href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${installation.id}">${installation.name}</a></li> --%>
-	              				<a href="#"><li>${isp.name}</li></a>
+		              		<li class='<c:if test="${entry.key.id == currentInstallation.id && isp.id == requiredISP.id}">activeISP</c:if>'><a href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${entry.key.id}&isp=${isp.id}">${isp.name}</a></li>
 	              		</c:forEach>
 	              	</ul>
 				</c:forEach>
@@ -54,12 +61,24 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 					<div class="hero-unit" style="z-index: 1;height: 53px;margin: 0px;padding: 0px;">
 			        <div class="row" style="margin-top: 10px; margin-bottom:20px;">
 						<div class="text-center">
-									<a class="btn btn-primary"
+									<c:choose>
+										<c:when test="${requiredISP == null}">
+											<a class="btn btn-primary"
 										href="./dashboard?nickname=${user.nickname}&graphtype=GENERAL_GRAPH&ins=${currentInstallation.id}">General</a>
-									<a class="btn btn-primary"
+											<a class="btn btn-primary"
 										href="./dashboard?nickname=${user.nickname}&graphtype=UPSTREAM_GRAPH&ins=${currentInstallation.id}">Upstream</a>
-									<a class="btn btn-primary"
+											<a class="btn btn-primary"
 										href="./dashboard?nickname=${user.nickname}&graphtype=DOWNSTREAM_GRAPH&ins=${currentInstallation.id}">Downstream</a>
+										</c:when>
+										<c:otherwise>
+											<a class="btn btn-primary"
+										href="./dashboard?nickname=${user.nickname}&graphtype=GENERAL_GRAPH&ins=${currentInstallation.id}&isp=${requiredISP.id}">General</a>
+											<a class="btn btn-primary"
+										href="./dashboard?nickname=${user.nickname}&graphtype=UPSTREAM_GRAPH&ins=${currentInstallation.id}&isp=${requiredISP.id}">Upstream</a>
+											<a class="btn btn-primary"
+										href="./dashboard?nickname=${user.nickname}&graphtype=DOWNSTREAM_GRAPH&ins=${currentInstallation.id}&isp=${requiredISP.id}">Downstream</a>
+										</c:otherwise>
+									</c:choose>
 								</div><!-- Graph buttons -->
 					</div>
 					</div>
