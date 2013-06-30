@@ -13,9 +13,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Instalaciones</li>
-              	<c:forEach var="installation" items="${user.installations}">
-	              <li class='<c:if test="${installation.id == currentInstallation.id}">active</c:if>'><a href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${installation.id}">${installation.name}</a></li>
-              	</c:forEach>
+              	<c:forEach items="${installationISPMap}" var="entry">
+            		<li class='<c:if test="${entry.key.id == currentInstallation.id}">active</c:if>'><a href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${entry.key.id}">${entry.key.name}</a></li>
+    				<ul>
+	    				<c:forEach var="isp" items="${entry.value}">
+	<%-- 	              		<li class='<c:if test="${installation.id == currentInstallation.id}">active</c:if>'><a href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${installation.id}">${installation.name}</a></li> --%>
+	              				<a href="#"><li>${isp.name}</li></a>
+	              		</c:forEach>
+	              	</ul>
+				</c:forEach>
   	          <li class="divider"></li>
               	<li><a href="../installation/newinstallation"><i class="icon-plus-sign"></i>Nueva instalaci&oacute;n</a></li>
               	<li><a href="../installation/allinstallations"><i class="icon-pencil"></i>Editar instalaci&oacute;nes</a></li>

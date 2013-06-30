@@ -2,8 +2,11 @@ package ar.edu.itba.it.proyectofinal.internetqos.domain.model;
 
 import javax.persistence.Column;
 
-//@Entity
-//@Table(name = "ISP")
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ISP")
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class ISP extends DBPersistentObject {
 	

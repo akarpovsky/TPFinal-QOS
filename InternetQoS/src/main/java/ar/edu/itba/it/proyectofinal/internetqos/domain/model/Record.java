@@ -21,9 +21,8 @@ public class Record extends DBPersistentObject {
 	@OneToOne
 	private Installation installation;
 	
-//	@Column(nullable=false)
-//	@OneToOne
-//	private ISP isp;
+	@OneToOne
+	private ISP isp;
 	
 	@Column(nullable=false)
 	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")

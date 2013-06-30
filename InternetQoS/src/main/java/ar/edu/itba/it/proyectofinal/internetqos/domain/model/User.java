@@ -173,6 +173,7 @@ public class User extends DBPersistentObject {
 	}
 
 	public void addInstallation(Installation newInstallation) {
+		newInstallation.setOwner(this);
 		this.installations.add(newInstallation);
 	}
 

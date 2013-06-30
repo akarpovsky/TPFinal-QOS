@@ -50,8 +50,8 @@ public class InstallationCreationForm {
 		return errors.hasErrors() ? false : true;
 	}
 
-	public Installation build() {
-		Installation i = new Installation(getName());
+	public Installation build(User u) {
+		Installation i = new Installation(u, getName());
 		return i;
 	}
 

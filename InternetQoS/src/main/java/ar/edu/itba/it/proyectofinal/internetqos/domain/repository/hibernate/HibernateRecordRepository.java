@@ -3,6 +3,7 @@ package ar.edu.itba.it.proyectofinal.internetqos.domain.repository.hibernate;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.classic.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -41,9 +42,16 @@ public class HibernateRecordRepository extends AbstractHibernateRepo implements 
 		return find("from Record r where user_id = ? and installation = ? order by r.timestamp desc ", user.getId(), installation);
 	}
 	
-//	public List<? extends Record> getAllForISP(User user, Installation installation, ISP isp) {
-//		return find("from Record r where user_id = ? and installation = ? and isp = ? order by r.timestamp desc ", user.getId(), installation, isp);
-//	}
+	public List<? extends Record> getAllForISP(User user, Installation installation, ISP isp) {
+		return find("from Record r where user_id = ? and installation = ? and isp = ? order by r.timestamp desc ", user.getId(), installation, isp);
+	}
+	
+	public List<ISP> getISPsForInstallation(User user, Installation installation) {
+		Session session = getSession();
+		return session.createQuery("select distinct isp as i from Record r where user_id = " + user.getId() + "and installation_id = " +  installation.getId()).list();
+//		return find("ISP i from Record r where user_id = ? and installation = ? and order by i.name desc ", user.getId(), installation);
+
+	}
 
 
 	@Override
@@ -54,6 +62,5 @@ public class HibernateRecordRepository extends AbstractHibernateRepo implements 
 	private boolean exists(String attr, Object id) {
 		return !find("from Record where " + attr + " = ?", id).isEmpty();
 	}
-
 	
 }

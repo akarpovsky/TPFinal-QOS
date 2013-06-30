@@ -1,6 +1,11 @@
 package ar.edu.itba.it.proyectofinal.internetqos.web;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.itba.it.proyectofinal.internetqos.domain.model.ISP;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Installation;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Record;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.User;
@@ -106,12 +112,31 @@ public class UserController {
 		}
 
 		List<Installation> userInstallations = reqProfile.getInstallations();
-
+		
+		
+		
 		if (userInstallations.isEmpty()) { // No installation or data to show
 											// for current user
 			mav.setViewName("newuser");
 			return mav;
 		}
+		Map<Installation, List<ISP>> installationISPMap = new HashMap<Installation, List<ISP>>();
+		
+		for(Installation i: userInstallations){
+			List<ISP> ispsForInstallation = recordRepo.getISPsForInstallation(reqProfile, i);
+			Collections.sort(ispsForInstallation, new Comparator<ISP>(){
+			     public int compare(ISP o1, ISP o2){
+			        return o1.getName().compareTo(o2.getName());
+			     }
+			});
+			installationISPMap.put(i, ispsForInstallation);
+		}
+		
+		ValueComparator bvc =  new ValueComparator(installationISPMap);
+        TreeMap<Installation, List<ISP>> sorted_map = new TreeMap<Installation, List<ISP>>(bvc);
+        sorted_map.putAll(installationISPMap);
+
+		mav.addObject("installationISPMap", sorted_map);
 
 		if (requiredInstallation == null) { // URL param "ins" not found, set
 											// default installation
@@ -180,4 +205,17 @@ public class UserController {
 		return ans;
 	}
 
+	class ValueComparator implements Comparator<Installation> {
+
+	    Map<Installation, List<ISP>> base;
+	    public ValueComparator(Map<Installation, List<ISP>> base) {
+	        this.base = base;
+	    }
+		@Override
+		public int compare(Installation o1, Installation o2) {
+			return o1.getName().compareTo(o2.getName());
+		}
+
+	}
+	
 }

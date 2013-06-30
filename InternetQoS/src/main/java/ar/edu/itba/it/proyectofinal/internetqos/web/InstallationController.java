@@ -82,7 +82,7 @@ public class InstallationController {
 			return null;
 		}
 		
-		Installation newInstallation = installationCreationForm.build();
+		Installation newInstallation = installationCreationForm.build(me);
 		installationRepo.add(newInstallation);
 		me.addInstallation(newInstallation);
 		mav.setView(ControllerUtil.redirectView("/user/dashboard"));
