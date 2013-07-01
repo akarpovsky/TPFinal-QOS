@@ -33,6 +33,11 @@ public class HibernateInstallationRepository extends AbstractHibernateRepo imple
 	}
 	
 	@Override
+	public boolean exists(Installation i) {
+		return !find("from Installation i where i = ?", i.getId()).isEmpty();
+	}
+	
+	@Override
 	public List<? extends Installation> getAll() {
 		return find("from Installation");
 	}

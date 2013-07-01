@@ -85,10 +85,25 @@ public class InstallationController {
 		Installation newInstallation = installationCreationForm.build(me);
 		installationRepo.add(newInstallation);
 		me.addInstallation(newInstallation);
-		mav.setView(ControllerUtil.redirectView("/user/dashboard"));
+		mav.setView(ControllerUtil.redirectView("/installation/downloadapp?ins=" + newInstallation.getId()));
 		return mav;
 
 	}
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView downloadapp(HttpSession session,
+			@RequestParam(value="ins", required=false) Installation installation) {
+		ModelAndView mav = new ModelAndView();
+		if(installation == null || (installation != null && !getSessionUser(session).hasInstallation(installation)) ){
+			mav.addObject("errorDescription",
+					"No puede ver instalaciones que no le pertenecen.");
+			mav.setViewName("error");
+			return mav;
+		}
+		mav.addObject("installation", installation);
+		return mav;
+	}
+	
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
@@ -114,7 +129,7 @@ public class InstallationController {
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView edit(HttpSession session, @RequestParam("id") Integer id) {
+	public ModelAndView edit(HttpSession session, @RequestParam(value="id", required=true) Installation i) {
 		ModelAndView mav = new ModelAndView();
 		User me = getSessionUser(session);
 		
@@ -130,7 +145,13 @@ public class InstallationController {
 			return mav;
 		}
 		
-		Installation i = installationRepo.get(id);
+		if(i == null || (i != null && !me.hasInstallation(i))){
+			mav.addObject("errorDescription",
+					"No puede editar instalaciones que no le pertenecen.");
+			mav.setViewName("error");
+			return mav;
+		}
+		
 		mav.addObject("installationEditForm", new InstallationCreationForm(i));
 		return mav;
 	}
@@ -167,7 +188,7 @@ public class InstallationController {
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView delete(HttpSession session, @RequestParam("id") Integer id) {
+	public ModelAndView delete(HttpSession session, @RequestParam(value="id", required=true) Installation installation) {
 		ModelAndView mav = new ModelAndView();
 		User me = getSessionUser(session);
 		
@@ -183,8 +204,14 @@ public class InstallationController {
 			return mav;
 		}
 		
-		Installation i = installationRepo.get(id);
-		me.deleteInstallation(i);
+		if(installation == null || (installation != null && !me.hasInstallation(installation))){
+			mav.addObject("errorDescription",
+					"No puede eliminar instalaciones que no le pertenecen.");
+			mav.setViewName("error");
+			return mav;
+		}
+		
+		me.deleteInstallation(installation);
 		mav.setView(ControllerUtil.redirectView("/installation/allinstallations"));
 		return mav;
 	}
@@ -192,12 +219,6 @@ public class InstallationController {
 	private User getSessionUser(HttpSession session) {
 		Integer userId = (Integer) session.getAttribute("userId");
 		return (userId == null) ? null:userRepo.get(userId);
-	}
-
-	private String getDateString(DateTime timestamp) {
-		String ans = timestamp.toString().substring(0, 10);
-		System.out.println(ans);
-		return ans;
 	}
 
 }

@@ -6,7 +6,7 @@
 	<div class="container">
 		<section id="typography">
 			<div class="page-header">
-				<h1>Nueva instalaci&oacute;n</h1>
+				<h1>Nueva instalaci&oacute;n - ${installation.name}</h1>
 			</div>
 
 			<!-- Headings & Paragraph Copy -->
@@ -14,8 +14,6 @@
 
 				<div class="span12">
 					<h3>Bienvenido ${currUser.nickname}</h3>
-					<p>Hemos detectado que a&uacute;n no has realizado ninguna
-						instalaci&oacute;n por lo que te ayudaremos a realizarla.</p>
 					<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus
 						dolor auctor. Duis mollis, est non commodo luctus, nisi erat
 						porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio

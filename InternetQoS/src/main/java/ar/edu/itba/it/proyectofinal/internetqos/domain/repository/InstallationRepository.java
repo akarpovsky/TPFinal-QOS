@@ -14,5 +14,6 @@ public interface InstallationRepository {
 	
 	public Installation get(int id);
 
+	boolean exists(Installation i);
 
 }
