@@ -178,7 +178,7 @@ public class UserController {
 												+ requiredISP.getName() + "]"),
 								"Gráfico del Upstream para "
 										+ reqProfile.getNickname() +
-						((minDate != null && maxDate != null) ? " (" + minDate.getDayOfWeek() + "/" + minDate.getMonthOfYear() + "/" + minDate.getYear() + " - " + maxDate.getDayOfWeek() + "/" + maxDate.getMonthOfYear() + "/" + maxDate.getYear() + ")":""),
+						((minDate != null && maxDate != null) ? " (" + getFormattedDate(minDate) + " - " + getFormattedDate(maxDate) + ")":""),
 										
 								ChartType.UPSTREAM_GRAPH);
 				break;
@@ -191,7 +191,7 @@ public class UserController {
 										+ requiredISP.getName() + "]"),
 						"Gráfico del Downstream para "
 								+ reqProfile.getNickname() +
-						((minDate != null && maxDate != null) ? " (" + minDate.getDayOfWeek() + "/" + minDate.getMonthOfYear() + "/" + minDate.getYear() + " - " + maxDate.getDayOfWeek() + "/" + maxDate.getMonthOfYear() + "/" + maxDate.getYear() + ")":""),
+						((minDate != null && maxDate != null) ? " (" + getFormattedDate(minDate) + " - " + getFormattedDate(maxDate) + ")":""),
 						ChartType.DOWNSTREAM_GRAPH);
 				break;
 			default:
@@ -201,14 +201,14 @@ public class UserController {
 								+ ((requiredISP == null) ? "" : " ["
 										+ requiredISP.getName() + "]"),
 						"Gráfico General para " + reqProfile.getNickname() +
-						((minDate != null && maxDate != null) ? " (" + minDate.getDayOfWeek() + "/" + minDate.getMonthOfYear() + "/" + minDate.getYear() + " - " + maxDate.getDayOfWeek() + "/" + maxDate.getMonthOfYear() + "/" + maxDate.getYear() + ")":""),
+						((minDate != null && maxDate != null) ? " (" + getFormattedDate(minDate) + " - " + getFormattedDate(maxDate) + ")":""),
 						ChartType.GENERAL_GRAPH);
 				break;
 			}
 			mav.addObject("javaChart", chart);
 		}
-		mav.addObject("minDate",minDate);
-		mav.addObject("maxDate",maxDate);
+		mav.addObject("minDate",getFormattedDate(minDate));
+		mav.addObject("maxDate",getFormattedDate(maxDate));
 		mav.addObject("currentGraphType", graphtype.getTranslationKey());
 		mav.addObject("currentInstallation", requiredInstallation);
 		mav.addObject("noRecords", noRecords);
@@ -241,6 +241,13 @@ public class UserController {
 			return o1.getName().compareTo(o2.getName());
 		}
 
+	}
+	
+	public static String getFormattedDate(DateTime date){
+		if(date != null)
+			return date.getDayOfWeek() + "/" + date.getMonthOfYear() + "/" + date.getYear();
+		
+		return null;
 	}
 
 }
