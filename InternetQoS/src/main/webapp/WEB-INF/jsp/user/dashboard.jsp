@@ -50,15 +50,33 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 				    </div>
 	        	</c:when>
 	        	<c:otherwise>
-	        						   <table class="table">
-        				<thead>
-         					<tr>
-           				 		<th>Check in: <input type="text" class="span2" value="${minDate}" id="dpd1"></th>
-            					<th>Check out: <input type="text" class="span2" value="${maxDate}" id="dpd2"></th>
-            					<th><a class="btn btn-primary" href="./dashboard?nickname=${user.nickname}&ins=${currentInstallation.id}&mindate=${minDate}&maxdate=${maxDate}">Generar</a></th>
-          					</tr>
-        				</thead>
-      					</table>
+					   		<form method="GET"  action="./dashboard" class="form-horizontal offset2" style="padding-left:10px;">
+						   		<div class="input-prepend">
+								  <span class="add-on"><i class="icon-calendar"></i></span>
+						   			<input type="text" class="span8" value="${minDate}" name="minDate" id="dpd1" placeholder="Fecha desde"/>
+								</div>
+								<div class="input-prepend">
+								  <span class="add-on"><i class="icon-calendar"></i></span>
+						   			<input type="text" class="span8" value="${maxDate}" name="maxDate" id="dpd2" placeholder="Fecha hasta"/>
+								</div>
+<%-- 					   			<input type="text" class="span2" value="${minDate}" name="minDate" id="dpd1"/> --%>
+								<input type="hidden"  value="${user.nickname}" name="nickname"/>
+								<input type="hidden"  value="${currentInstallation.id}" name="ins"/>
+								<input type="hidden"  value="${currentGraphType}" name="graphtype"/>
+								<c:if test="${requiredISP != null}">
+									<input type="hidden"  value="${requiredISP.id}" name="isp"/>
+								</c:if>
+					   			<input type="submit" class="btn btn-primary" value="Filtrar">
+					   		</form>
+<!-- 					   <table class="table"> -->
+<!-- 	        				<thead> -->
+<!-- 	         					<tr> -->
+<%-- 	           				 		<th>Check in: <input type="text" class="span2" value="${minDate}" id="dpd1"></th> --%>
+<%-- 	            					<th>Check out: <input type="text" class="span2" value="${maxDate}" id="dpd2"></th> --%>
+<%-- 	            					<th><a class="btn btn-primary" href="./dashboard?nickname=${user.nickname}&ins=${currentInstallation.id}&mindate=${minDate}&maxdate=${maxDate}">Generar</a></th> --%>
+<!-- 	          					</tr> -->
+<!-- 	        				</thead> -->
+<!--       					</table> -->
 		   			<div id="graphcontainer"></div><!-- Here the graph will be rendered -->
 					<hr>
 			        <div class="row" style="margin: 10 0 20 0;">

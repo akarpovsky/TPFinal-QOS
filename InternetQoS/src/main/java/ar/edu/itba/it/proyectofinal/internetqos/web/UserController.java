@@ -10,7 +10,6 @@ import java.util.TreeMap;
 import javax.servlet.http.HttpSession;
 
 import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -85,6 +84,7 @@ public class UserController {
 		return mav;
 
 	}
+	
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
@@ -94,9 +94,9 @@ public class UserController {
 			@RequestParam(value = "graphtype", defaultValue = "GENERAL_GRAPH") ChartType graphtype,
 			@RequestParam(value = "ins", required = false) Installation requiredInstallation,
 			@RequestParam(value = "isp", required = false) ISP requiredISP,
-			@RequestParam(value = "mindate", required = false) DateTime minDate,
-			@RequestParam(value = "maxdate", required = false) DateTime maxDate) {
-
+			@RequestParam(value = "minDate", required = false) DateTime minDate,
+			@RequestParam(value = "maxDate", required = false) DateTime maxDate,
+			@RequestParam(value = "test", required = false) String test) {
 		ModelAndView mav = new ModelAndView();
 
 		User reqProfile = userRepo.get(nickname);
@@ -177,7 +177,9 @@ public class UserController {
 										+ ((requiredISP == null) ? "" : " ["
 												+ requiredISP.getName() + "]"),
 								"Gráfico del Upstream para "
-										+ reqProfile.getNickname(),
+										+ reqProfile.getNickname() +
+						((minDate != null && maxDate != null) ? " (" + minDate.getDayOfWeek() + "/" + minDate.getMonthOfYear() + "/" + minDate.getYear() + " - " + maxDate.getDayOfWeek() + "/" + maxDate.getMonthOfYear() + "/" + maxDate.getYear() + ")":""),
+										
 								ChartType.UPSTREAM_GRAPH);
 				break;
 			case DOWNSTREAM_GRAPH:
@@ -188,7 +190,8 @@ public class UserController {
 								+ ((requiredISP == null) ? "" : " ["
 										+ requiredISP.getName() + "]"),
 						"Gráfico del Downstream para "
-								+ reqProfile.getNickname(),
+								+ reqProfile.getNickname() +
+						((minDate != null && maxDate != null) ? " (" + minDate.getDayOfWeek() + "/" + minDate.getMonthOfYear() + "/" + minDate.getYear() + " - " + maxDate.getDayOfWeek() + "/" + maxDate.getMonthOfYear() + "/" + maxDate.getYear() + ")":""),
 						ChartType.DOWNSTREAM_GRAPH);
 				break;
 			default:
@@ -197,7 +200,8 @@ public class UserController {
 								+ requiredInstallation.getName()
 								+ ((requiredISP == null) ? "" : " ["
 										+ requiredISP.getName() + "]"),
-						"Gráfico General para " + reqProfile.getNickname(),
+						"Gráfico General para " + reqProfile.getNickname() +
+						((minDate != null && maxDate != null) ? " (" + minDate.getDayOfWeek() + "/" + minDate.getMonthOfYear() + "/" + minDate.getYear() + " - " + maxDate.getDayOfWeek() + "/" + maxDate.getMonthOfYear() + "/" + maxDate.getYear() + ")":""),
 						ChartType.GENERAL_GRAPH);
 				break;
 			}
