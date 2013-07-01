@@ -50,6 +50,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 				    </div>
 	        	</c:when>
 	        	<c:otherwise>
+	        						   <table class="table">
+        				<thead>
+         					<tr>
+           				 		<th>Check in: <input type="text" class="span2" value="${minDate}" id="dpd1"></th>
+            					<th>Check out: <input type="text" class="span2" value="${maxDate}" id="dpd2"></th>
+            					<th><a class="btn btn-primary" href="./dashboard?nickname=${user.nickname}&ins=${currentInstallation.id}&mindate=${minDate}&maxdate=${maxDate}">Generar</a></th>
+          					</tr>
+        				</thead>
+      					</table>
 		   			<div id="graphcontainer"></div><!-- Here the graph will be rendered -->
 					<hr>
 			        <div class="row" style="margin: 10 0 20 0;">
@@ -83,20 +92,13 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 								</div><!-- Graph buttons -->
 					</div>
 					</div>
+
         		</c:otherwise>
 	        </c:choose>	
 		
         </div><!--/span-->
       </div><!--/row-->
     
-    <table class="table">
-        <thead>
-          <tr>
-            <th>Check in: <input type="text" class="span2" value="" id="dpd1"></th>
-            <th>Check out: <input type="text" class="span2" value="" id="dpd2"></th>
-          </tr>
-        </thead>
-      </table>
 	</div>
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
@@ -171,13 +173,13 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
             });
         
         </script>
-        <script type="text/javascript">
+<script type="text/javascript">
         var nowTemp = new Date();
 var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
  
 var checkin = $('#dpd1').datepicker({
   onRender: function(date) {
-    return date.valueOf() < now.valueOf() ? 'disabled' : '';
+    return date.valueOf() > now.valueOf() ? 'disabled' : '';
   }
 }).on('changeDate', function(ev) {
   if (ev.date.valueOf() > checkout.date.valueOf()) {

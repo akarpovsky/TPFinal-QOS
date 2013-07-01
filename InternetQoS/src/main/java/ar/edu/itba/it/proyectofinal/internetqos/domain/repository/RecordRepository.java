@@ -1,6 +1,9 @@
 package ar.edu.itba.it.proyectofinal.internetqos.domain.repository;
 
+
 import java.util.List;
+
+import org.joda.time.DateTime;
 
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.ISP;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Installation;
@@ -14,9 +17,9 @@ public interface RecordRepository {
 	
 	public List<? extends Record> getAll();
 	
-	public List<? extends Record> getAll(User user, Installation installation);
+	public List<? extends Record> getAll(User user, Installation installation, DateTime minDate, DateTime maxDate);
 	
-	public List<? extends Record> getAllForISP(User user, Installation installation, ISP isp);
+	public List<? extends Record> getAllForISP(User user, Installation installation, ISP isp, DateTime minDate, DateTime maxDate);
 	
 	public List<ISP> getISPsForInstallation(User user, Installation installation);
 	

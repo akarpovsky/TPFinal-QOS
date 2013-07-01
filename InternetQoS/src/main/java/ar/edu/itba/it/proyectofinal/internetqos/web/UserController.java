@@ -10,6 +10,7 @@ import java.util.TreeMap;
 import javax.servlet.http.HttpSession;
 
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,12 +47,12 @@ public class UserController {
 	public ModelAndView adminpanel(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		User me = getSessionUser(session);
-		
+
 		if (me == null) {
 			mav.setView(ControllerUtil.redirectView("/login/login"));
 			return mav;
 		}
-		
+
 		if (!me.getType().equals(UserType.ADMIN)) {
 			mav.addObject("errorDescription",
 					"No tiene permisos para acceder aquí.");
@@ -70,7 +71,7 @@ public class UserController {
 	public ModelAndView home(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		User me = getSessionUser(session);
-		
+
 		if (me == null) {
 			mav.setView(ControllerUtil.redirectView("/login/login"));
 			return mav;
@@ -92,7 +93,9 @@ public class UserController {
 			@RequestParam(value = "nickname", defaultValue = "") String nickname,
 			@RequestParam(value = "graphtype", defaultValue = "GENERAL_GRAPH") ChartType graphtype,
 			@RequestParam(value = "ins", required = false) Installation requiredInstallation,
-			@RequestParam(value = "isp", required = false) ISP requiredISP) {
+			@RequestParam(value = "isp", required = false) ISP requiredISP,
+			@RequestParam(value = "mindate", required = false) DateTime minDate,
+			@RequestParam(value = "maxdate", required = false) DateTime maxDate) {
 
 		ModelAndView mav = new ModelAndView();
 
@@ -112,29 +115,29 @@ public class UserController {
 		}
 
 		List<Installation> userInstallations = reqProfile.getInstallations();
-		
-		
-		
+
 		if (userInstallations.isEmpty()) { // No installation or data to show
 											// for current user
 			mav.setViewName("newuser");
 			return mav;
 		}
 		Map<Installation, List<ISP>> installationISPMap = new HashMap<Installation, List<ISP>>();
-		
-		for(Installation i: userInstallations){
-			List<ISP> ispsForInstallation = recordRepo.getISPsForInstallation(reqProfile, i);
-			Collections.sort(ispsForInstallation, new Comparator<ISP>(){
-			     public int compare(ISP o1, ISP o2){
-			        return o1.getName().compareTo(o2.getName());
-			     }
+
+		for (Installation i : userInstallations) {
+			List<ISP> ispsForInstallation = recordRepo.getISPsForInstallation(
+					reqProfile, i);
+			Collections.sort(ispsForInstallation, new Comparator<ISP>() {
+				public int compare(ISP o1, ISP o2) {
+					return o1.getName().compareTo(o2.getName());
+				}
 			});
 			installationISPMap.put(i, ispsForInstallation);
 		}
-		
-		ValueComparator bvc =  new ValueComparator(installationISPMap);
-        TreeMap<Installation, List<ISP>> sorted_map = new TreeMap<Installation, List<ISP>>(bvc);
-        sorted_map.putAll(installationISPMap);
+
+		ValueComparator bvc = new ValueComparator(installationISPMap);
+		TreeMap<Installation, List<ISP>> sorted_map = new TreeMap<Installation, List<ISP>>(
+				bvc);
+		sorted_map.putAll(installationISPMap);
 
 		mav.addObject("installationISPMap", sorted_map);
 
@@ -150,15 +153,15 @@ public class UserController {
 		}
 
 		List<Record> records;
-		
-		if(requiredISP == null){ // No specified ISP, get all records
+
+		if (requiredISP == null) { // No specified ISP, get all records
 			records = (List<Record>) recordRepo.getAll(reqProfile,
-					requiredInstallation);
-		}else{
+					requiredInstallation, minDate, maxDate);
+		} else {
 			records = (List<Record>) recordRepo.getAllForISP(reqProfile,
-					requiredInstallation, requiredISP);
+					requiredInstallation, requiredISP, minDate,maxDate);
 		}
-		
+
 		boolean noRecords = false;
 		if (records.isEmpty()) {
 			noRecords = true;
@@ -170,7 +173,9 @@ public class UserController {
 						.generateHighChart(
 								records,
 								"Porcentaje de Utilización de Ancho de Banda en "
-										+ requiredInstallation.getName() + ((requiredISP == null) ? "":" [" + requiredISP.getName() + "]"),
+										+ requiredInstallation.getName()
+										+ ((requiredISP == null) ? "" : " ["
+												+ requiredISP.getName() + "]"),
 								"Gráfico del Upstream para "
 										+ reqProfile.getNickname(),
 								ChartType.UPSTREAM_GRAPH);
@@ -179,7 +184,9 @@ public class UserController {
 				chart = ChartUtils.generateHighChart(
 						records,
 						"Porcentaje de Utilización de Ancho de Banda en "
-								+ requiredInstallation.getName() + ((requiredISP == null) ? "":" [" + requiredISP.getName() + "]"),
+								+ requiredInstallation.getName()
+								+ ((requiredISP == null) ? "" : " ["
+										+ requiredISP.getName() + "]"),
 						"Gráfico del Downstream para "
 								+ reqProfile.getNickname(),
 						ChartType.DOWNSTREAM_GRAPH);
@@ -187,13 +194,17 @@ public class UserController {
 			default:
 				chart = ChartUtils.generateHighChart(records,
 						"Porcentaje de Utilización de Ancho de Banda en "
-								+ requiredInstallation.getName() + ((requiredISP == null) ? "":" [" + requiredISP.getName() + "]"),
+								+ requiredInstallation.getName()
+								+ ((requiredISP == null) ? "" : " ["
+										+ requiredISP.getName() + "]"),
 						"Gráfico General para " + reqProfile.getNickname(),
 						ChartType.GENERAL_GRAPH);
 				break;
 			}
 			mav.addObject("javaChart", chart);
 		}
+		mav.addObject("minDate",minDate);
+		mav.addObject("maxDate",maxDate);
 		mav.addObject("currentGraphType", graphtype.getTranslationKey());
 		mav.addObject("currentInstallation", requiredInstallation);
 		mav.addObject("noRecords", noRecords);
@@ -204,7 +215,7 @@ public class UserController {
 
 	private User getSessionUser(HttpSession session) {
 		Integer userId = (Integer) session.getAttribute("userId");
-		return (userId == null) ? null:userRepo.get(userId);
+		return (userId == null) ? null : userRepo.get(userId);
 	}
 
 	private String getDateString(DateTime timestamp) {
@@ -215,15 +226,17 @@ public class UserController {
 
 	class ValueComparator implements Comparator<Installation> {
 
-	    Map<Installation, List<ISP>> base;
-	    public ValueComparator(Map<Installation, List<ISP>> base) {
-	        this.base = base;
-	    }
+		Map<Installation, List<ISP>> base;
+
+		public ValueComparator(Map<Installation, List<ISP>> base) {
+			this.base = base;
+		}
+
 		@Override
 		public int compare(Installation o1, Installation o2) {
 			return o1.getName().compareTo(o2.getName());
 		}
 
 	}
-	
+
 }
