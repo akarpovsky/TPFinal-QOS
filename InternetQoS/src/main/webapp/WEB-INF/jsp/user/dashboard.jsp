@@ -51,15 +51,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 	        	</c:when>
 	        	<c:otherwise>
 					   		<form method="GET"  action="./dashboard" class="form-horizontal offset2" style="padding-left:10px;">
-						   		<div class="input-prepend">
+						   		<div class="input-prepend" data-date-format="dd-mm-yyyy">
 								  <span class="add-on"><i class="icon-calendar"></i></span>
 						   			<input type="text" class="span8" value="${minDate}" name="minDate" id="dpd1" placeholder="Fecha desde"/>
 								</div>
-								<div class="input-prepend">
+								<div class="input-prepend" data-date-format="dd-mm-yyyy">
 								  <span class="add-on"><i class="icon-calendar"></i></span>
 						   			<input type="text" class="span8" value="${maxDate}" name="maxDate" id="dpd2" placeholder="Fecha hasta"/>
 								</div>
-<%-- 					   			<input type="text" class="span2" value="${minDate}" name="minDate" id="dpd1"/> --%>
+<%-- 					   		<input type="text" class="span2" value="${minDate}" name="minDate" id="dpd1"/> --%>
 								<input type="hidden"  value="${user.nickname}" name="nickname"/>
 								<input type="hidden"  value="${currentInstallation.id}" name="ins"/>
 								<input type="hidden"  value="${currentGraphType}" name="graphtype"/>
@@ -196,6 +196,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
  
 var checkin = $('#dpd1').datepicker({
+  format: 'dd/mm/yyyy',
   onRender: function(date) {
     return date.valueOf() > now.valueOf() ? 'disabled' : '';
   }
@@ -209,6 +210,7 @@ var checkin = $('#dpd1').datepicker({
   $('#dpd2')[0].focus();
 }).data('datepicker');
 var checkout = $('#dpd2').datepicker({
+format: 'dd/mm/yyyy',
   onRender: function(date) {
     return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
   }

@@ -40,16 +40,16 @@ public class HibernateRecordRepository extends AbstractHibernateRepo implements 
 
 	public List<? extends Record> getAll(User user, Installation installation, DateTime minDate, DateTime maxDate) {
 		if ( minDate != null && maxDate != null) {
-			return find("from Record r where user_id = ? and installation = ? and r.timestamp >= ? and r.timestamp <= ? order by r.timestamp desc ", user.getId(), installation, minDate, maxDate);
+			return find("from Record r where user_id = ? and installation = ? and r.timestamp >= ? and r.timestamp <= ? order by r.timestamp asc ", user.getId(), installation, minDate, maxDate);
 		}
-		return find("from Record r where user_id = ? and installation = ? order by r.timestamp desc ", user.getId(), installation);
+		return find("from Record r where user_id = ? and installation = ? order by r.timestamp asc ", user.getId(), installation);
 	}
 	
 	public List<? extends Record> getAllForISP(User user, Installation installation, ISP isp, DateTime minDate, DateTime maxDate) {
 		if ( minDate != null && maxDate != null) {
-			return find("from Record r where user_id = ? and installation = ? and isp = ? and r.timestamp >= ? and r.timestamp <= ? order by r.timestamp desc", user.getId(), installation, isp, minDate, maxDate);
+			return find("from Record r where user_id = ? and installation = ? and isp = ? and r.timestamp >= ? and r.timestamp <= ? order by r.timestamp asc", user.getId(), installation, isp, minDate, maxDate);
 		}
-		return find("from Record r where user_id = ? and installation = ? and isp = ? order by r.timestamp desc ", user.getId(), installation, isp);
+		return find("from Record r where user_id = ? and installation = ? and isp = ? order by r.timestamp asc ", user.getId(), installation, isp);
 	}
 	
 	public List<ISP> getISPsForInstallation(User user, Installation installation) {
