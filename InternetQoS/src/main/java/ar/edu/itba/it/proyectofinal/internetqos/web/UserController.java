@@ -222,12 +222,6 @@ public class UserController {
 		return (userId == null) ? null : userRepo.get(userId);
 	}
 
-	private String getDateString(DateTime timestamp) {
-		String ans = timestamp.toString().substring(0, 10);
-		System.out.println(ans);
-		return ans;
-	}
-
 	class ValueComparator implements Comparator<Installation> {
 
 		Map<Installation, List<ISP>> base;
@@ -244,8 +238,9 @@ public class UserController {
 	}
 	
 	public static String getFormattedDate(DateTime date){
+		
 		if(date != null)
-			return date.getDayOfWeek() + "/" + date.getMonthOfYear() + "/" + date.getYear();
+			return date.getDayOfMonth() + "/" + date.getMonthOfYear() + "/" + date.getYear();
 		
 		return null;
 	}
