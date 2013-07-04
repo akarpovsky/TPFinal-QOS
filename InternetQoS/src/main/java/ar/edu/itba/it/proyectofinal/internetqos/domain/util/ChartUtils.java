@@ -63,20 +63,32 @@ public class ChartUtils {
 				if (record.isUserDownCongestion()) {
 					downStream_json = new JSONObject();
 					downStream_json.put("y", record.getDownstream());
+					downStream_json.put("id", record.getId());
+					downStream_json.put("type", "D");
 					downStream_json.put("marker", new JSONObject().put("symbol", "url(http://www.highcharts.com/demo/gfx/sun.png)"));
 					downStream_array.put(downStream_json);
 				} else {
-					downStream_array.put(record.getDownstream());
+					downStream_json = new JSONObject();
+					downStream_json.put("y", record.getDownstream());
+					downStream_json.put("id", record.getId());
+					downStream_json.put("type", "D");
+					downStream_array.put(downStream_json);
 				}
 				
 				if (record.isUserUpCongestion()) {
 					upStream_json = new JSONObject();
 					upStream_json.put("y", record.getUpstream());
+					upStream_json.put("id", record.getId());
+					upStream_json.put("type", "U");
 					upStream_json.put("marker", new JSONObject().put("symbol", "url(http://www.highcharts.com/demo/gfx/sun.png)"));
 					upStream_array.put(upStream_json);
 				} else {
-					upStream_array.put(record.getUpstream());
-					upStream.add(record.getUpstream());
+					upStream_json = new JSONObject();
+					upStream_json.put("y", record.getUpstream());
+					upStream_json.put("id", record.getId());
+					upStream_json.put("type", "U");
+					upStream_array.put(upStream_json);
+				//	upStream.add(record.getUpstream());
 				}
 //				System.out.println(upStream_array);
 				congestionDown.add(record.getDownstreamCongestion());

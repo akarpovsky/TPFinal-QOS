@@ -24,7 +24,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 						</a>
 					</li>
     				<ul id="${entry.key.id}_isps" class="<c:if test="${entry.key.id != currentInstallation.id}">collapse</c:if>">
-    					<li><a  href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${entry.key.id}" class='<c:if test="${entry.key.id == currentInstallation.id && requiredISP == null}">activeISP</c:if>'>General</a></li>
+    					<li  class='<c:if test="${entry.key.id == currentInstallation.id && requiredISP == null}">activeISP</c:if>'><a  href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${entry.key.id}">General</a></li>
 	    				<c:forEach var="isp" items="${entry.value}">
 		              		<li class='<c:if test="${entry.key.id == currentInstallation.id && isp.id == requiredISP.id}">activeISP</c:if>'><a href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${entry.key.id}&isp=${isp.id}">${isp.name}</a></li>
 	              		</c:forEach>
@@ -113,6 +113,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript">                        
             $(function () {
             	 var datos =  ${javaChart.JSONString};
+            	 console.log(datos);
             	 
                  var fechas = ${javaChart.timestamps};
                  var title = "${javaChart.title}";
@@ -159,6 +160,31 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                                 }],
                            	min: 0, max: 100    
                         },
+                         plotOptions: {
+                series: {
+                    cursor: 'pointer',
+                    point: {
+                        events: {
+                            click: function() {
+                                console.log(this);
+                                $.holdReady(true); 
+                                $.get("./changeCongestionStatus?id=" + this.id + "&type=" + this.type, function() {
+  $.holdReady(false);
+});
+                              //  alert('ID: '+ this.id + 'VALUE: ' + this.y + 'Name: ' + this.type);
+                               // var url = 
+                              //  $.sleep(800);    
+							//	$(location).attr('href', $(location).attr('href')).delay(2000);
+							var delay = 1500; //Your delay in milliseconds
+								setTimeout(function(){ window.location = $(location).attr('href'); }, delay);
+                            }
+                        }
+                    },
+                    marker: {
+                        lineWidth: 1
+                    }
+                }
+            },
                         tooltip: {
                            
                             shared: true,

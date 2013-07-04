@@ -31,7 +31,7 @@
 				<div class="thumb_image">
 					<img alt="Logo Tix" src="<c:url value='/img/logo_TiX.png'/>">
 				</div>
-				<div class="row caption pull-left" style="margin-left: 3px;">
+				<div class="row caption pull-left" style="margin-left: 20px;width: 245px;">
 					<div class="span12">
 						<h4>&iquest;Qu&eacute; es el Proyecto Tix?</h4>
 						<p>TiX (Traffic information eXchange) es una herramienta que

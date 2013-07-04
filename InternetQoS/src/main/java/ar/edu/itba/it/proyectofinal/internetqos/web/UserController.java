@@ -245,4 +245,43 @@ public class UserController {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView holaBien() {
+		System.out.println("ENTRO");
+		return null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView changeCongestionStatus(HttpSession session, @RequestParam(value = "id",required=true) Record r,@RequestParam(value = "type",required=true) String type ) {
+	
+		ModelAndView mav = new ModelAndView();
+		User me = getSessionUser(session);
+
+		if (me == null) {
+			mav.setView(ControllerUtil.redirectView("/login/login"));
+			return mav;
+		}
+
+		if (me.getType().equals(UserType.ADMIN)) {
+			mav.setView(ControllerUtil.redirectView("/user/adminpanel"));
+		} else {
+			mav.setView(ControllerUtil.redirectView("/user/dashboard"));
+		}
+
+		if (!r.getUser().equals(me)) {
+			mav.addObject("errorDescription",
+					"No tiene permisos borrar un record que no es suyo.");
+			mav.setViewName("error");
+			return mav;
+		}
+		
+		r.changeCongestionStatus(type);
+		System.out.println("SALIO");
+		mav.setView(ControllerUtil.redirectView("/user/dashboard?nickname=" + me.getNickname() + "&graphtype=GENERAL_GRAPH"));
+		System.out.println("REDIRECT");
+		return mav;
+
+	}
 }
