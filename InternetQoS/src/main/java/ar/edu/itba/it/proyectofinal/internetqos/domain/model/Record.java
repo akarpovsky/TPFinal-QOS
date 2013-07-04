@@ -110,7 +110,7 @@ public class Record extends DBPersistentObject {
 	}
 	
 	public void changeCongestionStatus(String type) {
-		System.out.println("Antes: " + this.userDownCongestion);
+		//System.out.println("Antes: " + this.userDownCongestion);
 		if( "U".equals(type)) {
 			this.userUpCongestion = !this.userUpCongestion;
 			return;
@@ -118,7 +118,7 @@ public class Record extends DBPersistentObject {
 		if ( "D".equals(type)) {
 			this.userDownCongestion = !this.userDownCongestion;
 
-			System.out.println("Despues: " + this.userDownCongestion);
+		//	System.out.println("Despues: " + this.userDownCongestion);
 			return;
 		}
 	}
