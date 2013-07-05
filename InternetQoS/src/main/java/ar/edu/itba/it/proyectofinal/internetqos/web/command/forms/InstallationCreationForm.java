@@ -1,7 +1,5 @@
 package ar.edu.itba.it.proyectofinal.internetqos.web.command.forms;
 
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.validation.Errors;
 
@@ -55,15 +53,4 @@ public class InstallationCreationForm {
 		return i;
 	}
 
-	public void update(User user, InstallationRepository installationRepo, Errors errors) {
-		Installation i = installationRepo.get(getId());
-		if(!user.hasInstallation(i)){
-			errors.reject("nonUserInstallation");
-			return ;
-		}else{
-			Installation userInstallation = user.getInstallation(i);
-			userInstallation.setName(getName());
-		}
-	}
-	
 }

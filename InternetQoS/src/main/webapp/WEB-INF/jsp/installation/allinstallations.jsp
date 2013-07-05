@@ -13,7 +13,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 			<div class="page-header">
 				<h2>Mis instalaciones_</h2>
 			</div>
-
+			<c:if test="${not empty param.userFeedbackLabel}">
+				<div class="alert alert-success">
+			        <c:out value="${param.userFeedbackLabel}"></c:out>
+		     	</div>
+			</c:if>
 			<c:choose>
 				<c:when test="${empty installationsList}">
 					<span class="label label-important">No hay instalaciones registradas en el sistema.</span>

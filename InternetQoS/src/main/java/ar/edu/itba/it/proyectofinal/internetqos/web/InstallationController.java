@@ -19,6 +19,7 @@ import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.InstallationRe
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.RecordRepository;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.UserRepository;
 import ar.edu.itba.it.proyectofinal.internetqos.web.command.forms.InstallationCreationForm;
+import ar.edu.itba.it.proyectofinal.internetqos.web.command.forms.InstallationEditForm;
 import ar.edu.itba.it.proyectofinal.internetqos.web.util.ControllerUtil;
 
 @Controller
@@ -152,14 +153,14 @@ public class InstallationController {
 			return mav;
 		}
 		
-		mav.addObject("installationEditForm", new InstallationCreationForm(i));
+		mav.addObject("installationEditForm", new InstallationEditForm(i));
 		return mav;
 	}
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView edit(HttpSession session, 
-		@Valid InstallationCreationForm installationEditForm,
+		@Valid InstallationEditForm installationEditForm,
 			Errors errors) {
 		ModelAndView mav = new ModelAndView();
 		User me = getSessionUser(session);
@@ -176,13 +177,14 @@ public class InstallationController {
 			return mav;
 		}
 		
-		if (errors.hasErrors() || !installationEditForm.validate(me, errors)) {
+		if (errors.hasErrors() || !installationEditForm.update(me, installationRepo, errors)) {
 			mav.addObject("installationEditForm", installationEditForm);
-			return mav;
+			mav.addObject("errors", errors);
+			return null;
 		}
 		
-		installationEditForm.update(me, installationRepo, errors);
 		mav.setView(ControllerUtil.redirectView("/installation/allinstallations"));
+		mav.addObject("userFeedbackLabel", "Instalacion actualizada exitosamente");
 		return mav;
 	}
 	
