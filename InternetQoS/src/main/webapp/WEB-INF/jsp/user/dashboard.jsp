@@ -166,16 +166,13 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                     point: {
                         events: {
                             click: function() {
-                                console.log(this);
                                 $.holdReady(true); 
                                 $.get("./changeCongestionStatus?id=" + this.id + "&type=" + this.type, function() {
-  $.holdReady(false);
-});
-                              //  alert('ID: '+ this.id + 'VALUE: ' + this.y + 'Name: ' + this.type);
-                               // var url = 
+								  $.holdReady(false);
+								});
                               //  $.sleep(800);    
 							//	$(location).attr('href', $(location).attr('href')).delay(2000);
-							var delay = 1500; //Your delay in milliseconds
+							var delay = 1000; //Your delay in milliseconds
 								setTimeout(function(){ window.location = $(location).attr('href'); }, delay);
                             }
                         }

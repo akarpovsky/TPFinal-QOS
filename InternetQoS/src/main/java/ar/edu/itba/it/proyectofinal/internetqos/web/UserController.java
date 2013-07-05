@@ -278,9 +278,7 @@ public class UserController {
 		}
 		
 		r.changeCongestionStatus(type);
-		//System.out.println("SALIO");
 		mav.setView(ControllerUtil.redirectView("/user/dashboard?nickname=" + me.getNickname() + "&graphtype=GENERAL_GRAPH"));
-		//System.out.println("REDIRECT");
 		return mav;
 
 	}
