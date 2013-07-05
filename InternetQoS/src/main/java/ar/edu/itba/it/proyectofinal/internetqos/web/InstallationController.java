@@ -216,6 +216,7 @@ public class InstallationController {
 		
 		me.deleteInstallation(installation);
 		mav.setView(ControllerUtil.redirectView("/installation/allinstallations"));
+		mav.addObject("userFeedbackLabel", "Instalacion eliminada exitosamente");
 		return mav;
 	}
 
