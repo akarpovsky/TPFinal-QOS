@@ -124,6 +124,7 @@ public class InstallationController {
 			return mav;
 		}
 		
+		mav.addObject("user",me);
 		mav.addObject("installationsList", me.getInstallations());
 		return mav;
 	}

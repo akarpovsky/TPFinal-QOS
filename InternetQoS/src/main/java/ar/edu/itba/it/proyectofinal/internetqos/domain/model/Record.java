@@ -108,6 +108,20 @@ public class Record extends DBPersistentObject {
 	public void setUserUpCongestion(boolean userUpCongestion) {
 		this.userUpCongestion = userUpCongestion;
 	}
+	
+	public void changeCongestionStatus(String type) {
+		//System.out.println("Antes: " + this.userDownCongestion);
+		if( "U".equals(type)) {
+			this.userUpCongestion = !this.userUpCongestion;
+			return;
+		}
+		if ( "D".equals(type)) {
+			this.userDownCongestion = !this.userDownCongestion;
+
+		//	System.out.println("Despues: " + this.userDownCongestion);
+			return;
+		}
+	}
 
 	public void setUpstream(float upstream) {
 		if(upstream <= 100){

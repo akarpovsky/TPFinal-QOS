@@ -42,7 +42,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 				</c:otherwise>
 			</c:choose>
 		</section>
+		<a class="btn btn-primary" href="../user/dashboard?nickname=${user.nickname}&graphtype=GENERAL_GRAPH">Volver</a>
 	</div>
+		
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 </html>
