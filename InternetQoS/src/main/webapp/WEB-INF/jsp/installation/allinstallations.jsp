@@ -34,7 +34,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 							<c:forEach items="${installationsList}" var="installation">
 								<tr>
 									<td>${installation.name}</td>
-									<td><a class="btn btn-info" href="./edit?id=${installation.id}">Editar</a>  <a class="btn btn-danger" href="./delete?id=${installation.id}">Eliminar</a></td>
+									<td><a class="btn btn-info" href="./edit?id=${installation.id}">Editar</a>  <a href="#myModal" role="button" class="btn btn-danger deleteInstallationDialog" data-toggle="modal" data-id="${installation.id }">Eliminar</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -43,8 +43,34 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 			</c:choose>
 		</section>
 		<a class="btn btn-primary" href="../user/dashboard?nickname=${user.nickname}&graphtype=GENERAL_GRAPH">Volver</a>
-	</div>
-		
+	
+		</div>
+	
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
+
+<script type="text/javascript">
+$(document).on("click", ".deleteInstallationDialog", function () {
+    var installationId = $(this).data('id');
+    document.getElementById("deleteLink").href="./delete?id=" + installationId; 
+   // Not necessary to call the modal
+   // $('#addBookDialog').modal('show');
+});
+</script>
+
+<!--Warning Modal -->
+			<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-header">
+			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			    <h3 id="myModalLabel">Atenci&oacute;n</h3>
+			  </div>
+			  <div class="modal-body">
+			    <p>Si continua con esta acci&oacute;n se borrar&aacute;n tambi&eacute;n todos los datos almacenados para esta instalaci&oacute;n.</p>
+			  </div>
+			  <div class="modal-footer">
+			    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+			    <a id="deleteLink" href="#"><button class="btn btn-primary" href="aaa">Continuar</button></a>
+			  </div>
+			</div>	
+
 </html>

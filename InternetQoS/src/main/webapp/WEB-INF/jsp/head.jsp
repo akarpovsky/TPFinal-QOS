@@ -34,5 +34,5 @@
 <script type="text/javascript" src="<c:url value='/js/bootstrap-datepicker.js'/>"></script>
 <script src="http://code.highcharts.com/stock/highstock.js"></script>
 <script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<!-- <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
 <script src="<c:url value='/js/tix.js'/>"></script>

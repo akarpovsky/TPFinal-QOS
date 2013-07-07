@@ -214,6 +214,7 @@ public class InstallationController {
 			return mav;
 		}
 		
+		recordRepo.removeAll(installation);
 		me.deleteInstallation(installation);
 		mav.setView(ControllerUtil.redirectView("/installation/allinstallations"));
 		mav.addObject("userFeedbackLabel", "Instalacion eliminada exitosamente");

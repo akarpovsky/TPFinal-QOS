@@ -68,5 +68,12 @@ public class HibernateRecordRepository extends AbstractHibernateRepo implements 
 	private boolean exists(String attr, Object id) {
 		return !find("from Record where " + attr + " = ?", id).isEmpty();
 	}
+
+	@Override
+	public void removeAll(Installation installation) {
+		Session session = getSession();
+		String hql = "delete from Record r where r.installation = ?";
+		session.createQuery(hql).setEntity(0, installation).executeUpdate();
+	}
 	
 }

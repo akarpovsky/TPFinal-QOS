@@ -25,4 +25,6 @@ public interface RecordRepository {
 	
 	public Record get(int id);
 
+	public void removeAll(Installation installation);
+
 }

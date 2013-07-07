@@ -37,8 +37,7 @@
 						<p>TiX (Traffic information eXchange) es una herramienta que
 							permite efectuar una medici&oacute;n de la calidad de su acceso a
 							Internet. .</p>
-						<a class="btn btn-info btn-large" href="../account/register">Crear
-							nueva cuenta_</a>
+						<a class="btn btn-info btn-large" href="../account/register">Instalar TiX_</a>
 					</div>
 				</div>
 				<div class="clear"></div>
@@ -108,8 +107,8 @@
 					</h3>
 					<p>
 						Puede crear su cuenta e instalar el software de medici&oacute;n en
-						su PC y/o computadora port&aacute;til aqu&iacute;: <a
-							class="btn btn-primary btn-small" href="../account/register">Instalar
+						su PC y/o computadora port&aacute;til aqu&iacute;:  <a
+							class="btn btn-info" href="../account/register">Instalar
 							TiX_</a>
 					</p>
 				</div>

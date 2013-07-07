@@ -113,8 +113,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript">                        
             $(function () {
             	 var datos =  ${javaChart.JSONString};
-            	 console.log(datos);
-            	 
                  var fechas = ${javaChart.timestamps};
                  var title = "${javaChart.title}";
                  var redmarker = ${javaChart.redmarker};
@@ -172,7 +170,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 								});
                               //  $.sleep(800);    
 							//	$(location).attr('href', $(location).attr('href')).delay(2000);
-							var delay = 1000; //Your delay in milliseconds
+							var delay = 500; //Your delay in milliseconds
 								setTimeout(function(){ window.location = $(location).attr('href'); }, delay);
                             }
                         }
