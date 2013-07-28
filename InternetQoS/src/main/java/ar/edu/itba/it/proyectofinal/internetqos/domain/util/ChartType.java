@@ -1,6 +1,5 @@
 package ar.edu.itba.it.proyectofinal.internetqos.domain.util;
 
-import ar.edu.itba.it.proyectofinal.internetqos.domain.model.User;
 
 public enum ChartType {
 	GENERAL_GRAPH("GENERAL_GRAPH"), UPSTREAM_GRAPH("UPSTREAM_GRAPH"), DOWNSTREAM_GRAPH(

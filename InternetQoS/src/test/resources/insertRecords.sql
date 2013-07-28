@@ -6,13 +6,14 @@ INSERT INTO users VALUES (3, 1990, 'admin@admin.com', 'a',NULL, 'ADMIN');
 INSERT INTO users VALUES (4, 2000, 'vacio@vacio.com', 'a',NULL, 'REGULAR');
 
 /* Se generan las distintas instalaciones (casa, trabajo, etc) y se les asignan a los usuarios*/
+/* INS Number | Location | Name | User */
 
-INSERT INTO installation VALUES(1,'Casa',1);
-INSERT INTO installation VALUES(2,'Trabajo',1);
-INSERT INTO installation VALUES(3,'Club de Golf',1);
-INSERT INTO installation VALUES(4,'Ministerio',1);
-INSERT INTO installation VALUES(5,'Casa',2);
-INSERT INTO installation VALUES(6,'Universidad',2);
+INSERT INTO installation VALUES(1,0,'Casa',1);
+INSERT INTO installation VALUES(2,NULL,'Trabajo',1);
+INSERT INTO installation VALUES(3,1,'Club de Golf',1);
+INSERT INTO installation VALUES(4,2,'Ministerio',1);
+INSERT INTO installation VALUES(5,2,'Casa',2);
+INSERT INTO installation VALUES(6,NULL,'Universidad',2);
 
 /* Se generan los distintos ISPs disponibles*/
 

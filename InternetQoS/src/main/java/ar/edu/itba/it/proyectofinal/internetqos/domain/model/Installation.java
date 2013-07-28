@@ -2,8 +2,12 @@ package ar.edu.itba.it.proyectofinal.internetqos.domain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import ar.edu.itba.it.proyectofinal.internetqos.domain.util.LocationEnum;
 
 @Entity
 @Table(name = "installation")
@@ -15,6 +19,9 @@ public class Installation extends DBPersistentObject {
 	
 	@ManyToOne
 	private User owner;
+
+	@Enumerated(EnumType.ORDINAL)
+	private LocationEnum location;
 	
 	Installation() {
 		// required by hibernate 
@@ -23,6 +30,11 @@ public class Installation extends DBPersistentObject {
 	public Installation(User owner, String name){
 		this.owner = owner;
 		this.name = name;
+	}
+	
+	public Installation(User owner, String name, LocationEnum location){
+		this(owner,name);
+		this.location = location;
 	}
 	
 	@Override
@@ -56,6 +68,18 @@ public class Installation extends DBPersistentObject {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public LocationEnum getLocation() {
+		if(this.location == null){
+			return LocationEnum.NO_ASIGNADO;
+		}
+			
+		return location;
+	}
+
+	public void setLocation(LocationEnum location) {
+		this.location = location;
 	}
 
 }

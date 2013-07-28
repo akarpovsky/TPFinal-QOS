@@ -15,6 +15,11 @@
 						<label for="nickname">Nombre de la instalaci&oacute;n:</label> 
 						<form:input type="text" path="name" value="${name}" />
 						<br/>
+						<label for="location">Ubicaci&oacute;n: <br/><i>Elegir solo en caso de PC fija (no notebook)</i></label>
+						<form:select path="location">
+						     <form:options items="${installationLocations}" itemLabel="translationKey" />
+						</form:select>
+						<br/>
 						<input type="submit"  class="btn btn-primary btn-large" value="Aceptar">
 					</form:form>
 				</div>

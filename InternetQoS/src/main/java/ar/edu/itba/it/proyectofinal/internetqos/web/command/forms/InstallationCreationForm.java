@@ -6,6 +6,7 @@ import org.springframework.validation.Errors;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.Installation;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.model.User;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.InstallationRepository;
+import ar.edu.itba.it.proyectofinal.internetqos.domain.util.LocationEnum;
 
 public class InstallationCreationForm {
 
@@ -13,6 +14,8 @@ public class InstallationCreationForm {
 	private String name;
 	
 	private Integer id;
+	
+	private LocationEnum location;
 
 	public InstallationCreationForm() {
 	}
@@ -20,6 +23,7 @@ public class InstallationCreationForm {
 	public InstallationCreationForm(Installation installation) {
 		setName(installation.getName());
 		setId(installation.getId());
+		setLocation(location);
 	}
 	
 
@@ -31,6 +35,14 @@ public class InstallationCreationForm {
 		this.name = name;
 	}
 
+
+	public LocationEnum getLocation() {
+		return location;
+	}
+
+	public void setLocation(LocationEnum location) {
+		this.location = location;
+	}
 
 	public Integer getId() {
 		return id;
@@ -49,7 +61,7 @@ public class InstallationCreationForm {
 	}
 
 	public Installation build(User u) {
-		Installation i = new Installation(u, getName());
+		Installation i = new Installation(u, getName(), getLocation());
 		return i;
 	}
 

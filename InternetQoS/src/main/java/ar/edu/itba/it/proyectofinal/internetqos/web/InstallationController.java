@@ -18,6 +18,7 @@ import ar.edu.itba.it.proyectofinal.internetqos.domain.model.UserType;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.InstallationRepository;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.RecordRepository;
 import ar.edu.itba.it.proyectofinal.internetqos.domain.repository.UserRepository;
+import ar.edu.itba.it.proyectofinal.internetqos.domain.util.LocationEnum;
 import ar.edu.itba.it.proyectofinal.internetqos.web.command.forms.InstallationCreationForm;
 import ar.edu.itba.it.proyectofinal.internetqos.web.command.forms.InstallationEditForm;
 import ar.edu.itba.it.proyectofinal.internetqos.web.util.ControllerUtil;
@@ -54,7 +55,7 @@ public class InstallationController {
 			mav.setViewName("error");
 			return mav;
 		}
-		
+		mav.addObject("installationLocations", LocationEnum.values());
 		mav.addObject("installationCreationForm", new InstallationCreationForm());
 		return mav;
 

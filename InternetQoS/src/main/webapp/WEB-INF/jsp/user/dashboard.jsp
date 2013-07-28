@@ -74,6 +74,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 							<p>
 								<img src="<c:url value='/img/congestiondown.png'/>"/> Congestion Upstream <img src="<c:url value='/img/congestionup.png'/>"/> Congestion Downstream
 							</p>
+								Location: ${currentInstallation.location.translationKey}
+							<p>
+							</p>
+						</div>
+						<div class="">
 						</div>
 					</div>
 					<div class="hero-unit" style="z-index: 1;height: 53px;margin: 0px;padding: 0px;">
