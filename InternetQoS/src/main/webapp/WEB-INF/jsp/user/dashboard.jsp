@@ -17,7 +17,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
               	<c:forEach items="${installationISPMap}" var="entry">
             		<li class='<c:if test="${entry.key.id == currentInstallation.id}">active listExpanded</c:if><c:if test="${entry.key.id != currentInstallation.id}">listCollapsed</c:if>'>
 <!--             		<li class="listCollapsed"> -->
-						<a id="toggler" href="#" data-toggle="collapse" class="toggler active" data-target="#${entry.key.id}_isps">
+						<a id="toggler" href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${entry.key.id}" data-toggle="collapse" class="toggler active" data-target="#${entry.key.id}_isps">
 							<i class="icon-folder-open"></i>
 							<i class="icon-folder-close"></i>
 							${entry.key.name}

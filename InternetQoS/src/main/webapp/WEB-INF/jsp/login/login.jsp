@@ -27,7 +27,7 @@
 
 		<div class="row-fluid">
 			<div class="span6">
-				<h3>Proyecto TiX_</h3>
+				<h3>Proyecto TiX</h3>
 				<div class="thumb_image">
 					<img alt="Logo Tix" src="<c:url value='/img/logo_TiX.png'/>">
 				</div>
@@ -37,7 +37,7 @@
 						<p>TiX (Traffic information eXchange) es una herramienta que
 							permite efectuar una medici&oacute;n de la calidad de su acceso a
 							Internet. .</p>
-						<a class="btn btn-info btn-large" href="../account/register">Instalar TiX_</a>
+						<a class="btn btn-info btn-large" href="../account/register">Instalar TiX</a>
 					</div>
 				</div>
 				<div class="clear"></div>
@@ -45,7 +45,7 @@
 
 			</div>
 			<div class="span6">
-				<h1>Iniciar sesi&oacute;n_</h1>
+				<h3>Iniciar sesi&oacute;n</h3>
 				<div class="form-horizontal well">
 					<form:form action="../login/login" method="POST"
 						commandName="userLoginForm">
@@ -84,32 +84,32 @@
 			</div>
 			<div class="row">
 				<div class="span4">
-					<h3>
+					<h4>
 						&iquest;Cu&aacute;l es el objetivo?
-					</h3>
+					</h4>
 					<p>El algoritmo ejecuta la medici&oacute;n enviando un paquete
 						de datos por segundo, asegurando un consumo inperceptible de su
 						conexi&oacute;n a Internet y permitiendo un monitoreo las 24hs del
 						d&iacute;a y los 365 d&iacute;as del a&ntilde;o.</p>
 				</div>
 				<div class="span4">
-					<h3>
+					<h4>
 						&iquest;Qu&eacute; resultados arroja?
-					</h3>
+					</h4>
 					<p>Las mediciones se realizan todo el tiempo, generando un
 						informe, tanto en formato web interactivo como en PDF mensual,
 						detallando los momentos en que su proveedor de Internet no pude
 						entregarle el tr&aacute;fico m&aacute;ximo contratado.</p>
 				</div>
 				<div class="span4">
-					<h3>
+					<h4>
 						&iquest;C&oacute;mo puedo usar TiX?
-					</h3>
+					</h4>
 					<p>
 						Puede crear su cuenta e instalar el software de medici&oacute;n en
 						su PC y/o computadora port&aacute;til aqu&iacute;:  <a
 							class="btn btn-info" href="../account/register">Instalar
-							TiX_</a>
+							TiX</a>
 					</p>
 				</div>
 			</div>
