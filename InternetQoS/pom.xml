@@ -10,6 +10,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jackson.version>1.9.10</jackson.version>
 	</properties>
 
 
@@ -156,7 +157,12 @@
 			<artifactId>recaptcha4j</artifactId>
 			<version>0.0.7</version>
 		</dependency>
-            
+		<!-- Jackson for returnning JSON     -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<!-- For annotations and other Java5 stuff -->

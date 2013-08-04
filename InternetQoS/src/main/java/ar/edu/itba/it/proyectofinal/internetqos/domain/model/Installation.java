@@ -7,6 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import ar.edu.itba.it.proyectofinal.internetqos.domain.util.LocationEnum;
 
 @Entity
@@ -48,7 +50,8 @@ public class Installation extends DBPersistentObject {
 		}
 		return id == other.id;
 	}
-
+	
+	@JsonIgnore
 	public User getOwner() {
 		return this.owner;
 	}

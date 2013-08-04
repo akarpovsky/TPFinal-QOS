@@ -118,7 +118,7 @@ public class UserController {
 
 		if (userInstallations.isEmpty()) { // No installation or data to show
 											// for current user
-			mav.setView(ControllerUtil.redirectView("/installation/downloadapp"));
+			mav.setView(ControllerUtil.redirectView("/installation/newinstallation"));
 			return mav;
 		}
 		Map<Installation, List<ISP>> installationISPMap = new HashMap<Installation, List<ISP>>();

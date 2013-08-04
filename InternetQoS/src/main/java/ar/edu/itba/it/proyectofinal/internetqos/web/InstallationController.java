@@ -55,6 +55,8 @@ public class InstallationController {
 			mav.setViewName("error");
 			return mav;
 		}
+		
+		mav.addObject("noInstallations", me.getInstallations().isEmpty());
 		mav.addObject("installationLocations", LocationEnum.values());
 		mav.addObject("installationCreationForm", new InstallationCreationForm());
 		return mav;

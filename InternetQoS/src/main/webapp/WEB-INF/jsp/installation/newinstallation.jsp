@@ -10,6 +10,15 @@
 			<div class="span12">
 				<h1>Crear nueva instalaci&oacute;n_</h1>
 					<div class="hero-unit">
+					<c:if test="${noInstallations}">
+						<div class="row-fluid">
+		   				 	<div class="span12">
+						      <div class="alert alert-info">
+						        <strong>Informaci&oacute;n</strong> Para poder utilizar el sistema de mediciones TiX primero debe crear una instalaci&oacute;n utilizando el siguiente formulario.
+						      </div>
+						    </div>
+						</div>
+					</c:if>
 					<form:form method="POST" action="./newinstallation" commandName="installationCreationForm">
 						<form:errors path="*" cssClass="label label-important"/>
 						<label for="nickname">Nombre de la instalaci&oacute;n:</label> 
