@@ -10,17 +10,30 @@ from kivy.uix.spinner import Spinner
 from kivy.uix.dropdown import DropDown
 from functools import partial
 from kivy.config import Config
+from kivy.graphics import Color, Rectangle
 import webbrowser
+import ConfigParser
 
 Config.set('graphics', 'width', '600')
 Config.set('graphics', 'height', '350')
 
-tixBaseUrl = "http://localhost:8080/InternetQoS/"
+# Tomo data del archivo de configuracion
+config = ConfigParser.ConfigParser()
+config.read('tixapp.cfg')
+tixBaseUrl = config.get("TiXClient", "tixBaseUrl")
 
 class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el boton de aceptar
 
  def __init__(self, **kwargs):
     super(LoginScreen, self).__init__(**kwargs)
+
+    # Background color
+    # with self.canvas.before:
+    # 	Color(rgba=(.5, .5, .5))
+    # 	self.rect = Rectangle(
+    #                         size=self.size,
+    #                         pos=self.pos)
+
     self.orientation = 'vertical'
     self.spacing='10sp'
     self.add_widget(Label(text='Iniciar sesion', font_size=24))
@@ -45,10 +58,18 @@ def on_text(label, instance, *args):
 
 def loginButtonOnClick(username, password, instance):
 	print 'Validando usuario ', username.text, '...'
-	req = UrlRequest(tixBaseUrl + 'bin/api/authenticate?name='+ username.text+'&password='+password.text, list_installations)
+	req = UrlRequest(tixBaseUrl + 'bin/api/authenticate?name='+ username.text+'&password='+password.text, on_success=list_installations, on_error=requestTimeOut)
 	# print(user)
 	# print('Validando usuario...%s' % selfa)
-    
+
+def requestTimeOut(req, result):
+		btnaccept = Button(text='Aceptar', size_hint_y=None, height='50sp')
+		content = BoxLayout(orientation='vertical')
+		content.add_widget(Label(text='Puede que el servidor de TiX no este funcionando correctamente.\nPor favor compruebe su conexion a internet y vuelva a intentarlo.'))
+		content.add_widget(btnaccept)
+		popup = Popup(title='Timeout Error',content=content,size_hint=(None, None), size=(600, 200), auto_dismiss=False)
+		btnaccept.bind(on_press=popup.dismiss)
+		popup.open()
 
 def list_installations(req, result):
     if(result is not None and len(result) > 0):
@@ -118,13 +139,11 @@ class TabTextInput(TextInput):
             super(TabTextInput, self)._keyboard_on_key_down(window, keycode, text, modifiers)
 
 class TiXApp(App):
-
  def build(self):
-     return LoginScreen()
-
+	return LoginScreen()
 
 if __name__ == '__main__':
-    TiXApp().run()
+	TiXApp().run()
 
 
         # # get any files into images directory
