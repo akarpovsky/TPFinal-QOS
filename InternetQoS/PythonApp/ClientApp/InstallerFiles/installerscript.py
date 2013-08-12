@@ -12,6 +12,7 @@ def installingStartup():
     startupFile = 'startupscript'
     udpclientFile = 'tix'
     os_system = platform.system()
+    installation_ok = False
     print os_system
     if os_system == "Linux":
         print "Creando Directorios..."
@@ -27,17 +28,23 @@ def installingStartup():
         copyanything("./" + startupFile,"/etc/init.d/" + startupFile)
         os.system("update-rc.d "+ startupFile + " defaults")
         print "Instalacion Finalizada!"
+        installation_ok = True
     if os_system == "Darwin":
         print "Estoy en MAC"
         #opyanything("./udpclientFileTiempos.py","/Applications/udpclientFileTiempos.py")
         os.system("osascript -e 'tell application \"System Events\" to make login item at end with properties {path:\"./TIX.app\", hidden:false}'")
         #os.system("osascript -e 'tell application \"System Events\" to get the name of every login item'")
+        installation_ok = True
     if os_system == "Windows":
         os_type = platform.release();
         if os_type == "XP":
             print "Estoy en Windows XP"
         if os_type == "Vista":
             print "Estoy en Windows Vista"
+
+        installation_ok = True
+
+    return installation_ok
 
 def unInstallingStartup():
     os_system = platform.system()
