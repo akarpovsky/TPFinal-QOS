@@ -11,9 +11,14 @@ from kivy.uix.dropdown import DropDown
 from functools import partial
 from kivy.config import Config
 from kivy.graphics import Color, Rectangle
+from kivy.uix.image import Image 
+import requests
 import webbrowser
 import ConfigParser
 import sys
+import json
+import keygeneration
+import os, ctypes
 
 sys.path.append('./InstallerFiles/')
 import installerscript
@@ -25,46 +30,73 @@ Config.set('graphics', 'height', '350')
 config = ConfigParser.ConfigParser()
 config.read('tixapp.cfg')
 tixBaseUrl = config.get("TiXClient", "tixBaseUrl")
+installDirUnix = config.get("TiXClient", "installDirUnix")
+
+
+globalUsername = ""
+globalUserId = ""
+globalUserPassword = ""
+globalUserInstallations = []
 
 class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el boton de aceptar
 
  def __init__(self, **kwargs):
 	super(LoginScreen, self).__init__(**kwargs)
+	try:
+		is_admin = os.getuid() == 0
+	except AttributeError:
+		is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
 
-	# Background color
-	# with self.canvas.before:
-	# 	Color(rgba=(.5, .5, .5))
-	# 	self.rect = Rectangle(
-	#                         size=self.size,
-	#                         pos=self.pos)
+	if(not is_admin):
+		popup = create_information_popup('Error','Debe ejecutar este programa con permisos de adminsitrador', partial(return_to_so,1)).open()
+	else:
+		# Background color
+		# with self.canvas.before:
+		# 	Color(rgba=(.5, .5, .5))
+		# 	self.rect = Rectangle(
+		#                         size=self.size,
+		#                         pos=self.pos)
 
-	self.orientation = 'vertical'
-	self.spacing='10sp'
-	self.add_widget(Label(text='Iniciar sesion', font_size=24))
+		self.orientation = 'vertical'
+		self.spacing='10sp'
 
-	form = GridLayout(cols=2)
+		headerLayout = BoxLayout(orientation='horizontal')
+		headerLabelsLayout = BoxLayout(orientation='vertical')
+		headerLabelsLayout.add_widget(Label(text='Proyecto TiX', font_size=24))
+		headerLabelsLayout.add_widget(Label(text='Iniciar sesion', font_size=18))
 
-	form.add_widget(Label(text='Usuario'))
-	self.username = TabTextInput(multiline=False)
-	form.add_widget(self.username) #Username field
-	form.add_widget(Label(text='Password'))
-	self.password = TabTextInput(password=True, multiline=False) #Password field
-	self.username.set_next(self.password)
-	form.add_widget(self.password)
-	self.add_widget(form)
-	loginButton = Button(text="Conectar", size_hint_y=None, height='50sp',font_size=20)
-	self.password.set_next(loginButton)
-	self.add_widget(loginButton)
-	loginButton.bind(on_press=partial(loginButtonOnClick,self.username,self.password)) #Accion que realizara el loginButton
+		headerLayout.add_widget(headerLabelsLayout)
+		headerLayout.add_widget(Image(source='./images/LogoTiX.png'))
+		self.add_widget(headerLayout)
+
+		form = GridLayout(cols=2)
+
+		form.add_widget(Label(text='Usuario'))
+		self.username = TabTextInput(multiline=False)
+		form.add_widget(self.username) #Username field
+		form.add_widget(Label(text='Password'))
+		self.password = TabTextInput(password=True, multiline=False) #Password field
+		self.username.set_next(self.password)
+		form.add_widget(self.password)
+		self.add_widget(form)
+		loginButton = Button(text="Conectar", size_hint_y=None, height='50sp',font_size=20)
+		self.password.set_next(loginButton)
+		self.add_widget(loginButton)
+		loginButton.bind(on_press=partial(loginButtonOnClick,self.username,self.password)) #Accion que realizara el loginButton
+
 
 def on_text(label, instance, *args):
 		print 'The widget', label
 
 def loginButtonOnClick(username, password, instance):
 	print 'Validando usuario ', username.text, '...'
+	global globalUsername
+	globalUsername = username.text
+	global globalUserPassword
+	globalUserPassword = password.text
 		# tixBaseUrl = http://tix.innova-red.net:8080/internetqos/
 		# tixBaseUrl = http://localhost:8080/InternetQoS/
-	req = UrlRequest(tixBaseUrl + 'bin/api/authenticate?name='+ username.text+'&password='+password.text, on_success=list_installations, on_error=requestTimeOut)
+	req = UrlRequest(tixBaseUrl + 'bin/api/authenticate?name='+ username.text+'&password='+password.text, on_success=create_new_installation, on_error=requestTimeOut)
 
 def requestTimeOut(req, result):
 		btnaccept = Button(text='Aceptar', size_hint_y=None, height='50sp')
@@ -75,32 +107,44 @@ def requestTimeOut(req, result):
 		btnaccept.bind(on_press=popup.dismiss)
 		popup.open()
 
-def list_installations(req, result):
-	if(result is not None and len(result) > 0):
-		installations = result
+def create_new_installation(req, result):
+	jsonUserData = json.loads(result) # Parseo la respuesta JSON de la API de TiX
+	print jsonUserData
+	if(result is not None and len(jsonUserData) > 0):
+		global globalUserId
+		globalUserId = jsonUserData['id']
 		installationValues=[]
-		for installation in installations:
-			installationValues.append(installation['name']) 
-			print installation
+		userHasInstallations = False
+		if(jsonUserData.get('installations') is not None and len(jsonUserData.get('installations')) > 0 ): #El usuario ya tiene instalaciones
+			userHasInstallations = True
+			for installation in jsonUserData.get('installations'):
+				installationValues.append(installation.replace('Installation: ', ''))
 
-		print('Cantidad de instalaciones: %d' % len(installations))
+			currentInstallationsString = ", ".join(installationValues)
+			global globalUserInstallations
+			globalUserInstallations = installationValues
+
+
+		newInstallationInput = TabTextInput(halign='center',multiline=False,font_size=24)
 		btnaccept = Button(text='Aceptar', size_hint_y=None, height='50sp')
 		content = BoxLayout(orientation='vertical')
-		content.add_widget(Label(text='Elija la instalacion que desea usar:'))
-		spinner = Spinner(text=installationValues[0],values=installationValues,size_hint=(None, None),size=(100, 44),pos_hint={'center_x': .5, 'center_y': .5})
-		content.add_widget(spinner)
+		content.add_widget(Label(text='Ingrese el nombre de la nueva instalacion:'))
+		# spinner = Spinner(text=installationValues[0],values=installationValues,size_hint=(None, None),size=(100, 44),pos_hint={'center_x': .5, 'center_y': .5})
+		# content.add_widget(spinner)
+		content.add_widget(newInstallationInput) #Username field
+		if(userHasInstallations):
+			content.add_widget(Label(halign='center',text='No repita el nombre de las instalaciones vigentes: \n' + currentInstallationsString))
 		content.add_widget(btnaccept)
-		popup = Popup(title='Instalador',content=content,size_hint=(None, None), size=(600, 200), auto_dismiss=False)
-		btnaccept.bind(on_press=partial(select_installation,spinner, popup))
+		popup = Popup(title='Instalador',content=content,size_hint=(None, None), size=(600, 300), auto_dismiss=False)
+		btnaccept.bind(on_press=partial(select_installation,newInstallationInput, popup))
 		popup.open()
 	else:
 		print 'Usuario invalido...'
 		btnclose = Button(text='Cancelar', size_hint_y=None, height='30sp')
 		content = BoxLayout(orientation='vertical', spacing=10)
-		btncreateinstallation = Button(text='Crear nueva instalacion', size_hint_y=None,  size_hint_x=0.4, height='50sp', pos_hint={'center_x': 0.5})
+		btncreateinstallation = Button(text='Crear nuevo usuario', size_hint_y=None,  size_hint_x=0.4, height='50sp', pos_hint={'center_x': 0.5})
 		btncreateinstallation.bind(on_press=createNewInstallationWebsite)
-
-		content.add_widget(Label(text='El usuario que ha ingresado es invalido o no tiene instalaciones asociadas.'))
+		content.add_widget(Label(text='El usuario que ha ingresado es invalido o no existe.'))
 		content.add_widget(btncreateinstallation)
 		content.add_widget(btnclose)
 		popup = Popup(title='Error',content=content,size_hint=(None, None), size=(600, 200), auto_dismiss=False)
@@ -109,24 +153,61 @@ def list_installations(req, result):
 
 def select_installation(self, old_popup,instance):
 	print 'Instalacion elegida: ', self.text
-	old_popup.dismiss()
+	print 'Validando nombre de instalacion... ', self.text, '...'
+	if(self.text in globalUserInstallations):
+		print 'ERROR: Instalacion repetida...'
+		create_information_popup('Error','El nombre de la instalacion ya ha sido elegido previamente.', 'dismiss').open()
+	else:
+		old_popup.dismiss()
+		
+		if not os.path.exists(installDirUnix):
+			os.makedirs(installDirUnix)
+
+		publicEncryptionKey = keygeneration.generateKeyPair(installDirUnix+'tix_key.priv',installDirUnix+'tix_key.pub')
+	 	payload = {'user_id': str(globalUserId), 'password': globalUserPassword, 'installation_name': self.text, 'encryption_key': publicEncryptionKey}
+		headers = {'content-type': 'application/json'}
+
+		r = requests.post(tixBaseUrl + 'bin/api/newInstallationPost', data=json.dumps(payload), headers=headers)
+		jsonUserData = json.loads(r.text) # Parseo la respuesta JSON de la API de TiX
+		if(r is not None and len(jsonUserData) > 0):
+			finish_installation()
+		else:
+			popup = create_information_popup('Error','No se ha podido crear la instalacion, reintente.\nLa aplicacion se cerrara.', partial(return_to_so,1)).open()
+
+		# print 'bin/api/newInstallation?user_id='+str(globalUserId)+'&password='+globalUserPassword+'&installation_name='+self.text+'&encryption_key='+publicEncryptionKey
+		# req = UrlRequest(tixBaseUrl + 'bin/api/newInstallation?user_id='+str(globalUserId)+'&password='+globalUserPassword+'&installation_name='+self.text+'&encryption_key='+publicEncryptionKey, on_success=finish_installation, on_error=requestTimeOut)
+
+def finish_installation():
+	if(installerscript.installingStartup() == True): # Call to installation procedure
+			installation_return = 'La instalacion se ha completado satisfactoriamente. Retornando al SO...'
+			sys_return = 0
+	else:
+		installation_return = 'Ha ocurrido un error en la instalacion y el programa se cerrara.'
+		sys_return = 1
+	popup = create_information_popup('Proceso de instalacion',installation_return, partial(return_to_so,sys_return))
+	# btnaccept.bind(on_press=partial(return_to_so,sys_return))
+	# content.add_widget(btnaccept)
+	popup.open()
+	# sys.exit(sys_return)
+
+
+def return_to_so(sys_return, instance):
+	sys.exit(sys_return)
+
+def create_information_popup(title, information, button_action):
 	btnaccept = Button(text='Aceptar', size_hint_y=None, height='50sp')
 	content = BoxLayout(orientation='vertical')
-	popup = Popup(title='Timeout Error',content=content,size_hint=(None, None), size=(600, 200), auto_dismiss=False)
-	btnaccept.bind(on_press=popup.dismiss)
-	if(installerscript.installingStartup() == True): # Call to installation procedure
-		installation_return = 'Instalacion OK'
-	else:
-		installation_return = 'Error en la instalacion'
-	content.add_widget(Label(text=installation_return))
+	content.add_widget(Label(text=information))
 	content.add_widget(btnaccept)
-	popup.open()
-	return self.text
+	popup = Popup(title=title,content=content,size_hint=(None, None), size=(600, 200), auto_dismiss=False)
+	if(button_action == 'dismiss'):
+		btnaccept.bind(on_press=popup.dismiss)
+	else:
+		btnaccept.bind(on_press=button_action)
+	return popup
 
 def createNewInstallationWebsite(self):
 	webbrowser.open(tixBaseUrl)
-
-
 
 class TabTextInput(TextInput):
 

@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
@@ -21,6 +23,9 @@ public class Installation extends DBPersistentObject {
 	
 	@ManyToOne
 	private User owner;
+	
+	@Column(unique=true,nullable=true,columnDefinition="TEXT")
+	private String encryptionKey;
 
 	@Enumerated(EnumType.ORDINAL)
 	private LocationEnum location;
@@ -39,6 +44,19 @@ public class Installation extends DBPersistentObject {
 		this.location = location;
 	}
 	
+	public Installation(User owner, String name, String encryptionKey){
+		this(owner,name);
+		this.encryptionKey = encryptionKey;
+	}
+	
+	public String getEncryptionKey() {
+		return encryptionKey;
+	}
+
+	public void setEncryptionKey(String encryptionKey) {
+		this.encryptionKey = encryptionKey;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null || !(obj instanceof Installation)) {
