@@ -86,8 +86,6 @@ public class ApiController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody String newInstallationPost(	@RequestBody Map<String,String> body) {
-		System.out.println(body.entrySet());
-		
 		int id = Integer.valueOf(body.get("user_id"));
 		String password = body.get("password");
 		String installationName = body.get("installation_name");

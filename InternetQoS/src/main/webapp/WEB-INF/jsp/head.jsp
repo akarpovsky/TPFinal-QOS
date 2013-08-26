@@ -29,7 +29,7 @@
 -->
 
 <!-- Javascript -->
-<script type="text/javascript" src="<c:url value='/js/jquery-1.10.1.min.js'/>"></script>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script type="text/javascript" src="<c:url value='/js/bootstrap.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/bootstrap-datepicker.js'/>"></script>
 <script src="http://code.highcharts.com/stock/highstock.js"></script>

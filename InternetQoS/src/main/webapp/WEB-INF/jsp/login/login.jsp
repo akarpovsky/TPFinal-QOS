@@ -36,7 +36,7 @@
 						<h4>&iquest;Qu&eacute; es el Proyecto Tix?</h4>
 						<p>TiX (Traffic information eXchange) es una herramienta que
 							permite efectuar una medici&oacute;n de la calidad de su acceso a
-							Internet. .</p>
+							Internet.</p>
 						<a class="btn btn-info btn-large" href="../account/register">Instalar TiX</a>
 					</div>
 				</div>

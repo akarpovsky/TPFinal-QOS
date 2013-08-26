@@ -22,6 +22,4 @@ public class IdToUserConverter implements Converter<Integer, User> {
 		return userRepository.get(userId);
 	}
 	
-	
-
 }

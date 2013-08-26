@@ -34,7 +34,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 							<c:forEach items="${installationsList}" var="installation">
 								<tr>
 									<td>${installation.name}</td>
-									<td><a class="btn btn-info" href="./edit?id=${installation.id}">Editar</a>  <a href="#myModal" role="button" class="btn btn-danger deleteInstallationDialog" data-toggle="modal" data-id="${installation.id }">Eliminar</a></td>
+									<td><a class="btn btn-info" href="./edit?id=${installation.id}">Editar</a> <a href="#publicKeyModal" role="button" class="btn btn-danger publicKeyDialog" data-toggle="modal" data-id="${installation.encryptionKey}">Ver Clave P&uacute;blica</a>  <a href="#myModal" role="button" class="btn btn-danger deleteInstallationDialog" data-toggle="modal" data-id="${installation.id }">Eliminar</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -49,16 +49,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
 
-<script type="text/javascript">
-$(document).on("click", ".deleteInstallationDialog", function () {
-    var installationId = $(this).data('id');
-    document.getElementById("deleteLink").href="./delete?id=" + installationId; 
-   // Not necessary to call the modal
-   // $('#addBookDialog').modal('show');
-});
-</script>
-
-<!--Warning Modal -->
+<!--Delete Modal -->
 			<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			  <div class="modal-header">
 			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -72,5 +63,31 @@ $(document).on("click", ".deleteInstallationDialog", function () {
 			    <a id="deleteLink" href="#"><button class="btn btn-primary" href="aaa">Continuar</button></a>
 			  </div>
 			</div>	
+			
+<!--Public Key Modal -->
+			<div id="publicKeyModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-header">
+			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			    <h3 id="myModalLabel">Clave p&uacute;blica</h3>
+			  </div>
+			  <div class="modal-body">
+			    <div id="publicKeyDiv">aaa</div>
+			  </div>
+			  <div class="modal-footer">
+			    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Aceptar</button>
+			  </div>
+			</div>	
+<script type="text/javascript">
+$(document).on("click", ".deleteInstallationDialog", function () {
+    var installationId = $(this).data('id');
+    document.getElementById("deleteLink").href="./delete?id=" + installationId; 
+   // Not necessary to call the modal
+   // $('#addBookDialog').modal('show');
+});
 
+$(document).on("click", ".publicKeyDialog", function () {
+    var installationPublicKey = $(this).data('id');
+    $("#publicKeyDiv").html(installationPublicKey);
+});
+</script>
 </html>

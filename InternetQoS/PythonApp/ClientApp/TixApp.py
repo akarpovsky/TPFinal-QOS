@@ -13,12 +13,13 @@ from kivy.config import Config
 from kivy.graphics import Color, Rectangle
 from kivy.uix.image import Image 
 import requests
+import subprocess
 import webbrowser
 import ConfigParser
 import sys
 import json
 import keygeneration
-import os, ctypes
+import os, ctypes, platform
 
 sys.path.append('./InstallerFiles/')
 import installerscript
@@ -37,6 +38,8 @@ globalUsername = ""
 globalUserId = ""
 globalUserPassword = ""
 globalUserInstallations = []
+globalPlatformName = platform.system()
+globalIsAdmin = False
 
 class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el boton de aceptar
 
@@ -47,16 +50,21 @@ class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el bo
 	except AttributeError:
 		is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
 
-	if(not is_admin):
-		popup = create_information_popup('Error','Debe ejecutar este programa con permisos de adminsitrador', partial(return_to_so,1)).open()
-	else:
-		# Background color
-		# with self.canvas.before:
-		# 	Color(rgba=(.5, .5, .5))
-		# 	self.rect = Rectangle(
-		#                         size=self.size,
-		#                         pos=self.pos)
+	global globalIsAdmin
+	globalIsAdmin = is_admin
 
+	if os.path.exists("/etc/TIX"):
+		btnclose = Button(text='Salir', size_hint_y=None, height='30sp')
+		content = BoxLayout(orientation='vertical', spacing=10)
+		btncreateinstallation = Button(text='Desinstalar', size_hint_y=None,  size_hint_x=0.4, height='50sp', pos_hint={'center_x': 0.5})
+		btncreateinstallation.bind(on_press=deleteExistingInstallation)
+		content.add_widget(Label(text='Usted ya posee una instalacion de TiX en esta PC.'))
+		content.add_widget(btncreateinstallation)
+		content.add_widget(btnclose)
+		popup = Popup(title='Error',content=content,size_hint=(None, None), size=(600, 200), auto_dismiss=False)
+		btnclose.bind(on_release=partial(return_to_so,0))
+		popup.open()
+	else:	
 		self.orientation = 'vertical'
 		self.spacing='10sp'
 
@@ -83,7 +91,7 @@ class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el bo
 		self.password.set_next(loginButton)
 		self.add_widget(loginButton)
 		loginButton.bind(on_press=partial(loginButtonOnClick,self.username,self.password)) #Accion que realizara el loginButton
-
+	
 
 def on_text(label, instance, *args):
 		print 'The widget', label
@@ -106,9 +114,14 @@ def requestTimeOut(req, result):
 		popup = Popup(title='Timeout Error',content=content,size_hint=(None, None), size=(600, 200), auto_dismiss=False)
 		btnaccept.bind(on_press=popup.dismiss)
 		popup.open()
+		print "hola"
 
 def create_new_installation(req, result):
-	jsonUserData = json.loads(result) # Parseo la respuesta JSON de la API de TiX
+	try:
+		jsonUserData = json.loads(result) # Parseo la respuesta JSON de la API de TiX
+	except Exception, e:
+		print "Malformed JSON server response. Exiting application..."
+		exit(1)
 	print jsonUserData
 	if(result is not None and len(jsonUserData) > 0):
 		global globalUserId
@@ -168,7 +181,12 @@ def select_installation(self, old_popup,instance):
 		headers = {'content-type': 'application/json'}
 
 		r = requests.post(tixBaseUrl + 'bin/api/newInstallationPost', data=json.dumps(payload), headers=headers)
-		jsonUserData = json.loads(r.text) # Parseo la respuesta JSON de la API de TiX
+		try:
+			jsonUserData = json.loads(r.text) # Parseo la respuesta JSON de la API de TiX
+		except Exception, e:
+			print "Malformed JSON server response. Exiting application..."
+			exit(1)
+		
 		if(r is not None and len(jsonUserData) > 0):
 			finish_installation()
 		else:
@@ -178,12 +196,22 @@ def select_installation(self, old_popup,instance):
 		# req = UrlRequest(tixBaseUrl + 'bin/api/newInstallation?user_id='+str(globalUserId)+'&password='+globalUserPassword+'&installation_name='+self.text+'&encryption_key='+publicEncryptionKey, on_success=finish_installation, on_error=requestTimeOut)
 
 def finish_installation():
-	if(installerscript.installingStartup() == True): # Call to installation procedure
-			installation_return = 'La instalacion se ha completado satisfactoriamente. Retornando al SO...'
-			sys_return = 0
-	else:
-		installation_return = 'Ha ocurrido un error en la instalacion y el programa se cerrara.'
-		sys_return = 1
+
+	global globalPlatformName
+	if globalPlatformName == "Linux":
+		try:
+			subprocess.call(["gksudo", "echo 'Gaining root privileges..."]) #Test if ejecutable exists
+		except OSError as e:
+			popup = create_information_popup('Error','Debe ejecutar este programa con permisos de adminsitrador', partial(return_to_so,1)).open()
+
+		sys_return = subprocess.call(['gksudo','python ./InstallerFiles/installerscript.py'])
+	# if(installerscript.installingStartup() == True): # Call to installation procedure
+	# 		installation_return = 'La instalacion se ha completado satisfactoriamente. Retornando al SO...'
+	# 		sys_return = 0
+	# else:
+	# 	installation_return = 'Ha ocurrido un error en la instalacion y el programa se cerrara.'
+	# 	sys_return = 1
+
 	popup = create_information_popup('Proceso de instalacion',installation_return, partial(return_to_so,sys_return))
 	# btnaccept.bind(on_press=partial(return_to_so,sys_return))
 	# content.add_widget(btnaccept)
@@ -205,6 +233,25 @@ def create_information_popup(title, information, button_action):
 	else:
 		btnaccept.bind(on_press=button_action)
 	return popup
+
+def deleteExistingInstallation(self):
+	global globalPlatformName
+	if globalPlatformName == "Linux":
+		try:
+			subprocess.call(["gksudo", "echo 'Gaining root privileges..."]) #Test if ejecutable exists
+		except OSError as e:
+			popup = create_information_popup('Error','Debe ejecutar este programa con permisos de adminsitrador', partial(return_to_so,1)).open()
+
+		sys_return = subprocess.call(['gksudo','python ./InstallerFiles/uninstallStartupUDPClient.py'])
+	
+	if(sys_return == 0): # Call to installation procedure
+			installation_return = 'Se ha borrado con exito la desinstalacion de TiX. Retornando al SO...'
+			sys_return = 0
+	else:
+		installation_return = 'Ha ocurrido un error en el proceso de desinstalacion y el programa se cerrara.'
+		sys_return = 1
+
+	popup = create_information_popup('Proceso de instalacion',installation_return, partial(return_to_so,sys_return)).open()
 
 def createNewInstallationWebsite(self):
 	webbrowser.open(tixBaseUrl)

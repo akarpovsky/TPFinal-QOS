@@ -98,7 +98,7 @@ public class InstallationController {
 	public ModelAndView downloadapp(HttpSession session,
 			@RequestParam(value="ins", required=false) Installation installation) {
 		ModelAndView mav = new ModelAndView();
-		if(installation == null || (installation != null && !getSessionUser(session).hasInstallation(installation)) ){
+		if(installation != null && !getSessionUser(session).hasInstallation(installation) ){
 			mav.addObject("errorDescription",
 					"No puede ver instalaciones que no le pertenecen.");
 			mav.setViewName("error");
