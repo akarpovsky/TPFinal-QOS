@@ -8,6 +8,14 @@
 import SocketServer
 import datetime
 import threading
+from Crypto.PublicKey import RSA
+import ConfigParser
+
+
+config = ConfigParser.ConfigParser()
+config.read('tixserver.cfg')
+SERVER_HOST = config.get("TiXServer", "SERVER_HOST") #TODO: Change TEST!
+SERVER_PORT = config.getint("TiXServer", "SERVER_PORT")
 
 def ts():
   # time en microsegundos
@@ -27,7 +35,7 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
     """
 
     def handle(self):
-	tstamp=ts() 
+        tstamp=ts() 
         data = self.request[0].strip()
         socket = self.request[1]
 	       
@@ -39,11 +47,20 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
 #	print msg[0]+'|'+msg[1]+'|'+msg[2]+'1'+msg[3]        
 
         if len(msg)>4:# depende de si es un mensaje corto o un mensaje largo
-	  #Mensaje largo
-	  socket.sendto(msg[0] + '|' + tstamp +'|' + str(ts()) + '|' + msg[3] + '|' + msg[4], self.client_address)
-	else:
-	  #Mensaje corto
-	  socket.sendto(msg[0]+'|'+ tstamp +'|' + str(ts()) + '|' + msg[3], self.client_address)
+        #Mensaje largo
+          large_package_msg = msg[4].split('|')
+          if len(large_package_msg)>=3 and large_package_msg[0]=='DATA':
+            # Tengo datos para procesar dentro del mensaje largo
+            client_pub_key_str = large_package_msg[1]
+            client_signed_data = large_package_msg[2]
+            client_pub_key = RSA.importKey(client_pub_key_str) # import pub key from string
+            client_plain_data = client_pub_key.verify(client_signed_data) # decrypt sent encrypted data
+
+          else:
+            socket.sendto(msg[0] + '|' + tstamp +'|' + str(ts()) + '|' + msg[3] + '|' + msg[4], self.client_address)
+        else:
+        #Mensaje corto
+          socket.sendto(msg[0]+'|'+ tstamp +'|' + str(ts()) + '|' + msg[3], self.client_address)
 	  
 
 
@@ -53,7 +70,7 @@ class ThreadingUDPServer(SocketServer.ThreadingMixIn, SocketServer.UDPServer):
 
 
 if __name__ == "__main__":
-    HOST, PORT = "157.92.44.31", 80
+    HOST, PORT = SERVER_HOST, SERVER_PORT 
 #    HOST='127.0.0.1'
 #    PORT=5005
     # Create the server, binding to localhost on port 9999
