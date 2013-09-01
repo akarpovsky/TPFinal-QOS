@@ -18,6 +18,7 @@ def generateKeyPair(privateKeyFile, publicKeyFile):
 	return exportableKeys[1]
 
 if __name__ == "__main__":
+	#generateKeyPair("/etc/TIX/tix_key.priv", "/etc/TIX/tix_key.pub")
 
 	generateKeyPair("tix_key.priv", "tix_key.pub")
 	privateKeyFile = open('tix_key.priv','r')
