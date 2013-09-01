@@ -86,11 +86,11 @@ def pingUniq(num_uniq, log_file):
 		log_msg(log_file, '|' + pack_len + '|' + data)
 		
 
-		print data
-		#msg_completo = str(data).split('|') 
-		#print len(data)
+		#print data #debuging
+		#msg_completo = str(data).split('|')  
+		#print len(data) #debuging
 	except:
-		print 'Timeout: no hubo respuesta del servidor'
+		# print 'Timeout: no hubo respuesta del servidor' #debuging
 		client.close()
 		
 
@@ -106,7 +106,7 @@ if __name__ == "__main__":
 	i=0
 	while True:
   		#print i
-		if int(ts())-int(t0) > 60000000:#1'
+		if int(ts())-int(t0) > 600000000:# 10 minutos
 			t0=ts()
   		cliente= threading.Thread(target=pingUniq,args=(i,log_file + t0))
   		cliente.start()
