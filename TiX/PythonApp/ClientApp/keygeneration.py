@@ -18,9 +18,8 @@ def generateKeyPair(privateKeyFile, publicKeyFile):
 	return exportableKeys[1]
 
 if __name__ == "__main__":
-<<<<<<< HEAD
-	generateKeyPair("/etc/TIX/tix_key.priv", "/etc/TIX/tix_key.pub")
-=======
+#	generateKeyPair("/etc/TIX/tix_key.priv", "/etc/TIX/tix_key.pub")
+
 
 	generateKeyPair("tix_key.priv", "tix_key.pub")
 	privateKeyFile = open('tix_key.priv','r')
@@ -38,4 +37,4 @@ if __name__ == "__main__":
 	## Por ultimo uso la publicKeyPlain para buscar el usuario
 
 	print publicKey.verify(msg, signedMessage) # En el servidor se hace el VERIFY, para esto se necesita tambien la firma!
->>>>>>> 1ad2b91fc8bfb1736a48e106a9957aaa6cc28edf
+

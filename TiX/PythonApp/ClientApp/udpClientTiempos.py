@@ -42,11 +42,8 @@ def relleno_largo(largo, check, told,log_file):
 		publicKey = RSA.importKey(publicKeyFile.read())
 		signedMessage = privateKey.sign(msg, Random.new().read)
 		publicKeyPlain = publicKey.exportKey()
-		print publicKeyPlain 
-		print "ACATA"
-		print signedMessage
 		relleno = "DATA;;" + str(publicKeyPlain) + ";;" + str(signedMessage) + ";;" + msg
-		print relleno
+		#print relleno
 	return relleno
 
 	
