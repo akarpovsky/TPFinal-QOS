@@ -204,8 +204,8 @@ def finish_installation():
 			popup = create_information_popup('Error','Debe ejecutar este programa con permisos de adminsitrador', partial(return_to_so,1)).open()
 
 		sys_return = subprocess.call(['gksudo','python ./InstallerFiles/installStartupUDPClient.py']) # Must change python for the executable
-    if os_system == "Darwin":
-    	sys_return = 0
+	if os_system == "Darwin":
+		sys_return = 0
 
 	# if(installerscript.installingStartup() == True): # Call to installation procedure
 	# 		installation_return = 'La instalacion se ha completado satisfactoriamente. Retornando al SO...'

@@ -50,5 +50,25 @@ class DBManager(object):
 			print "Error: Could not insert record in DB"
 			print e
 
+	@classmethod
+	def getInstallationAndClientId(cls, publicKey):
+		DBManagerInst = DBManager.get_instance()
+		conn = DBManagerInst.get_connection()
+		cursor = conn.cursor()
+		try:
+			cursor.execute("""SELECT id, owner_id FROM installation WHERE encryptionkey=%s""", [publicKey])
+			data = cursor.fetchone() # data[0] = installation_id, data[1] = user_id
+			return data
+		except Exception, e:
+			print "Error: Could not get record from DB"
+			print e
+
 if __name__ == "__main__":
-	DBManager.insert_record(11100,20,53,'2013-04-14 16:20:12.345678',55,50,"false","false",1,1,1)
+	# DBManager.insert_record(11100,20,53,'2013-04-14 16:20:12.345678',55,50,"false","false",1,1,1)
+	key = """-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDFlr7W90AKh5BDcROE0aPCfJJX
+QfAZvppve3C6Ddb8HsCYthPfEqtu7D7kXVHNJISC79g3Mzz4x9wZvk2RWRYs6v/+
+KH7nn6+HOEqggqNGgaIPr6tysbRSTemuWu7RU0gsRlGUn8nik/fpz6HPK9Gfg0Em
+y5unpkQ9s5kDOCwi7wIDAQAB
+-----END PUBLIC KEY-----"""
+	print DBManager.getInstallationAndClientId(key)
