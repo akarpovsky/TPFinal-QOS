@@ -33,8 +33,13 @@ if __name__ == "__main__":
 	publicKeyPlain = publicKey.exportKey()
 	#Cliente envia al server: DATA|publicKeyPlain|signedMeessage|msg
 
-	## En el server, valido el 'DATA' y con la signature y el msg lo verifico. 
-	## Por ultimo uso la publicKeyPlain para buscar el usuario
+	## En el server, valido el 'DATA' y con la signature y el msg lo verifico. Por ultimo uso la publicKeyPlain para buscar el usuario
 
+<<<<<<< HEAD
 	print publicKey.verify(msg, signedMessage) # En el servidor se hace el VERIFY, para esto se necesita tambien la firma!
 
+=======
+	client_pub_key = RSA.importKey(publicKeyPlain) # import pub key from string
+
+	print client_pub_key.verify(msg, signedMessage) # En el servidor se hace el VERIFY, para esto se necesita tambien la firma!
+>>>>>>> c5ff98dc930c83822aabe236952d0c8c27761cea
