@@ -10,6 +10,8 @@ import datetime
 import threading
 from Crypto.PublicKey import RSA
 import ConfigParser
+import dbmanager
+import platform, os
 
 
 config = ConfigParser.ConfigParser()
@@ -48,16 +50,50 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
 
         if len(msg)>4:# depende de si es un mensaje corto o un mensaje largo
         #Mensaje largo
-          large_package_msg = msg[4].split('|')
+          large_package_msg = msg[4].split(';;')
           if len(large_package_msg)>=3 and large_package_msg[0]=='DATA':
             # Tengo datos para procesar dentro del mensaje largo
-            client_pub_key_str = large_package_msg[1]
-            client_signed_data = large_package_msg[2]
-            client_pub_key = RSA.importKey(client_pub_key_str) # import pub key from string
-            client_plain_data = client_pub_key.verify(client_signed_data) # decrypt sent encrypted data
+            #Cliente envia al server: DATA|publicKeyPlain|signedMeessage|msg
 
-          else:
-            socket.sendto(msg[0] + '|' + tstamp +'|' + str(ts()) + '|' + msg[3] + '|' + msg[4], self.client_address)
+            client_pub_key_str = large_package_msg[1]
+            client_signed_msg = large_package_msg[2]
+            client_plain_msg = large_package_msg[3]
+
+            client_pub_key = RSA.importKey(client_pub_key_str) # import pub key from string
+            if client_pub_key.verify(client_plain_msg, client_signed_msg): # En el servidor se hace el VERIFY, para esto se necesita tambien la firma!
+              client_data = DBManager.getInstallationAndClientId(client_pub_key_str)
+              
+              if client_data is not None:
+                installation_id = client_data[0]
+                client_id = client_data[1]
+                client_server_folder = "cli_" + client_id + "_ins_" + installation_id
+                os_system = platform.system()
+                print "Creando/validando Directorios para los records..."
+                if os_system == "Linux":
+                  if not os.path.exists("/etc/TIX/records/" + client_server_folder ):
+                    os.makedirs("/etc/TIX/records/" + client_server_folder )
+                  
+                  logFile = open("/etc/TIX/records/" + client_server_folder + "/log" + ts(), 'wb')
+                  logFile.write(client_plain_msg)
+                  logFile.close()
+                  
+                if os_system == "Darwin":
+                  if not os.path.exists("/etc/TIX/records/" + client_server_folder ):
+                    os.makedirs("/etc/TIX/records/" + client_server_folder)
+
+                  logFile = open("/etc/TIX/records/" + client_server_folder + "/log" + ts(), 'wb')
+                  logFile.write(client_plain_msg)
+                  logFile.close()
+
+                if os_system == "Windows":
+                  os_type = platform.release();
+                  if os_type == "XP":
+                    print "Estoy en Windows XP"
+                  if os_type == "Vista":
+                    print "Estoy en Windows Vista"
+
+
+          socket.sendto(msg[0] + '|' + tstamp +'|' + str(ts()) + '|' + msg[3] + '|' + msg[4], self.client_address)
         else:
         #Mensaje corto
           socket.sendto(msg[0]+'|'+ tstamp +'|' + str(ts()) + '|' + msg[3], self.client_address)
@@ -68,8 +104,26 @@ class ThreadingUDPServer(SocketServer.ThreadingMixIn, SocketServer.UDPServer):
     pass
 
 
-
 if __name__ == "__main__":
+    os_system = platform.system()
+    print "Creando/validando Directorios para los records..."
+    if os_system == "Linux":
+      if not os.path.exists("/etc/TIX"):
+        os.makedirs("/etc/TIX")
+        os.makedirs("/etc/TIX/records")
+      
+    if os_system == "Darwin":
+      if not os.path.exists("/etc/TIX"):
+        os.makedirs("/etc/TIX")
+        os.makedirs("/etc/TIX/records")
+
+    if os_system == "Windows":
+      os_type = platform.release();
+      if os_type == "XP":
+         print "Estoy en Windows XP"
+      if os_type == "Vista":
+        print "Estoy en Windows Vista"
+
     HOST, PORT = SERVER_HOST, SERVER_PORT 
 #    HOST='127.0.0.1'
 #    PORT=5005

@@ -56,8 +56,6 @@ def pingUniq(num_uniq, log_file):
 	else:
 		message = t1 + '|' + t2 + '|' + t3 + '|' + t4 + '|' + relleno_largo(4400)
 	
-	
-	
 	client = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 	
 	HOST='157.92.44.31'

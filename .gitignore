@@ -4,5 +4,7 @@
 *.DS_Store
 *.classpath
 *.project
+*.pyc
+*.core.prefs
 target/
 InternetQoS/target/
