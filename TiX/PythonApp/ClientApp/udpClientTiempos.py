@@ -42,7 +42,9 @@ def relleno_largo(largo, check, told,log_file):
 		publicKey = RSA.importKey(publicKeyFile.read())
 		signedMessage = privateKey.sign(msg, Random.new().read)
 		publicKeyPlain = publicKey.exportKey()
-		relleno = "DATA;;" + str(publicKeyPlain) + ";;" + str(signedMessage) + ";;" + msg
+		relleno = "DATA;;" + str(publicKeyPlain) + ";;" + str(signedMessage) + ";;" + msg + ";;"
+		for i in range(len(relleno),largo-1):
+	 		relleno= relleno + str(random.randint(0,9))
 		#print relleno
 	return relleno
 
