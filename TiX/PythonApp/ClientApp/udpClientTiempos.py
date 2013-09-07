@@ -11,12 +11,19 @@ import sys
 import ConfigParser
 from Crypto.PublicKey import RSA
 from Crypto import Random
+from Crypto.Signature import PKCS1_v1_5
+from Crypto.Hash import SHA256
+import base64
+
 
 # Tomo data del archivo de configuracion
 config = ConfigParser.ConfigParser()
 config.read('udpclienttiempos.cfg')
+installDirUnix = config.get("UDPClient", "installDirUnix")
 HOST = config.get("UDPClient", "host")
 PORT = config.getint("UDPClient", "port")
+TEST_HOST = config.get("UDPClient", "TEST_host")
+TEST_PORT = config.getint("UDPClient", "TEST_port")
 
 def ts():
   # time en microsegundos
@@ -36,13 +43,17 @@ def relleno_largo(largo, check, told,log_file):
 	else:
 		filereg=open(log_file+told,"r")
 		msg = filereg.read()
-		privateKeyFile = open('tix_key.priv','r')
-		publicKeyFile = open('tix_key.pub','r')
+		privateKeyFile = open(installDirUnix + '/tix_key.priv','r')
+		publicKeyFile = open(installDirUnix + '/tix_key.pub','r')
 		privateKey = RSA.importKey(privateKeyFile.read())
 		publicKey = RSA.importKey(publicKeyFile.read())
+		signer = PKCS1_v1_5.new(privateKey) 
+		digest = SHA256.new() 
+		digest.update(msg) 
+		sign = signer.sign(digest) 
 		signedMessage = privateKey.sign(msg, Random.new().read)
 		publicKeyPlain = publicKey.exportKey()
-		relleno = "DATA;;" + str(publicKeyPlain) + ";;" + str(signedMessage) + ";;" + msg + ";;"
+		relleno = "DATA;;" + str(publicKeyPlain) + ";;" + base64.b64encode(sign) + ";;" + filereg.name + ";;" + base64.b64encode(msg) + ";;"
 		for i in range(len(relleno),largo-1):
 	 		relleno= relleno + str(random.randint(0,9))
 		#print relleno
@@ -74,27 +85,24 @@ def pingUniq(num_uniq, logfile,t0, check,told):
 	t1 = ts()
 	
 	if (num_uniq % 2 == 0) :
-		message = t1 + '|' + t2 + '|' + t3 + '|' + t4
+		message = t1 + '!!' + t2 + '!!' + t3 + '!!' + t4
 	else:
-		message = t1 + '|' + t2 + '|' + t3 + '|' + t4 + '|' + relleno_largo(4400,check,told,logfile)
+		message = t1 + '!!' + t2 + '!!' + t3 + '!!' + t4 + '!!' + relleno_largo(4400,check,told,logfile)
 	
 	
+	print message
 	
 	client = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 	
-#	HOST='157.92.44.31'
-#	PORT=80
-#	HOST='127.0.0.1'
-#	PORT=5005
 	try:
 		client.settimeout(1.0)
-		client.sendto(message + "\n", (HOST, PORT)) 
+		client.sendto(message + "\n", (TEST_HOST, TEST_PORT)) 
 		#print "enviado"
 	
 		data = client.recv(8192)#(2048) para el mensaje largo
 		msg = data.split('|')
 		data = msg[0] + '|' + msg[1] + '|' + msg[2] + '|' + ts()#+ '|' + msg[4], en msg[4] queda el contenido del mensaje largo sin imprimir 
-		#print 'Received', repr(data)
+		# print 'Received', repr(data)
 
 		iph=20 #longitud ip header (min. 20 bytes)
 		udph=8 #longitud udp header (min. 8 bytes)

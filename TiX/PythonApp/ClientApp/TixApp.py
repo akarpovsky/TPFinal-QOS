@@ -113,7 +113,6 @@ def requestTimeOut(req, result):
 		popup = Popup(title='Timeout Error',content=content,size_hint=(None, None), size=(600, 200), auto_dismiss=False)
 		btnaccept.bind(on_press=popup.dismiss)
 		popup.open()
-		print "hola"
 
 def create_new_installation(req, result):
 	try:
@@ -172,11 +171,14 @@ def select_installation(self, old_popup,instance):
 	else:
 		old_popup.dismiss()
 		
-		if not os.path.exists(installDirUnix):
-			os.makedirs(installDirUnix)
+		if execute_installation() == 1:
+			installation_result_popup(1)
 
-		publicEncryptionKey = keygeneration.generateKeyPair(installDirUnix+'tix_key.priv',installDirUnix+'tix_key.pub')
-	 	payload = {'user_id': str(globalUserId), 'password': globalUserPassword, 'installation_name': self.text, 'encryption_key': publicEncryptionKey}
+		publicKeyFile = open(installDirUnix + 'tix_key.pub','r')
+		publicKey = RSA.importKey(publicKeyFile.read())
+
+		# publicEncryptionKey = keygeneration.generateKeyPair(installDirUnix+'tix_key.priv',installDirUnix+'tix_key.pub')
+	 	payload = {'user_id': str(globalUserId), 'password': globalUserPassword, 'installation_name': self.text, 'encryption_key': publicKey.exportKey()}
 		headers = {'content-type': 'application/json'}
 
 		r = requests.post(tixBaseUrl + 'bin/api/newInstallationPost', data=json.dumps(payload), headers=headers)
@@ -187,14 +189,14 @@ def select_installation(self, old_popup,instance):
 			exit(1)
 		
 		if(r is not None and len(jsonUserData) > 0):
-			finish_installation()
+			installation_result_popup(1)
 		else:
 			popup = create_information_popup('Error','No se ha podido crear la instalacion, reintente.\nLa aplicacion se cerrara.', partial(return_to_so,1)).open()
 
 		# print 'bin/api/newInstallation?user_id='+str(globalUserId)+'&password='+globalUserPassword+'&installation_name='+self.text+'&encryption_key='+publicEncryptionKey
 		# req = UrlRequest(tixBaseUrl + 'bin/api/newInstallation?user_id='+str(globalUserId)+'&password='+globalUserPassword+'&installation_name='+self.text+'&encryption_key='+publicEncryptionKey, on_success=finish_installation, on_error=requestTimeOut)
 
-def finish_installation():
+def execute_installation():
 
 	global globalPlatformName
 	if globalPlatformName == "Linux":
@@ -204,21 +206,18 @@ def finish_installation():
 			popup = create_information_popup('Error','Debe ejecutar este programa con permisos de adminsitrador', partial(return_to_so,1)).open()
 
 		sys_return = subprocess.call(['gksudo','python ./InstallerFiles/installStartupUDPClient.py']) # Must change python for the executable
-	if os_system == "Darwin":
-		sys_return = 0
+	if globalPlatformName == "Darwin":
+		sys_return = os.system("""osascript -e 'do shell script "open /Users/alankarpovsky/pyinstaller-2.0/clientUDPInstaller/dist/Client.dmg " with administrator privileges'""")
 
-	# if(installerscript.installingStartup() == True): # Call to installation procedure
-	# 		installation_return = 'La instalacion se ha completado satisfactoriamente. Retornando al SO...'
-	# 		sys_return = 0
-	# else:
-	# 	installation_return = 'Ha ocurrido un error en la instalacion y el programa se cerrara.'
-	# 	sys_return = 1
+	return sys_return
 
+def installation_result_popup(sys_return):
 	popup = create_information_popup('Proceso de instalacion',installation_return, partial(return_to_so,sys_return))
 	# btnaccept.bind(on_press=partial(return_to_so,sys_return))
 	# content.add_widget(btnaccept)
 	popup.open()
 	# sys.exit(sys_return)
+
 
 
 def return_to_so(sys_return, instance):
@@ -282,15 +281,3 @@ class TiXApp(App):
 
 if __name__ == '__main__':
 	TiXApp().run()
-
-
-		# # get any files into images directory
-		# curdir = dirname(__file__)
-		# for filename in glob(join(curdir, 'images', '*')):
-		#     try:
-		#         # load the image
-		#         picture = Picture(source=filename, rotation=randint(-30,30))
-		#         # add to the main field
-		#         root.add_widget(picture)
-		#     except Exception, e:
-		#         Logger.exception('Pictures: Unable to load <%s>' % filename)    

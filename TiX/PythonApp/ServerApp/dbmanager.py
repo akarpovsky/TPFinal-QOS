@@ -1,8 +1,6 @@
 import psycopg2
 import ConfigParser
 
-
-
 config = ConfigParser.ConfigParser()
 config.read('tixserver.cfg')
 databaseName = config.get("TiXServer", "databaseName")

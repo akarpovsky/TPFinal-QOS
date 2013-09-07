@@ -13,7 +13,6 @@
 		<jackson.version>1.9.10</jackson.version>
 	</properties>
 
-
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
