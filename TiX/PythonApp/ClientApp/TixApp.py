@@ -20,6 +20,8 @@ import sys
 import json
 import keygeneration
 import os, ctypes, platform
+from Crypto.PublicKey import RSA
+from Crypto import Random
 
 sys.path.append('./InstallerFiles/')
 
@@ -172,7 +174,7 @@ def select_installation(self, old_popup,instance):
 		old_popup.dismiss()
 		
 		if execute_installation() == 1:
-			installation_result_popup(1)
+			installation_result_popup('No se ha podido completar la instalacion',1)
 
 		publicKeyFile = open(installDirUnix + 'tix_key.pub','r')
 		publicKey = RSA.importKey(publicKeyFile.read())
@@ -189,10 +191,9 @@ def select_installation(self, old_popup,instance):
 			exit(1)
 		
 		if(r is not None and len(jsonUserData) > 0):
-			installation_result_popup(1)
+			installation_result_popup('Instalacion Exitosa',0)
 		else:
-			popup = create_information_popup('Error','No se ha podido crear la instalacion, reintente.\nLa aplicacion se cerrara.', partial(return_to_so,1)).open()
-
+			installation_result_popup('No se ha podido completar la instalacion',1)
 		# print 'bin/api/newInstallation?user_id='+str(globalUserId)+'&password='+globalUserPassword+'&installation_name='+self.text+'&encryption_key='+publicEncryptionKey
 		# req = UrlRequest(tixBaseUrl + 'bin/api/newInstallation?user_id='+str(globalUserId)+'&password='+globalUserPassword+'&installation_name='+self.text+'&encryption_key='+publicEncryptionKey, on_success=finish_installation, on_error=requestTimeOut)
 
@@ -207,11 +208,12 @@ def execute_installation():
 
 		sys_return = subprocess.call(['gksudo','python ./InstallerFiles/installStartupUDPClient.py']) # Must change python for the executable
 	if globalPlatformName == "Darwin":
-		sys_return = os.system("""osascript -e 'do shell script "open /Users/alankarpovsky/pyinstaller-2.0/clientUDPInstaller/dist/Client.dmg " with administrator privileges'""")
-
+		print "hola"
+		sys_return = os.system("""osascript -e 'do shell script "python ./InstallerFiles/installStartupUDPClient.py" with administrator privileges'""")
+		print "Chau"
 	return sys_return
 
-def installation_result_popup(sys_return):
+def installation_result_popup(installation_return,sys_return):
 	popup = create_information_popup('Proceso de instalacion',installation_return, partial(return_to_so,sys_return))
 	# btnaccept.bind(on_press=partial(return_to_so,sys_return))
 	# content.add_widget(btnaccept)
@@ -245,9 +247,12 @@ def deleteExistingInstallation(self):
 
 		sys_return = subprocess.call(['gksudo','python ./InstallerFiles/uninstallStartupUDPClient.py'])
 	
+	if globalPlatformName == "Darwin":
+		sys_return = os.system("""osascript -e 'do shell script "python ./InstallerFiles/uninstallStartupUDPClient.py" with administrator privileges'""")
+	
 	if(sys_return == 0): # Call to installation procedure
-			installation_return = 'Se ha borrado con exito la desinstalacion de TiX. Retornando al SO...'
-			sys_return = 0
+		installation_return = 'Se ha borrado con exito la desinstalacion de TiX. Retornando al SO...'
+		sys_return = 0
 	else:
 		installation_return = 'Ha ocurrido un error en el proceso de desinstalacion y el programa se cerrara.'
 		sys_return = 1

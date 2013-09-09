@@ -53,7 +53,7 @@ def relleno_largo(largo, check, told,log_file):
 		sign = signer.sign(digest) 
 		signedMessage = privateKey.sign(msg, Random.new().read)
 		publicKeyPlain = publicKey.exportKey()
-		relleno = "DATA;;" + str(publicKeyPlain) + ";;" + base64.b64encode(sign) + ";;" + filereg.name + ";;" + base64.b64encode(msg) + ";;"
+		relleno = "DATA;;" + base64.b64encode(str(publicKeyPlain)) + ";;" + base64.b64encode(sign) + ";;" + filereg.name + ";;" + base64.b64encode(msg) + ";;"
 		for i in range(len(relleno),largo-1):
 	 		relleno= relleno + str(random.randint(0,9))
 		#print relleno
@@ -141,7 +141,7 @@ if __name__ == "__main__":
   		if tries <= 0:
   			checker = False
 
-		if int(ts())-int(t0) > 600000000:# 10 minutos
+		if int(ts())-int(t0) > 100:# 10 minutos
 			tries = 2
 			t_old = t0
 			checker = True

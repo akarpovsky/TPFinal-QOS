@@ -61,8 +61,8 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
             # Tengo datos para procesar dentro del mensaje largo
             #Cliente envia al server: DATA|publicKeyPlain|signedMeessage|msg
 
-            client_pub_key_str = large_package_msg[1]
-            client_signed_msg = large_package_msg[2]
+            client_pub_key_str = b64decode(large_package_msg[1])
+            client_signed_msg = b64decode(large_package_msg[2])
             client_msg_filename = large_package_msg[3]
             client_plain_msg = b64decode(large_package_msg[4])
 
@@ -79,7 +79,7 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
             digest = SHA256.new() 
             digest.update(client_plain_msg) 
 
-            if signer.verify(digest, b64decode(client_signed_msg)): 
+            if signer.verify(digest, client_signed_msg): 
               print "Integrity check OK"
               client_data = dbmanager.DBManager.getInstallationAndClientId(client_pub_key_str)
               
