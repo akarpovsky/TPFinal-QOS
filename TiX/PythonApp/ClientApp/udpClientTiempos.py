@@ -141,7 +141,7 @@ if __name__ == "__main__":
   		if tries <= 0:
   			checker = False
 
-		if int(ts())-int(t0) > 600000000:# 10 minutos
+		if int(ts())-int(t0) > 100:# 10 minutos
 			tries = 2
 			t_old = t0
 			checker = True

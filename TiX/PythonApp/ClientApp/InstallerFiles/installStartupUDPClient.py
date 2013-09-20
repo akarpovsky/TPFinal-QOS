@@ -6,10 +6,14 @@ sys.path.insert(0,parentdir)
 import keygeneration
 
 # Tomo data del archivo de configuracion
-config = ConfigParser.ConfigParser()
-config.read('InstallStartupUDPClient.cfg')
-startupFile = config.get("TiXClientInstaller", "startupFile")
-installDirUnix = config.get("TiXClientInstaller", "installDirUnix")
+#config = ConfigParser.ConfigParser()
+#config.read('installclient.cfg')
+#startupFile = config.get("tixclient", "startupFile")
+#installDirUnix = config.get("tixclient", "installDirUnix")
+
+startupFile = "startupscript"
+installDirUnix = "/etc/TIX"
+udpclientFile = "tix"
 
 def copyanything(src, dst):
     try:
@@ -31,7 +35,7 @@ def installingStartup():
             return False   
         print "Instalando cliente TIX..."
         print "Creando par de claves publica y privada para la instalacion.."
-        keygeneration.generateKeyPair(installDirUnix+'tix_key.priv',installDirUnix+'tix_key.pub')
+        keygeneration.generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')
 
         script_st = os.stat('./' + udpclientFile)
         os.chmod('./' + udpclientFile, script_st.st_mode | stat.S_IEXEC)
@@ -52,7 +56,7 @@ def installingStartup():
         else: # No deberia existir el directorio TiX si es una instalacion nueva; esto ya se valida en TixApp
             return False
         print "Creando par de claves publica y privada para la instalacion.."
-        publicEncryptionKey = keygeneration.generateKeyPair(installDirUnix+'tix_key.priv',installDirUnix+'tix_key.pub')    
+        publicEncryptionKey = keygeneration.generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')    
         print "Instalando cliente TIX..."
         os.system("osascript -e 'tell application \"System Events\" to make login item at end with properties {path:\"./TIX.app\", hidden:false}'")
         #os.system("osascript -e 'tell application \"System Events\" to get the name of every login item'")
