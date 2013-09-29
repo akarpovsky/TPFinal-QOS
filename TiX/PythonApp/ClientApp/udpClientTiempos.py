@@ -92,7 +92,7 @@ def pingUniq(num_uniq, logfile,t0, check,told):
 	
 	print message
 	
-	client = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+	client = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 	
 	try:
 		client.settimeout(1.0)

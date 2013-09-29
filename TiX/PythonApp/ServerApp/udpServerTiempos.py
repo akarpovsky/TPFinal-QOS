@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# servidor udp 
+# servidor tcp 
 # ejemplo de la documentacion de python 
 # http://docs.python.org/2/library/socketserver.html
 # modificado para permitir el registro del timestamp en la respuesta	
@@ -35,7 +35,7 @@ def ts():
   return str(int(en_microsegundos)) # <- en microsegundos, en hexa
   
 
-class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
+class ThreadingTCPRequestHandler(SocketServer.BaseRequestHandler):
     """
     This class works similar to the TCP handler class, except that
     self.request consists of a pair of data and client socket, and since
@@ -111,7 +111,7 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
 	  
 
 
-class ThreadingUDPServer(SocketServer.ThreadingMixIn, SocketServer.UDPServer):
+class ThreadingTCPServer(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
     pass
 
 
@@ -126,8 +126,8 @@ if __name__ == "__main__":
 #    HOST='127.0.0.1'
 #    PORT=5005
     # Create the server, binding to localhost on port 9999
-    #server = SocketServer.UDPServer((HOST, PORT), MyUDPHandler)
-    server = ThreadingUDPServer((HOST, PORT), ThreadingUDPRequestHandler)
+    #server = SocketServer.TCPServer((HOST, PORT), MyTCPHandler)
+    server = ThreadingTCPServer((HOST, PORT), ThreadingTCPRequestHandler)
     
        #Threaded version
     server_thread= threading.Thread(target=server.serve_forever)
