@@ -15,6 +15,7 @@ from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5 
 from Crypto.Hash import SHA256 
 from base64 import b64decode
+from random import randrange
 
 
 config = ConfigParser.ConfigParser()
@@ -86,9 +87,9 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
               if client_data is not None:
                 installation_id = client_data[0]
                 client_id = client_data[1]
-
                 #CLIENT FOLDER: IP_cli_CLIENTID_ins_INSID
-                client_server_folder = self.client_address + "_cli_" + client_id + "_ins_" + installation_id
+                print "Saving data to: " + str(self.client_address[0]) + "_cli_" + str(client_id) + "_ins_" + str(installation_id) 
+                client_server_folder = str(self.client_address[0]) + "_cli_" + str(client_id) + "_ins_" + str(installation_id) 
                 print "Validando existencia de directorios para los records..."
                 if not os.path.exists(installDirUnix + "/records/" + client_server_folder ):
                   print "Creando directorio: " + client_server_folder
@@ -97,8 +98,11 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                 logFile = open("/etc/TIX/records/" + client_server_folder + "/" + client_msg_filename, 'wb')
                 logFile.write(client_plain_msg)
                 logFile.close()
-                  
-
+                # DBManager.insert_record(20,53,'2013-04-14 16:20:12.345678',55,50,"false","false",1,1,1)
+                #downstream,downstreamcongestion,timestamp,upstream,upstreamcongestion,userdowncongestion,userupcongestion,installation_id,isp_id,user_id
+                print "Inserting new records in the DB ..."
+                isp_id = 1 #TODO -> Find out
+                dbmanager.DBManager.insert_record(randrange(100), randrange(100), '2013-04-14 16:20:12.345678',randrange(100),randrange(100),"false","false",installation_id,isp_id,client_id)
 
           socket.sendto(msg[0] + '|' + tstamp +'|' + str(ts()) + '|' + msg[3] + '|' + msg[4], self.client_address)
         else:

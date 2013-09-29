@@ -38,12 +38,12 @@ class DBManager(object):
 		return self.INSTANCE
 
 	@classmethod
-	def insert_record(cls, record_id, downstream,downstreamcongestion,timestamp,upstream,upstreamcongestion,userdowncongestion,userupcongestion,installation_id,isp_id,user_id):
+	def insert_record(cls, downstream,downstreamcongestion,timestamp,upstream,upstreamcongestion,userdowncongestion,userupcongestion,installation_id,isp_id,user_id):
 		DBManagerInst = DBManager.get_instance()
 		conn = DBManagerInst.get_connection()
 		cursor = conn.cursor()
 		try:
-			cursor.execute("""INSERT INTO records(id,downstream,downstreamcongestion,timestamp,upstream,upstreamcongestion,userdowncongestion,userupcongestion,installation_id,isp_id,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""", [record_id, downstream,downstreamcongestion,timestamp,upstream,upstreamcongestion,userdowncongestion,userupcongestion,installation_id,isp_id,user_id])
+			cursor.execute("""INSERT INTO records(downstream,downstreamcongestion,timestamp,upstream,upstreamcongestion,userdowncongestion,userupcongestion,installation_id,isp_id,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""", [downstream,downstreamcongestion,timestamp,upstream,upstreamcongestion,userdowncongestion,userupcongestion,installation_id,isp_id,user_id])
 		except Exception, e:
 			print "Error: Could not insert record in DB"
 			print e
