@@ -12,3 +12,4 @@ Como setuppear el python
 
 - ```import ipdb(); ipdb.set_trace()``` es para debuggear con pythona
 - ```ipython``` abre una consola python re copada
+-  cuando se usa la consola para importar un modulo : from config import *
