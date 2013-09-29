@@ -8,3 +8,8 @@
 *.core.prefs
 target/
 InternetQoS/target/
+
+/bin
+/lib
+/share
+/include

@@ -13,6 +13,7 @@ import keygeneration
 
 startupFile = "startupscript"
 installDirUnix = "/etc/TIX"
+alternateDirUnix = "./tmpTIX"
 udpclientFile = "tix"
 
 def copyanything(src, dst):
@@ -29,8 +30,8 @@ def installingStartup():
     print os_system
     if os_system == "Linux":
         print "Creando Directorios..."
-        if not os.path.exists("/etc/TIX"):
-            os.makedirs("/etc/TIX")
+        if not os.path.exists(installDirUnix):
+            os.makedirs(installDirUnix)
         else: # No deberia existir el directorio TiX si es una instalacion nueva; esto ya se valida en TixApp
             return False   
         print "Instalando cliente TIX..."
@@ -51,10 +52,12 @@ def installingStartup():
         print "Estoy en MAC"
         #opyanything("./udpclientFileTiempos.py","/Applications/udpclientFileTiempos.py")
         print "Creando Directorios..."
-        if not os.path.exists("/etc/TIX"):
-            os.makedirs("/etc/TIX")
+        if not os.path.exists(installDirUnix):
+            os.makedirs(installDirUnix)
         else: # No deberia existir el directorio TiX si es una instalacion nueva; esto ya se valida en TixApp
-            return False
+            os.makedirs(alternateDirUnix) 
+            installDirUnix = alternateDirUnix
+            print "USANDO DIRECTORIO ALTERNATIVO DE TIX"
         print "Creando par de claves publica y privada para la instalacion.."
         publicEncryptionKey = keygeneration.generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')    
         print "Instalando cliente TIX..."
