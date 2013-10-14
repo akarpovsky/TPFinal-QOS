@@ -27,12 +27,12 @@
 
 					<div class="row-fluid">
 						<ul class="thumbnails">
-							<li class="span3"><a href="#" class="thumbnail"> <img
+							<li class="span3"><a href="<c:url value='/download/tix_osx.zip'/>" class="thumbnail"> <img
 									alt="Apple"
 									style=""
 									src="<c:url value='/img/applelogo.jpg'/>">
 							</a></li>
-							<li class="span3"><a href="#" class="thumbnail"> <img
+							<li class="span3"><a href="<c:url value='/download/tix_linux.zip'/>" class="thumbnail"> <img
 									alt="Linux"
 									style=""
 									src="<c:url value='/img/linuxlogo.jpg'/>">

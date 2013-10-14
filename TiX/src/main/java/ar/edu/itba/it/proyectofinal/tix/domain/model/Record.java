@@ -46,6 +46,38 @@ public class Record extends DBPersistentObject {
 	@Max(value=100)
 	private float upstreamCongestion;
 	
+	@Column(nullable=false)
+	@Max(value=100)
+	private float H_RS_Up;
+	
+	@Column(nullable=false)
+	@Max(value=100)
+	private float H_RS_Down;
+	
+	public ISP getIsp() {
+		return isp;
+	}
+
+	public void setIsp(ISP isp) {
+		this.isp = isp;
+	}
+
+	public float getH_RS_Up() {
+		return H_RS_Up;
+	}
+
+	public void setH_RS_Up(float h_RS_Up) {
+		H_RS_Up = h_RS_Up;
+	}
+
+	public float getH_RS_Down() {
+		return H_RS_Down;
+	}
+
+	public void setH_RS_Down(float h_RS_Down) {
+		H_RS_Down = h_RS_Down;
+	}
+
 	@Column(nullable=false, columnDefinition="boolean default false")
 	private boolean userDownCongestion;
 	

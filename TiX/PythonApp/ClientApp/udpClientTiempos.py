@@ -24,6 +24,8 @@ HOST = config.get("UDPClient", "host")
 PORT = config.getint("UDPClient", "port")
 TEST_HOST = config.get("UDPClient", "TEST_host")
 TEST_PORT = config.getint("UDPClient", "TEST_port")
+TEST2_HOST = config.get("UDPClient", "TEST2_host")
+TEST2_PORT = config.getint("UDPClient", "TEST2_port")
 
 def ts():
   # time en microsegundos
@@ -130,7 +132,7 @@ if __name__ == "__main__":
 	  print "usage: python <client>.py <logfile>\n"
 	  sys.exit()
 	  
-	log_file=sys.argv[1]
+	log_file=sys.argv[1]+'_'
 
 	t0=ts()	
 	t_old = 0;
@@ -141,7 +143,7 @@ if __name__ == "__main__":
   		if tries <= 0:
   			checker = False
 
-		if int(ts())-int(t0) > 100:# 10 minutos
+		if int(ts())-int(t0) > 100000000000000:# 10 minutos
 			tries = 2
 			t_old = t0
 			checker = True

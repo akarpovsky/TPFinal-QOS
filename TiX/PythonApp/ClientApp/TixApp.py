@@ -30,7 +30,7 @@ Config.set('graphics', 'height', '350')
 
 # Tomo data del archivo de configuracion
 config = ConfigParser.ConfigParser()
-config.read('tixapp.cfg')
+config.read('TixApp.cfg')
 tixBaseUrl = config.get("TiXClient", "tixBaseUrl")
 installDirUnix = config.get("TiXClient", "installDirUnix")
 
@@ -208,9 +208,7 @@ def execute_installation():
 
 		sys_return = subprocess.call(['gksudo','python ./InstallerFiles/installStartupUDPClient.py']) # Must change python for the executable
 	if globalPlatformName == "Darwin":
-		print "hola"
 		sys_return = os.system("""osascript -e 'do shell script "python ./InstallerFiles/installStartupUDPClient.py" with administrator privileges'""")
-		print "Chau"
 	return sys_return
 
 def installation_result_popup(installation_return,sys_return):

@@ -1,0 +1,19 @@
+import shutil,errno,os,stat,platform,sys,getopt,subprocess
+import threading
+
+import datetime
+
+#i = 0
+
+def work(): 
+	#global i
+    threading.Timer(5, work).start(); 
+	#if os.path.exists("/etc/TIX/superdirkarpo" + str(i)):
+	#	os.makedirs("/etc/TIX/superdirkarpo" + str(i))
+	#i = i + 1
+    logFile = open("/etc/TIX/karpolog", 'a+b')
+    logFile.write(str(datetime.datetime.now()))
+    logFile.close()
+
+if __name__ == '__main__':
+    work (); 

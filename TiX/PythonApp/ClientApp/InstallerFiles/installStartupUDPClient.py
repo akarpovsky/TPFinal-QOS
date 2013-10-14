@@ -1,4 +1,7 @@
+#!/usr/bin/python
+
 import shutil,errno,os,stat,platform,sys,getopt,subprocess,inspect, ConfigParser
+
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir) 
@@ -8,12 +11,14 @@ import keygeneration
 # Tomo data del archivo de configuracion
 #config = ConfigParser.ConfigParser()
 #config.read('installclient.cfg')
-#startupFile = config.get("tixclient", "startupFile")
+#startupAppCaller = config.get("tixclient", "startupAppCaller")
 #installDirUnix = config.get("tixclient", "installDirUnix")
 
-startupFile = "startupscript"
+startupAppCaller = "startupAppCaller.sh" #This app will call on startup to the UDP Client app
 installDirUnix = "/etc/TIX"
-udpclientFile = "tix"
+installDirUnixApp = installDirUnix + '/app'
+udpClientFile = "TixClientApp"
+installDirUnixAppExecutable = installDirUnixApp + '/' + udpClientFile
 
 def copyanything(src, dst):
     try:
@@ -29,37 +34,47 @@ def installingStartup():
     print os_system
     if os_system == "Linux":
         print "Creando Directorios..."
-        if not os.path.exists("/etc/TIX"):
-            os.makedirs("/etc/TIX")
+        if not os.path.exists(installDirUnix):
+            os.makedirs(installDirUnix)
+            os.makedirs(installDirUnixApp)
         else: # No deberia existir el directorio TiX si es una instalacion nueva; esto ya se valida en TixApp
             return False   
         print "Instalando cliente TIX..."
         print "Creando par de claves publica y privada para la instalacion.."
         keygeneration.generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')
 
-        script_st = os.stat('./' + udpclientFile)
-        os.chmod('./' + udpclientFile, script_st.st_mode | stat.S_IEXEC)
-        copyanything("./" + udpclientFile,"/etc/TIX/" + udpclientFile)
+        print "Copiando el ejecutable..."
+        script_st = os.stat('./toBeCopied/' + udpClientFile)
+        os.chmod('./toBeCopied/' + udpClientFile, script_st.st_mode | stat.S_IEXEC)
+        copyanything("./toBeCopied/" + udpClientFile,installDirUnixApp + '/' + udpClientFile)
         print "Instalando aplicacion en arranque..."
-        st = os.stat('./' + startupFile)
-        os.chmod('./' + startupFile, st.st_mode | stat.S_IEXEC)
-        copyanything("./" + startupFile,"/etc/init.d/" + startupFile)
-        os.system("update-rc.d "+ startupFile + " defaults")
+        st = os.stat('./toBeCopied/' + startupAppCaller)
+        os.chmod('./toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
+        copyanything("./toBeCopied/" + startupAppCaller,"/etc/init.d/" + startupAppCaller)
+        os.system("update-rc.d " + startupAppCaller + " defaults")
         print "Instalacion Finalizada!"
         installation_ok = True
     if os_system == "Darwin":
         print "Estoy en MAC"
-        #opyanything("./udpclientFileTiempos.py","/Applications/udpclientFileTiempos.py")
+        #opyanything("./udpClientFileTiempos.py","/Applications/udpClientFileTiempos.py")
         print "Creando Directorios..."
         if not os.path.exists("/etc/TIX"):
             os.makedirs("/etc/TIX")
+            os.makedirs(installDirUnixApp)
         else: # No deberia existir el directorio TiX si es una instalacion nueva; esto ya se valida en TixApp
             return False
         print "Creando par de claves publica y privada para la instalacion.."
         publicEncryptionKey = keygeneration.generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')    
-        print "Instalando cliente TIX..."
-        os.system("osascript -e 'tell application \"System Events\" to make login item at end with properties {path:\"./TIX.app\", hidden:false}'")
-        #os.system("osascript -e 'tell application \"System Events\" to get the name of every login item'")
+        
+        print "Copiando el ejecutable..."
+        script_st = os.stat('./toBeCopied/' + udpClientFile)
+        os.chmod('./toBeCopied/' + udpClientFile, script_st.st_mode | stat.S_IEXEC)
+        copyanything("./toBeCopied/" + udpClientFile,installDirUnixApp + '/' + udpClientFile)
+        st = os.stat('./toBeCopied/' + startupAppCaller)
+        os.chmod('./toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
+        copyanything("./toBeCopied/" + startupAppCaller,installDirUnixApp + '/' + startupAppCaller)
+        print "Instalando cliente TIX en el arranque..."
+        os.system("osascript -e 'tell application \"System Events\" to make login item at end with properties {path:\""+installDirUnixApp + '/' + startupAppCaller +"\", hidden:false}'")
         installation_ok = True
     if os_system == "Windows":
         os_type = platform.release();
@@ -73,6 +88,5 @@ def installingStartup():
     return installation_ok
 
 if __name__ == "__main__":
-    print "entre!!!"
     installingStartup()
 

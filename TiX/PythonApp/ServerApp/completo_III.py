@@ -1381,7 +1381,7 @@ def resultados(file_name,leer,umbral_utiliz,umbral_H):
 								aux = str(tq)
 								f.write(aux+'\n')
 							f.close()
-					proc = subprocess.Popen(['/usr/bin/Rscript','calculoH.R'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+					proc = subprocess.Popen(['/usr/bin/Rscript_itba','calculoH.R'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 					stdout, stderr = proc.communicate()
 					resultados = stdout
 					#print " resultados: "+str(resultados)
@@ -1423,7 +1423,7 @@ def resultados(file_name,leer,umbral_utiliz,umbral_H):
 							aux = str(tq)
 							f.write(aux+'\n')
 						f.close()
-				proc = subprocess.Popen(['/usr/bin/Rscript','calculoH.R','--args',filew], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+				proc = subprocess.Popen(['/usr/bin/Rscript_itba','calculoH.R','--args',filew], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				stdout, stderr = proc.communicate()
 				resultados = stdout
 				#print " resultados: "+str(resultados)
