@@ -6,4 +6,4 @@ udpclientFile = "TixClientApp"
 installDirUnixAppExecutable = installDirUnixApp + '/' + udpclientFile
 
 if __name__ == "__main__":
-	os.system(installDirUnixAppExecutable + " log")
+	os.system("sudo " + installDirUnixAppExecutable + " log")
