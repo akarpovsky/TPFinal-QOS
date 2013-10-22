@@ -21,7 +21,7 @@ Deploy:
 		
 		$ scp ./internetqos-1.0-SNAPSHOT.war pfitba@tix.innova-red.net:internetqos.war
 		
-	3) Mover el .WAR a la carpeta de Tomcat7 para que sea "explotado":
+	3) Mover el .WAR a la carpeta de Tomcat7 (/var/lib/tomcat/webapps) para que sea "explotado":
 		
 		$ 
 		
