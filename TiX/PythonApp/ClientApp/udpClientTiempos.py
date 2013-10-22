@@ -18,7 +18,7 @@ import base64
 
 # Tomo data del archivo de configuracion
 config = ConfigParser.ConfigParser()
-config.read('udpclienttiempos.cfg')
+config.read('/etc/TIX/app/udpclienttiempos.cfg')
 installDirUnix = config.get("UDPClient", "installDirUnix")
 HOST = config.get("UDPClient", "host")
 PORT = config.getint("UDPClient", "port")
@@ -43,7 +43,7 @@ def relleno_largo(largo, check, told,log_file):
 		for i in range(0,largo-1):
 	 		relleno= relleno + str(random.randint(0,9))
 	else:
-		filereg=open(log_file+told,"r")
+		filereg=open(installDirUnix + "/app/" + log_file+told,"r")
 		msg = filereg.read()
 		privateKeyFile = open(installDirUnix + '/tix_key.priv','r')
 		publicKeyFile = open(installDirUnix + '/tix_key.pub','r')
@@ -64,7 +64,7 @@ def relleno_largo(largo, check, told,log_file):
 	
 def log_msg(log_file, msg):
 	
-	arch=open(log_file,"a")
+	arch=open(installDirUnix + "/app/"+ log_file,"a")
 	print >>arch, datetime.datetime.now().strftime("%D|%H:%M:%S,%f"), msg
 	arch.close()
 	return
@@ -143,7 +143,7 @@ if __name__ == "__main__":
   		if tries <= 0:
   			checker = False
 
-		if int(ts())-int(t0) > 100000000000000:# 10 minutos
+		if int(ts())-int(t0) > 100:# 10 minutos
 			tries = 2
 			t_old = t0
 			checker = True
@@ -154,4 +154,3 @@ if __name__ == "__main__":
   		i=~i
   		tries = tries - 1
   		time.sleep(1)
-

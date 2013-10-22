@@ -18,6 +18,7 @@ startupAppCaller = "startupAppCaller.sh" #This app will call on startup to the U
 installDirUnix = "/etc/TIX"
 installDirUnixApp = installDirUnix + '/app'
 udpClientFile = "TixClientApp"
+udpClientFileCFG = "udpclienttiempos.cfg"
 installDirUnixAppExecutable = installDirUnixApp + '/' + udpClientFile
 
 def copyanything(src, dst):
@@ -44,16 +45,19 @@ def installingStartup():
         keygeneration.generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')
 
         print "Copiando el ejecutable..."
-        script_st = os.stat('./toBeCopied/' + udpClientFile)
-        os.chmod('./toBeCopied/' + udpClientFile, script_st.st_mode | stat.S_IEXEC)
-        copyanything("./toBeCopied/" + udpClientFile,installDirUnixApp + '/' + udpClientFile)
+        os.system("pwd")
+        script_st = os.stat('./InstallerFiles/toBeCopied/' + udpClientFile)
+        os.chmod('./InstallerFiles/toBeCopied/' + udpClientFile, script_st.st_mode | stat.S_IEXEC)
+        copyanything("./InstallerFiles/toBeCopied/" + udpClientFile,installDirUnixApp + '/' + udpClientFile)
         print "Instalando aplicacion en arranque..."
-        st = os.stat('./toBeCopied/' + startupAppCaller)
-        os.chmod('./toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
-        copyanything("./toBeCopied/" + startupAppCaller,"/etc/init.d/" + startupAppCaller)
+        st = os.stat('./InstallerFiles/toBeCopied/' + startupAppCaller)
+        os.chmod('./InstallerFiles/toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
+        copyanything("./InstallerFiles/toBeCopied/" + startupAppCaller,"/etc/init.d/" + startupAppCaller)
+        copyanything("./InstallerFiles/toBeCopied/" + udpClientFileCFG,installDirUnixApp + '/' + udpClientFileCFG)
         os.system("update-rc.d " + startupAppCaller + " defaults")
-        print "Instalacion Finalizada!"
+        os.spawnl(os.P_NOWAIT, "sudo /etc/TIX/app/TixClientApp log")
         installation_ok = True
+        print "Instalacion Finalizada!"
     if os_system == "Darwin":
         print "Estoy en MAC"
         #opyanything("./udpClientFileTiempos.py","/Applications/udpClientFileTiempos.py")
@@ -67,14 +71,16 @@ def installingStartup():
         publicEncryptionKey = keygeneration.generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')    
         
         print "Copiando el ejecutable..."
-        script_st = os.stat('./toBeCopied/' + udpClientFile)
-        os.chmod('./toBeCopied/' + udpClientFile, script_st.st_mode | stat.S_IEXEC)
-        copyanything("./toBeCopied/" + udpClientFile,installDirUnixApp + '/' + udpClientFile)
-        st = os.stat('./toBeCopied/' + startupAppCaller)
-        os.chmod('./toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
-        copyanything("./toBeCopied/" + startupAppCaller,installDirUnixApp + '/' + startupAppCaller)
+        script_st = os.stat('./InstallerFiles/toBeCopied/' + udpClientFile)
+        os.chmod('./InstallerFiles/toBeCopied/' + udpClientFile, script_st.st_mode | stat.S_IEXEC)
+        copyanything("./InstallerFiles/toBeCopied/" + udpClientFile,installDirUnixApp + '/' + udpClientFile)
+        copyanything("./InstallerFiles/toBeCopied/" + udpClientFileCFG,installDirUnixApp + '/' + udpClientFile)
+        st = os.stat('./InstallerFiles/toBeCopied/' + startupAppCaller)
+        os.chmod('./InstallerFiles/toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
+        copyanything("./InstallerFiles/toBeCopied/" + startupAppCaller,installDirUnixApp + '/' + startupAppCaller)
         print "Instalando cliente TIX en el arranque..."
         os.system("osascript -e 'tell application \"System Events\" to make login item at end with properties {path:\""+installDirUnixApp + '/' + startupAppCaller +"\", hidden:false}'")
+        os.spawnl(os.P_NOWAIT, "/etc/init.d/" + startupAppCaller)
         installation_ok = True
     if os_system == "Windows":
         os_type = platform.release();
