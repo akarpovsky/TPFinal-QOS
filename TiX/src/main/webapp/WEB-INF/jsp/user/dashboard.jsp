@@ -31,7 +31,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 	              	</ul>
 				</c:forEach>
   	          <li class="divider"></li>
-              	<li><a href="../installation/newinstallation"><i class="icon-plus-sign"></i>Nueva instalaci&oacute;n</a></li>
+              	<li><a href="../installation/downloadapp"><i class="icon-plus-sign"></i>Nueva instalaci&oacute;n</a></li>
               	<li><a href="../installation/allinstallations"><i class="icon-pencil"></i>Editar instalaci&oacute;nes</a></li>
 	          <li class="divider"></li>
 	          <li><a href="#">Ayuda</a></li>
@@ -143,12 +143,13 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                         },
                         xAxis: {        
                             type: 'datetime',
-                            max: 6,
+                            max: 144,
                             plotBands: redmarker, 
                             categories: fechas,
                             labels: {
+                            	enabled: false,
                                 formatter: function() {
-                                    return Highcharts.dateFormat('%d/%m/%Y', this.value);
+                                    return Highcharts.dateFormat('%d/%m (%H:%M)', this.value);
                                 },
                             },
                         },

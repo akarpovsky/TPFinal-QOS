@@ -1,25 +1,26 @@
+#!/usr/bin/python
 import shutil,errno,os,stat,platform,sys,getopt,subprocess
 
-startupFile = "startupscript"
+startupAppCaller = "startupAppCaller.sh" #This app will call on startup to the UDP Client app
 installDirUnix = "/etc/TIX"
-udpclientFile = "tix"
+installDirUnixApp = installDirUnix + '/app'
+
 
 def unInstallingStartup():
     os_system = platform.system()
-    startupFile = 'startupscript'
-    udpclientFile = 'tix'
+    startupAppCaller = "startupAppCaller.sh" #This app will call on startup to the UDP Client app
     print os_system
     if os_system == "Linux":
         print("Estoy en Linux")
         if os.path.exists("/etc/init.d"):
-            if os.path.isfile("/etc/init.d/" + startupFile):
-                os.remove('/etc/init.d/' + startupFile)
+            if os.path.isfile("/etc/init.d/" + startupAppCaller):
+                os.remove('/etc/init.d/' + startupAppCaller)
         if os.path.exists(installDirUnix):
             shutil.rmtree(installDirUnix)
-        os.system("update-rc.d "+ startupFile + " remove")
+        os.system("update-rc.d "+ startupAppCaller + " remove")
     if os_system == "Darwin":
         print "Estoy en MAC"
-        os.system("osascript -e 'tell application \"System Events\" to delete login item \"TIX\"' ")
+        os.system("osascript -e 'tell application \"System Events\" to delete login item \""+startupAppCaller +"\"' ")
         if os.path.exists(installDirUnix):
             shutil.rmtree(installDirUnix)
     if os_system == "Windows":

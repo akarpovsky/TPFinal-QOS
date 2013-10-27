@@ -102,7 +102,7 @@ class ThreadingTCPRequestHandler(SocketServer.BaseRequestHandler):
                 #downstream,downstreamcongestion,timestamp,upstream,upstreamcongestion,userdowncongestion,userupcongestion,installation_id,isp_id,user_id
                 print "Inserting new records in the DB ..."
                 isp_id = 1 #TODO -> Find out
-                dbmanager.DBManager.insert_record(randrange(100), randrange(100), '2013-04-14 16:20:12.345678',randrange(100),randrange(100),"false","false",installation_id,isp_id,client_id)
+                dbmanager.DBManager.insert_record(randrange(100), randrange(100), 1, '2013-04-14 16:20:12.345678',randrange(100),randrange(100),1,False,False,installation_id,isp_id,client_id)
 
           socket.sendto(msg[0] + '|' + tstamp +'|' + str(ts()) + '|' + msg[3] + '|' + msg[4], self.client_address)
         else:

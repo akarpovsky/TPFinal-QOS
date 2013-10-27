@@ -8,9 +8,6 @@ databaseHost = config.get("TiXServer", "databaseHost")
 databasePort = config.get("TiXServer", "databasePort")
 databaseUsername = config.get("TiXServer", "databaseUsername")
 databasePassword = config.get("TiXServer", "databasePassword")
-# cursor.execute("INSERT INTO foo VALUES (%s)",["bar"])
-
-# INSERT INTO records VALUES (1,20,53,'2013-04-14 16:20:12.345678',55,50,false,false,1,1,1);
 
 class DBManager(object):
 	INSTANCE = None
@@ -38,13 +35,15 @@ class DBManager(object):
 		return self.INSTANCE
 
 	@classmethod
-	def insert_record(cls, downstream,downstreamcongestion,timestamp,upstream,upstreamcongestion,userdowncongestion,userupcongestion,installation_id,isp_id,user_id):
+	def insert_record(cls, downstream,downstreamcongestion,h_rs_down,timestamp,upstream,upstreamcongestion,h_rs_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id):
 		DBManagerInst = DBManager.get_instance()
 		conn = DBManagerInst.get_connection()
 		cursor = conn.cursor()
 		try:
-			cursor.execute("""INSERT INTO records(downstream,downstreamcongestion,timestamp,upstream,upstreamcongestion,userdowncongestion,userupcongestion,installation_id,isp_id,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""", [downstream,downstreamcongestion,timestamp,upstream,upstreamcongestion,userdowncongestion,userupcongestion,installation_id,isp_id,user_id])
+			cursor.execute("""INSERT INTO records(downstream,downstreamcongestion,h_rs_down,timestamp,upstream,upstreamcongestion,h_rs_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""", [downstream,downstreamcongestion,h_rs_down,timestamp,upstream,upstreamcongestion,h_rs_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id])
+			cursor.query
 		except Exception, e:
+			cursor.query
 			print "Error: Could not insert record in DB"
 			print e
 

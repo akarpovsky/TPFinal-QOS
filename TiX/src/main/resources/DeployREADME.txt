@@ -21,7 +21,7 @@ Deploy:
 		
 		$ scp ./internetqos-1.0-SNAPSHOT.war pfitba@tix.innova-red.net:internetqos.war
 		
-	3) Mover el .WAR a la carpeta de Tomcat7 para que sea "explotado":
+	3) Mover el .WAR a la carpeta de Tomcat7 (/var/lib/tomcat/webapps) para que sea "explotado":
 		
 		$ 
 		
@@ -32,4 +32,15 @@ Deploy:
 
        Y luego ejecutar el pgAdmin en la PC local para hacer los inserts.
        
-       
+##########
+Para instalar la aplicación udpServerTiempos se necesitan algunas dependencias de Python:
+
+$ wget http://peak.telecommunity.com/dist/ez_setup.py
+$ sudo python ez_setup.py
+$ sudo apt-get install python-psycopg2
+$ sudo apt-get install libpq-dev
+$ sudo easy_install Crypto
+$ wget https://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/pycrypto-2.6.tar.gz
+$ tar -xvzf pycrypto-2.6.tar.gz
+$ cd pycrypto-2.6
+$ sudo python setup.py install
