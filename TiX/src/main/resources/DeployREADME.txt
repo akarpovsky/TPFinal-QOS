@@ -28,7 +28,7 @@ Deploy:
 	4) Para generar el esquema de la DB, hacer un tunel desde la PC local hacia pfitba@tix.innova-red.net 
 		de la siguiente forma:
 
-		$ ssh -L8082:pfitba@tix.innova-red.net:5432
+		$ ssh -L8082:localhost:5432 pfitba@tix.innova-red.net
 
        Y luego ejecutar el pgAdmin en la PC local para hacer los inserts.
        

@@ -74,7 +74,7 @@ def installingStartup():
         script_st = os.stat('./InstallerFiles/toBeCopied/' + udpClientFile)
         os.chmod('./InstallerFiles/toBeCopied/' + udpClientFile, script_st.st_mode | stat.S_IEXEC)
         copyanything("./InstallerFiles/toBeCopied/" + udpClientFile,installDirUnixApp + '/' + udpClientFile)
-        copyanything("./InstallerFiles/toBeCopied/" + udpClientFileCFG,installDirUnixApp + '/' + udpClientFile)
+        copyanything("./InstallerFiles/toBeCopied/" + udpClientFileCFG,installDirUnixApp + '/' + udpClientFileCFG)
         st = os.stat('./InstallerFiles/toBeCopied/' + startupAppCaller)
         os.chmod('./InstallerFiles/toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
         copyanything("./InstallerFiles/toBeCopied/" + startupAppCaller,installDirUnixApp + '/' + startupAppCaller)

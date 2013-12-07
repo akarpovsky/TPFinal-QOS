@@ -9,7 +9,7 @@ import SocketServer
 import datetime
 import threading
 import ConfigParser
-import platform, os
+import platform, os, sys, glob, shutil
 import dbmanager
 from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5 
@@ -26,6 +26,9 @@ TEST_SERVER_HOST = config.get("TiXServer", "TEST_SERVER_HOST") #TODO: Change TES
 TEST_SERVER_PORT = config.getint("TiXServer", "TEST_SERVER_PORT")
 installDirUnix = config.get("TiXServer", "installDirUnix")
 
+sys.path.append('./data_processing/')
+import completo_III
+
 def ts():
   # time en microsegundos
   timestamp= datetime.datetime.now().strftime("%H:%M:%S:%f").split(':')
@@ -33,7 +36,13 @@ def ts():
   #print timestamp 
   #print en_microsegundos
   return str(int(en_microsegundos)) # <- en microsegundos, en hexa
-  
+
+# Devuelve los archivos segun su orden de modificacion
+def get_files_by_mdate(dirpath):
+    a = [os.path.join(dirpath, s) for s in os.listdir(dirpath)
+         if os.path.isfile(os.path.join(dirpath, s))]
+    a.sort(key=lambda s: os.path.getmtime(os.path.join(dirpath, s)))
+    return a
 
 class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
     """
@@ -91,18 +100,43 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                 print "Saving data to: " + str(self.client_address[0]) + "_cli_" + str(client_id) + "_ins_" + str(installation_id) 
                 client_server_folder = str(self.client_address[0]) + "_cli_" + str(client_id) + "_ins_" + str(installation_id) 
                 print "Validando existencia de directorios para los records..."
-                if not os.path.exists(installDirUnix + "/records/" + client_server_folder ):
-                  print "Creando directorio: " + client_server_folder
-                  os.makedirs("/etc/TIX/records/" + client_server_folder )
+                client_records_server_folder = installDirUnix + "/records/" + client_server_folder
+                if not os.path.exists(client_records_server_folder):
+                  print "Creando directorio: " + client_records_server_folder
+                  os.makedirs(client_records_server_folder)
                   
-                logFile = open("/etc/TIX/records/" + client_server_folder + "/" + client_msg_filename, 'wb')
+                logFile = open(client_records_server_folder + "/" + client_msg_filename.split("/")[-1:][0], 'wb')
+                print "Log file: ", logFile
                 logFile.write(client_plain_msg)
                 logFile.close()
                 # DBManager.insert_record(20,53,'2013-04-14 16:20:12.345678',55,50,"false","false",1,1,1)
                 #downstream,downstreamcongestion,timestamp,upstream,upstreamcongestion,userdowncongestion,userupcongestion,installation_id,isp_id,user_id
-                print "Inserting new records in the DB ..."
-                isp_id = 1 #TODO -> Find out
-                dbmanager.DBManager.insert_record(randrange(100), randrange(100), 1, '2013-04-14 16:20:12.345678',randrange(100),randrange(100),1,False,False,installation_id,isp_id,client_id)
+
+                # Check if we have at least 1hr (twelve 5 minutes files) of data
+                if len(os.walk(client_records_server_folder).next()[2]) >= 60:
+                  print "We have 1 hour data! Inserting new records in the DB ..."
+
+                  print "Starting calculation for the following files:"
+                  files_to_process = get_files_by_mdate(client_records_server_folder)
+
+                  print files_to_process
+
+                  if len(files_to_process) < 60:
+                    print "Error processing files; not enough files in directory"
+                  else:
+                    cwd = os.getcwd()
+                    os.chdir('/home/pfitba/ServerApp_25Nov/data_processing')
+                    print os.getcwd()
+                    result = completo_III.analyse_data(files_to_process)
+                    os.chdir(cwd)
+                    print result #TODO -> Remove
+
+                    # Remove oldest log        
+                    if os.path.isfile(files_to_process[0]) == True:
+                      os.remove(files_to_process[0])
+
+                    isp_id = 1 #TODO -> Find out
+                    # dbmanager.DBManager.insert_record(randrange(100), randrange(100), 1, '2013-04-14 16:20:12.345678',randrange(100),randrange(100),1,False,False,installation_id,isp_id,client_id)
 
           socket.sendto(msg[0] + '|' + tstamp +'|' + str(ts()) + '|' + msg[3] + '|' + msg[4], self.client_address)
         else:
