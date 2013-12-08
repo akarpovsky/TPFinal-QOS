@@ -12,6 +12,8 @@ from functools import partial
 from kivy.config import Config
 from kivy.graphics import Color, Rectangle
 from kivy.uix.image import Image 
+from Crypto.PublicKey import RSA
+from Crypto import Random
 import requests
 import subprocess
 import webbrowser
@@ -20,8 +22,7 @@ import sys
 import json
 import keygeneration
 import os, ctypes, platform
-from Crypto.PublicKey import RSA
-from Crypto import Random
+
 
 sys.path.append('./InstallerFiles/')
 
