@@ -35,12 +35,12 @@ class DBManager(object):
 		return self.INSTANCE
 
 	@classmethod
-	def insert_record(cls, downstream,downstreamcongestion,h_rs_down,timestamp,upstream,upstreamcongestion,h_rs_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id):
+	def insert_record(cls, downstream,downstreamcongestion,h_rs_down,h_wave_down,timestamp,upstream,upstreamcongestion,h_rs_up,h_wave_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id):
 		DBManagerInst = DBManager.get_instance()
 		conn = DBManagerInst.get_connection()
 		cursor = conn.cursor()
 		try:
-			cursor.execute("""INSERT INTO records(downstream,downstreamcongestion,h_rs_down,timestamp,upstream,upstreamcongestion,h_rs_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""", [downstream,downstreamcongestion,h_rs_down,timestamp,upstream,upstreamcongestion,h_rs_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id])
+			cursor.execute("""INSERT INTO records(downstream,downstreamcongestion,h_rs_down,h_wave_down,timestamp,upstream,upstreamcongestion,h_rs_up,h_wave_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""", [downstream,downstreamcongestion,h_rs_down,h_wave_down,timestamp,upstream,upstreamcongestion,h_rs_up,h_wave_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id])
 			cursor.query
 		except Exception, e:
 			cursor.query

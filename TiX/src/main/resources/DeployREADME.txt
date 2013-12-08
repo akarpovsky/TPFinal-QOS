@@ -19,11 +19,11 @@ Deploy:
 	
 	2) Copiar vía SCP el .WAR al servidor de TiX de la siguiente forma:
 		
-		$ scp ./internetqos-1.0-SNAPSHOT.war pfitba@tix.innova-red.net:internetqos.war
+		$ scp ./tix-1.0.war pfitba@tix.innova-red.net:/home/pfitba/tix.war
 		
 	3) Mover el .WAR a la carpeta de Tomcat7 (/var/lib/tomcat/webapps) para que sea "explotado":
-		
-		$ 
+		$ sudo rm -fr /var/lib/tomcat7/webapps/tix*
+		$ sudo mv tix.war /var/lib/tomcat7/webapps/
 		
 	4) Para generar el esquema de la DB, hacer un tunel desde la PC local hacia pfitba@tix.innova-red.net 
 		de la siguiente forma:

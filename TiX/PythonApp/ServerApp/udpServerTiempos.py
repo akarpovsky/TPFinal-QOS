@@ -9,7 +9,7 @@ import SocketServer
 import datetime
 import threading
 import ConfigParser
-import platform, os, sys, glob, shutil
+import platform, os, sys, glob, shutil, time
 import dbmanager
 from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5 
@@ -116,10 +116,10 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                 if len(os.walk(client_records_server_folder).next()[2]) >= 60:
                   print "We have 1 hour data! Inserting new records in the DB ..."
 
-                  print "Starting calculation for the following files:"
+                  # print "Starting calculation for the following files:"
                   files_to_process = get_files_by_mdate(client_records_server_folder)
 
-                  print files_to_process
+                  # print files_to_process
 
                   if len(files_to_process) < 60:
                     print "Error processing files; not enough files in directory"
@@ -127,16 +127,18 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                     cwd = os.getcwd()
                     os.chdir('/home/pfitba/ServerApp_25Nov/data_processing')
                     print os.getcwd()
-                    result = completo_III.analyse_data(files_to_process)
+                    ansDictionary = completo_III.analyse_data(files_to_process)
                     os.chdir(cwd)
-                    print result #TODO -> Remove
+                    print ansDictionary #TODO -> Remove
 
-                    # Remove oldest log        
-                    if os.path.isfile(files_to_process[0]) == True:
-                      os.remove(files_to_process[0])
+                    # Remove 10 oldest logs        
+                    for count in range(0,9):
+                      if os.path.isfile(files_to_process[count]) == True:
+                        os.remove(files_to_process[count])
 
                     isp_id = 1 #TODO -> Find out
-                    # dbmanager.DBManager.insert_record(randrange(100), randrange(100), 1, '2013-04-14 16:20:12.345678',randrange(100),randrange(100),1,False,False,installation_id,isp_id,client_id)
+
+                    dbmanager.DBManager.insert_record(ansDictionary['calidad_Down'],ansDictionary['utiliz_Down'],ansDictionary['H_RS_Down'],ansDictionary['H_Wave_Down'],time.strftime('%Y-%m-%d %H:%M:%S'),ansDictionary['calidad_Up'],ansDictionary['utiliz_Up'],ansDictionary['H_RS_Up'],ansDictionary['H_Wave_Up'],False,False,installation_id,isp_id,client_id)
 
           socket.sendto(msg[0] + '|' + tstamp +'|' + str(ts()) + '|' + msg[3] + '|' + msg[4], self.client_address)
         else:

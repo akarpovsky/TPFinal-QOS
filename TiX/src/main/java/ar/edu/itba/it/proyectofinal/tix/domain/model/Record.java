@@ -32,19 +32,19 @@ public class Record extends DBPersistentObject {
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float upstream;
+	private float upstream; // Calidad upstream
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float downstream;
+	private float downstream; // Calidad downstream
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float downstreamCongestion;
+	private float downstreamCongestion; // Utilizacion downstream
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float upstreamCongestion;
+	private float upstreamCongestion; // Utilizacion downstream
 	
 	@Column(nullable=false)
 	@Max(value=100)
@@ -52,8 +52,32 @@ public class Record extends DBPersistentObject {
 	
 	@Column(nullable=false)
 	@Max(value=100)
+	private float H_Wave_Up;
+	
+	@Column(nullable=false)
+	@Max(value=100)
 	private float H_RS_Down;
 	
+	@Column(nullable=false)
+	@Max(value=100)
+	private float H_Wave_Down;
+	
+	public float getH_Wave_Up() {
+		return H_Wave_Up;
+	}
+
+	public void setH_Wave_Up(float h_Wave_Up) {
+		H_Wave_Up = h_Wave_Up;
+	}
+
+	public float getH_Wave_Down() {
+		return H_Wave_Down;
+	}
+
+	public void setH_Wave_Down(float h_Wave_Down) {
+		H_Wave_Down = h_Wave_Down;
+	}
+
 	public ISP getIsp() {
 		return isp;
 	}

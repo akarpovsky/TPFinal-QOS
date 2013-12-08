@@ -1540,11 +1540,10 @@ def random_word(length):
 
 def analyse_data(files_to_process):
 	
-	print "Processing files:", files_to_process
-	# Aca debería ir el for sobre los archivos del directorio; en vez de "file_name" debería recibir "files_to_process"	
+	# print "Processing files:", files_to_process
 	leer = []
 	for file_name in files_to_process:
-		print "Now on",file_name
+		# print "Now on",file_name
 		if os.path.isfile(file_name) == True:
 			f = open(file_name, 'r')
 			leer +=f.readlines()
@@ -1562,7 +1561,11 @@ def analyse_data(files_to_process):
 	print "utiliz_Down:",utiliz_Down
 	print "H_RS_Down:",H_RS_Down
 	print "H_Wave_Down:",H_Wave_Down
-	return [calidad_Up,utiliz_Up,H_RS_Up,H_Wave_Up,calidad_Down,utiliz_Down,H_RS_Down,H_Wave_Down]
+	ansDictionary = {}
+	for i in ('calidad_Up', 'utiliz_Up', 'H_RS_Up', 'H_Wave_Up', 'calidad_Down', 'utiliz_Down', 'H_RS_Down', 'H_Wave_Down'):
+			ansDictionary[i] = locals()[i]
+
+	return ansDictionary
 
 if __name__ == "__main__": 
 
