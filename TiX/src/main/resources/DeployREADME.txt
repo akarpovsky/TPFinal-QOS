@@ -44,3 +44,21 @@ $ wget https://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/pycrypto-2.6.tar.gz
 $ tar -xvzf pycrypto-2.6.tar.gz
 $ cd pycrypto-2.6
 $ sudo python setup.py install
+
+
+##########
+Base de datos en el Server TIX
+
+Instalar mysqlserver:
+$ sudo apt-get install mysql-server (configurar usuario root y password 54bf1n6)
+$ sudo service mysql start
+
+Crear DB:
+$ mysqladmin create ip_to_as --user=root --password=54bf1n6
+
+Bajar última DB:
+$ wget http://lanet-vi.fi.uba.ar/dbassr/last_20131215-iamheredb.sql.gz
+$ gunzip last_20131215-iamheredb.sql.gz
+
+Insertar todos los records:
+$ mysql ip_to_as -uroot -p54bf1n6 < ./last_20131215-iamheredb.sql

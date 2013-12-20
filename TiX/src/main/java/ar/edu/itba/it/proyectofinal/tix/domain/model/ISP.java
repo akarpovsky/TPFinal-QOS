@@ -17,6 +17,10 @@ public class ISP extends DBPersistentObject {
 		// required by hibernate 
 	}
 	
+	public ISP(String name){
+		this.name = name;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null || !(obj instanceof Installation)) {

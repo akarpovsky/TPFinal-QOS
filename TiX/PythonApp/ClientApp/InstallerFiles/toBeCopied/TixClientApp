@@ -9,10 +9,7 @@ import random
 import threading
 import sys
 import ConfigParser
-from Crypto.PublicKey import RSA
-from Crypto import Random
-from Crypto.Signature import PKCS1_v1_5
-from Crypto.Hash import SHA256
+import rsa
 import base64
 
 
@@ -48,15 +45,13 @@ def relleno_largo(largo, check, told,log_file):
 		msg = filereg.read()
 		privateKeyFile = open(installDirUnix + '/tix_key.priv','r')
 		publicKeyFile = open(installDirUnix + '/tix_key.pub','r')
-		privateKey = RSA.importKey(privateKeyFile.read())
-		publicKey = RSA.importKey(publicKeyFile.read())
-		signer = PKCS1_v1_5.new(privateKey) 
-		digest = SHA256.new() 
-		digest.update(msg) 
-		sign = signer.sign(digest) 
-		signedMessage = privateKey.sign(msg, Random.new().read)
-		publicKeyPlain = publicKey.exportKey()
-		relleno = "DATA;;" + base64.b64encode(str(publicKeyPlain)) + ";;" + base64.b64encode(sign) + ";;" + filereg.name + ";;" + base64.b64encode(msg) + ";;"
+
+		publicKey = rsa.PublicKey.load_pkcs1(publicKeyFile.read())
+		privateKey = rsa.PrivateKey.load_pkcs1(privateKeyFile.read())
+
+		signedMessage = rsa.sign(msg, privateKey, 'SHA-1')
+		publicKeyPlain = publicKey.save_pkcs1(format='PEM')
+		relleno = "DATA;;" + base64.b64encode(publicKeyPlain) + ";;" + base64.b64encode(signedMessage) + ";;" + filereg.name + ";;" + base64.b64encode(msg) + ";;"
 		for i in range(len(relleno),largo-1):
 	 		relleno= relleno + str(random.randint(0,9))
 	return relleno

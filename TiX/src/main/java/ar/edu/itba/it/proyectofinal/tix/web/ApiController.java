@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import ar.edu.itba.it.proyectofinal.tix.domain.model.ISP;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.Installation;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.User;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.UserType;
+import ar.edu.itba.it.proyectofinal.tix.domain.model.exception.ISPExistsException;
+import ar.edu.itba.it.proyectofinal.tix.domain.repository.ISPRepository;
 import ar.edu.itba.it.proyectofinal.tix.domain.repository.InstallationRepository;
 import ar.edu.itba.it.proyectofinal.tix.domain.repository.UserRepository;
 
@@ -23,12 +26,14 @@ public class ApiController {
 
 	private UserRepository userRepo;
 	private InstallationRepository installationRepo;
+	private ISPRepository ispRepo;
 
 	@Autowired
 	public ApiController(UserRepository userRepo,
-			InstallationRepository installationRepo) {
+			InstallationRepository installationRepo, ISPRepository ispRepo) {
 		this.userRepo = userRepo;
 		this.installationRepo = installationRepo;
+		this.ispRepo = ispRepo;
 	}
 	
 	
@@ -111,5 +116,25 @@ public class ApiController {
 		return o.toString();
 	}
 	
+	@RequestMapping(method = RequestMethod.POST)
+	public @ResponseBody String newISPPost(@RequestBody Map<String,String> body) {
+		String ispName = body.get("isp_name");
+		System.out.println(ispName);
+		JSONObject o = new JSONObject();
+		ISP isp = ispRepo.get(ispName);
+		if(isp == null){ // ISP not found, add new ISP
+			try {
+				ispRepo.add(new ISP(ispName));
+			} catch (ISPExistsException e) {
+			}
+		}
+		
+		ISP newISP = ispRepo.get(ispName);
+		try {
+			o.put("id", newISP.getId());
+		} catch (JSONException e) {
+		}
+		return o.toString();
+	}
 	
 }

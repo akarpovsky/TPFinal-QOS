@@ -12,8 +12,7 @@ from functools import partial
 from kivy.config import Config
 from kivy.graphics import Color, Rectangle
 from kivy.uix.image import Image 
-from Crypto.PublicKey import RSA
-from Crypto import Random
+import rsa
 import requests
 import subprocess
 import webbrowser
@@ -178,10 +177,10 @@ def select_installation(self, old_popup,instance):
                         installation_result_popup('No se ha podido completar la instalacion',1)
 
                 publicKeyFile = open(installDirUnix + 'tix_key.pub','r')
-                publicKey = RSA.importKey(publicKeyFile.read())
+                publicKey = rsa.PublicKey.load_pkcs1(publicKeyFile.read())
 
                 # publicEncryptionKey = keygeneration.generateKeyPair(installDirUnix+'tix_key.priv',installDirUnix+'tix_key.pub')
-                payload = {'user_id': str(globalUserId), 'password': globalUserPassword, 'installation_name': self.text, 'encryption_key': publicKey.exportKey()}
+                payload = {'user_id': str(globalUserId), 'password': globalUserPassword, 'installation_name': self.text, 'encryption_key': publicKey.save_pkcs1(format='PEM')}
                 headers = {'content-type': 'application/json'}
 
                 r = requests.post(tixBaseUrl + 'bin/api/newInstallationPost', data=json.dumps(payload), headers=headers)

@@ -233,13 +233,5 @@ public class Record extends DBPersistentObject {
 		this.installation = installation;
 	}
 
-//	public ISP getIsp() {
-//		return isp;
-//	}
-//
-//	public void setIsp(ISP isp) {
-//		this.isp = isp;
-//	}
-//	
 	
 }

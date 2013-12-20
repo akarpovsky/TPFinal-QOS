@@ -44,7 +44,7 @@ public class LoginCheckFilter extends OncePerRequestFilter {
 		String[] availableUrl = {
 			"login/", "login/login", "user/home","account/register","account/recover",
 			"account/login", "account/recoverpassword", "static/about", "api/authenticate",
-			"api/newInstallation"
+			"api/newInstallation", "api/newISPPost"
 		};
 		for (String url: availableUrl) {
 			if (requestUrl.startsWith("bin/" + url)) {

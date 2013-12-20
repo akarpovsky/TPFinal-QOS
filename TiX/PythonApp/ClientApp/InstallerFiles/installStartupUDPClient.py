@@ -1,12 +1,12 @@
 #!/usr/bin/python
 
-import shutil,errno,os,stat,platform,sys,getopt,subprocess,inspect, ConfigParser
+import shutil,errno,os,stat,platform,sys,getopt,subprocess,inspect, ConfigParser, rsa
 
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parentdir = os.path.dirname(currentdir)
-sys.path.insert(0,parentdir) 
+# currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+# parentdir = os.path.dirname(currentdir)
+# sys.path.insert(0,parentdir) 
 
-import keygeneration
+# import keygeneration
 
 # Tomo data del archivo de configuracion
 #config = ConfigParser.ConfigParser()
@@ -20,6 +20,21 @@ installDirUnixApp = installDirUnix + '/app'
 udpClientFile = "TixClientApp"
 udpClientFileCFG = "udpclienttiempos.cfg"
 installDirUnixAppExecutable = installDirUnixApp + '/' + udpClientFile
+
+def generateKeyPair(privateKeyFile, publicKeyFile):
+    (pubkey, privkey) = rsa.newkeys(512)
+    exportableKeys = []
+    privHandle = open(privateKeyFile, 'wb')
+    exportableKeys.append(privkey.save_pkcs1(format='PEM'))
+    privHandle.write(privkey.save_pkcs1(format='PEM'))
+    privHandle.close()
+
+    pubHandle = open(publicKeyFile, 'wb')
+    pubHandle.write(pubkey.save_pkcs1(format='PEM'))
+    exportableKeys.append(pubkey.save_pkcs1(format='PEM'))
+    pubHandle.close()
+
+    return exportableKeys[1]
 
 def copyanything(src, dst):
     try:
@@ -42,7 +57,7 @@ def installingStartup():
             return False   
         print "Instalando cliente TIX..."
         print "Creando par de claves publica y privada para la instalacion.."
-        keygeneration.generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')
+        generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')
 
         print "Copiando el ejecutable..."
         os.system("pwd")
@@ -68,7 +83,7 @@ def installingStartup():
         else: # No deberia existir el directorio TiX si es una instalacion nueva; esto ya se valida en TixApp
             return False
         print "Creando par de claves publica y privada para la instalacion.."
-        publicEncryptionKey = keygeneration.generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')    
+        generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')    
         
         print "Copiando el ejecutable..."
         script_st = os.stat('./InstallerFiles/toBeCopied/' + udpClientFile)

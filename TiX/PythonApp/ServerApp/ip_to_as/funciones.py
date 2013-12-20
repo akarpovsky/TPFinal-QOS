@@ -10,9 +10,9 @@ from unicodedata import normalize
 ################################
 def conectardb():
     db_host = 'localhost'
-    usuario = 'usuario'
-    clave = 'password'
-    base_de_datos = 'db'
+    usuario = 'root'
+    clave = '54bf1n6'
+    base_de_datos = 'ip_to_as'
     conndb = mdb.connect(host=db_host, user=usuario, passwd=clave, db=base_de_datos)
     cursor = conndb.cursor()
     return cursor, conndb

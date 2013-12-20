@@ -1,18 +1,17 @@
-from Crypto.PublicKey import RSA
-from Crypto import Random
 
+import rsa
 
 def generateKeyPair(privateKeyFile, publicKeyFile):
-	keys = RSA.generate(1024)
+	(pubkey, privkey) = rsa.newkeys(512)
 	exportableKeys = []
 	privHandle = open(privateKeyFile, 'wb')
-	exportableKeys.append(keys.exportKey())
-	privHandle.write(keys.exportKey())
+	exportableKeys.append(privkey.save_pkcs1(format='PEM'))
+	privHandle.write(privkey.save_pkcs1(format='PEM'))
 	privHandle.close()
 
 	pubHandle = open(publicKeyFile, 'wb')
-	pubHandle.write(keys.publickey().exportKey())
-	exportableKeys.append(keys.publickey().exportKey())
+	pubHandle.write(pubkey.save_pkcs1(format='PEM'))
+	exportableKeys.append(pubkey.save_pkcs1(format='PEM'))
 	pubHandle.close()
 
 	return exportableKeys[1]

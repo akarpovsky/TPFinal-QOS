@@ -9,10 +9,7 @@ import random
 import threading
 import sys
 import ConfigParser
-from Crypto.PublicKey import RSA
-from Crypto import Random
-from Crypto.Signature import PKCS1_v1_5
-from Crypto.Hash import SHA256
+import rsa
 import base64
 
 
@@ -43,22 +40,21 @@ def relleno_largo(largo, check, told,log_file):
 		for i in range(0,largo-1):
 	 		relleno= relleno + str(random.randint(0,9))
 	else:
+		print "Enviando paquete largo con DATA al servidor de medicion..."
 		filereg=open(installDirUnix + "/app/" + log_file+told,"r")
 		msg = filereg.read()
 		privateKeyFile = open(installDirUnix + '/tix_key.priv','r')
 		publicKeyFile = open(installDirUnix + '/tix_key.pub','r')
-		privateKey = RSA.importKey(privateKeyFile.read())
-		publicKey = RSA.importKey(publicKeyFile.read())
-		signer = PKCS1_v1_5.new(privateKey) 
-		digest = SHA256.new() 
-		digest.update(msg) 
-		sign = signer.sign(digest) 
-		signedMessage = privateKey.sign(msg, Random.new().read)
-		publicKeyPlain = publicKey.exportKey()
-		relleno = "DATA;;" + base64.b64encode(str(publicKeyPlain)) + ";;" + base64.b64encode(sign) + ";;" + filereg.name + ";;" + base64.b64encode(msg) + ";;"
+
+		publicKey = rsa.PublicKey.load_pkcs1(publicKeyFile.read())
+		privateKey = rsa.PrivateKey.load_pkcs1(privateKeyFile.read())
+
+		signedMessage = rsa.sign(msg, privateKey, 'SHA-1')
+		publicKeyPlain = publicKey.save_pkcs1(format='PEM')
+		print base64.b64encode(publicKeyPlain)
+		relleno = "DATA;;" + base64.b64encode(publicKeyPlain) + ";;" + base64.b64encode(signedMessage) + ";;" + filereg.name + ";;" + base64.b64encode(msg) + ";;"
 		for i in range(len(relleno),largo-1):
 	 		relleno= relleno + str(random.randint(0,9))
-		#print relleno
 	return relleno
 
 	
@@ -92,12 +88,10 @@ def pingUniq(num_uniq, logfile,t0, check,told):
 		message = t1 + '!!' + t2 + '!!' + t3 + '!!' + t4 + '!!' + relleno_largo(4400,check,told,logfile)
 	
 	
-	print message
-	
 	client = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 	
 	try:
-		client.settimeout(1.0)
+		client.settimeout(2.0)
 		client.sendto(message + "\n", (TEST_HOST, TEST_PORT)) 
 		#print "enviado"
 	
@@ -122,7 +116,7 @@ def pingUniq(num_uniq, logfile,t0, check,told):
 		#msg_completo = str(data).split('|')  
 		#print len(data) #debuging
 	except:
-		# print 'Timeout: no hubo respuesta del servidor' #debuging
+		print 'Timeout: no hubo respuesta del servidor' #debuging
 		client.close()
 		
 
@@ -143,7 +137,7 @@ if __name__ == "__main__":
   		if tries <= 0:
   			checker = False
 
-		if int(ts())-int(t0) > 100:# 10 minutos
+		if int(ts())-int(t0) > 60000000:# 1 minutos
 			tries = 2
 			t_old = t0
 			checker = True
