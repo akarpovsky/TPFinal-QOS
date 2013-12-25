@@ -157,7 +157,7 @@ def pais_num_name_nic(ip_dire, idioma):
 if __name__ == '__main__':
     import sys
     ip = sys.argv[1]
-    retrun pais_num_name_nic(ip, 'EN' )[1]
+    print pais_num_name_nic(ip, 'EN' )[1]
 
 
         

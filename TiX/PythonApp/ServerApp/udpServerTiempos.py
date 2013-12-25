@@ -127,8 +127,7 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                     print "Error processing files; not enough files in directory"
                   else:
                     cwd = os.getcwd()
-                    os.chdir('/home/pfitba/ServerApp_25Nov/data_processing')
-                    print os.getcwd()
+                    os.chdir('/home/pfitba/ServerApp_16Dec/data_processing')
                     ansDictionary = completo_III.analyse_data(files_to_process)
                     os.chdir(cwd)
                     print ansDictionary #TODO -> Remove
@@ -146,10 +145,13 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
 
                     r = requests.post(tixBaseUrl + 'bin/api/newISPPost', data=json.dumps(payload), headers=headers)
                     
+                    jsonUserData = []
+                    
                     try:
                             jsonUserData = json.loads(r.text) # Parseo la respuesta JSON de la API de TiX
                     except Exception, e:
                             isp_id = 0
+                    
 
                     if(r is not None and len(jsonUserData) > 0):
                             isp_id = jsonUserData['id']

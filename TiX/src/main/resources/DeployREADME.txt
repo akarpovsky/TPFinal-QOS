@@ -40,6 +40,8 @@ $ sudo python ez_setup.py
 $ sudo apt-get install python-psycopg2
 $ sudo apt-get install libpq-dev
 $ sudo easy_install Crypto
+$ sudo easy_install rsa
+$ sudo easy_install requests
 $ wget https://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/pycrypto-2.6.tar.gz
 $ tar -xvzf pycrypto-2.6.tar.gz
 $ cd pycrypto-2.6

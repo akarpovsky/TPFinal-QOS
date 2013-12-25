@@ -86,5 +86,5 @@ INSERT INTO records VALUES (40,30,11,'2013-04-08 16:20:12.345678',78,87,false,fa
 SELECT SETVAL('users_id_seq', (SELECT MAX(id) FROM users)+1);
 SELECT SETVAL('installation_id_seq', (SELECT MAX(id) FROM installation)+1);
 SELECT SETVAL('records_id_seq', (SELECT MAX(id) FROM records)+1);
-SELECT SETVAL('isp_id_seq', (SELECT MAX(id) FROM records)+1);
+SELECT SETVAL('isp_id_seq', (SELECT MAX(id) FROM isp)+1);
 
