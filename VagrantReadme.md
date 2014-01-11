@@ -12,6 +12,14 @@ Comandos a correr para instalar el entorno en Ubuntu
      # tratar de instalar por con pip, si una dependencia falla , sacarla y trantar con aptitude
 
 
+ipdb==0.8 anda
+ipython==1.1.0 no anda
+psycopg2==2.5.1 no anda
+pyasn1==0.1.7 anda
+pycrypto==2.6 anda
+rsa==3.1.2 no anda
+wsgiref==0.1.2 anda
+
 Estamos probando con:
 
 easy_install (apt-get install python-setup-tools)  SUELE USAR PAQUETES
