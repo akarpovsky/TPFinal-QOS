@@ -8,3 +8,4 @@
 *.core.prefs
 target/
 InternetQoS/target/
+.vagrant
