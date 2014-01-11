@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo "### TIX instalation script is running ###"
-clear
 
 echo "### installing python... ###"
 sudo apt-get install -y python-software-properties
