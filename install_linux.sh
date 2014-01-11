@@ -14,5 +14,10 @@ sudo apt-get install -y python-kivy
 echo "### installing pip... ###"
 sudo apt-get install python-pip
 
-echo "### isntalling pip dependencies.. ###"
+echo "### installing pip dependencies.. ###"
 pip install -r dependencies.txt
+
+echo "### installing rsa 3.1.2... ###"
+pip easy_install rsa
+
+
