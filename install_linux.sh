@@ -17,7 +17,14 @@ sudo apt-get install python-pip
 echo "### installing pip dependencies.. ###"
 pip install -r dependencies.txt
 
+echo "### installing iphython... ###"
+sudo easy_install ipython
+
+echo "### intalling psycopg2.... ###"
+sudo easy_install psycopg2
+
 echo "### installing rsa 3.1.2... ###"
-pip easy_install rsa
+sudo  easy_install rsa
+
 
 
