@@ -20,10 +20,10 @@ echo "### installing iphython... ###"
 sudo easy_install ipython
 
 echo "### intalling psycopg2.... ###"
-sudo easy_install psycopg2
+sudo apt-get install python-psycopg2
 
 echo "### installing rsa 3.1.2... ###"
 sudo  easy_install rsa
 
-
-
+echo "### installing requests module... ###"
+sudo easy_install requests
