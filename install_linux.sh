@@ -11,7 +11,7 @@ sudo apt-get update
 sudo apt-get install -y python-kivy
 
 echo "### installing pip... ###"
-sudo apt-get install python-pip
+sudo apt-get install -y python-pip
 
 echo "### installing pip dependencies.. ###"
 pip install -r dependencies.txt
@@ -19,8 +19,12 @@ pip install -r dependencies.txt
 echo "### installing iphython... ###"
 sudo easy_install ipython
 
+echo "### installing postgresql...###"
+sudo apt-get install -y postgresql 
+sudo apt-get install -y postgresql-server-dev-9.1
+
 echo "### intalling psycopg2.... ###"
-sudo apt-get install python-psycopg2
+sudo apt-get install -y python-psycopg2
 
 echo "### installing rsa 3.1.2... ###"
 sudo  easy_install rsa
