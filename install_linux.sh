@@ -37,4 +37,4 @@ echo "### installing requests module... ###"
 sudo easy_install requests 2>&1 >> $TEMP_FILE
 
 echo "### Launching Installation... ###"
-sudo python TixApp.py 2>&1 >> $TEMP_FILE
+sudo python TiX/PythonApp/ClientApp/TixApp.py 2>&1 >> $TEMP_FILE
