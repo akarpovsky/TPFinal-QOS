@@ -30,7 +30,7 @@ Config.set('graphics', 'height', '350')
 
 # Tomo data del archivo de configuracion
 config = ConfigParser.ConfigParser()
-config.read('TixApp.cfg')
+config.read('tixapp.cfg')
 tixBaseUrl = config.get("TiXClient", "tixBaseUrl")
 installDirUnix = config.get("TiXClient", "installDirUnix")
 
