@@ -2,6 +2,8 @@
 TEMP_FILE=/dev/stdout
 #TEMP_FILE=install.log
 
+gksudo echo
+
 echo "### TIX instalation script is running ###"
 
 echo "### installing python... ###"
