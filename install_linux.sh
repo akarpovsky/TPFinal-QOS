@@ -20,8 +20,8 @@ sudo apt-get install -y python-pip 2>&1 >> $TEMP_FILE
 echo "### installing pip dependencies.. ###"
 pip install -r dependencies.txt 2>&1 >> $TEMP_FILE
 
-echo "### installing iphython... ###"
-sudo easy_install ipython 2>&1 >> $TEMP_FILE
+#echo "### installing iphython... ###"
+#sudo easy_install ipython 2>&1 >> $TEMP_FILE
 
 echo "### installing postgresql...###"
 sudo apt-get install -y postgresql 2>&1 >> $TEMP_FILE
