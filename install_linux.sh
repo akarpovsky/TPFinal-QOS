@@ -10,7 +10,9 @@ echo "### installing python... ###"
 sudo apt-get install -y python-software-properties >> $TEMP_FILE 2>&1
 
 echo "### installing kivy... ###"
+echo "press [ENTER]"
 sudo add-apt-repository ppa:kivy-team/kivy >> $TEMP_FILE 2>&1
+
 sudo apt-get update >> $TEMP_FILE 2>&1
 sudo apt-get install -y python-kivy >> $TEMP_FILE 2>&1
 
