@@ -60,15 +60,18 @@ def installingStartup():
         generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')
 
         print "Copiando el ejecutable..."
-        os.system("pwd")
         script_st = os.stat('./InstallerFiles/toBeCopied/' + udpClientFile)
         os.chmod('./InstallerFiles/toBeCopied/' + udpClientFile, script_st.st_mode | stat.S_IEXEC)
         copyanything("./InstallerFiles/toBeCopied/" + udpClientFile,installDirUnixApp + '/' + udpClientFile)
+        copyanything("./InstallerFiles/toBeCopied/" + udpClientFileCFG,installDirUnixApp + '/' + udpClientFileCFG)
+        st = os.stat('./InstallerFiles/toBeCopied/' + startupAppCaller)
+        os.chmod('./InstallerFiles/toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
+        copyanything("./InstallerFiles/toBeCopied/" + startupAppCaller,installDirUnixApp + '/' + startupAppCaller)
+
         print "Instalando aplicacion en arranque..."
         st = os.stat('./InstallerFiles/toBeCopied/' + startupAppCaller)
         os.chmod('./InstallerFiles/toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
         copyanything("./InstallerFiles/toBeCopied/" + startupAppCaller,"/etc/init.d/" + startupAppCaller)
-        copyanything("./InstallerFiles/toBeCopied/" + udpClientFileCFG,installDirUnixApp + '/' + udpClientFileCFG)
         os.system("update-rc.d " + startupAppCaller + " defaults")
         os.spawnl(os.P_NOWAIT, "sudo /etc/TIX/app/TixClientApp log")
         installation_ok = True
@@ -93,6 +96,7 @@ def installingStartup():
         st = os.stat('./InstallerFiles/toBeCopied/' + startupAppCaller)
         os.chmod('./InstallerFiles/toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
         copyanything("./InstallerFiles/toBeCopied/" + startupAppCaller,installDirUnixApp + '/' + startupAppCaller)
+
         print "Instalando cliente TIX en el arranque..."
         os.system("osascript -e 'tell application \"System Events\" to make login item at end with properties {path:\""+installDirUnixApp + '/' + startupAppCaller +"\", hidden:false}'")
         os.spawnl(os.P_NOWAIT, "/etc/init.d/" + startupAppCaller)

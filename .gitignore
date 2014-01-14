@@ -4,6 +4,7 @@
 *.DS_Store
 *.classpath
 *.project
+*.log
 *.pyc
 *.core.prefs
 target/
