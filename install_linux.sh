@@ -1,6 +1,6 @@
 #!/bin/bash
-TEMP_FILE=/dev/stdout
-#TEMP_FILE=install.log
+#TEMP_FILE=/dev/stdout
+TEMP_FILE=install.log
 
 gksudo echo
 
