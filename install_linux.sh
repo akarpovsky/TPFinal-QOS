@@ -22,16 +22,6 @@ sudo apt-get install -y python-pip >> $TEMP_FILE 2>&1
 echo "### installing pip dependencies.. ###"
 pip install -r dependencies.txt >> $TEMP_FILE 2>&1
 
-#echo "### installing iphython... ###"
-#sudo easy_install ipython >> $TEMP_FILE 2>&1
-
-echo "### installing postgresql...###"
-#sudo apt-get install -y postgresql >> $TEMP_FILE 2>&1
-#sudo apt-get install -y postgresql-server-dev-9.1 >> $TEMP_FILE 2>&1
-
-echo "### intalling psycopg2.... ###"
-#sudo apt-get install -y python-psycopg2 >> $TEMP_FILE 2>&1
-
 echo "### installing rsa 3.1.2... ###"
 sudo  easy_install rsa >> $TEMP_FILE 2>&1
 
