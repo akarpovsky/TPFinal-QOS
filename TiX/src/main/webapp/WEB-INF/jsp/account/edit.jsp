@@ -9,33 +9,20 @@
 		<div class="row-fluid" style="margin-bottom: 8px;">
 			<div class="span3">
 				<div style="text-align: center;">
-					<img src="<c:url value='/img/pawbook_logo.png'/>" class="img-rounded" style="height: 60px;">
+<%-- 					<img src="<c:url value='/img/TiX.png'/>" class="img-rounded" style="height: 60px;"> --%>
 				</div>
 				<div class="profile_pic_container">
-					<img alt="${user.firstName} ${user.lastName}" class="profile_image img-circle"
-						src="../account/getProfilePicture?nickname=${user.nickname}" />
+<!-- 					<img alt="" class="profile_image img-circle" src="" /> -->
 				</div>
 
 				<div>
-					<div style="margin-left: 0;"
-						class="user-actions-container breadcrumb">
-						<div class="user-actions clearfix">
-							<form:form method="POST" enctype="multipart/form-data" action="editprofilepicture" commandName="editProfilePictureForm">
-								<form:errors path="*" cssClass="label label-important"/>
-								<form:input type="file" path="picture"/>
-								<button type="submit" class="btn btn-primary btn-mini">
-									<i class="icon-folder-open icon-white"></i> Editar imagen
-								</button>
-							</form:form>
-						</div>
-					</div>
-				</div>
+			</div>
 
 			</div>
 			<div class="span9">
 				<div class="row-fluid">
 					<span class="span12" style="margin-bottom: 5px;">
-						<h3>${user.firstName} ${user.lastName}</h3>
+						<h3>${user}</h3>
 					</span> 
 					<br /> 
 					<span style="margin-left: 0;" class="span12 breadcrumb">
@@ -53,36 +40,11 @@
 								</div>
 								<div class="row-fluid">
 									<div class="span3">
-										<strong>Nombre: </strong><br />
-									</div>
-									<div class="span4">
-										<form:input type="text" path="firstName" /><br />
-									</div>									
-								</div>
-								<div class="row-fluid">
-									<div class="span3">
-										<strong>Apellido: </strong><br />
-									</div>
-									<div class="span4">
-										<form:input type="text" path="lastName" /><br />
-									</div>
-								</div>
-								<div class="row-fluid">
-									<div class="span3">
-										<strong>Email: </strong><br />
-									</div>
-									<div class="span4">
-										<form:input type="text" path="email" />
-									</div>
-								</div>
-								<div class="row-fluid">
-									<div class="span3">
 										<strong>Fecha de nacimiento: </strong><br />
 									</div>
 									<div class="span4">
-										<form:input type="text" path="birthdate"/><br />
+										<form:input type="text" path="birthyear"/><br />
 									</div>
-									(dd/mm/yyyy)
 								</div>
 								<div class="row-fluid">
 									<div class="span3">

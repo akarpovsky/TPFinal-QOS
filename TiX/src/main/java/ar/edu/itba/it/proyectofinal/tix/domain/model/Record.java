@@ -44,7 +44,7 @@ public class Record extends DBPersistentObject {
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float upstreamCongestion; // Utilizacion downstream
+	private float upstreamCongestion; // Utilizacion upstream
 	
 	@Column(nullable=false)
 	@Max(value=100)

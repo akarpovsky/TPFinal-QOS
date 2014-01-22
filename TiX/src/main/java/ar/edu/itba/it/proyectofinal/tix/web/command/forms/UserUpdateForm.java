@@ -61,13 +61,14 @@ public class UserUpdateForm {
 
 	public User build(Errors errors, UserRepository userRepo) {
 		User user = null;
-		try {
-			user = new User(nickname, password1, birthyear, UserType.REGULAR);
-		} catch (InvalidParametersException e) {
-			ErrorUtil.rejectAll(errors, e.getErrors());
-		}
 		if (userRepo.existsNickname(nickname)) {
 			errors.reject("nicknameExists");
+		}else{
+			try {
+				user = new User(nickname, password1, birthyear, UserType.REGULAR);
+			} catch (InvalidParametersException e) {
+				ErrorUtil.rejectAll(errors, e.getErrors());
+			}
 		}
 		return errors.hasErrors() ? null : user;
 	}
@@ -76,6 +77,9 @@ public class UserUpdateForm {
 		boolean passworchMatches = user.getPassword().equals(password1);
 		if (!passworchMatches) {
 			errors.reject(AppError.INCORRECT_PASSWORD.translationKey);
+		}
+		if (userRepo.existsNickname(nickname)) {
+			errors.reject("nicknameExists");
 		}
 		UserValidator userValidator = new UserValidator();
 		if (!userValidator.emailValid(nickname)) {

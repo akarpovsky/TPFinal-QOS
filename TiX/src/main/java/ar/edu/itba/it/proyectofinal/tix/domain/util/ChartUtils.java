@@ -16,7 +16,7 @@ public class ChartUtils {
 	public static HighChart generateHighChart(List<Record> records,
 			String title, String subtitle, ChartType graphType) {
 
-		float CONGESTION_VALUE = (float) 80;
+		float CONGESTION_VALUE = (float) 0.8;
 		String json = null;
 		List<Long> timestamps = new ArrayList<Long>();
 		HighChart chart = null;
@@ -31,17 +31,17 @@ public class ChartUtils {
 			switch (graphType) {
 			case UPSTREAM_GRAPH:
 				metricas.add("Upstream");
-				// metricas.add("CongesitónUp");
+				 metricas.add("CongesitónUp");
 				break;
 			case DOWNSTREAM_GRAPH:
 				metricas.add("Downstream");
-				// metricas.add("CongestiónDown");
+				 metricas.add("CongestiónDown");
 				break;
 			default:
 				metricas.add("Upstream");
-				// metricas.add("CongesitónUp");
+				 metricas.add("CongesitónUp");
 				metricas.add("Downstream");
-				// metricas.add("CongestiónDown");
+				 metricas.add("CongestiónDown");
 				break;
 			}
 
@@ -143,11 +143,11 @@ public class ChartUtils {
 				j.put("marker", lineMarkerOptions);
 //				System.out.println(j.get("data"));
 				js.put(j);
-				// j = new JSONObject();
-				// j.put("name", metricas.get(1));
-				// j.put("data", congestionUp);
-				// j.put("marker", congestionMarkerOptions);
-				// js.put(j);
+				 j = new JSONObject();
+				 j.put("name", metricas.get(1));
+				 j.put("data", congestionUp);
+				 j.put("marker", congestionMarkerOptions);
+				 js.put(j);
 				congestion_final = congestionup_js;
 				break;
 			case DOWNSTREAM_GRAPH:
@@ -156,11 +156,11 @@ public class ChartUtils {
 				j.put("data", downStream_array);
 				j.put("marker", lineMarkerOptions);
 				js.put(j);
-				// j = new JSONObject();
-				// j.put("name", metricas.get(1));
-				// j.put("data", congestionDown);
-				// j.put("marker", congestionMarkerOptions);
-				// js.put(j);
+				 j = new JSONObject();
+				 j.put("name", metricas.get(1));
+				 j.put("data", congestionDown);
+				 j.put("marker", congestionMarkerOptions);
+				 js.put(j);
 				congestion_final = congestiondown_js;
 				break;
 			default:
@@ -169,21 +169,21 @@ public class ChartUtils {
 				j.put("data", upStream_array);
 				j.put("marker", lineMarkerOptions);
 				js.put(j);
-				// j = new JSONObject();
-				// j.put("name", metricas.get(1));
-				// j.put("data", congestionUp);
-				// j.put("marker", congestionMarkerOptions);
-				// js.put(j);
+				 j = new JSONObject();
+				 j.put("name", metricas.get(1));
+				 j.put("data", congestionUp);
+				 j.put("marker", congestionMarkerOptions);
+				 js.put(j);
 				j = new JSONObject();
-				j.put("name", metricas.get(1));
+				j.put("name", metricas.get(2));
 				j.put("data", downStream_array);
 				j.put("marker", lineMarkerOptions);
 				js.put(j);
-				// j = new JSONObject();
-				// j.put("name", metricas.get(3));
-				// j.put("data", congestionDown);
-				// j.put("marker", congestionMarkerOptions);
-				// js.put(j);
+				 j = new JSONObject();
+				 j.put("name", metricas.get(3));
+				 j.put("data", congestionDown);
+				 j.put("marker", congestionMarkerOptions);
+				 js.put(j);
 				congestion_final = congestion_js;
 
 			}
