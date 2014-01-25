@@ -37,7 +37,7 @@ public class User extends DBPersistentObject {
 	@Column(nullable=false, unique=true)
 	private String nickname;
 	
-	private Integer birthyear;
+	//private Integer birthyear;
 	
 	@OneToMany(fetch=FetchType.LAZY) // Lazy loading
 //	@JoinColumn(name="record_id", nullable=false)
@@ -59,9 +59,9 @@ public class User extends DBPersistentObject {
 		// required by hibernate 
 	}
 	
-	public User(String nickname, String password, Integer birthyear, UserType type) {
+	public User(String nickname, String password, UserType type) {
 		this();
-		UserBuilder.build(this, nickname, password, birthyear, type);
+		UserBuilder.build(this, nickname, password, type);
 	}
 	
 	@Override
@@ -153,18 +153,18 @@ public class User extends DBPersistentObject {
 		this.installations = installations;
 	}
 
-	public Integer getBirthYear() {
-		return birthyear;
-	}
+//	public Integer getBirthYear() {
+//		return birthyear;
+//	}
 
 	
-	public void setBirhYear(Integer birthyear) {
-		
-		if (birthyear == null || !uv.birthyearValid(birthyear)) {
-			throw new InvalidParametersException(Collections.singletonList(AppError.BIRTHYEAR));
-		}
-		this.birthyear = birthyear;
-	}
+//	public void setBirhYear(Integer birthyear) {
+//		
+//		if (birthyear == null || !uv.birthyearValid(birthyear)) {
+//			throw new InvalidParametersException(Collections.singletonList(AppError.BIRTHYEAR));
+//		}
+//		this.birthyear = birthyear;
+//	}
 
 	public boolean hasInstallation(String name) {
 		for(Installation i: this.installations){

@@ -38,14 +38,7 @@
 										<form:input type="text" path="nickname" /><br />
 									</div>
 								</div>
-								<div class="row-fluid">
-									<div class="span3">
-										<strong>Fecha de nacimiento: </strong><br />
-									</div>
-									<div class="span4">
-										<form:input type="text" path="birthyear"/><br />
-									</div>
-								</div>
+								
 								<div class="row-fluid">
 									<div class="span3">
 										<strong>Contrase&ntilde;a: </strong><br />

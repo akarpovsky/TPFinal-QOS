@@ -3,7 +3,7 @@ package ar.edu.itba.it.proyectofinal.tix.domain.util;
 public enum AppError {
 	EMAIL("invalidEmail"),
 	PASSWD_DONT_MATCH("passwordDontMatch"),
-	BIRTHYEAR("invalidBirthYear"),
+//	BIRTHYEAR("invalidBirthYear"),
 	NICKNAME("invalidNickname"),
 	NAME("invalidName"),
 	LAST_NAME("invalidSurname"),

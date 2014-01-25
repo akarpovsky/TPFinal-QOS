@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.itba.it.proyectofinal.tix.domain.model.Installation;
-import ar.edu.itba.it.proyectofinal.tix.domain.model.Record;
-import ar.edu.itba.it.proyectofinal.tix.domain.model.User;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.exception.InstallationExistsException;
 import ar.edu.itba.it.proyectofinal.tix.domain.repository.InstallationRepository;
 

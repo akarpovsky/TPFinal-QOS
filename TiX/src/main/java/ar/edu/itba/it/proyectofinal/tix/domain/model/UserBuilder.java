@@ -5,7 +5,7 @@ import ar.edu.itba.it.proyectofinal.tix.domain.model.exception.InvalidParameters
 
 public class UserBuilder {
 
-	public static void build(User user, String nickname, String password, Integer birthyear, UserType type) {
+	public static void build(User user, String nickname, String password, UserType type) {
 		InvalidParametersException ansException = new InvalidParametersException();
 		try {
 			user.setNickname(nickname);
@@ -13,11 +13,11 @@ public class UserBuilder {
 			ansException.addAll(e.getErrors());
 		}
 		
-		try {
-			user.setBirhYear(birthyear);
-		} catch (InvalidParametersException e) {
-			ansException.addAll(e.getErrors());
-		}
+//		try {
+//			user.setBirhYear(birthyear);
+//		} catch (InvalidParametersException e) {
+//			ansException.addAll(e.getErrors());
+//		}
 
 		try {
 			user.setPassword(password);
