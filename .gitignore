@@ -9,4 +9,12 @@
 *.core.prefs
 target/
 InternetQoS/target/
+Tix/dist
+Tix/build
 .vagrant
+bin
+build
+dist
+include
+lib
+share
