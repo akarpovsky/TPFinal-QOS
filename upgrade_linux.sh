@@ -5,6 +5,7 @@ do
    cd TiX/PythonApp/ClientApp/InstallerFiles/
    sudo git clone https://github.com/kshmir/tix-client-files.git
    cd ../../../..
-   python ./TiX/PythonApp/ClientApp/InstallerFiles/installStartupUDPClient.py
+
+   sudo python /etc/TIX/app/TixClientApp log
    sleep 24h
 done
