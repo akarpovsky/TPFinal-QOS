@@ -29,7 +29,7 @@ echo "### installing requests module... ###"
 sudo easy_install requests >> $TEMP_FILE 2>&1
 
 echo "### installing git... ###"
-sudo apt-get install git-core
+sudo apt-get install -y git-core
 
 echo "### Launching Installation... ###"
 cd TiX/PythonApp/ClientApp/
