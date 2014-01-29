@@ -13,9 +13,9 @@ public class UserValidator {
 		return email.matches("[A-Za-z0-9\\._\\-%\\+]+@[A-Za-z0-9\\-\\.]+\\.[A-Za-z]{2,4}");
 	}
 
-	public boolean birthdateValid(LocalDate date) {
-		return date != null;
-	}
+//	public boolean birthdateValid(LocalDate date) {
+//		return date != null;
+//	}
 
 	public boolean nameValid(String firstName) {
 		return genericStringValid(firstName, NAME_LENTGH, "[A-Za-z][A-Za-z\\s]*");
@@ -41,7 +41,7 @@ public class UserValidator {
 		return days >= 0;
 	}
 
-	public boolean birthyearValid(int birthyear) {
-		return birthyear > 1900 && birthyear < 2100;
-	}
+//	public boolean birthyearValid(int birthyear) {
+//		return birthyear > 1900 && birthyear < 2100;
+//	}
 }

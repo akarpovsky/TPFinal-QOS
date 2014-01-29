@@ -17,7 +17,7 @@ public class UserUpdateForm {
 	@Email
 	private String nickname;
 	
-	private Integer birthyear;
+	//private Integer birthyear;
 	
 	private String password1;
 
@@ -27,12 +27,12 @@ public class UserUpdateForm {
 
 	public UserUpdateForm(User user) {
 		setNickname(user.getNickname());
-		setBirthyear(user.getBirthYear());
+	//	setBirthyear(user.getBirthYear());
 	}
 	
-	public void setBirthyear(Integer birthyear) {
-		this.birthyear = birthyear;
-	}
+//	public void setBirthyear(Integer birthyear) {
+//		this.birthyear = birthyear;
+//	}
 
 	public String getNickname() {
 		return nickname;
@@ -43,9 +43,9 @@ public class UserUpdateForm {
 	}
 
 	
-	public Integer getBirthyear() {
-		return birthyear;
-	}
+//	public Integer getBirthyear() {
+//		return birthyear;
+//	}
 
 	public String getPassword1() {
 		return password1;
@@ -65,7 +65,7 @@ public class UserUpdateForm {
 			errors.reject("nicknameExists");
 		}else{
 			try {
-				user = new User(nickname, password1, birthyear, UserType.REGULAR);
+				user = new User(nickname, password1, UserType.REGULAR);
 			} catch (InvalidParametersException e) {
 				ErrorUtil.rejectAll(errors, e.getErrors());
 			}
@@ -89,12 +89,12 @@ public class UserUpdateForm {
 			errors.reject(AppError.INVALID_PASSWORD.translationKey);
 		}
 		
-		if (!userValidator.birthyearValid(birthyear)) {
-			errors.reject(AppError.BIRTHYEAR.translationKey);
-		}
-		
+//		if (!userValidator.birthyearValid(birthyear)) {
+//			errors.reject(AppError.BIRTHYEAR.translationKey);
+//		}
+//		
 		if (!errors.hasErrors()) {
-			UserBuilder.build(user, nickname, user.getPassword(), birthyear, user.getType());
+			UserBuilder.build(user, nickname, user.getPassword(), user.getType());
 		}
 	}
 }
