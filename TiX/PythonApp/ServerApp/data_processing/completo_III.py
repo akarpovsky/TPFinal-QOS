@@ -1524,12 +1524,12 @@ def resultados(file_name,leer,umbral_utiliz,umbral_H):
 			#print "h_wave",y2_wavelet[n]
 			#print "numer",numer
 		if  sentido == 'up':
-			calidad_Up = calidad*1.0/numer
+			calidad_Up = 1-(calidad*1.0/numer)
 			utiliz_Up = utilizacion/numer
 			H_RS_Up = h_rs/numer
 			H_Wave_Up = h_wave/numer
 		elif sentido == 'down':
-			calidad_Down = calidad*1.0/numer
+			calidad_Down = 1-(calidad*1.0/numer)
 			utiliz_Down = utilizacion/numer
 			H_RS_Down = h_rs/numer
 			H_Wave_Down = h_wave/numer
