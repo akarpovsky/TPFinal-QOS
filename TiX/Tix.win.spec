@@ -12,19 +12,13 @@ a = Analysis(['%s/TixApp.py' % base_path],
              )
 pyz = PYZ(a.pure)
 exe = EXE(pyz,
+          Tree(base_path),
           a.scripts,
-          exclude_binaries=True,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
           name='Tix.exe',
           strip=None,
           debug=True,
           upx=True,
           console=True)
-coll = COLLECT(exe, 
-               Tree(base_path),
-               a.binaries,
-               a.zipfiles,
-               a.datas,
-               debug=True,
-               strip=None,
-               upx=True,
-               name='Tix.exe')
