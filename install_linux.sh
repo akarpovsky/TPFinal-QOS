@@ -14,7 +14,7 @@ echo "press [ENTER]"
 sudo add-apt-repository ppa:kivy-team/kivy >> $TEMP_FILE 2>&1
 
 sudo apt-get update >> $TEMP_FILE 2>&1
-sudo apt-get install -y python-kivy >> $TEMP_FILE 2>&1
+sudo apt-get install -y python-kivy kivy-tools >> $TEMP_FILE 2>&1
 
 echo "### installing pip... ###"
 sudo apt-get install -y python-pip >> $TEMP_FILE 2>&1
