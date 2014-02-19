@@ -62,14 +62,14 @@ public class ChartUtils {
 				Record record = it.next();
 				if (record.isUserDownCongestion()) {
 					downStream_json = new JSONObject();
-					downStream_json.put("y", record.getDownstream());
+					downStream_json.put("y", record.getCalidad_down());
 					downStream_json.put("id", record.getId());
 					downStream_json.put("type", "D");
 					downStream_json.put("marker", new JSONObject().put("symbol", "url(http://www.highcharts.com/demo/gfx/sun.png)"));
 					downStream_array.put(downStream_json);
 				} else {
 					downStream_json = new JSONObject();
-					downStream_json.put("y", record.getDownstream());
+					downStream_json.put("y", record.getCalidad_down());
 					downStream_json.put("id", record.getId());
 					downStream_json.put("type", "D");
 					downStream_array.put(downStream_json);
@@ -77,27 +77,27 @@ public class ChartUtils {
 				
 				if (record.isUserUpCongestion()) {
 					upStream_json = new JSONObject();
-					upStream_json.put("y", record.getUpstream());
+					upStream_json.put("y", record.getCalidad_up());
 					upStream_json.put("id", record.getId());
 					upStream_json.put("type", "U");
 					upStream_json.put("marker", new JSONObject().put("symbol", "url(http://www.highcharts.com/demo/gfx/sun.png)"));
 					upStream_array.put(upStream_json);
 				} else {
 					upStream_json = new JSONObject();
-					upStream_json.put("y", record.getUpstream());
+					upStream_json.put("y", record.getCalidad_up());
 					upStream_json.put("id", record.getId());
 					upStream_json.put("type", "U");
 					upStream_array.put(upStream_json);
-				//	upStream.add(record.getUpstream());
+				//	upStream.add(record.getCalidad_up());
 				}
 //				System.out.println(upStream_array);
-				congestionDown.add(record.getDownstreamCongestion());
-				congestionUp.add(record.getUpstreamCongestion());
+				congestionDown.add(record.getUtiliz_down());
+				congestionUp.add(record.getUtiliz_up());
 				DateTime dt = new DateTime(record.getTimestamp());
 				timestamps.add(dt.getMillis());
 				List<Long> point = new ArrayList<Long>();
 				point.add((DateTimeUtils.getInstantMillis(dt)));
-				point.add((long) record.getUpstreamCongestion());
+				point.add((long) record.getUtiliz_up());
 				points.add(point);
 			}
 			int i = 0;

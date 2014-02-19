@@ -32,19 +32,19 @@ public class Record extends DBPersistentObject {
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float upstream; // Calidad upstream
+	private float calidad_up; // Calidad upstream
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float downstream; // Calidad downstream
+	private float calidad_down; // Calidad downstream
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float downstreamCongestion; // Utilizacion downstream
+	private float utiliz_down; // Utilizacion downstream
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float upstreamCongestion; // Utilizacion upstream
+	private float utiliz_up; // Utilizacion upstream
 	
 	@Column(nullable=false)
 	@Max(value=100)
@@ -128,7 +128,7 @@ public class Record extends DBPersistentObject {
 
 	@Override
 	public String toString() {
-		return "Record for " + user.getNickname() + " upstream=" + upstream + " downstream=" + downstream + " upstreamCongestion=" + upstreamCongestion + " downstreamCongestion=" + downstreamCongestion;
+		return "Record for " + user.getNickname() + " calidad_up=" + calidad_up + " calidad_down=" + calidad_down + " utiliz_up=" + utiliz_up + " utiliz_down=" + utiliz_down;
 	}
 
 	public User getUser() {
@@ -147,8 +147,8 @@ public class Record extends DBPersistentObject {
 		this.timestamp = timestamp;
 	}
 
-	public float getUpstream() {
-		return upstream;
+	public float getCalidad_up() {
+		return calidad_up;
 	}
 
 	public boolean isUserDownCongestion() {
@@ -181,45 +181,45 @@ public class Record extends DBPersistentObject {
 		}
 	}
 
-	public void setUpstream(float upstream) {
-		if(upstream <= 100){
-			this.upstream = upstream;
+	public void setCalidad_up(float calidad_up) {
+		if(calidad_up <= 100){
+			this.calidad_up = calidad_up;
 		}else{
 			throw new IllegalArgumentException("Percentage must be between 0 and 100");
 		}
 	}
 
-	public float getDownstream() {
-		return downstream;
+	public float getCalidad_down() {
+		return calidad_down;
 	}
 
-	public void setDownstream(float downstream) {
-		if(downstream <= 100){
-			this.downstream = downstream;
+	public void setCalidad_down(float calidad_down) {
+		if(calidad_down <= 100){
+			this.calidad_down = calidad_down;
 		}else{
 			throw new IllegalArgumentException("Percentage must be between 0 and 100");
 		}
 	}
 
-	public float getDownstreamCongestion() {
-		return downstreamCongestion;
+	public float getUtiliz_down() {
+		return utiliz_down;
 	}
 
-	public void setDownstreamCongestion(float downstreamCongestion) {
-		if(downstreamCongestion <= 100){
-			this.downstreamCongestion = downstreamCongestion;
+	public void setUtiliz_down(float utiliz_down) {
+		if(utiliz_down <= 100){
+			this.utiliz_down = utiliz_down;
 		}else{
 			throw new IllegalArgumentException("Percentage must be between 0 and 100");
 		}
 	}
 
-	public float getUpstreamCongestion() {
-		return upstreamCongestion;
+	public float getUtiliz_up() {
+		return utiliz_up;
 	}
 
-	public void setUpstreamCongestion(float upstreamCongestion) {
-		if(upstreamCongestion <= 100){
-			this.upstreamCongestion = upstreamCongestion;
+	public void setUtiliz_up(float utiliz_up) {
+		if(utiliz_up <= 100){
+			this.utiliz_up = utiliz_up;
 		}else{
 			throw new IllegalArgumentException("Percentage must be between 0 and 100");
 		}
