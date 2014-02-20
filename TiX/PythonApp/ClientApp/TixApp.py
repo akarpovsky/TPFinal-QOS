@@ -198,7 +198,6 @@ def select_installation(self, old_popup,instance):
                 # req = UrlRequest(tixBaseUrl + 'bin/api/newInstallation?user_id='+str(globalUserId)+'&password='+globalUserPassword+'&installation_name='+self.text+'&encryption_key='+publicEncryptionKey, on_success=finish_installation, on_error=requestTimeOut)
 
 def execute_installation():
-
         global globalPlatformName
         if globalPlatformName == "Linux":
                 try:
@@ -217,8 +216,6 @@ def installation_result_popup(installation_return,sys_return):
         # content.add_widget(btnaccept)
         popup.open()
         # sys.exit(sys_return)
-
-
 
 def return_to_so(sys_return, instance):
         sys.exit(sys_return)
@@ -261,7 +258,6 @@ def createNewInstallationWebsite(self):
         webbrowser.open(tixBaseUrl)
 
 class TabTextInput(TextInput):
-
         def __init__(self, *args, **kwargs):
                 self.next = kwargs.pop('next', None)
                 super(TabTextInput, self).__init__(*args, **kwargs)
