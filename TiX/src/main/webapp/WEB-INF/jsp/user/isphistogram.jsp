@@ -24,12 +24,11 @@ var chart = new Highcharts.Chart({
         type: 'column'
     },
     title: {
-        text: 'Histigrama congestion subida',
+        text: 'Histograma congestion subida',
         x: -20 //center
     },
 
     xAxis: {
-        // categories: ['${congestionUpChart[0]}', '${congestionUpChart[1]}', '${congestionUpChart[2]}', '${congestionUpChart[3]}', '${congestionUpChart[4]}', '${congestionUpChart[5]}', '${congestionUpChart[6]}', '${congestionUpChart[7]}', '${congestionUpChart[8]}', '${congestionUpChart[9]}']
         categories: ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100']
     },
 

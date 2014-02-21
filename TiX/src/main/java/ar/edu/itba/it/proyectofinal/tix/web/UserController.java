@@ -1,5 +1,6 @@
 package ar.edu.itba.it.proyectofinal.tix.web;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -98,24 +99,33 @@ public class UserController {
 			@RequestParam(value = "test", required = false) String test) {
 		ModelAndView mav = new ModelAndView();
 		
-//		List<Record> records;
-//		records = (List<Record>) recordRepo.getAllForIsp(requiredISP, minDate,maxDate);
-//
+		List<Record> records;
+		records = (List<Record>) recordRepo.getAllForIsp(requiredISP, minDate,maxDate);
+
+		System.out.println("HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE");
 //		HighChart congestionUpChart = null;
-//		HighChart congestionDownChart = null;
-//		HighChart utilizacionUpChart = null;
-//		HighChart utilizacionDownChart = null;
-//		
-//		congestionUpChart = ChartUtils.generateHistogramCongestionUp(records, "histograma congestion up", "algo");
+		int[] congestionUpChart = null;
+		List<Integer> congestionUpChartList = new ArrayList<Integer>();
+		HighChart congestionDownChart = null;
+		HighChart utilizacionUpChart = null;
+		HighChart utilizacionDownChart = null;
+		
+		congestionUpChart = ChartUtils.generateHistogramCongestionUp(records, "histograma congestion up", "algo");
 //		congestionDownChart = ChartUtils.generateHistogramCongestionDown(records, "histograma congestion down", "algo");
 //		utilizacionUpChart = ChartUtils.generateHistogramUtilizacionUp(records, "histograma utilizacion up", "algo");
 //		utilizacionDownChart = ChartUtils.generateHistogramUtilizacionDown(records, "histograma utilizacion up", "algo");
 //		
+	    for (int index = 0; index < congestionUpChart.length; index++)
+	    {
+	    		congestionUpChartList.add( congestionUpChart[index] );
+	    }
+		System.out.println("CLASSES:"+ congestionUpChartList);
 //		mav.addObject("congestionUpChart", congestionUpChart);
+		mav.addObject("congestionUpChart", congestionUpChart);
 //		mav.addObject("congestionDownChart", congestionDownChart);
 //		mav.addObject("utilizacionUpChart", utilizacionUpChart);
 //		mav.addObject("utilizacionDownChart", utilizacionDownChart);
-//		
+		
 		return mav;
 	}
 
