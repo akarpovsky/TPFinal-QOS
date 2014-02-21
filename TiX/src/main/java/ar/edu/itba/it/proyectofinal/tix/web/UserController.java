@@ -84,7 +84,40 @@ public class UserController {
 		return mav;
 
 	}
-	
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView isphistogram(
+			HttpSession session,
+			@RequestParam(value = "nickname", defaultValue = "") String nickname,
+			@RequestParam(value = "graphtype", defaultValue = "GENERAL_GRAPH") ChartType graphtype,
+			@RequestParam(value = "ins", required = false) Installation requiredInstallation,
+			@RequestParam(value = "isp", required = false) ISP requiredISP,
+			@RequestParam(value = "minDate", required = false) DateTime minDate,
+			@RequestParam(value = "maxDate", required = false) DateTime maxDate,
+			@RequestParam(value = "test", required = false) String test) {
+		ModelAndView mav = new ModelAndView();
+		
+//		List<Record> records;
+//		records = (List<Record>) recordRepo.getAllForIsp(requiredISP, minDate,maxDate);
+//
+//		HighChart congestionUpChart = null;
+//		HighChart congestionDownChart = null;
+//		HighChart utilizacionUpChart = null;
+//		HighChart utilizacionDownChart = null;
+//		
+//		congestionUpChart = ChartUtils.generateHistogramCongestionUp(records, "histograma congestion up", "algo");
+//		congestionDownChart = ChartUtils.generateHistogramCongestionDown(records, "histograma congestion down", "algo");
+//		utilizacionUpChart = ChartUtils.generateHistogramUtilizacionUp(records, "histograma utilizacion up", "algo");
+//		utilizacionDownChart = ChartUtils.generateHistogramUtilizacionDown(records, "histograma utilizacion up", "algo");
+//		
+//		mav.addObject("congestionUpChart", congestionUpChart);
+//		mav.addObject("congestionDownChart", congestionDownChart);
+//		mav.addObject("utilizacionUpChart", utilizacionUpChart);
+//		mav.addObject("utilizacionDownChart", utilizacionDownChart);
+//		
+		return mav;
+	}
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
@@ -166,7 +199,6 @@ public class UserController {
 		if (records.isEmpty()) {
 			noRecords = true;
 		} else {
-
 			switch (graphtype) {
 			case UPSTREAM_GRAPH:
 				chart = ChartUtils
@@ -179,7 +211,7 @@ public class UserController {
 								"Gráfico del Upstream para "
 										+ reqProfile.getNickname() +
 						((minDate != null && maxDate != null) ? " (" + getFormattedDate(minDate) + " - " + getFormattedDate(maxDate) + ")":""),
-										
+
 								ChartType.UPSTREAM_GRAPH);
 				break;
 			case DOWNSTREAM_GRAPH:
@@ -217,6 +249,8 @@ public class UserController {
 		return mav;
 	}
 
+
+
 	private User getSessionUser(HttpSession session) {
 		Integer userId = (Integer) session.getAttribute("userId");
 		return (userId == null) ? null : userRepo.get(userId);
@@ -236,12 +270,12 @@ public class UserController {
 		}
 
 	}
-	
+
 	public static String getFormattedDate(DateTime date){
-		
+
 		if(date != null)
 			return date.getDayOfMonth() + "/" + date.getMonthOfYear() + "/" + date.getYear();
-		
+
 		return null;
 	}
 
@@ -251,11 +285,11 @@ public class UserController {
 		System.out.println("ENTRO");
 		return null;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView changeCongestionStatus(HttpSession session, @RequestParam(value = "id",required=true) Record r,@RequestParam(value = "type",required=true) String type ) {
-	
+
 		ModelAndView mav = new ModelAndView();
 		User me = getSessionUser(session);
 
@@ -276,7 +310,7 @@ public class UserController {
 			mav.setViewName("error");
 			return mav;
 		}
-		
+
 		r.changeCongestionStatus(type);
 		mav.setView(ControllerUtil.redirectView("/user/dashboard?nickname=" + me.getNickname() + "&graphtype=GENERAL_GRAPH"));
 		return mav;

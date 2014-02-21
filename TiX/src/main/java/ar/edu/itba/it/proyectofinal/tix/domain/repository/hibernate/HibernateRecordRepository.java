@@ -52,6 +52,13 @@ public class HibernateRecordRepository extends AbstractHibernateRepo implements 
 		return find("from Record r where user_id = ? and installation = ? and isp = ? order by r.timestamp asc ", user.getId(), installation, isp);
 	}
 	
+	public List<? extends Record> getAllForIsp(ISP isp, DateTime minDate, DateTime maxDate){
+		if ( minDate != null && maxDate != null) {
+			return find("from Record r where isp = ? and r.timestamp >= ? and r.timestamp <= ? order by r.timestamp asc", isp, minDate, maxDate);
+		}
+		return find("from Record r where isp = ? order by r.timestamp asc ", isp);
+	}
+	
 	public List<ISP> getISPsForInstallation(User user, Installation installation) {
 		Session session = getSession();
 		return session.createQuery("select distinct isp as i from Record r where user_id = " + user.getId() + "and installation_id = " +  installation.getId()).list();

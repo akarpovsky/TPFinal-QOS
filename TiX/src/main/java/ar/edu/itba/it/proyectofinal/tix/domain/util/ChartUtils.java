@@ -13,6 +13,40 @@ import ar.edu.itba.it.proyectofinal.tix.domain.model.Record;
 
 public class ChartUtils {
 
+
+	public static HighChart generateHistogramCongestionUp(List<Record> records,
+			String title, String subtitle){
+		String json = null;
+		List<Long> timestamps = new ArrayList<Long>();
+		HighChart chart = null;
+		try {
+			JSONArray js = new JSONArray();
+			JSONArray congestiondown_js = new JSONArray();
+			JSONArray congestion_js = new JSONArray();
+			JSONArray congestion_final = new JSONArray();
+			ArrayList<String> metricas;
+			metricas = new ArrayList<String>();
+		}catch(Exception e){
+
+		}
+		return null;
+	}
+
+	public static HighChart generateHistogramCongestionDown(List<Record> records,
+			String title, String subtitle){
+		return null;
+	}
+
+	public static HighChart generateHistogramUtilizacionUp(List<Record> records,
+			String title, String subtitle){
+		return null;
+	}
+
+	public static HighChart generateHistogramUtilizacionDown(List<Record> records,
+			String title, String subtitle){
+		return null;
+	}
+
 	public static HighChart generateHighChart(List<Record> records,
 			String title, String subtitle, ChartType graphType) {
 
@@ -57,7 +91,7 @@ public class ChartUtils {
 			JSONArray upStream_array = new JSONArray();
 			JSONObject downStream_json = new JSONObject();
 			JSONArray downStream_array = new JSONArray();
-			
+
 			while (it.hasNext()) {
 				Record record = it.next();
 				if (record.isUserDownCongestion()) {
@@ -74,7 +108,7 @@ public class ChartUtils {
 					downStream_json.put("type", "D");
 					downStream_array.put(downStream_json);
 				}
-				
+
 				if (record.isUserUpCongestion()) {
 					upStream_json = new JSONObject();
 					upStream_json.put("y", record.getCalidad_up());
