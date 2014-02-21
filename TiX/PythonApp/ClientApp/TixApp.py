@@ -104,10 +104,6 @@ class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el bo
     btnclose.bind(on_release=partial(return_to_so,0))
     popup.open()
 
-
-def on_text(label, instance, *args):
-                print 'The widget', label
-
 def loginButtonOnClick(username, password, instance):
         print 'Validando usuario ', username.text, '...'
         global globalUsername
