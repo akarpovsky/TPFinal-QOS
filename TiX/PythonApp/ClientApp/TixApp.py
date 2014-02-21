@@ -48,18 +48,22 @@ class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el bo
 
   def __init__(self, **kwargs):
         super(LoginScreen, self).__init__(**kwargs)
-        try:
-                is_admin = os.getuid() == 0
-        except AttributeError:
-                is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
 
-        global globalIsAdmin
-        globalIsAdmin = is_admin
+        self.analyze_is_admin()
 
         if os.path.exists(installDirUnix):
           self.show_already_installed_popup()
         else:        
           self.show_install_form()
+
+  def analyze_is_admin(self):
+    try:
+      is_admin = os.getuid() == 0
+    except AttributeError:
+      is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
+
+    global globalIsAdmin
+    globalIsAdmin = is_admin
 
   def show_install_form(self): 
     self.orientation = 'vertical'
