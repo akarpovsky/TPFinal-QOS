@@ -1,13 +1,26 @@
 import random
 import unittest
-import ludibrio
+import ConfigParser
+import mock
 from mock import patch, MagicMock
+from ludibrio import Dummy
 
 class TestSequenceFunctions(unittest.TestCase):
     def setUp(self):
-        self.seq = range(10)
         self.kivy = MagicMock()
-        
+
+        class Fake(object):
+          def __init__(self, **kwargs):
+            return
+          def add_widget(self, *args, **kwargs):
+            return
+          def open(self):
+            return
+
+        self.kivy.BoxLayout = Fake
+        self.kivy.Popup = Fake
+        self.kivy.TextInput = mock.Mock()
+
         kivyDict = { 
             "kivy" : self.kivy, 
             "kivy.app" : self.kivy,
@@ -24,34 +37,27 @@ class TestSequenceFunctions(unittest.TestCase):
             "kivy.network.urlrequest" : self.kivy,
             "kivy.config" : self.kivy,
             "kivy.graphics" : self.kivy,
-            "kivy.uix.image" : self.kivy
+            "kivy.uix.image" : self.kivy,
+            "webbrowser" : self.kivy,
+            "ConfigParser" : self.kivy
         }
 
         self.module_patcher = patch.dict("sys.modules", kivyDict)
         self.module_patcher.start()
-        from TixApp import TixApp
 
-    # def test_shows_splash_when_installation_exists(self):
-      
+    @patch("os.path.exists", ** { 'return_value' : True })
+    def test_shows_splash_when_installation_exists(self, path):
+        import TixApp
+        with patch.object(TixApp.LoginScreen, 'show_already_installed_popup') as fn:
+          screen = TixApp.LoginScreen()
+          fn.assert_called_with()
 
-    def test_shuffle(self):
-        # make sure the shuffled sequence does not lose any elements
-        random.shuffle(self.seq)
-        self.seq.sort()
-        self.assertEqual(self.seq, range(10))
-
-        # should raise an exception for an immutable sequence
-        self.assertRaises(TypeError, random.shuffle, (1,2,3))
-
-    def test_choice(self):
-        element = random.choice(self.seq)
-        self.assertTrue(element in self.seq)
-
-    def test_sample(self):
-        with self.assertRaises(ValueError):
-            random.sample(self.seq, 20)
-        for element in random.sample(self.seq, 5):
-            self.assertTrue(element in self.seq)
+    @patch("os.path.exists", ** { 'return_value' : False })
+    def test_shows_splash_when_installation_not_exists(self, path):
+        import TixApp
+        with patch.object(TixApp.LoginScreen, 'show_install_form') as fn:
+          screen = TixApp.LoginScreen()
+          fn.assert_called_with()
 
 if __name__ == '__main__':
     unittest.main()

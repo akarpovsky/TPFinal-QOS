@@ -31,6 +31,8 @@ Config.set('graphics', 'height', '350')
 # Tomo data del archivo de configuracion
 config = ConfigParser.ConfigParser()
 config.read('tixapp.cfg')
+config.get("TiXClient", "tixBaseUrl")
+config.get("TiXClient", "installDirUnix")
 tixBaseUrl = config.get("TiXClient", "tixBaseUrl")
 installDirUnix = config.get("TiXClient", "installDirUnix")
 
@@ -44,7 +46,7 @@ globalIsAdmin = False
 
 class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el boton de aceptar
 
- def __init__(self, **kwargs):
+  def __init__(self, **kwargs):
         super(LoginScreen, self).__init__(**kwargs)
         try:
                 is_admin = os.getuid() == 0
@@ -55,44 +57,49 @@ class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el bo
         globalIsAdmin = is_admin
 
         if os.path.exists(installDirUnix):
-                btnclose = Button(text='Salir', size_hint_y=None, height='30sp')
-                content = BoxLayout(orientation='vertical', spacing=10)
-                btncreateinstallation = Button(text='Desinstalar', size_hint_y=None,  size_hint_x=0.4, height='50sp', pos_hint={'center_x': 0.5})
-                btncreateinstallation.bind(on_press=deleteExistingInstallation)
-                content.add_widget(Label(text='Usted ya posee una instalacion de TiX en esta PC.'))
-                content.add_widget(btncreateinstallation)
-                content.add_widget(btnclose)
-                popup = Popup(title='Error',content=content,size_hint=(None, None), size=(600, 200), auto_dismiss=False)
-                btnclose.bind(on_release=partial(return_to_so,0))
-                popup.open()
+          self.show_already_installed_popup()
         else:        
-                self.orientation = 'vertical'
-                self.spacing='10sp'
+          self.show_install_form()
 
-                headerLayout = BoxLayout(orientation='horizontal')
-                headerLabelsLayout = BoxLayout(orientation='vertical')
-                headerLabelsLayout.add_widget(Label(text='Proyecto TiX', font_size=24))
-                headerLabelsLayout.add_widget(Label(text='Iniciar sesion', font_size=18))
+  def show_install_form(self): 
+    self.orientation = 'vertical'
+    self.spacing='10sp'
 
-                headerLayout.add_widget(headerLabelsLayout)
-                headerLayout.add_widget(Image(source='./images/LogoTiX.png'))
-                self.add_widget(headerLayout)
+    headerLayout = BoxLayout(orientation='horizontal')
+    headerLabelsLayout = BoxLayout(orientation='vertical')
+    headerLabelsLayout.add_widget(Label(text='Proyecto TiX', font_size=24))
+    headerLabelsLayout.add_widget(Label(text='Iniciar sesion', font_size=18))
 
-                form = GridLayout(cols=2)
+    headerLayout.add_widget(headerLabelsLayout)
+    headerLayout.add_widget(Image(source='./images/LogoTiX.png'))
+    self.add_widget(headerLayout)
 
-                form.add_widget(Label(text='Usuario'))
-                self.username = TabTextInput(multiline=False)
-                form.add_widget(self.username) #Username field
-                form.add_widget(Label(text='Password'))
-                self.password = TabTextInput(password=True, multiline=False) #Password field
-                self.username.set_next(self.password)
-                form.add_widget(self.password)
-                self.add_widget(form)
-                loginButton = Button(text="Conectar", size_hint_y=None, height='50sp',font_size=20)
-                self.password.set_next(loginButton)
-                self.add_widget(loginButton)
-                loginButton.bind(on_press=partial(loginButtonOnClick,self.username,self.password)) #Accion que realizara el loginButton
+    form = GridLayout(cols=2)
+    form.add_widget(Label(text='Usuario'))
+    self.username = TabTextInput(multiline=False)
+    form.add_widget(self.username) #Username field
+    form.add_widget(Label(text='Password'))
+    self.password = TabTextInput(password=True, multiline=False) #Password field
+    self.username.set_next(self.password)
+    form.add_widget(self.password)
+    self.add_widget(form)
+    loginButton = Button(text="Conectar", size_hint_y=None, height='50sp',font_size=20)
+    self.password.set_next(loginButton)
+    self.add_widget(loginButton)
+    loginButton.bind(on_press=partial(loginButtonOnClick,self.username,self.password)) #Accion que realizara el loginButton
         
+  def show_already_installed_popup(self):
+    btnclose = Button(text='Salir', size_hint_y=None, height='30sp')
+    content = BoxLayout(orientation='vertical', spacing=10)
+    btncreateinstallation = Button(text='Desinstalar', size_hint_y=None,  size_hint_x=0.4, height='50sp', pos_hint={'center_x': 0.5})
+    btncreateinstallation.bind(on_press=deleteExistingInstallation)
+    content.add_widget(Label(text='Usted ya posee una instalacion de TiX en esta PC.'))
+    content.add_widget(btncreateinstallation)
+    content.add_widget(btnclose)
+    popup = Popup(title='Error',content=content,size_hint=(None, None), size=(600, 200), auto_dismiss=False)
+    btnclose.bind(on_release=partial(return_to_so,0))
+    popup.open()
+
 
 def on_text(label, instance, *args):
                 print 'The widget', label
@@ -275,8 +282,8 @@ class TabTextInput(TextInput):
                         super(TabTextInput, self)._keyboard_on_key_down(window, keycode, text, modifiers)
 
 class TiXApp(App):
- def build(self):
-        return LoginScreen()
+   def build(self):
+     return LoginScreen()
 
 if __name__ == '__main__':
-        TiXApp().run()
+  TiXApp().run()
