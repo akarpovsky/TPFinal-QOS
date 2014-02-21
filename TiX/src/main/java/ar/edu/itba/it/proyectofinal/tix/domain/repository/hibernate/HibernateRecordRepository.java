@@ -56,7 +56,10 @@ public class HibernateRecordRepository extends AbstractHibernateRepo implements 
 		if ( minDate != null && maxDate != null) {
 			return find("from Record r where isp = ? and r.timestamp >= ? and r.timestamp <= ? order by r.timestamp asc", isp, minDate, maxDate);
 		}
-		return find("from Record r where isp = ? order by r.timestamp asc ", isp);
+		System.out.println("ISP: " +  isp);
+//		return find("from Record r where isp = ? order by r.timestamp asc ", isp);
+		return find("from Record r where isp_id = 1 order by r.timestamp asc ");
+
 	}
 	
 	public List<ISP> getISPsForInstallation(User user, Installation installation) {

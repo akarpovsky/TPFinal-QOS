@@ -14,7 +14,7 @@ import ar.edu.itba.it.proyectofinal.tix.domain.model.Record;
 public class ChartUtils {
 
 
-	public static HighChart generateHistogramCongestionUp(List<Record> records,
+	public static int[] generateHistogramCongestionUp(List<Record> records,
 			String title, String subtitle){
 		String json = null;
 		List<Long> timestamps = new ArrayList<Long>();
@@ -27,9 +27,23 @@ public class ChartUtils {
 			ArrayList<String> metricas;
 			metricas = new ArrayList<String>();
 		}catch(Exception e){
-
 		}
-		return null;
+		
+		Iterator<Record> it = records.iterator();
+		JSONObject upStream_json = new JSONObject();
+		JSONArray upStream_array = new JSONArray();
+		
+		int[] classes = new int[11];
+		
+		while (it.hasNext()) {
+			Record record = it.next();
+			if (record.isUserDownCongestion()) {
+				int cong = (int) record.getCalidad_up() * 10;
+				classes[cong]++;
+			}
+		}
+		
+		return classes;
 	}
 
 	public static HighChart generateHistogramCongestionDown(List<Record> records,

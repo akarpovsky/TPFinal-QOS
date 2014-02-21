@@ -15,6 +15,7 @@
     <h1></h1>
     <div id="container" style="height: 400px; width: 800px"></div>
 
+<!-- xaxis       categories: ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100']-->
 <script type="text/javascript">
 var chart = new Highcharts.Chart({
 
@@ -28,6 +29,7 @@ var chart = new Highcharts.Chart({
     },
 
     xAxis: {
+        // categories: ['${congestionUpChart[0]}', '${congestionUpChart[1]}', '${congestionUpChart[2]}', '${congestionUpChart[3]}', '${congestionUpChart[4]}', '${congestionUpChart[5]}', '${congestionUpChart[6]}', '${congestionUpChart[7]}', '${congestionUpChart[8]}', '${congestionUpChart[9]}']
         categories: ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100']
     },
 
@@ -40,7 +42,7 @@ var chart = new Highcharts.Chart({
     },
 
     series: [{
-        data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1]
+        data: [${congestionUpChart[0]}, ${congestionUpChart[1]}, ${congestionUpChart[2]}, ${congestionUpChart[3]}, ${congestionUpChart[4]}, ${congestionUpChart[5]}, ${congestionUpChart[6]}, ${congestionUpChart[7]}, ${congestionUpChart[8]}, ${congestionUpChart[9]}]
     }]
 
 });
