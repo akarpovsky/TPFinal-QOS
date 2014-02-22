@@ -14,40 +14,31 @@ import ar.edu.itba.it.proyectofinal.tix.domain.model.Record;
 public class ChartUtils {
 
 	public static int[] generateHistogramCongestionUp(List<Record> records,
-			String title, String subtitle) {
-		String json = null;
-		List<Long> timestamps = new ArrayList<Long>();
-		HighChart chart = null;
-		try {
-			JSONArray js = new JSONArray();
-			JSONArray congestiondown_js = new JSONArray();
-			JSONArray congestion_js = new JSONArray();
-			JSONArray congestion_final = new JSONArray();
-			ArrayList<String> metricas;
-			metricas = new ArrayList<String>();
-		} catch (Exception e) {
-		}
-
+			String title) {
 		Iterator<Record> it = records.iterator();
-		JSONObject upStream_json = new JSONObject();
-		JSONArray upStream_array = new JSONArray();
-
 		int[] classes = new int[11];
-
 		while (it.hasNext()) {
 			Record record = it.next();
 			double index = record.getCalidad_up() * 10;
 			System.out.println("D : " + index);
 			int cong = (int) index;
 			classes[cong]++;
-
 		}
 		return classes;
 	}
 
-	public static HighChart generateHistogramCongestionDown(
-			List<Record> records, String title, String subtitle) {
-		return null;
+	public static int[] generateHistogramCongestionDown(List<Record> records,
+			String title) {
+		Iterator<Record> it = records.iterator();
+		int[] classes = new int[11];
+		while (it.hasNext()) {
+			Record record = it.next();
+			double index = record.getCalidad_down() * 10;
+			System.out.println("D : " + index);
+			int cong = (int) index;
+			classes[cong]++;
+		}
+		return classes;
 	}
 
 	public static HighChart generateHistogramUtilizacionUp(

@@ -98,7 +98,7 @@ public class UserController {
 			@RequestParam(value = "maxDate", required = false) DateTime maxDate,
 			@RequestParam(value = "test", required = false) String test) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		List<Record> records;
 		records = (List<Record>) recordRepo.getAllForIsp(requiredISP, minDate,maxDate);
 
@@ -106,15 +106,16 @@ public class UserController {
 //		HighChart congestionUpChart = null;
 		int[] congestionUpChart = null;
 		List<Integer> congestionUpChartList = new ArrayList<Integer>();
-		HighChart congestionDownChart = null;
+		int[] congestionDownChart = null;
 		HighChart utilizacionUpChart = null;
 		HighChart utilizacionDownChart = null;
-		
-		congestionUpChart = ChartUtils.generateHistogramCongestionUp(records, "histograma congestion up", "algo");
+
+		congestionUpChart = ChartUtils.generateHistogramCongestionUp(records, "histograma congestion up");
+		congestionDownChart = ChartUtils.generateHistogramCongestionDown(records, "histograma congestion down");
 //		congestionDownChart = ChartUtils.generateHistogramCongestionDown(records, "histograma congestion down", "algo");
 //		utilizacionUpChart = ChartUtils.generateHistogramUtilizacionUp(records, "histograma utilizacion up", "algo");
 //		utilizacionDownChart = ChartUtils.generateHistogramUtilizacionDown(records, "histograma utilizacion up", "algo");
-//		
+//
 	    for (int index = 0; index < congestionUpChart.length; index++)
 	    {
 	    		congestionUpChartList.add( congestionUpChart[index] );
@@ -122,10 +123,11 @@ public class UserController {
 		System.out.println("CLASSES:"+ congestionUpChartList);
 //		mav.addObject("congestionUpChart", congestionUpChart);
 		mav.addObject("congestionUpChart", congestionUpChart);
+		mav.addObject("congestionDownChart", congestionDownChart);
 //		mav.addObject("congestionDownChart", congestionDownChart);
 //		mav.addObject("utilizacionUpChart", utilizacionUpChart);
 //		mav.addObject("utilizacionDownChart", utilizacionDownChart);
-		
+
 		return mav;
 	}
 
