@@ -124,6 +124,45 @@ public class UserController {
 
 		return mav;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView ispboxplot(
+			HttpSession session,
+			@RequestParam(value = "nickname", defaultValue = "") String nickname,
+			@RequestParam(value = "graphtype", defaultValue = "GENERAL_GRAPH") ChartType graphtype,
+			@RequestParam(value = "ins", required = false) Installation requiredInstallation,
+			@RequestParam(value = "isp", required = false) ISP requiredISP,
+			@RequestParam(value = "minDate", required = false) DateTime minDate,
+			@RequestParam(value = "maxDate", required = false) DateTime maxDate,
+			@RequestParam(value = "test", required = false) String test) {
+		ModelAndView mav = new ModelAndView();
+
+		List<Record> records;
+		records = (List<Record>) recordRepo.getAllForIsp(requiredISP, minDate,maxDate);
+
+		int[] congestionUpChart = null;
+		List<Integer> congestionUpChartList = new ArrayList<Integer>();
+		int[] congestionDownChart = null;
+		int[] utilizacionUpChart = null;
+		int[] utilizacionDownChart = null;
+
+		congestionUpChart = ChartUtils.generateHistogramCongestionUp(records, "histograma congestion up");
+		congestionDownChart = ChartUtils.generateHistogramCongestionDown(records, "histograma congestion down");
+		utilizacionUpChart = ChartUtils.generateHistogramUtilizacionUp(records, "histograma utilizacion up");
+		utilizacionDownChart = ChartUtils.generateHistogramUtilizacionDown(records, "histograma utilizacion down");
+		
+	    for (int index = 0; index < congestionUpChart.length; index++)
+	    {
+	    		congestionUpChartList.add( congestionUpChart[index] );
+	    }
+		mav.addObject("congestionUpChart", congestionUpChart);
+		mav.addObject("congestionDownChart", congestionDownChart);
+		mav.addObject("utilizacionUpChart", utilizacionUpChart);
+		mav.addObject("utilizacionDownChart", utilizacionDownChart);
+
+		return mav;
+	}
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
