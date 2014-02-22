@@ -140,26 +140,15 @@ public class UserController {
 
 		List<Record> records;
 		records = (List<Record>) recordRepo.getAllForIsp(requiredISP, minDate,maxDate);
-
-		int[] congestionUpChart = null;
-		List<Integer> congestionUpChartList = new ArrayList<Integer>();
-		int[] congestionDownChart = null;
-		int[] utilizacionUpChart = null;
-		int[] utilizacionDownChart = null;
-
-		congestionUpChart = ChartUtils.generateHistogramCongestionUp(records, "histograma congestion up");
-		congestionDownChart = ChartUtils.generateHistogramCongestionDown(records, "histograma congestion down");
-		utilizacionUpChart = ChartUtils.generateHistogramUtilizacionUp(records, "histograma utilizacion up");
-		utilizacionDownChart = ChartUtils.generateHistogramUtilizacionDown(records, "histograma utilizacion down");
 		
-	    for (int index = 0; index < congestionUpChart.length; index++)
-	    {
-	    		congestionUpChartList.add( congestionUpChart[index] );
-	    }
-		mav.addObject("congestionUpChart", congestionUpChart);
-		mav.addObject("congestionDownChart", congestionDownChart);
-		mav.addObject("utilizacionUpChart", utilizacionUpChart);
-		mav.addObject("utilizacionDownChart", utilizacionDownChart);
+		List<double[]> boxplotdata = new ArrayList<double[]>();
+		boxplotdata = ChartUtils.generateBoxplot(records);
+		
+		
+		mav.addObject("congestionUpChart", boxplotdata.get(0));
+		mav.addObject("congestionDownChart", boxplotdata.get(1));
+		mav.addObject("utilizacionUpChart", boxplotdata.get(2));
+		mav.addObject("utilizacionDownChart", boxplotdata.get(3));
 
 		return mav;
 	}

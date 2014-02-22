@@ -28,19 +28,16 @@ var chart = new Highcharts.Chart({
 
     xAxis: {
         minTickInterval: 1,
-        categories: ['congestion subida', 'congestion bajada', 'utilizacion subida', 'utilizacion bajada'],
-        title: {
-            text: 'Fibertel'
-        }
+        categories: ['congestion subida', 'congestion bajada', 'utilizacion subida', 'utilizacion bajada']
     },
 
     series: [{
-        name: 'Box plot',
+        name: 'Fibertel',
         data: [
-            [0, 1, 2.5, 3, 6],
-            [1, 2, 3, 4, 5],
-            [1, 2, 3, 4, 5],
-            [1, 2, 3, 4, 5]
+            [${congestionUpChart[0]}, ${congestionUpChart[1]}, ${congestionUpChart[2]}, ${congestionUpChart[3]}, ${congestionUpChart[4]}],
+            [${congestionDownChart[0]}, ${congestionDownChart[1]}, ${congestionDownChart[2]}, ${congestionDownChart[3]}, ${congestionDownChart[4]}],
+            [${utilizacionUpChart[0]}, ${utilizacionUpChart[1]}, ${utilizacionUpChart[2]}, ${utilizacionUpChart[3]}, ${utilizacionUpChart[4]}],
+            [${utilizacionDownChart[0]}, ${utilizacionDownChart[1]}, ${utilizacionDownChart[2]}, ${utilizacionDownChart[3]}, ${utilizacionDownChart[4]}]
         ]
     }]
 

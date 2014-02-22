@@ -1,6 +1,7 @@
 package ar.edu.itba.it.proyectofinal.tix.domain.util;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,6 +14,112 @@ import ar.edu.itba.it.proyectofinal.tix.domain.model.Record;
 
 public class ChartUtils {
 
+	
+	public static List<double[]> generateBoxplot(List<Record> records) {
+		
+		Iterator<Record> it = records.iterator();	
+		// [0] minimum
+		// [1] lower quartile
+		// [2] median
+		// [3] higher quartile
+		// [4] maximum
+		
+		double[] congestionup_vec = new double[5];
+		double[] congestiondown_vec = new double[5];
+		double[] utilizacionup_vec = new double[5];
+		double[] utilizaciondown_vec = new double[5];
+		
+		List<double[]> values = new ArrayList<double[]>();
+		
+		//values
+		List<Double> congestionup_values = new ArrayList<Double>();
+		List<Double> congestiondown_values = new ArrayList<Double>();
+		List<Double> utilizacionup_values = new ArrayList<Double>();
+		List<Double> utilizaciondown_values = new ArrayList<Double>();
+		
+//		double[] congestiondown_values = new double[10000];
+//		double[] utilizacionup_values = new double[10000];
+//		double[] utilizaciondown_values = new double[10000];
+		
+		int i=0;
+		while (it.hasNext()){
+			Record record = it.next();
+			double congestionup = record.getCalidad_up() * 10;
+			double congestiondown = record.getCalidad_down() * 10;
+			double utilizacionup = record.getUtiliz_up() * 10;
+			double utilizaciondown = record.getUtiliz_down() * 10;
+			
+			//minimums
+			congestionup_vec[0] = (congestionup < congestionup_vec[0]) ? congestionup:congestionup_vec[0];
+			congestiondown_vec[0] = (congestiondown < congestiondown_vec[0]) ? congestiondown:congestiondown_vec[0];
+			utilizacionup_vec[0] = (utilizacionup < utilizacionup_vec[0]) ? utilizacionup:utilizacionup_vec[0];
+			utilizaciondown_vec[0] = (utilizaciondown < utilizaciondown_vec[0]) ? utilizaciondown:utilizaciondown_vec[0];
+
+			//maximums
+			congestionup_vec[4] = (congestionup > congestionup_vec[4]) ? congestionup:congestionup_vec[4];
+			congestiondown_vec[4] = (congestiondown > congestiondown_vec[4]) ? congestiondown:congestiondown_vec[4];
+			utilizacionup_vec[4] = (utilizacionup > utilizacionup_vec[4]) ? utilizacionup:utilizacionup_vec[4];
+			utilizaciondown_vec[4] = (utilizaciondown > utilizaciondown_vec[4]) ? utilizaciondown:utilizaciondown_vec[4];
+			
+			//values
+//			congestionup_values[i] =  congestionup;
+//			congestiondown_values[i] = congestiondown;
+//			utilizacionup_values[i] = utilizacionup;
+//			utilizaciondown_values[i] = utilizaciondown;
+			congestionup_values.add(congestionup);
+			congestiondown_values.add(congestionup);
+			utilizacionup_values.add(congestionup);
+			utilizaciondown_values.add(congestionup);
+			
+			i++;
+		}
+		
+		
+		//sorting
+//		Arrays.sort(congestionup_values);
+//		Arrays.sort(congestiondown_values);
+//		Arrays.sort(utilizacionup_values);
+//		Arrays.sort(utilizaciondown_values);
+		Collections.sort(congestionup_values);
+		Collections.sort(congestiondown_values);
+		Collections.sort(utilizacionup_values);
+		Collections.sort(utilizaciondown_values);
+		
+		System.out.println("SORTED LIST: " + utilizacionup_values);
+		
+		boolean even = (i%2 == 0)? true:false;
+
+		//medians
+		congestionup_vec[2] = !even? congestionup_values.get(i/2):((congestionup_values.get((i/2)-1)+congestionup_values.get((i/2)+1)))/2 ;
+		congestiondown_vec[2] = !even? congestiondown_values.get(i/2):((congestiondown_values.get((i/2)-1)+congestiondown_values.get((i/2)+1)))/2 ;
+		utilizacionup_vec[2] = !even? utilizacionup_values.get(i/2):((utilizacionup_values.get((i/2)-1)+utilizacionup_values.get((i/2)+1)))/2 ;
+		utilizaciondown_vec[2] = !even? utilizaciondown_values.get(i/2):((utilizaciondown_values.get((i/2)-1)+utilizaciondown_values.get((i/2)+1)))/2 ;
+		System.out.println("utilizacionup_vec: "+ utilizacionup_vec[2] );
+		
+//		// lower quartiles
+//		congestionup_vec[1] = even? congestionup_values[i/4]:((congestionup_values[(i/4)-1]+congestionup_values[(i/4)+1]))/2 ;
+//		congestiondown_vec[1] = even? congestiondown_values[i/4]:((congestiondown_values[(i/4)-1]+congestiondown_values[(i/4)+1]))/2 ;
+//		utilizacionup_vec[1] = even? utilizacionup_values[i/4]:((utilizacionup_values[(i/4)-1]+utilizacionup_values[(i/4)+1]))/2 ;
+//		utilizaciondown_vec[1] = even? utilizaciondown_values[i/4]:((utilizaciondown_values[(i/4)-1]+utilizaciondown_values[(i/4)+1]))/2 ;
+//
+//		
+		//  higher quartiles
+		congestionup_vec[3] = even? congestionup_values.get(i/4 * 3):((congestionup_values.get(i/4 * 3)-1)+congestionup_values.get((i/4 * 3)+1))/2 ;
+		congestiondown_vec[3] = even? congestiondown_values.get(i/4 * 3):((congestiondown_values.get(i/4 * 3)-1)+congestiondown_values.get((i/4 * 3)+1))/2 ;
+		utilizacionup_vec[3] = even? utilizacionup_values.get(i/4 * 3):((utilizacionup_values.get(i/4 * 3)-1)+utilizacionup_values.get((i/4 * 3)+1))/2 ;
+		utilizaciondown_vec[3] = even? utilizaciondown_values.get(i/4 * 3):((utilizaciondown_values.get(i/4 * 3)-1)+utilizaciondown_values.get((i/4 * 3)-1))/2 ;
+
+		
+		values.add(congestionup_vec);
+		values.add(congestiondown_vec);
+		values.add(utilizacionup_vec);
+		values.add(utilizaciondown_vec);
+		
+		return values;
+	}
+	
+	
+//	Histograms
 	public static int[] generateHistogramCongestionUp(List<Record> records,
 			String title) {
 		Iterator<Record> it = records.iterator();
@@ -20,7 +127,6 @@ public class ChartUtils {
 		while (it.hasNext()) {
 			Record record = it.next();
 			double index = record.getCalidad_up() * 10;
-			System.out.println("D : " + index);
 			int cong = (int) index;
 			classes[cong]++;
 		}
