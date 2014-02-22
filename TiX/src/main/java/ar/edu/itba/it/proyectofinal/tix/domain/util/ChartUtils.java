@@ -34,21 +34,36 @@ public class ChartUtils {
 		while (it.hasNext()) {
 			Record record = it.next();
 			double index = record.getCalidad_down() * 10;
-			System.out.println("D : " + index);
 			int cong = (int) index;
 			classes[cong]++;
 		}
 		return classes;
 	}
 
-	public static HighChart generateHistogramUtilizacionUp(
-			List<Record> records, String title, String subtitle) {
-		return null;
+	public static int[] generateHistogramUtilizacionUp(List<Record> records,
+			String title) {
+		Iterator<Record> it = records.iterator();
+		int[] classes = new int[11];
+		while (it.hasNext()) {
+			Record record = it.next();
+			double index = record.getUtiliz_up() * 10;
+			int cong = (int) index;
+			classes[cong]++;
+		}
+		return classes;
 	}
 
-	public static HighChart generateHistogramUtilizacionDown(
-			List<Record> records, String title, String subtitle) {
-		return null;
+	public static int[] generateHistogramUtilizacionDown(
+			List<Record> records, String title) {
+		Iterator<Record> it = records.iterator();
+		int[] classes = new int[11];
+		while (it.hasNext()) {
+			Record record = it.next();
+			double index = record.getUtiliz_down() * 10;
+			int cong = (int) index;
+			classes[cong]++;
+		}
+		return classes;
 	}
 
 	public static HighChart generateHighChart(List<Record> records,

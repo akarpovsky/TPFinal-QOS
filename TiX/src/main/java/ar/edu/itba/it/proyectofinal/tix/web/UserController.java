@@ -102,31 +102,25 @@ public class UserController {
 		List<Record> records;
 		records = (List<Record>) recordRepo.getAllForIsp(requiredISP, minDate,maxDate);
 
-		System.out.println("HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE");
-//		HighChart congestionUpChart = null;
 		int[] congestionUpChart = null;
 		List<Integer> congestionUpChartList = new ArrayList<Integer>();
 		int[] congestionDownChart = null;
-		HighChart utilizacionUpChart = null;
-		HighChart utilizacionDownChart = null;
+		int[] utilizacionUpChart = null;
+		int[] utilizacionDownChart = null;
 
 		congestionUpChart = ChartUtils.generateHistogramCongestionUp(records, "histograma congestion up");
 		congestionDownChart = ChartUtils.generateHistogramCongestionDown(records, "histograma congestion down");
-//		congestionDownChart = ChartUtils.generateHistogramCongestionDown(records, "histograma congestion down", "algo");
-//		utilizacionUpChart = ChartUtils.generateHistogramUtilizacionUp(records, "histograma utilizacion up", "algo");
-//		utilizacionDownChart = ChartUtils.generateHistogramUtilizacionDown(records, "histograma utilizacion up", "algo");
-//
+		utilizacionUpChart = ChartUtils.generateHistogramUtilizacionUp(records, "histograma utilizacion up");
+		utilizacionDownChart = ChartUtils.generateHistogramUtilizacionDown(records, "histograma utilizacion down");
+		
 	    for (int index = 0; index < congestionUpChart.length; index++)
 	    {
 	    		congestionUpChartList.add( congestionUpChart[index] );
 	    }
-		System.out.println("CLASSES:"+ congestionUpChartList);
-//		mav.addObject("congestionUpChart", congestionUpChart);
 		mav.addObject("congestionUpChart", congestionUpChart);
 		mav.addObject("congestionDownChart", congestionDownChart);
-//		mav.addObject("congestionDownChart", congestionDownChart);
-//		mav.addObject("utilizacionUpChart", utilizacionUpChart);
-//		mav.addObject("utilizacionDownChart", utilizacionDownChart);
+		mav.addObject("utilizacionUpChart", utilizacionUpChart);
+		mav.addObject("utilizacionDownChart", utilizacionDownChart);
 
 		return mav;
 	}
