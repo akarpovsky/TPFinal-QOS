@@ -90,24 +90,27 @@ public class UserController {
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView ispcharts( //TODO change name to ispCharts
+	public ModelAndView ispcharts( 
 			HttpSession session,
 			@RequestParam(value = "minDate", required = false) DateTime minDate,
 			@RequestParam(value = "maxDate", required = false) DateTime maxDate) {
 		ModelAndView mav = new ModelAndView();
 
-		int[] isp_ids = {1,2}; //TODO get real isps from DB
+		List<ISP> isps = recordRepo.getISPs();
 
 		List<IspHistogramDisplayer> disp_list = new ArrayList<IspHistogramDisplayer>();
 		List<IspBoxplotDisplayer> boxplot_list = new ArrayList<IspBoxplotDisplayer>();
 		
 		
-		for(int i=0; i<isp_ids.length; i++){
-			List<Record> records = (List<Record>) recordRepo.getAllForIsp2(isp_ids[i], minDate,maxDate);
+		for (ISP isp : isps) {
+			int id = isp.getId();
+			String name = isp.getName();
+			List<Record> records = (List<Record>) recordRepo.getAllForIsp2(id, minDate,maxDate);
 			
 			//histograms
 			IspHistogramDisplayer disp = new IspHistogramDisplayer();
-			disp.setIsp_id(isp_ids[i]);			
+			disp.setIsp_id(id);		
+			disp.setIsp_name(name);
 			disp.setCongestionUpChart(ChartUtils.generateHistogramCongestionUp(records, "histograma congestion up"));
 			disp.setCongestionDownChart(ChartUtils.generateHistogramCongestionDown(records, "histograma congestion down"));
 			disp.setUtilizacionUpChart(ChartUtils.generateHistogramUtilizacionUp(records, "histograma utilizacion up"));
@@ -116,7 +119,8 @@ public class UserController {
 			
 			//boxplots
 			IspBoxplotDisplayer boxplot = new IspBoxplotDisplayer();
-			boxplot.setIsp_id((isp_ids[i]));
+			boxplot.setIsp_id((id));
+			boxplot.setIsp_name(name);
 			List<double[]> boxplotdata = new ArrayList<double[]>();
 			boxplotdata = ChartUtils.generateBoxplot(records);
 			boxplot.setCongestionUpChart(boxplotdata.get(0));

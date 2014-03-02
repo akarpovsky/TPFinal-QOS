@@ -21,7 +21,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <h2 style="margin: 50px 180px 50px 180px;">Histogramas por ISP</h1>
 <c:forEach items="${disp_list}" var="entry">
     <div class="isp-container row-fluid" style="margin: 50px 180px 100px 180px; height:600px;">
-        <h3 class="isp-name">${entry.isp_id}</h3>
+        <h3 class="isp-name">${entry.isp_name}</h3>
             <!-- Congestion -->
             <div class="row-fluid span12">
                 <div id="congestionup${entry.isp_id}" class="pull-left" style="height: 300px; width: 465px"></div>
@@ -39,42 +39,12 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <h2 style="margin: 50px 180px 50px 180px;">Boxplots por ISP</h1>
 <c:forEach items="${boxplot_list}" var="entry">
+    <h3 class="isp-name" style="margin-left:180px;">${entry.isp_name}</h3>
     <div id="container${entry.isp_id}" style="height: 400px; margin: auto; min-width: 310px; max-width: 600px"></div>
     <br/>
 </c:forEach>
 
-<!-- Data de los boxplots -->
-<c:forEach items="${boxplot_list}" var="entry">
-    <script>
-    var chart = new Highcharts.Chart({
 
-        chart: {
-            renderTo: 'container${entry.isp_id}',
-            type: 'boxplot'
-        },
-
-        title: {
-            text: 'Highcharts box plot ${entry.isp_id}'
-        },
-
-        xAxis: {
-            minTickInterval: 1,
-            categories: ['congestion subida', 'congestion bajada', 'utilizacion subida', 'utilizacion bajada']
-        },
-
-        series: [{
-            name: '${entry.isp_id}',
-            data: [
-                [${entry.congestionUpChart[0]}, ${entry.congestionUpChart[1]}, ${entry.congestionUpChart[2]}, ${entry.congestionUpChart[3]}, ${entry.congestionUpChart[4]}],
-                [${entry.congestionDownChart[0]}, ${entry.congestionDownChart[1]}, ${entry.congestionDownChart[2]}, ${entry.congestionDownChart[3]}, ${entry.congestionDownChart[4]}],
-                [${entry.utilizacionUpChart[0]}, ${entry.utilizacionUpChart[1]}, ${entry.utilizacionUpChart[2]}, ${entry.utilizacionUpChart[3]}, ${entry.utilizacionUpChart[4]}],
-                [${entry.utilizacionDownChart[0]}, ${entry.utilizacionDownChart[1]}, ${entry.utilizacionDownChart[2]}, ${entry.utilizacionDownChart[3]}, ${entry.utilizacionDownChart[4]}]
-            ]
-        }]
-
-    });
-    </script>
-</c:forEach>
 
 
 <!-- Data de los histogramas -->
@@ -205,8 +175,38 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 </c:forEach>
 
 
-<!-- Data de los botplots -->
+<!-- Data de los boxplots -->
+<c:forEach items="${boxplot_list}" var="entry">
+    <script>
+    var chart = new Highcharts.Chart({
 
+        chart: {
+            renderTo: 'container${entry.isp_id}',
+            type: 'boxplot'
+        },
+
+        title: {
+            text: 'Highcharts box plot ${entry.isp_name}'
+        },
+
+        xAxis: {
+            minTickInterval: 1,
+            categories: ['congestion subida', 'congestion bajada', 'utilizacion subida', 'utilizacion bajada']
+        },
+
+        series: [{
+            name: '${entry.isp_name}',
+            data: [
+                [${entry.congestionUpChart[0]}, ${entry.congestionUpChart[1]}, ${entry.congestionUpChart[2]}, ${entry.congestionUpChart[3]}, ${entry.congestionUpChart[4]}],
+                [${entry.congestionDownChart[0]}, ${entry.congestionDownChart[1]}, ${entry.congestionDownChart[2]}, ${entry.congestionDownChart[3]}, ${entry.congestionDownChart[4]}],
+                [${entry.utilizacionUpChart[0]}, ${entry.utilizacionUpChart[1]}, ${entry.utilizacionUpChart[2]}, ${entry.utilizacionUpChart[3]}, ${entry.utilizacionUpChart[4]}],
+                [${entry.utilizacionDownChart[0]}, ${entry.utilizacionDownChart[1]}, ${entry.utilizacionDownChart[2]}, ${entry.utilizacionDownChart[3]}, ${entry.utilizacionDownChart[4]}]
+            ]
+        }]
+
+    });
+    </script>
+</c:forEach>
 
 
 </body>

@@ -66,8 +66,11 @@ public class HibernateRecordRepository extends AbstractHibernateRepo implements 
 			return find("from Record r where isp = ? and r.timestamp >= ? and r.timestamp <= ? order by r.timestamp asc", isp, minDate, maxDate);
 		}
 		System.out.println("ISP: " +  isp);
-//		return find("from Record r where isp = ? order by r.timestamp asc ", isp);
-		 return find("from Record r where isp_id = ? order by r.timestamp asc ", isp);
+	    return find("from Record r where isp_id = ? order by r.timestamp asc ", isp);
+	}
+	
+	public List<ISP> getISPs(){
+		return find("from ISP ");
 	}
 
 	public List<ISP> getISPsForInstallation(User user, Installation installation) {

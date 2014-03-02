@@ -31,4 +31,6 @@ public interface RecordRepository {
 
 	public void removeAll(Installation installation);
 
+	public List<ISP> getISPs();
+
 }
