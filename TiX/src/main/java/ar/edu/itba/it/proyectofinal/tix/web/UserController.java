@@ -20,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.itba.it.proyectofinal.tix.domain.model.ISP;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.Installation;
+import ar.edu.itba.it.proyectofinal.tix.domain.model.IspBoxplotDisplayer;
+import ar.edu.itba.it.proyectofinal.tix.domain.model.IspHistogramDisplayer;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.Record;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.User;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.UserType;
@@ -88,6 +90,51 @@ public class UserController {
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView ispcharts( //TODO change name to ispCharts
+			HttpSession session,
+			@RequestParam(value = "minDate", required = false) DateTime minDate,
+			@RequestParam(value = "maxDate", required = false) DateTime maxDate) {
+		ModelAndView mav = new ModelAndView();
+
+		int[] isp_ids = {1,2}; //TODO get real isps from DB
+
+		List<IspHistogramDisplayer> disp_list = new ArrayList<IspHistogramDisplayer>();
+		List<IspBoxplotDisplayer> boxplot_list = new ArrayList<IspBoxplotDisplayer>();
+		
+		
+		for(int i=0; i<isp_ids.length; i++){
+			List<Record> records = (List<Record>) recordRepo.getAllForIsp2(isp_ids[i], minDate,maxDate);
+			
+			//histograms
+			IspHistogramDisplayer disp = new IspHistogramDisplayer();
+			disp.setIsp_id(isp_ids[i]);			
+			disp.setCongestionUpChart(ChartUtils.generateHistogramCongestionUp(records, "histograma congestion up"));
+			disp.setCongestionDownChart(ChartUtils.generateHistogramCongestionDown(records, "histograma congestion down"));
+			disp.setUtilizacionUpChart(ChartUtils.generateHistogramUtilizacionUp(records, "histograma utilizacion up"));
+			disp.setUtilizacionDownChart(ChartUtils.generateHistogramUtilizacionDown(records, "histograma utilizacion down"));
+			disp_list.add(disp);
+			System.out.println(disp);
+			
+			//boxplots
+			IspBoxplotDisplayer boxplot = new IspBoxplotDisplayer();
+			List<double[]> boxplotdata = new ArrayList<double[]>();
+			boxplotdata = ChartUtils.generateBoxplot(records);
+			boxplot.setCongestionUpChart(boxplotdata.get(0));
+			boxplot.setCongestionDownChart(boxplotdata.get(1));
+			boxplot.setUtilizacionUpChart(boxplotdata.get(2));
+			boxplot.setUtilizacionDownChart(boxplotdata.get(3));
+			boxplot_list.add(boxplot);
+		}
+		
+		mav.addObject("disp_list", disp_list);
+		mav.addObject("boxplot_list", boxplot_list);
+		
+		return mav;
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView isphistogram(
 			HttpSession session,
 			@RequestParam(value = "nickname", defaultValue = "") String nickname,
@@ -112,7 +159,7 @@ public class UserController {
 		congestionDownChart = ChartUtils.generateHistogramCongestionDown(records, "histograma congestion down");
 		utilizacionUpChart = ChartUtils.generateHistogramUtilizacionUp(records, "histograma utilizacion up");
 		utilizacionDownChart = ChartUtils.generateHistogramUtilizacionDown(records, "histograma utilizacion down");
-		
+
 	    for (int index = 0; index < congestionUpChart.length; index++)
 	    {
 	    		congestionUpChartList.add( congestionUpChart[index] );
@@ -124,7 +171,7 @@ public class UserController {
 
 		return mav;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView ispboxplot(
@@ -138,13 +185,13 @@ public class UserController {
 			@RequestParam(value = "test", required = false) String test) {
 		ModelAndView mav = new ModelAndView();
 
-		List<Record> records;
+		List<Record> records;;
 		records = (List<Record>) recordRepo.getAllForIsp(requiredISP, minDate,maxDate);
-		
+
 		List<double[]> boxplotdata = new ArrayList<double[]>();
 		boxplotdata = ChartUtils.generateBoxplot(records);
-		
-		
+
+
 		mav.addObject("congestionUpChart", boxplotdata.get(0));
 		mav.addObject("congestionDownChart", boxplotdata.get(1));
 		mav.addObject("utilizacionUpChart", boxplotdata.get(2));

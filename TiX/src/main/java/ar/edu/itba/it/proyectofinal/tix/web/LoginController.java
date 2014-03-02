@@ -21,12 +21,12 @@ import ar.edu.itba.it.proyectofinal.tix.web.util.ControllerUtil;
 public class LoginController {
 
 	private UserRepository userRepo;
-	
+
 	@Autowired
 	public LoginController(UserRepository userRepo) {
 		this.userRepo = userRepo;
 	}
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView login(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -39,7 +39,7 @@ public class LoginController {
 		mav.addObject("userCreationForm", new UserCreationForm());
 		return mav;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView login(HttpSession session, UserLoginForm userLoginForm, Errors errors) {
 		ModelAndView mav = new ModelAndView();
@@ -58,10 +58,11 @@ public class LoginController {
 		errors.rejectValue("nickname", AppError.LOGIN_FAILURE.translationKey);
 		return mav;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}
+
 }
