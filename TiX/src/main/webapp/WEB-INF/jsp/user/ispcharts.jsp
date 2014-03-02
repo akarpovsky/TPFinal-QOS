@@ -40,6 +40,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <h2 style="margin: 50px 180px 50px 180px;">Boxplots por ISP</h1>
 <c:forEach items="${boxplot_list}" var="entry">
     <div id="container${entry.isp_id}" style="height: 400px; margin: auto; min-width: 310px; max-width: 600px"></div>
+    <br/>
 </c:forEach>
 
 <!-- Data de los boxplots -->

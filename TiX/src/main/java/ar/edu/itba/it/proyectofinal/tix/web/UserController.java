@@ -113,10 +113,10 @@ public class UserController {
 			disp.setUtilizacionUpChart(ChartUtils.generateHistogramUtilizacionUp(records, "histograma utilizacion up"));
 			disp.setUtilizacionDownChart(ChartUtils.generateHistogramUtilizacionDown(records, "histograma utilizacion down"));
 			disp_list.add(disp);
-			System.out.println(disp);
 			
 			//boxplots
 			IspBoxplotDisplayer boxplot = new IspBoxplotDisplayer();
+			boxplot.setIsp_id((isp_ids[i]));
 			List<double[]> boxplotdata = new ArrayList<double[]>();
 			boxplotdata = ChartUtils.generateBoxplot(records);
 			boxplot.setCongestionUpChart(boxplotdata.get(0));
@@ -124,6 +124,7 @@ public class UserController {
 			boxplot.setUtilizacionUpChart(boxplotdata.get(2));
 			boxplot.setUtilizacionDownChart(boxplotdata.get(3));
 			boxplot_list.add(boxplot);
+			System.out.println(boxplot);
 		}
 		
 		mav.addObject("disp_list", disp_list);
