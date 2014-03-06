@@ -2,7 +2,7 @@ import psycopg2
 import ConfigParser
 
 config = ConfigParser.ConfigParser()
-config.read('tixserver.cfg')
+config.read('/home/pfitba/ServerAppProduction/tixserver.cfg')
 databaseName = config.get("TiXServer", "databaseName")
 databaseHost = config.get("TiXServer", "databaseHost")
 databasePort = config.get("TiXServer", "databasePort")
@@ -35,12 +35,12 @@ class DBManager(object):
 		return self.INSTANCE
 
 	@classmethod
-	def insert_record(cls, downstream,downstreamcongestion,h_rs_down,h_wave_down,timestamp,upstream,upstreamcongestion,h_rs_up,h_wave_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id):
+	def insert_record(cls, calidad_down,utiliz_down,h_rs_down,h_wave_down,timestamp,calidad_up,utiliz_up,h_rs_up,h_wave_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id):
 		DBManagerInst = DBManager.get_instance()
 		conn = DBManagerInst.get_connection()
 		cursor = conn.cursor()
 		try:
-			cursor.execute("""INSERT INTO records(downstream,downstreamcongestion,h_rs_down,h_wave_down,timestamp,upstream,upstreamcongestion,h_rs_up,h_wave_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""", [downstream,downstreamcongestion,h_rs_down,h_wave_down,timestamp,upstream,upstreamcongestion,h_rs_up,h_wave_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id])
+			cursor.execute("""INSERT INTO records(calidad_down,utiliz_down,h_rs_down,h_wave_down,timestamp,calidad_up,utiliz_up,h_rs_up,h_wave_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""", [calidad_down,utiliz_down,h_rs_down,h_wave_down,timestamp,calidad_up,utiliz_up,h_rs_up,h_wave_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id])
 			cursor.query
 		except Exception, e:
 			cursor.query

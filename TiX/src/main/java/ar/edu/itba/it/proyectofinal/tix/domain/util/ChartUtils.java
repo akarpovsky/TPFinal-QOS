@@ -16,39 +16,39 @@ public class ChartUtils {
 	public static HighChart generateHighChart(List<Record> records,
 			String title, String subtitle, ChartType graphType) {
 
-		float CONGESTION_VALUE = (float) 0.8;
+		float UTIlIZACION_VALUE = (float) 80;
 		String json = null;
 		List<Long> timestamps = new ArrayList<Long>();
 		HighChart chart = null;
 		try {
 			JSONArray js = new JSONArray();
-			JSONArray congestionup_js = new JSONArray();
-			JSONArray congestiondown_js = new JSONArray();
-			JSONArray congestion_js = new JSONArray();
-			JSONArray congestion_final = new JSONArray();
+			JSONArray utilizacionup_js = new JSONArray();
+			JSONArray utilizaciondown_js = new JSONArray();
+			JSONArray utilizacion_js = new JSONArray();
+			JSONArray utilizacion_final = new JSONArray();
 			ArrayList<String> metricas;
 			metricas = new ArrayList<String>();
 			switch (graphType) {
 			case UPSTREAM_GRAPH:
-				metricas.add("Upstream");
-				 metricas.add("CongesitónUp");
+				metricas.add("CalidadUp");
+				 metricas.add("UtilizacionUp");
 				break;
 			case DOWNSTREAM_GRAPH:
-				metricas.add("Downstream");
-				 metricas.add("CongestiónDown");
+				metricas.add("CalidadDown");
+				 metricas.add("UtilizacionDown");
 				break;
 			default:
-				metricas.add("Upstream");
-				 metricas.add("CongesitónUp");
-				metricas.add("Downstream");
-				 metricas.add("CongestiónDown");
+				metricas.add("CalidadUp");
+				 metricas.add("UtilizacionUp");
+				metricas.add("CalidadDown");
+				 metricas.add("UtilizacionDown");
 				break;
 			}
 
 			List<Float> downStream = new ArrayList<Float>();
-			List<Float> congestionDown = new ArrayList<Float>();
+			List<Float> utilizacionDown = new ArrayList<Float>();
 			List<Object> upStream = new ArrayList<Object>();
-			List<Float> congestionUp = new ArrayList<Float>();
+			List<Float> utilizacionUp = new ArrayList<Float>();
 			List<HighchartPoint> highchartPoints = new ArrayList<HighchartPoint>();
 			List<List<Long>> points = new ArrayList<List<Long>>();
 			Iterator<Record> it = records.iterator();
@@ -91,48 +91,48 @@ public class ChartUtils {
 				//	upStream.add(record.getUpstream());
 				}
 //				System.out.println(upStream_array);
-				congestionDown.add(record.getDownstreamCongestion());
-				congestionUp.add(record.getUpstreamCongestion());
+				utilizacionDown.add(record.getUtilizacionDownstream());
+				utilizacionUp.add(record.getUtilizacionUpstream());
 				DateTime dt = new DateTime(record.getTimestamp());
 				timestamps.add(dt.getMillis());
 				List<Long> point = new ArrayList<Long>();
 				point.add((DateTimeUtils.getInstantMillis(dt)));
-				point.add((long) record.getUpstreamCongestion());
+				point.add((long) record.getUtilizacionUpstream());
 				points.add(point);
 			}
 			int i = 0;
-			for (Float valor : congestionUp) {
-				if (valor > CONGESTION_VALUE && i > 0) {
+			for (Float valor : utilizacionUp) {
+				if (valor > UTIlIZACION_VALUE && i > 0) {
 					JSONObject a;
 					a = new JSONObject();
 					a.put("from", i - 1);
 					a.put("to", i);
 					a.put("color", "rgba(255, 0, 0, .25)");
-					congestionup_js.put(a);
-					congestion_js.put(a);
+					utilizacionup_js.put(a);
+					utilizacion_js.put(a);
 				}
 				i++;
 			}
 			i = 0;
 
-			for (Float valor : congestionDown) {
-				if (valor > CONGESTION_VALUE && i > 0) {
+			for (Float valor : utilizacionDown) {
+				if (valor > UTIlIZACION_VALUE && i > 0) {
 					JSONObject a;
 					a = new JSONObject();
 					a.put("from", i - 1);
 					a.put("to", i);
 					a.put("color", "rgba(0, 125, 125, .25)");
-					congestiondown_js.put(a);
-					congestion_js.put(a);
+					utilizaciondown_js.put(a);
+					utilizacion_js.put(a);
 				}
 				i++;
 			}
 
 			JSONObject lineMarkerOptions = new JSONObject();
 			lineMarkerOptions.put("symbol", "circle");
-			JSONObject congestionMarkerOptions = new JSONObject();
+			JSONObject utilizacionMarkerOptions = new JSONObject();
 			// congestionMarkerOptions.put("radius", 7);
-			congestionMarkerOptions.put("symbol", "diamond");
+			utilizacionMarkerOptions.put("symbol", "diamond");
 
 			switch (graphType) {
 			case UPSTREAM_GRAPH:
@@ -145,10 +145,10 @@ public class ChartUtils {
 				js.put(j);
 				 j = new JSONObject();
 				 j.put("name", metricas.get(1));
-				 j.put("data", congestionUp);
-				 j.put("marker", congestionMarkerOptions);
+				 j.put("data", utilizacionUp);
+				 j.put("marker", utilizacionMarkerOptions);
 				 js.put(j);
-				congestion_final = congestionup_js;
+				utilizacion_final = utilizacionup_js;
 				break;
 			case DOWNSTREAM_GRAPH:
 				j = new JSONObject();
@@ -158,10 +158,10 @@ public class ChartUtils {
 				js.put(j);
 				 j = new JSONObject();
 				 j.put("name", metricas.get(1));
-				 j.put("data", congestionDown);
-				 j.put("marker", congestionMarkerOptions);
+				 j.put("data", utilizacionDown);
+				 j.put("marker", utilizacionMarkerOptions);
 				 js.put(j);
-				congestion_final = congestiondown_js;
+				utilizacion_final = utilizaciondown_js;
 				break;
 			default:
 				j = new JSONObject();
@@ -171,8 +171,8 @@ public class ChartUtils {
 				js.put(j);
 				 j = new JSONObject();
 				 j.put("name", metricas.get(1));
-				 j.put("data", congestionUp);
-				 j.put("marker", congestionMarkerOptions);
+				 j.put("data", utilizacionUp);
+				 j.put("marker", utilizacionMarkerOptions);
 				 js.put(j);
 				j = new JSONObject();
 				j.put("name", metricas.get(2));
@@ -181,15 +181,15 @@ public class ChartUtils {
 				js.put(j);
 				 j = new JSONObject();
 				 j.put("name", metricas.get(3));
-				 j.put("data", congestionDown);
-				 j.put("marker", congestionMarkerOptions);
+				 j.put("data", utilizacionDown);
+				 j.put("marker", utilizacionMarkerOptions);
 				 js.put(j);
-				congestion_final = congestion_js;
+				utilizacion_final = utilizacion_js;
 
 			}
 
 			chart = new HighChart(timestamps, js, title, subtitle,
-					congestion_final);
+					utilizacion_final);
 
 		} catch (Exception e) {
 			e.printStackTrace();

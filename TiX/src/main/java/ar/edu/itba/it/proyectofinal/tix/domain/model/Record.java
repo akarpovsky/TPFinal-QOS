@@ -32,19 +32,19 @@ public class Record extends DBPersistentObject {
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float upstream; // Calidad upstream
+	private float calidad_Up; 
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float downstream; // Calidad downstream
+	private float calidad_Down; 
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float downstreamCongestion; // Utilizacion downstream
+	private float utiliz_Down; 
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float upstreamCongestion; // Utilizacion upstream
+	private float utiliz_Up;
 	
 	@Column(nullable=false)
 	@Max(value=100)
@@ -63,7 +63,7 @@ public class Record extends DBPersistentObject {
 	private float H_Wave_Down;
 	
 	public float getH_Wave_Up() {
-		return H_Wave_Up;
+		return H_Wave_Up*100;
 	}
 
 	public void setH_Wave_Up(float h_Wave_Up) {
@@ -71,7 +71,7 @@ public class Record extends DBPersistentObject {
 	}
 
 	public float getH_Wave_Down() {
-		return H_Wave_Down;
+		return H_Wave_Down*100;
 	}
 
 	public void setH_Wave_Down(float h_Wave_Down) {
@@ -87,7 +87,7 @@ public class Record extends DBPersistentObject {
 	}
 
 	public float getH_RS_Up() {
-		return H_RS_Up;
+		return H_RS_Up*100;
 	}
 
 	public void setH_RS_Up(float h_RS_Up) {
@@ -95,7 +95,7 @@ public class Record extends DBPersistentObject {
 	}
 
 	public float getH_RS_Down() {
-		return H_RS_Down;
+		return H_RS_Down*100;
 	}
 
 	public void setH_RS_Down(float h_RS_Down) {
@@ -128,7 +128,7 @@ public class Record extends DBPersistentObject {
 
 	@Override
 	public String toString() {
-		return "Record for " + user.getNickname() + " upstream=" + upstream + " downstream=" + downstream + " upstreamCongestion=" + upstreamCongestion + " downstreamCongestion=" + downstreamCongestion;
+		return "Record for " + user.getNickname() + " calidad_Up=" + calidad_Up + " calidad_Down=" + calidad_Down + " utiliz_Up=" + utiliz_Up + " utiliz_Down=" + utiliz_Down;
 	}
 
 	public User getUser() {
@@ -148,7 +148,7 @@ public class Record extends DBPersistentObject {
 	}
 
 	public float getUpstream() {
-		return upstream;
+		return calidad_Up*100;
 	}
 
 	public boolean isUserDownCongestion() {
@@ -183,43 +183,43 @@ public class Record extends DBPersistentObject {
 
 	public void setUpstream(float upstream) {
 		if(upstream <= 100){
-			this.upstream = upstream;
+			this.calidad_Up = upstream;
 		}else{
 			throw new IllegalArgumentException("Percentage must be between 0 and 100");
 		}
 	}
 
 	public float getDownstream() {
-		return downstream;
+		return calidad_Down*100;
 	}
 
 	public void setDownstream(float downstream) {
 		if(downstream <= 100){
-			this.downstream = downstream;
+			this.calidad_Down = downstream;
 		}else{
 			throw new IllegalArgumentException("Percentage must be between 0 and 100");
 		}
 	}
 
-	public float getDownstreamCongestion() {
-		return downstreamCongestion;
+	public float getUtilizacionDownstream() {
+		return utiliz_Down*100;
 	}
 
-	public void setDownstreamCongestion(float downstreamCongestion) {
-		if(downstreamCongestion <= 100){
-			this.downstreamCongestion = downstreamCongestion;
+	public void setUtilizacionDownstream(float utilizacionDownstream) {
+		if(utilizacionDownstream <= 100){
+			this.utiliz_Down = utilizacionDownstream;
 		}else{
 			throw new IllegalArgumentException("Percentage must be between 0 and 100");
 		}
 	}
 
-	public float getUpstreamCongestion() {
-		return upstreamCongestion;
+	public float getUtilizacionUpstream() {
+		return utiliz_Up*100;
 	}
 
-	public void setUpstreamCongestion(float upstreamCongestion) {
-		if(upstreamCongestion <= 100){
-			this.upstreamCongestion = upstreamCongestion;
+	public void setUtilizacionUpstream(float utilizacionUpstream) {
+		if(utilizacionUpstream <= 100){
+			this.utiliz_Up = utilizacionUpstream;
 		}else{
 			throw new IllegalArgumentException("Percentage must be between 0 and 100");
 		}

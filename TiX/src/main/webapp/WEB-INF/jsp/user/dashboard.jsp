@@ -73,7 +73,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 			        <div class="row" style="margin: 10 0 20 0;">
 						<div class="text-center">
 							<p>
-								<img src="<c:url value='/img/congestiondown.png'/>"/> Congestion Upstream <img src="<c:url value='/img/congestionup.png'/>"/> Congestion Downstream
+								<img src="<c:url value='/img/congestiondown.png'/>"/> Utilizaci&oacute;n Upstream <img src="<c:url value='/img/congestionup.png'/>"/> Utilizaci&oacute;n Downstream
 							</p>
 								Location: ${currentInstallation.location.translationKey}
 							<p>
@@ -132,7 +132,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                         chart: {
                             renderTo: 'graphcontainer',
                           	marginRight: 130,
-                           	marginBottom: 25
+                           	marginBottom: 40
                         },
                         title: {
                             text: title,
@@ -143,14 +143,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                             x: -20
                         },
                         xAxis: {        
-                            type: 'datetime',
-                            max: 144,
+                            max: 50,
+                        	type: 'datetime',
                             plotBands: redmarker, 
                             categories: fechas,
+                            tickInterval: 10,
                             labels: {
-                            	enabled: false,
+                            	enabled: true,
                                 formatter: function() {
-                                    return Highcharts.dateFormat('%d/%m (%H:%M)', this.value);
+                                    return Highcharts.dateFormat('%d/%m <br/>(%H:%Mhs)', this.value);
                                 },
                             },
                         },
@@ -163,7 +164,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                                     width: 1,
                                     color: '#808080'
                                 }],
-                           	min: 0, max: 1    
+                           	min: 0, max: 100    
                         },
                          plotOptions: {
                 series: {
