@@ -1,5 +1,6 @@
 package ar.edu.itba.it.proyectofinal.tix.web;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -19,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.itba.it.proyectofinal.tix.domain.model.ISP;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.Installation;
+import ar.edu.itba.it.proyectofinal.tix.domain.model.IspBoxplotDisplayer;
+import ar.edu.itba.it.proyectofinal.tix.domain.model.IspHistogramDisplayer;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.Record;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.User;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.UserType;
@@ -84,7 +87,123 @@ public class UserController {
 		return mav;
 
 	}
-	
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView ispcharts( 
+			HttpSession session,
+			@RequestParam(value = "minDate", required = false) DateTime minDate,
+			@RequestParam(value = "maxDate", required = false) DateTime maxDate) {
+		ModelAndView mav = new ModelAndView();
+
+		List<ISP> isps = recordRepo.getISPs();
+
+		List<IspHistogramDisplayer> disp_list = new ArrayList<IspHistogramDisplayer>();
+		List<IspBoxplotDisplayer> boxplot_list = new ArrayList<IspBoxplotDisplayer>();
+		
+		
+		for (ISP isp : isps) {
+			int id = isp.getId();
+			String name = isp.getName();
+			List<Record> records = (List<Record>) recordRepo.getAllForIsp2(id, minDate,maxDate);
+			
+			//histograms
+			IspHistogramDisplayer disp = new IspHistogramDisplayer();
+			disp.setIsp_id(id);		
+			disp.setIsp_name(name);
+			disp.setCongestionUpChart(ChartUtils.generateHistogramCongestionUp(records, "histograma congestion up"));
+			disp.setCongestionDownChart(ChartUtils.generateHistogramCongestionDown(records, "histograma congestion down"));
+			disp.setUtilizacionUpChart(ChartUtils.generateHistogramUtilizacionUp(records, "histograma utilizacion up"));
+			disp.setUtilizacionDownChart(ChartUtils.generateHistogramUtilizacionDown(records, "histograma utilizacion down"));
+			disp_list.add(disp);
+			
+			//boxplots
+			IspBoxplotDisplayer boxplot = new IspBoxplotDisplayer();
+			boxplot.setIsp_id((id));
+			boxplot.setIsp_name(name);
+			List<double[]> boxplotdata = new ArrayList<double[]>();
+			boxplotdata = ChartUtils.generateBoxplot(records);
+			boxplot.setCongestionUpChart(boxplotdata.get(0));
+			boxplot.setCongestionDownChart(boxplotdata.get(1));
+			boxplot.setUtilizacionUpChart(boxplotdata.get(2));
+			boxplot.setUtilizacionDownChart(boxplotdata.get(3));
+			boxplot_list.add(boxplot);
+			System.out.println(boxplot);
+		}
+		
+		mav.addObject("disp_list", disp_list);
+		mav.addObject("boxplot_list", boxplot_list);
+		
+		return mav;
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView isphistogram(
+			HttpSession session,
+			@RequestParam(value = "nickname", defaultValue = "") String nickname,
+			@RequestParam(value = "graphtype", defaultValue = "GENERAL_GRAPH") ChartType graphtype,
+			@RequestParam(value = "ins", required = false) Installation requiredInstallation,
+			@RequestParam(value = "isp", required = false) ISP requiredISP,
+			@RequestParam(value = "minDate", required = false) DateTime minDate,
+			@RequestParam(value = "maxDate", required = false) DateTime maxDate,
+			@RequestParam(value = "test", required = false) String test) {
+		ModelAndView mav = new ModelAndView();
+
+		List<Record> records;
+		records = (List<Record>) recordRepo.getAllForIsp(requiredISP, minDate,maxDate);
+
+		int[] congestionUpChart = null;
+		List<Integer> congestionUpChartList = new ArrayList<Integer>();
+		int[] congestionDownChart = null;
+		int[] utilizacionUpChart = null;
+		int[] utilizacionDownChart = null;
+
+		congestionUpChart = ChartUtils.generateHistogramCongestionUp(records, "histograma congestion up");
+		congestionDownChart = ChartUtils.generateHistogramCongestionDown(records, "histograma congestion down");
+		utilizacionUpChart = ChartUtils.generateHistogramUtilizacionUp(records, "histograma utilizacion up");
+		utilizacionDownChart = ChartUtils.generateHistogramUtilizacionDown(records, "histograma utilizacion down");
+
+	    for (int index = 0; index < congestionUpChart.length; index++)
+	    {
+	    		congestionUpChartList.add( congestionUpChart[index] );
+	    }
+		mav.addObject("congestionUpChart", congestionUpChart);
+		mav.addObject("congestionDownChart", congestionDownChart);
+		mav.addObject("utilizacionUpChart", utilizacionUpChart);
+		mav.addObject("utilizacionDownChart", utilizacionDownChart);
+
+		return mav;
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView ispboxplot(
+			HttpSession session,
+			@RequestParam(value = "nickname", defaultValue = "") String nickname,
+			@RequestParam(value = "graphtype", defaultValue = "GENERAL_GRAPH") ChartType graphtype,
+			@RequestParam(value = "ins", required = false) Installation requiredInstallation,
+			@RequestParam(value = "isp", required = false) ISP requiredISP,
+			@RequestParam(value = "minDate", required = false) DateTime minDate,
+			@RequestParam(value = "maxDate", required = false) DateTime maxDate,
+			@RequestParam(value = "test", required = false) String test) {
+		ModelAndView mav = new ModelAndView();
+
+		List<Record> records;;
+		records = (List<Record>) recordRepo.getAllForIsp(requiredISP, minDate,maxDate);
+
+		List<double[]> boxplotdata = new ArrayList<double[]>();
+		boxplotdata = ChartUtils.generateBoxplot(records);
+
+
+		mav.addObject("congestionUpChart", boxplotdata.get(0));
+		mav.addObject("congestionDownChart", boxplotdata.get(1));
+		mav.addObject("utilizacionUpChart", boxplotdata.get(2));
+		mav.addObject("utilizacionDownChart", boxplotdata.get(3));
+
+		return mav;
+	}
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
@@ -166,7 +285,6 @@ public class UserController {
 		if (records.isEmpty()) {
 			noRecords = true;
 		} else {
-
 			switch (graphtype) {
 			case UPSTREAM_GRAPH:
 				chart = ChartUtils
@@ -179,7 +297,7 @@ public class UserController {
 								"Gráfico del Upstream para "
 										+ reqProfile.getNickname() +
 						((minDate != null && maxDate != null) ? " (" + getFormattedDate(minDate) + " - " + getFormattedDate(maxDate) + ")":""),
-										
+
 								ChartType.UPSTREAM_GRAPH);
 				break;
 			case DOWNSTREAM_GRAPH:
@@ -217,6 +335,8 @@ public class UserController {
 		return mav;
 	}
 
+
+
 	private User getSessionUser(HttpSession session) {
 		Integer userId = (Integer) session.getAttribute("userId");
 		return (userId == null) ? null : userRepo.get(userId);
@@ -236,12 +356,12 @@ public class UserController {
 		}
 
 	}
-	
+
 	public static String getFormattedDate(DateTime date){
-		
+
 		if(date != null)
 			return date.getDayOfMonth() + "/" + date.getMonthOfYear() + "/" + date.getYear();
-		
+
 		return null;
 	}
 
@@ -251,11 +371,11 @@ public class UserController {
 		System.out.println("ENTRO");
 		return null;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView changeCongestionStatus(HttpSession session, @RequestParam(value = "id",required=true) Record r,@RequestParam(value = "type",required=true) String type ) {
-	
+
 		ModelAndView mav = new ModelAndView();
 		User me = getSessionUser(session);
 
@@ -276,7 +396,7 @@ public class UserController {
 			mav.setViewName("error");
 			return mav;
 		}
-		
+
 		r.changeCongestionStatus(type);
 		mav.setView(ControllerUtil.redirectView("/user/dashboard?nickname=" + me.getNickname() + "&graphtype=GENERAL_GRAPH"));
 		return mav;

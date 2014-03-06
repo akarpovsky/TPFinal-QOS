@@ -1,10 +1,10 @@
 # -*- mode: python -*-
 import os
-
+import kivy
 from kivy.tools.packaging.pyinstaller_hooks import install_hooks
-install_hooks(globals())
 
-pwd = os.environ['PWD']
+install_hooks(globals())
+pwd = os.getcwd()
 
 base_path = '%s/Tix/PythonApp/ClientApp/' % pwd
 
