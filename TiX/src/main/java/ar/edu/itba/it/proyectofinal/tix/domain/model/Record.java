@@ -150,6 +150,10 @@ public class Record extends DBPersistentObject {
 	public float getUpstream() {
 		return calidad_Up*100;
 	}
+	
+	public float getCalidadUp() {
+		return calidad_Up*100;
+	}
 
 	public boolean isUserDownCongestion() {
 		return userDownCongestion;
@@ -190,6 +194,10 @@ public class Record extends DBPersistentObject {
 	}
 
 	public float getDownstream() {
+		return calidad_Down*100;
+	}
+	
+	public float getCalidadDown() {
 		return calidad_Down*100;
 	}
 

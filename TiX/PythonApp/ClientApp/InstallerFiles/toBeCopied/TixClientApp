@@ -11,7 +11,7 @@ import sys
 import ConfigParser
 import rsa
 import base64
-
+import time, datetime, os
 
 # Tomo data del archivo de configuracion
 config = ConfigParser.ConfigParser()
@@ -28,8 +28,6 @@ def ts():
   # time en microsegundos
   timestamp= datetime.datetime.now().strftime("%H:%M:%S:%f").split(':')
   en_microsegundos=float(timestamp[0])*3600*(10**6)+float(timestamp[1])*60*(10**6)+float(timestamp[2])*(10**6)+float(timestamp[3])
-  #print timestamp 
-  #print en_microsegundos
   return str(int(en_microsegundos)) # <- en microsegundos, en hexa
 
 
@@ -40,7 +38,7 @@ def relleno_largo(largo, check, told,log_file):
 		for i in range(0,largo-1):
 	 		relleno= relleno + str(random.randint(0,9))
 	else:
-		print "Enviando paquete largo con DATA al servidor de medicion..."
+		print "[" + datetime.datetime.fromtimestamp(time.time()).strftime('%d-%m-%Y %H:%M:%S') + "] Enviando paquete largo con DATA al servidor de medicion..."
 		filereg=open(installDirUnix + "/app/" + log_file+told,"r")
 		msg = filereg.read()
 		privateKeyFile = open(installDirUnix + '/tix_key.priv','r')
@@ -80,19 +78,23 @@ def pingUniq(num_uniq, logfile,t0, check,told):
 	#Mensaje corto
 	
 	t1 = ts()
+	data_file_sent = False
 	
 	if (num_uniq % 2 == 0) :
 		message = t1 + '!!' + t2 + '!!' + t3 + '!!' + t4
 	else:
 		message = t1 + '!!' + t2 + '!!' + t3 + '!!' + t4 + '!!' + relleno_largo(4400,check,told,logfile)
-	
+		data_file_sent = True
 	
 	client = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 	
 	try:
-		client.settimeout(2.0)
+		client.settimeout(3.0)
 		client.sendto(message + "\n", (TEST_HOST, TEST_PORT)) 
-		#print "enviado"
+		if data_file_sent == True:
+			#Delete data file
+			#os.remove(log_file)
+			data_file_sent = False
 	
 		data = client.recv(8192)#(2048) para el mensaje largo
 		msg = data.split('|')
@@ -115,7 +117,7 @@ def pingUniq(num_uniq, logfile,t0, check,told):
 		#msg_completo = str(data).split('|')  
 		#print len(data) #debuging
 	except:
-		print 'Timeout: no hubo respuesta del servidor' #debuging
+		print "[" + datetime.datetime.fromtimestamp(time.time()).strftime('%d-%m-%Y %H:%M:%S') + "] Timeout: no hubo respuesta del servidor."
 		client.close()
 		
 
@@ -136,7 +138,7 @@ if __name__ == "__main__":
   		if tries <= 0:
   			checker = False
 
-		if int(ts())-int(t0) > 60000000:# 1 minutos
+		if (int(ts())-int(t0) > 60000000) or (int(ts())-int(t0) < 0):# 1 minutos o cambio de dia
 			tries = 2
 			t_old = t0
 			checker = True
