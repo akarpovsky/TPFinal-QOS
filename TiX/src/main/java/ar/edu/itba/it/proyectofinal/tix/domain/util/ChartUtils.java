@@ -13,101 +13,130 @@ import org.json.JSONObject;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.Record;
 
 public class ChartUtils {
-	
-	
+
 	public static List<double[]> generateBoxplot(List<Record> records) {
-		
-		Iterator<Record> it = records.iterator();	
+
+		Iterator<Record> it = records.iterator();
 		// [0] minimum
 		// [1] lower quartile
 		// [2] median
 		// [3] higher quartile
 		// [4] maximum
-		
+
 		double[] congestionup_vec = new double[5];
 		double[] congestiondown_vec = new double[5];
 		double[] utilizacionup_vec = new double[5];
 		double[] utilizaciondown_vec = new double[5];
-		
+
 		List<double[]> values = new ArrayList<double[]>();
-		
-		//values
+
+		// values
 		List<Double> congestionup_values = new ArrayList<Double>();
 		List<Double> congestiondown_values = new ArrayList<Double>();
 		List<Double> utilizacionup_values = new ArrayList<Double>();
 		List<Double> utilizaciondown_values = new ArrayList<Double>();
-		
-		int i=0;
-		while (it.hasNext()){
+
+		int i = 0;
+		while (it.hasNext()) {
 			Record record = it.next();
 			double congestionup = record.getCalidadUp() * 10;
 			double congestiondown = record.getCalidadDown() * 10;
 			double utilizacionup = record.getUtilizacionUpstream() * 10;
 			double utilizaciondown = record.getUtilizacionDownstream() * 10;
-			
-			//minimums
-			congestionup_vec[0] = (congestionup < congestionup_vec[0]) ? congestionup:congestionup_vec[0];
-			congestiondown_vec[0] = (congestiondown < congestiondown_vec[0]) ? congestiondown:congestiondown_vec[0];
-			utilizacionup_vec[0] = (utilizacionup < utilizacionup_vec[0]) ? utilizacionup:utilizacionup_vec[0];
-			utilizaciondown_vec[0] = (utilizaciondown < utilizaciondown_vec[0]) ? utilizaciondown:utilizaciondown_vec[0];
-			
-			//maximums
-			congestionup_vec[4] = (congestionup > congestionup_vec[4]) ? congestionup:congestionup_vec[4];
-			congestiondown_vec[4] = (congestiondown > congestiondown_vec[4]) ? congestiondown:congestiondown_vec[4];
-			utilizacionup_vec[4] = (utilizacionup > utilizacionup_vec[4]) ? utilizacionup:utilizacionup_vec[4];
-			utilizaciondown_vec[4] = (utilizaciondown > utilizaciondown_vec[4]) ? utilizaciondown:utilizaciondown_vec[4];
-			
-			//values
+
+			// minimums
+			congestionup_vec[0] = (congestionup < congestionup_vec[0]) ? congestionup
+					: congestionup_vec[0];
+			congestiondown_vec[0] = (congestiondown < congestiondown_vec[0]) ? congestiondown
+					: congestiondown_vec[0];
+			utilizacionup_vec[0] = (utilizacionup < utilizacionup_vec[0]) ? utilizacionup
+					: utilizacionup_vec[0];
+			utilizaciondown_vec[0] = (utilizaciondown < utilizaciondown_vec[0]) ? utilizaciondown
+					: utilizaciondown_vec[0];
+
+			// maximums
+			congestionup_vec[4] = (congestionup > congestionup_vec[4]) ? congestionup
+					: congestionup_vec[4];
+			congestiondown_vec[4] = (congestiondown > congestiondown_vec[4]) ? congestiondown
+					: congestiondown_vec[4];
+			utilizacionup_vec[4] = (utilizacionup > utilizacionup_vec[4]) ? utilizacionup
+					: utilizacionup_vec[4];
+			utilizaciondown_vec[4] = (utilizaciondown > utilizaciondown_vec[4]) ? utilizaciondown
+					: utilizaciondown_vec[4];
+
+			// values
 			congestionup_values.add(congestionup);
 			congestiondown_values.add(congestiondown);
 			utilizacionup_values.add(utilizacionup);
 			utilizaciondown_values.add(utilizaciondown);
-			
+
 			i++;
 		}
-		
-		//sorting
+
+		// sorting
 		Collections.sort(congestionup_values);
 		Collections.sort(congestiondown_values);
 		Collections.sort(utilizacionup_values);
 		Collections.sort(utilizaciondown_values);
-		
+
 		System.out.println("SORTED LIST: " + utilizacionup_values);
-		
-		boolean even = (i%2 == 0)? true:false;
-		
-		//medians
-		congestionup_vec[2] = !even? congestionup_values.get(i/2):((congestionup_values.get((i/2)-1)+congestionup_values.get((i/2)+1)))/2 ;
-		congestiondown_vec[2] = !even? congestiondown_values.get(i/2):((congestiondown_values.get((i/2)-1)+congestiondown_values.get((i/2)+1)))/2 ;
-		utilizacionup_vec[2] = !even? utilizacionup_values.get(i/2):((utilizacionup_values.get((i/2)-1)+utilizacionup_values.get((i/2)+1)))/2 ;
-		utilizaciondown_vec[2] = !even? utilizaciondown_values.get(i/2):((utilizaciondown_values.get((i/2)-1)+utilizaciondown_values.get((i/2)+1)))/2 ;
-		System.out.println("utilizacionup_vec: "+ utilizacionup_vec[2] );
-		
+
+		boolean even = (i % 2 == 0) ? true : false;
+
+		// medians
+		congestionup_vec[2] = !even ? congestionup_values.get(i / 2)
+				: ((congestionup_values.get((i / 2) - 1) + congestionup_values
+						.get((i / 2) + 1))) / 2;
+		congestiondown_vec[2] = !even ? congestiondown_values.get(i / 2)
+				: ((congestiondown_values.get((i / 2) - 1) + congestiondown_values
+						.get((i / 2) + 1))) / 2;
+		utilizacionup_vec[2] = !even ? utilizacionup_values.get(i / 2)
+				: ((utilizacionup_values.get((i / 2) - 1) + utilizacionup_values
+						.get((i / 2) + 1))) / 2;
+		utilizaciondown_vec[2] = !even ? utilizaciondown_values.get(i / 2)
+				: ((utilizaciondown_values.get((i / 2) - 1) + utilizaciondown_values
+						.get((i / 2) + 1))) / 2;
+		System.out.println("utilizacionup_vec: " + utilizacionup_vec[2]);
+
 		// lower quartiles
-		congestionup_vec[1] = even? congestionup_values.get(i/4):((congestionup_values.get((i/4)-1)+congestionup_values.get((i/4)+1)))/2 ;
-		congestiondown_vec[1] = even? congestiondown_values.get(i/4):((congestiondown_values.get((i/4)-1)+congestiondown_values.get((i/4)+1)))/2 ;
-		utilizacionup_vec[1] = even? utilizacionup_values.get(i/4):((utilizacionup_values.get((i/4)-1)+utilizacionup_values.get((i/4)+1)))/2 ;
-		utilizaciondown_vec[1] = even? utilizaciondown_values.get(i/4):((utilizaciondown_values.get((i/4)-1)+utilizaciondown_values.get((i/4)-1)))/2 ;
-		
-		
-		//  higher quartiles
-		congestionup_vec[3] = even? congestionup_values.get(i/4 * 3):((congestionup_values.get(i/4 * 3)-1)+congestionup_values.get((i/4 * 3)+1))/2 ;
-		congestiondown_vec[3] = even? congestiondown_values.get(i/4 * 3):((congestiondown_values.get(i/4 * 3)-1)+congestiondown_values.get((i/4 * 3)+1))/2 ;
-		utilizacionup_vec[3] = even? utilizacionup_values.get(i/4 * 3):((utilizacionup_values.get(i/4 * 3)-1)+utilizacionup_values.get((i/4 * 3)+1))/2 ;
-		utilizaciondown_vec[3] = even? utilizaciondown_values.get(i/4 * 3):((utilizaciondown_values.get(i/4 * 3)-1)+utilizaciondown_values.get((i/4 * 3)-1))/2 ;
-		
-		
+		congestionup_vec[1] = even ? congestionup_values.get(i / 4)
+				: ((congestionup_values.get((i / 4) - 1) + congestionup_values
+						.get((i / 4) + 1))) / 2;
+		congestiondown_vec[1] = even ? congestiondown_values.get(i / 4)
+				: ((congestiondown_values.get((i / 4) - 1) + congestiondown_values
+						.get((i / 4) + 1))) / 2;
+		utilizacionup_vec[1] = even ? utilizacionup_values.get(i / 4)
+				: ((utilizacionup_values.get((i / 4) - 1) + utilizacionup_values
+						.get((i / 4) + 1))) / 2;
+		utilizaciondown_vec[1] = even ? utilizaciondown_values.get(i / 4)
+				: ((utilizaciondown_values.get((i / 4) - 1) + utilizaciondown_values
+						.get((i / 4) - 1))) / 2;
+
+		// higher quartiles
+		congestionup_vec[3] = even ? congestionup_values.get(i / 4 * 3)
+				: ((congestionup_values.get(i / 4 * 3) - 1) + congestionup_values
+						.get((i / 4 * 3) + 1)) / 2;
+		congestiondown_vec[3] = even ? congestiondown_values.get(i / 4 * 3)
+				: ((congestiondown_values.get(i / 4 * 3) - 1) + congestiondown_values
+						.get((i / 4 * 3) + 1)) / 2;
+		utilizacionup_vec[3] = even ? utilizacionup_values.get(i / 4 * 3)
+				: ((utilizacionup_values.get(i / 4 * 3) - 1) + utilizacionup_values
+						.get((i / 4 * 3) + 1)) / 2;
+		utilizaciondown_vec[3] = even ? utilizaciondown_values.get(i / 4 * 3)
+				: ((utilizaciondown_values.get(i / 4 * 3) - 1) + utilizaciondown_values
+						.get((i / 4 * 3) - 1)) / 2;
+
 		values.add(congestionup_vec);
 		values.add(congestiondown_vec);
 		values.add(utilizacionup_vec);
 		values.add(utilizaciondown_vec);
-		
+
 		return values;
 	}
-	
-	//	Histograms
+
+	// Histograms
 	public static int[] generateHistogramCongestionUp(List<Record> records,
-													  String title) {
+			String title) {
 		Iterator<Record> it = records.iterator();
 		int[] classes = new int[11];
 		while (it.hasNext()) {
@@ -118,9 +147,9 @@ public class ChartUtils {
 		}
 		return classes;
 	}
-	
+
 	public static int[] generateHistogramCongestionDown(List<Record> records,
-														String title) {
+			String title) {
 		Iterator<Record> it = records.iterator();
 		int[] classes = new int[11];
 		while (it.hasNext()) {
@@ -131,9 +160,9 @@ public class ChartUtils {
 		}
 		return classes;
 	}
-	
+
 	public static int[] generateHistogramUtilizacionUp(List<Record> records,
-													   String title) {
+			String title) {
 		Iterator<Record> it = records.iterator();
 		int[] classes = new int[11];
 		while (it.hasNext()) {
@@ -144,9 +173,9 @@ public class ChartUtils {
 		}
 		return classes;
 	}
-	
-	public static int[] generateHistogramUtilizacionDown(
-														 List<Record> records, String title) {
+
+	public static int[] generateHistogramUtilizacionDown(List<Record> records,
+			String title) {
 		Iterator<Record> it = records.iterator();
 		int[] classes = new int[11];
 		while (it.hasNext()) {
@@ -176,17 +205,17 @@ public class ChartUtils {
 			switch (graphType) {
 			case UPSTREAM_GRAPH:
 				metricas.add("CalidadUp");
-				 metricas.add("UtilizacionUp");
+				metricas.add("UtilizacionUp");
 				break;
 			case DOWNSTREAM_GRAPH:
 				metricas.add("CalidadDown");
-				 metricas.add("UtilizacionDown");
+				metricas.add("UtilizacionDown");
 				break;
 			default:
 				metricas.add("CalidadUp");
-				 metricas.add("UtilizacionUp");
+				metricas.add("UtilizacionUp");
 				metricas.add("CalidadDown");
-				 metricas.add("UtilizacionDown");
+				metricas.add("UtilizacionDown");
 				break;
 			}
 
@@ -196,49 +225,102 @@ public class ChartUtils {
 			List<Float> utilizacionUp = new ArrayList<Float>();
 			List<HighchartPoint> highchartPoints = new ArrayList<HighchartPoint>();
 			List<List<Long>> points = new ArrayList<List<Long>>();
+
 			Iterator<Record> it = records.iterator();
+			long aux_timestamp = -1;
 			JSONObject j;
 			JSONObject upStream_json = new JSONObject();
 			JSONArray upStream_array = new JSONArray();
 			JSONObject downStream_json = new JSONObject();
 			JSONArray downStream_array = new JSONArray();
-			
+			boolean jump;
 			while (it.hasNext()) {
+				jump = false;
 				Record record = it.next();
+				DateTime dt = new DateTime(record.getTimestamp());
+				System.out.println("Salida: " + (aux_timestamp - dt.getMillis()));
+				if (aux_timestamp > 0
+						&& (aux_timestamp - dt.getMillis()) < -600000) {
+					jump = true;
+					timestamps.add((aux_timestamp - dt.getMillis()) / 2);
+					System.out.println("ENTRO");
+				}
 				if (record.isUserDownCongestion()) {
+					if (jump == true) {
+						downStream_json = new JSONObject();
+						downStream_json.put("y", -1);
+						downStream_json.put("id", record.getId());
+						downStream_json.put("type", "D");
+						downStream_json
+								.put("marker",
+										new JSONObject()
+												.put("symbol",
+														"url(http://www.highcharts.com/demo/gfx/sun.png)"));
+						downStream_array.put(downStream_json);
+					}
 					downStream_json = new JSONObject();
 					downStream_json.put("y", record.getDownstream());
 					downStream_json.put("id", record.getId());
 					downStream_json.put("type", "D");
-					downStream_json.put("marker", new JSONObject().put("symbol", "url(http://www.highcharts.com/demo/gfx/sun.png)"));
+					downStream_json.put("marker", new JSONObject().put(
+							"symbol",
+							"url(http://www.highcharts.com/demo/gfx/sun.png)"));
 					downStream_array.put(downStream_json);
 				} else {
+					if (jump == true) {
+						downStream_json = new JSONObject();
+						downStream_json.put("y", -1);
+						downStream_json.put("id", record.getId());
+						downStream_json.put("type", "D");
+						downStream_array.put(downStream_json);
+					}
 					downStream_json = new JSONObject();
 					downStream_json.put("y", record.getDownstream());
 					downStream_json.put("id", record.getId());
 					downStream_json.put("type", "D");
 					downStream_array.put(downStream_json);
 				}
-				
+
 				if (record.isUserUpCongestion()) {
+					if (jump == true) {
+						upStream_json = new JSONObject();
+						upStream_json.put("y", -1);
+						upStream_json.put("id", record.getId());
+						upStream_json.put("type", "U");
+						upStream_json.put("marker", new JSONObject().put("symbol",
+								"url(http://www.highcharts.com/demo/gfx/sun.png)"));
+						upStream_array.put(upStream_json);
+					}
 					upStream_json = new JSONObject();
 					upStream_json.put("y", record.getUpstream());
 					upStream_json.put("id", record.getId());
 					upStream_json.put("type", "U");
-					upStream_json.put("marker", new JSONObject().put("symbol", "url(http://www.highcharts.com/demo/gfx/sun.png)"));
+					upStream_json.put("marker", new JSONObject().put("symbol",
+							"url(http://www.highcharts.com/demo/gfx/sun.png)"));
 					upStream_array.put(upStream_json);
 				} else {
+					if (jump == true) {
+						upStream_json = new JSONObject();
+						upStream_json.put("y", -1);
+						upStream_json.put("id", record.getId());
+						upStream_json.put("type", "U");
+						upStream_array.put(upStream_json);
+					}
 					upStream_json = new JSONObject();
 					upStream_json.put("y", record.getUpstream());
 					upStream_json.put("id", record.getId());
 					upStream_json.put("type", "U");
 					upStream_array.put(upStream_json);
-				//	upStream.add(record.getUpstream());
+					// upStream.add(record.getUpstream());
 				}
-//				System.out.println(upStream_array);
+				// System.out.println(upStream_array);
+				if (jump == true) {
+					utilizacionDown.add(new Float(-1));
+					utilizacionUp.add(new Float(-1));
+				}
 				utilizacionDown.add(record.getUtilizacionDownstream());
 				utilizacionUp.add(record.getUtilizacionUpstream());
-				DateTime dt = new DateTime(record.getTimestamp());
+				aux_timestamp = dt.getMillis();
 				timestamps.add(dt.getMillis());
 				List<Long> point = new ArrayList<Long>();
 				point.add((DateTimeUtils.getInstantMillis(dt)));
@@ -283,16 +365,16 @@ public class ChartUtils {
 			case UPSTREAM_GRAPH:
 				j = new JSONObject();
 				j.put("name", metricas.get(0));
-				//j.put("data", upStream);
+				// j.put("data", upStream);
 				j.put("data", upStream_array);
 				j.put("marker", lineMarkerOptions);
-//				System.out.println(j.get("data"));
+				// System.out.println(j.get("data"));
 				js.put(j);
-				 j = new JSONObject();
-				 j.put("name", metricas.get(1));
-				 j.put("data", utilizacionUp);
-				 j.put("marker", utilizacionMarkerOptions);
-				 js.put(j);
+				j = new JSONObject();
+				j.put("name", metricas.get(1));
+				j.put("data", utilizacionUp);
+				j.put("marker", utilizacionMarkerOptions);
+				js.put(j);
 				utilizacion_final = utilizacionup_js;
 				break;
 			case DOWNSTREAM_GRAPH:
@@ -301,11 +383,11 @@ public class ChartUtils {
 				j.put("data", downStream_array);
 				j.put("marker", lineMarkerOptions);
 				js.put(j);
-				 j = new JSONObject();
-				 j.put("name", metricas.get(1));
-				 j.put("data", utilizacionDown);
-				 j.put("marker", utilizacionMarkerOptions);
-				 js.put(j);
+				j = new JSONObject();
+				j.put("name", metricas.get(1));
+				j.put("data", utilizacionDown);
+				j.put("marker", utilizacionMarkerOptions);
+				js.put(j);
 				utilizacion_final = utilizaciondown_js;
 				break;
 			default:
@@ -314,21 +396,21 @@ public class ChartUtils {
 				j.put("data", upStream_array);
 				j.put("marker", lineMarkerOptions);
 				js.put(j);
-				 j = new JSONObject();
-				 j.put("name", metricas.get(1));
-				 j.put("data", utilizacionUp);
-				 j.put("marker", utilizacionMarkerOptions);
-				 js.put(j);
+				j = new JSONObject();
+				j.put("name", metricas.get(1));
+				j.put("data", utilizacionUp);
+				j.put("marker", utilizacionMarkerOptions);
+				js.put(j);
 				j = new JSONObject();
 				j.put("name", metricas.get(2));
 				j.put("data", downStream_array);
 				j.put("marker", lineMarkerOptions);
 				js.put(j);
-				 j = new JSONObject();
-				 j.put("name", metricas.get(3));
-				 j.put("data", utilizacionDown);
-				 j.put("marker", utilizacionMarkerOptions);
-				 js.put(j);
+				j = new JSONObject();
+				j.put("name", metricas.get(3));
+				j.put("data", utilizacionDown);
+				j.put("marker", utilizacionMarkerOptions);
+				js.put(j);
 				utilizacion_final = utilizacion_js;
 
 			}

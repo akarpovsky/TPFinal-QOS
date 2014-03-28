@@ -119,9 +119,20 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript">                        
             $(function () {
             	 var datos =  ${javaChart.JSONString};
+            	 for (var i=0;i<datos.length;i++){
+            	  	for (var j=0;j<datos[i].data.length;j++){
+            	  		if(datos[i].data[j] == -1){
+            	  			datos[i].data[j] = null;// = null;
+            	  		}else if (datos[i].data[j].y == -1){
+            			 	datos[i].data[j].y = null;
+            			}
+            		}
+            	 }
+            	 
+            	
                  var fechas = ${javaChart.timestamps};
                  var title = "${javaChart.title}";
-                 var redmarker = ${javaChart.redmarker};
+                 //var redmarker = ${javaChart.redmarker};
                  var subtitle = "${javaChart.subtitle}";
                 for (var i=0;i<fechas.length;i++){
                 	fechas[i] = new Date(fechas[i]);
@@ -145,7 +156,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                         xAxis: {        
                             max: 50,
                         	type: 'datetime',
-                            plotBands: redmarker, 
+                            //plotBands: redmarker, 
                             categories: fechas,
                             tickInterval: 10,
                             labels: {
