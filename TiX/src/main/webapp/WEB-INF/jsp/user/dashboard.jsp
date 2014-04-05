@@ -35,9 +35,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
               	<li><a href="../installation/allinstallations"><i class="icon-pencil"></i>Editar instalaci&oacute;nes</a></li>
 	          <li class="divider"></li>
             <li><a href="../account/edit"><i class="icon-cog"></i>Mi cuenta</a></li>
-              <li><a href="isphistogram"> Histogramas</a></li>
+<!--               <li><a href="isphistogram"> Histogramas</a></li> -->
               <li><a href="ispcharts"> Graficos generales</a></li>
-              <li><a href="ispboxplot"> Boxplot</a></li>
+<!--               <li><a href="ispboxplot"> Boxplot</a></li> -->
 	          	<li><a href="#">Ayuda</a></li>
             </ul>
           </div><!--/.well -->
