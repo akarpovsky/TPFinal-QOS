@@ -78,24 +78,24 @@ def get_files_by_mdate(dirpath):
 
 def remove_old_files(dirpath, client_msg_filename):
   # Get all files in directory
-  a = [os.path.join(dirpath, s) for s in os.listdir(dirpath)
+  a = [os.path.join(s) for s in os.listdir(dirpath)
          if os.path.isfile(os.path.join(dirpath, s))]
-  log_datetime = datetime.datetime.fromtimestamp(client_msg_filename.split("_")[1])
- 
+  log_datetime = datetime.datetime.fromtimestamp(float(client_msg_filename.split("_")[1]))
   for file_name in a:
     try:
-      curr_file_datetime = datetime.datetime.fromtimestamp(file_name.split("_")[1])
+      curr_file_datetime = datetime.datetime.fromtimestamp(float(file_name.split("_")[1]))
       lapsed_time = (log_datetime-curr_file_datetime).total_seconds()
       try:
-        if lapsed_time > 4140: #1.15 hs
+        if abs(lapsed_time) > 4500: #1.15 hs
           os.remove(dirpath + "/" + file_name)
           logger.info("Eliminando log antiguo: " + dirpath + "/" + file_name)
 
       except Exception, e:
         logger.error("No se ha podido eliminar el siguiente log antiguo: " + dirpath + "/" + file_name)
     except Exception, e:
-     logger.error("El archivo de log tiene un nombre invalido:: " + dirpath + "/" + file_name)
+     logger.error("El archivo de log tiene un nombre invalido: " + dirpath + "/" + file_name)
 
+  return None
     
 
 class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
@@ -161,7 +161,6 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                 logFile.close()
 
                 # Check if there are old unusable files and remove them; we always need to keep only the REAL last hour of data
-
                 remove_old_files(client_records_server_folder, client_msg_filename.split("/")[-1:][0])
 
                 # Check if we have at least 1hr (twelve 5 minutes files) of data
