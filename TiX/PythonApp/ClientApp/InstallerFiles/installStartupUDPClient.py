@@ -98,8 +98,13 @@ def installingStartup():
         copyanything("./InstallerFiles/toBeCopied/" + startupAppCaller,installDirUnixApp + '/' + startupAppCaller)
 
         print "Instalando cliente TIX en el arranque..."
-        os.system("osascript -e 'tell application \"System Events\" to make login item at end with properties {path:\""+installDirUnixApp + '/' + startupAppCaller +"\", hidden:false}'")
-        os.spawnl(os.P_NOWAIT, "/etc/init.d/" + startupAppCaller)
+        os.system("sudo chown root ./InstallerFiles/toBeCopied/com.user.loginscript.plist")
+        copyanything("./InstallerFiles/toBeCopied/com.user.loginscript.plist", os.getenv("HOME") + "/Library/LaunchAgents/com.user.loginscript.plist")
+        sys_return = os.system("sudo launchctl load ./InstallerFiles/toBeCopied/com.user.loginscript.plist")
+
+        #os.system("launchctl start com.user.loginscript")
+        #os.system("osascript -e 'tell application \"System Events\" to make login item at end with properties {path:\""+installDirUnixApp + '/' + startupAppCaller +"\", hidden:false}'")
+        #os.spawnl(os.P_NOWAIT, "/etc/init.d/" + startupAppCaller)
         installation_ok = True
     if os_system == "Windows":
         os_type = platform.release();
