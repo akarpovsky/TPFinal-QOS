@@ -137,6 +137,7 @@ if __name__ == "__main__":
 	t0=ts()
 	t0_filename = ts_filename()
 	t0_date = datetime.datetime.fromtimestamp(t0_filename)
+	t_old_filename = ''
 
 	t_old = 0;
 	tries = 0;
@@ -151,10 +152,12 @@ if __name__ == "__main__":
   		if (curr_lapsed_time > 60) or (curr_lapsed_time < 0): # 60 segundos o cambio de dia 
 			tries = 2
 			t_old = t0
+			t_old_filename = t0_filename
 			checker = True
 			t0=ts()
+			t0_filename = ts_filename()
 			t0_date = datetime.datetime.fromtimestamp(ts_filename()) # Asigno el nuevo t0 en el instante del procesamiento
-  		cliente= threading.Thread(target=pingUniq,args=(i,log_file,t0,t0_filename,checker,t0_filename))
+  		cliente= threading.Thread(target=pingUniq,args=(i,log_file,t0,t0_filename,checker,t_old_filename))
   		cliente.start()
   		#pingUniq(i, log_file)
   		i=~i

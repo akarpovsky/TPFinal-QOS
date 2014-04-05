@@ -21,6 +21,9 @@ import sys
 import json
 import keygeneration
 import os, ctypes, platform
+import subprocess
+import shutil
+
 
 
 sys.path.append('./InstallerFiles/')
@@ -208,7 +211,7 @@ def execute_installation():
 
                 sys_return = subprocess.call(['gksudo','python ./InstallerFiles/installStartupUDPClient.py']) # Must change python for the executable
         if globalPlatformName == "Darwin":
-                sys_return = os.system("""osascript -e 'do shell script "python ./InstallerFiles/installStartupUDPClient.py" with administrator privileges'""")
+                sys_return = os.system("python ./InstallerFiles/installStartupUDPClient.py")
         return sys_return
 
 def installation_result_popup(installation_return,sys_return):
@@ -246,7 +249,11 @@ def deleteExistingInstallation(self):
                 sys_return = subprocess.call(['gksudo','python ./InstallerFiles/uninstallStartupUDPClient.py'])
         
         if globalPlatformName == "Darwin":
-                sys_return = os.system("""osascript -e 'do shell script "python ./InstallerFiles/uninstallStartupUDPClient.py" with administrator privileges'""")
+                sys_return = os.system("launchctl remove com.user.loginscript")
+                if os.path.isfile("~/Library/LaunchAgents/com.user.loginscript.plist"):
+                        os.remove("~/Library/LaunchAgents/com.user.loginscript.plist")
+                if os.path.exists("/etc/TIX/"):
+                        shutil.rmtree("/etc/TIX/")
         
         if(sys_return == 0): # Call to installation procedure
                 installation_return = 'Se ha borrado con exito la desinstalacion de TiX. Retornando al SO...'
