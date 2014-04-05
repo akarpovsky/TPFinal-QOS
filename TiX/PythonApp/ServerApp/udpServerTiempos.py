@@ -72,6 +72,32 @@ def get_files_by_mdate(dirpath):
     a.sort(key=lambda s: os.path.getmtime(os.path.join(dirpath, s)))
     return a
 
+# Dado un directorio y un archivo de log con nombre del estilo "log_timestamp", remueve todos los archivos
+# mas viejos que una hora y cuarto del archivo pasado como parametro (utiliza el nombre de los archivos)
+# para hacer la comparacion
+
+def remove_old_files(dirpath, client_msg_filename):
+  # Get all files in directory
+  a = [os.path.join(dirpath, s) for s in os.listdir(dirpath)
+         if os.path.isfile(os.path.join(dirpath, s))]
+  log_datetime = datetime.datetime.fromtimestamp(client_msg_filename.split("_")[1])
+ 
+  for file_name in a:
+    try:
+      curr_file_datetime = datetime.datetime.fromtimestamp(file_name.split("_")[1])
+      lapsed_time = (log_datetime-curr_file_datetime).total_seconds()
+      try:
+        if lapsed_time > 4140: #1.15 hs
+          os.remove(dirpath + "/" + file_name)
+          logger.info("Eliminando log antiguo: " + dirpath + "/" + file_name)
+
+      except Exception, e:
+        logger.error("No se ha podido eliminar el siguiente log antiguo: " + dirpath + "/" + file_name)
+    except Exception, e:
+     logger.error("El archivo de log tiene un nombre invalido:: " + dirpath + "/" + file_name)
+
+    
+
 class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
     """
     This class works similar to the TCP handler class, except that
@@ -133,8 +159,10 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                 logFile = open(client_records_server_folder + "/" + client_msg_filename.split("/")[-1:][0], 'wb')
                 logFile.write(client_plain_msg)
                 logFile.close()
-                # DBManager.insert_record(20,53,'2013-04-14 16:20:12.345678',55,50,"false","false",1,1,1)
-                #downstream,downstreamcongestion,timestamp,upstream,upstreamcongestion,userdowncongestion,userupcongestion,installation_id,isp_id,user_id
+
+                # Check if there are old unusable files and remove them; we always need to keep only the REAL last hour of data
+
+                remove_old_files(client_records_server_folder, client_msg_filename.split("/")[-1:][0])
 
                 # Check if we have at least 1hr (twelve 5 minutes files) of data
                 if len(os.walk(client_records_server_folder).next()[2]) >= 60:
@@ -203,13 +231,13 @@ if __name__ == "__main__":
       os.makedirs(tix_server_records_path)
       
     HOST, PORT = TEST_SERVER_HOST, TEST_SERVER_PORT 
-#    HOST='127.0.0.1'
-#    PORT=5005
+#   HOST='127.0.0.1'
+#   PORT=5005
     # Create the server, binding to localhost on port 9999
     #server = SocketServer.UDPServer((HOST, PORT), MyUDPHandler)
     server = ThreadingUDPServer((HOST, PORT), ThreadingUDPRequestHandler)
     
-       #Threaded version
+    #Threaded version
     server_thread= threading.Thread(target=server.serve_forever)
     logger.info("Starting server (" + str(HOST) + ":" + str(PORT) + ") thread " + server_thread.name)
     # server_thread.daemon = True
