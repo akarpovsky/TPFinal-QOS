@@ -24,6 +24,9 @@ TEST_PORT = config.getint("UDPClient", "TEST_port")
 TEST2_HOST = config.get("UDPClient", "TEST2_host")
 TEST2_PORT = config.getint("UDPClient", "TEST2_port")
 
+def ts_filename():
+  return time.time()
+
 def ts():
   # time en microsegundos
   timestamp= datetime.datetime.now().strftime("%H:%M:%S:%f").split(':')
@@ -38,8 +41,8 @@ def relleno_largo(largo, check, told,log_file):
 		for i in range(0,largo-1):
 	 		relleno= relleno + str(random.randint(0,9))
 	else:
-		print "[" + datetime.datetime.fromtimestamp(time.time()).strftime('%d-%m-%Y %H:%M:%S') + "] Enviando paquete largo con DATA al servidor de medicion..."
 		filereg=open(installDirUnix + "/app/" + log_file+told,"r")
+		print "[" + datetime.datetime.fromtimestamp(time.time()).strftime('%d-%m-%Y %H:%M:%S') + "] Enviando paquete largo con DATA al servidor de medicion (" + filereg.name + ")..."
 		msg = filereg.read()
 		privateKeyFile = open(installDirUnix + '/tix_key.priv','r')
 		publicKeyFile = open(installDirUnix + '/tix_key.pub','r')
@@ -64,9 +67,9 @@ def log_msg(log_file, msg):
 
 
 	
-def pingUniq(num_uniq, logfile,t0, check,told):
+def pingUniq(num_uniq, logfile,t0, t0_filename, check,told):
 	
-	log_file = logfile + t0
+	log_file = logfile + str(t0_filename)
 	#deberian ser 12 bytes, 32 bits por cada timestamp (en hexa)
 	_24hs='86400000000'
 	
@@ -78,23 +81,25 @@ def pingUniq(num_uniq, logfile,t0, check,told):
 	#Mensaje corto
 	
 	t1 = ts()
-	data_file_sent = False
-	
+	file_with_data = False
+	relleno_largo_msg = ''
+
 	if (num_uniq % 2 == 0) :
 		message = t1 + '!!' + t2 + '!!' + t3 + '!!' + t4
 	else:
-		message = t1 + '!!' + t2 + '!!' + t3 + '!!' + t4 + '!!' + relleno_largo(4400,check,told,logfile)
-		data_file_sent = True
+		relleno_largo_msg = relleno_largo(4400,check,str(told),logfile)
+		message = t1 + '!!' + t2 + '!!' + t3 + '!!' + t4 + '!!' + relleno_largo_msg
+		file_with_data = relleno_largo_msg.startswith('DATA;;') # Para luego borrar el archivo una vez enviado
 	
 	client = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 	
 	try:
-		client.settimeout(3.0)
+		client.settimeout(5.0)
 		client.sendto(message + "\n", (TEST_HOST, TEST_PORT)) 
-		if data_file_sent == True:
+		if file_with_data == True:
 			#Delete data file
-			#os.remove(log_file)
-			data_file_sent = False
+			os.remove(installDirUnix + "/app/" + log_file) 
+			file_with_data = False
 	
 		data = client.recv(8192)#(2048) para el mensaje largo
 		msg = data.split('|')
@@ -129,7 +134,11 @@ if __name__ == "__main__":
 	  
 	log_file=sys.argv[1]+'_'
 
-	t0=ts()	
+	t0=ts()
+	t0_filename = ts_filename()
+	t0_date = datetime.datetime.fromtimestamp(t0_filename)
+	t_old_filename = ''
+
 	t_old = 0;
 	tries = 0;
 	i=0
@@ -138,12 +147,17 @@ if __name__ == "__main__":
   		if tries <= 0:
   			checker = False
 
-		if (int(ts())-int(t0) > 60000000) or (int(ts())-int(t0) < 0):# 1 minutos o cambio de dia
+  		tnow = datetime.datetime.fromtimestamp(time.time())
+  		curr_lapsed_time = (tnow-t0_date).total_seconds()
+  		if (curr_lapsed_time > 60) or (curr_lapsed_time < 0): # 60 segundos o cambio de dia 
 			tries = 2
 			t_old = t0
+			t_old_filename = t0_filename
 			checker = True
 			t0=ts()
-  		cliente= threading.Thread(target=pingUniq,args=(i,log_file,t0,checker,t_old))
+			t0_filename = ts_filename()
+			t0_date = datetime.datetime.fromtimestamp(ts_filename()) # Asigno el nuevo t0 en el instante del procesamiento
+  		cliente= threading.Thread(target=pingUniq,args=(i,log_file,t0,t0_filename,checker,t_old_filename))
   		cliente.start()
   		#pingUniq(i, log_file)
   		i=~i

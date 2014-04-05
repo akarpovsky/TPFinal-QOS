@@ -143,7 +143,9 @@ public class ChartUtils {
 			Record record = it.next();
 			double index = record.getCalidadUp() * 10;
 			int cong = (int) index;
-			classes[cong]++;
+			if (cong <= 10){
+				classes[cong]++;
+			}
 		}
 		return classes;
 	}
@@ -156,8 +158,9 @@ public class ChartUtils {
 			Record record = it.next();
 			double index = record.getCalidadDown() * 10;
 			int cong = (int) index;
-			classes[cong]++;
-		}
+			if (cong <= 10){
+				classes[cong]++;
+			}		}
 		return classes;
 	}
 
@@ -169,8 +172,9 @@ public class ChartUtils {
 			Record record = it.next();
 			double index = record.getUtilizacionUpstream() * 10;
 			int cong = (int) index;
-			classes[cong]++;
-		}
+			if (cong <= 10){
+				classes[cong]++;
+			}		}
 		return classes;
 	}
 
@@ -182,8 +186,9 @@ public class ChartUtils {
 			Record record = it.next();
 			double index = record.getUtilizacionDownstream() * 10;
 			int cong = (int) index;
-			classes[cong]++;
-		}
+			if (cong <= 10){
+				classes[cong]++;
+			}		}
 		return classes;
 	}
 
