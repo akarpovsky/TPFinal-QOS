@@ -39,10 +39,10 @@ public class ChartUtils {
 		int i = 0;
 		while (it.hasNext()) {
 			Record record = it.next();
-			double congestionup = record.getCalidadUp() * 10;
-			double congestiondown = record.getCalidadDown() * 10;
-			double utilizacionup = record.getUtilizacionUpstream() * 10;
-			double utilizaciondown = record.getUtilizacionDownstream() * 10;
+			double congestionup = record.getCalidadUp() / 100;
+			double congestiondown = record.getCalidadDown() / 100;
+			double utilizacionup = record.getUtilizacionUpstream() / 100;
+			double utilizaciondown = record.getUtilizacionDownstream() / 100;
 
 			// minimums
 			congestionup_vec[0] = (congestionup < congestionup_vec[0]) ? congestionup
@@ -126,6 +126,12 @@ public class ChartUtils {
 				: ((utilizaciondown_values.get(i / 4 * 3) - 1) + utilizaciondown_values
 						.get((i / 4 * 3) - 1)) / 2;
 
+//		printVec(congestionup_vec);
+//		printVec(congestiondown_vec);
+//		printVec(utilizacionup_vec);
+//		printVec(utilizaciondown_vec);
+//		
+		
 		values.add(congestionup_vec);
 		values.add(congestiondown_vec);
 		values.add(utilizacionup_vec);
@@ -133,6 +139,10 @@ public class ChartUtils {
 
 		return values;
 	}
+	
+//	private static void printVec(double a[] ){
+//		System.out.println("TESTING [ " + a[0] +"   "+ a[1] +"   "+ a[2] +"   "+ a[3] +"   "+ a[4]  +"]");
+//	}
 
 	// Histograms
 	public static int[] generateHistogramCongestionUp(List<Record> records,
@@ -141,7 +151,7 @@ public class ChartUtils {
 		int[] classes = new int[11];
 		while (it.hasNext()) {
 			Record record = it.next();
-			double index = record.getCalidadUp() * 10;
+			double index = record.getCalidadUp() / 10;
 			int cong = (int) index;
 			if (cong <= 10){
 				classes[cong]++;
@@ -156,7 +166,7 @@ public class ChartUtils {
 		int[] classes = new int[11];
 		while (it.hasNext()) {
 			Record record = it.next();
-			double index = record.getCalidadDown() * 10;
+			double index = record.getCalidadDown() / 10;
 			int cong = (int) index;
 			if (cong <= 10){
 				classes[cong]++;
@@ -170,7 +180,7 @@ public class ChartUtils {
 		int[] classes = new int[11];
 		while (it.hasNext()) {
 			Record record = it.next();
-			double index = record.getUtilizacionUpstream() * 10;
+			double index = record.getUtilizacionUpstream() / 10;
 			int cong = (int) index;
 			if (cong <= 10){
 				classes[cong]++;
@@ -184,7 +194,7 @@ public class ChartUtils {
 		int[] classes = new int[11];
 		while (it.hasNext()) {
 			Record record = it.next();
-			double index = record.getUtilizacionDownstream() * 10;
+			double index = record.getUtilizacionDownstream() / 10;
 			int cong = (int) index;
 			if (cong <= 10){
 				classes[cong]++;

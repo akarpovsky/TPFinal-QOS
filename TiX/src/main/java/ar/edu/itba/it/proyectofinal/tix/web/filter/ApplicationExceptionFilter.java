@@ -20,14 +20,16 @@ public class ApplicationExceptionFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request,
 			HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		 try {
-		 	filterChain.doFilter(request, response);
-		 } catch (Exception e) {
-		 	logger.error("Unhandled exception catched!");
-		 	e.printStackTrace();
-		 	request.setAttribute("errorDescription", "Sitio temporalmente fuera de servicio.");
-		 	request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
-		 }
+//		 try {
+//		 	filterChain.doFilter(request, response);
+//		 } catch (Exception e) {
+//		 	logger.error("Unhandled exception catched!");
+//		 	e.printStackTrace();
+//		 	request.setAttribute("errorDescription", "Sitio temporalmente fuera de servicio.");
+//		 	request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
+//		 }
+	 	filterChain.doFilter(request, response);
+
 	}
 
 }
