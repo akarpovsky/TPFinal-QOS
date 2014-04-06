@@ -44,6 +44,7 @@ public class ChartUtils {
 			double utilizacionup = record.getUtilizacionUpstream() / 10;
 			double utilizaciondown = record.getUtilizacionDownstream() / 10;
 
+
 			// minimums
 			congestionup_vec[0] = (congestionup < congestionup_vec[0]) ? congestionup
 					: congestionup_vec[0];
