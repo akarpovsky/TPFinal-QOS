@@ -35,9 +35,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
               	<li><a href="../installation/allinstallations"><i class="icon-pencil"></i>Editar instalaci&oacute;nes</a></li>
 	          <li class="divider"></li>
             <li><a href="../account/edit"><i class="icon-cog"></i>Mi cuenta</a></li>
-<!--               <li><a href="isphistogram"> Histogramas</a></li> -->
-              <li><a href="ispcharts"> Graficos generales</a></li>
-<!--               <li><a href="ispboxplot"> Boxplot</a></li> -->
 	          	<li><a href="#">Ayuda</a></li>
             </ul>
           </div><!--/.well -->
@@ -111,15 +108,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 					</div>
 
         		</c:otherwise>
-	        </c:choose>	
-		
+	        </c:choose>
+
         </div><!--/span-->
       </div><!--/row-->
-    
+
 	</div>
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
-<script type="text/javascript">                        
+<script type="text/javascript">
             $(function () {
             	 var datos =  ${javaChart.JSONString};
             	 for (var i=0;i<datos.length;i++){
@@ -131,8 +128,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
             			}
             		}
             	 }
-            	 
-            	
+
+
                  var fechas = ${javaChart.timestamps};
                  var title = "${javaChart.title}";
                  //var redmarker = ${javaChart.redmarker};
@@ -156,10 +153,10 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                             text: subtitle,
                             x: -20
                         },
-                        xAxis: {        
+                        xAxis: {
                             max: 50,
                         	type: 'datetime',
-                            //plotBands: redmarker, 
+                            //plotBands: redmarker,
                             categories: fechas,
                             tickInterval: 10,
                             labels: {
@@ -178,7 +175,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                                     width: 1,
                                     color: '#808080'
                                 }],
-                           	min: 0, max: 100    
+                           	min: 0, max: 100
                         },
                          plotOptions: {
                 series: {
@@ -186,11 +183,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                     point: {
                         events: {
                             click: function() {
-                                $.holdReady(true); 
+                                $.holdReady(true);
                                 $.get("./changeCongestionStatus?id=" + this.id + "&type=" + this.type, function() {
 								  $.holdReady(false);
 								});
-                              //  $.sleep(800);    
+                              //  $.sleep(800);
 							//	$(location).attr('href', $(location).attr('href')).delay(2000);
 							var delay = 500; //Your delay in milliseconds
 								setTimeout(function(){ window.location = $(location).attr('href'); }, delay);
@@ -203,7 +200,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                 }
             },
                         tooltip: {
-                           
+
                             shared: true,
                             crosshairs: true
                         },
@@ -222,12 +219,12 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                     });
                 });
             });
-        
+
         </script>
 <script type="text/javascript">
         var nowTemp = new Date();
 var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
- 
+
 var checkin = $('#dpd1').datepicker({
   format: 'dd/mm/yyyy',
   onRender: function(date) {
