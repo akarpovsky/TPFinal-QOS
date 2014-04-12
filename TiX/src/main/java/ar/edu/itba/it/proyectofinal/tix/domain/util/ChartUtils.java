@@ -39,10 +39,10 @@ public class ChartUtils {
 		int i = 0;
 		while (it.hasNext()) {
 			Record record = it.next();
-			double congestionup = record.getCalidadUp() / 10;
-			double congestiondown = record.getCalidadDown() / 10;
-			double utilizacionup = record.getUtilizacionUpstream() / 10;
-			double utilizaciondown = record.getUtilizacionDownstream() / 10;
+			double congestionup = record.getCalidadUp() ;
+			double congestiondown = record.getCalidadDown() ;
+			double utilizacionup = record.getUtilizacionUpstream() ;
+			double utilizaciondown = record.getUtilizacionDownstream() ;
 
 
 			// minimums

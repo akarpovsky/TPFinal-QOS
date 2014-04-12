@@ -206,6 +206,19 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
             text: 'Highcharts box plot ${entry.isp_name}'
         },
 
+        plotOptions: {
+            series: {
+                shadow:false,
+                borderWidth:0,
+                dataLabels:{
+                    enabled:true,
+                    formatter:function() {
+                        return this.y + '%';
+                    }
+                }
+            }
+        },
+
         xAxis: {
             minTickInterval: 1,
             categories: ['congestion subida', 'congestion bajada', 'utilizacion subida', 'utilizacion bajada']
@@ -213,6 +226,14 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
         yAxis:{
             title:{text:'Porcentaje'},
+            max: 100,
+            min:0,
+            labels: {
+                formatter:function() {
+                    // var pcnt = (this.value / dataSum) * 100;
+                    return Highcharts.numberFormat(this.value ,0,',') + '%';
+                }
+            }
         },
 
         series: [{
