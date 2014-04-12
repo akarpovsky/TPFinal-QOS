@@ -92,9 +92,9 @@ public class LoginController {
 		List<IspBoxplotDisplayer> boxplot_list = new ArrayList<IspBoxplotDisplayer>();
 		
 		//TODO 
-		//Nowadays just shows the data from last month
+		//Nowadays just shows the data from last 6 months
 		 DateTime maxDate = new DateTime();
-		 DateTime minDate = maxDate.minusDays(30);
+		 DateTime minDate = maxDate.minusDays(180);
 		 
 		for (ISP isp : isps) {
 			int id = isp.getId();
