@@ -16,6 +16,7 @@ public class ChartUtils {
 
 	public static List<double[]> generateBoxplot(List<Record> records) {
 
+
 		Iterator<Record> it = records.iterator();
 		// [0] minimum
 		// [1] lower quartile
@@ -29,7 +30,11 @@ public class ChartUtils {
 		double[] utilizaciondown_vec = new double[5];
 
 		List<double[]> values = new ArrayList<double[]>();
-
+		
+		if (records.size() == 0){
+			return values;
+		}
+		
 		// values
 		List<Double> congestionup_values = new ArrayList<Double>();
 		List<Double> congestiondown_values = new ArrayList<Double>();

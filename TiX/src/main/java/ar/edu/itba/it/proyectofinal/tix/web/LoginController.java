@@ -82,22 +82,28 @@ public class LoginController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView ispcharts( 
-			HttpSession session,
-			@RequestParam(value = "minDate", required = false) DateTime minDate,
-			@RequestParam(value = "maxDate", required = false) DateTime maxDate) {
+			HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+				 
 
 		List<ISP> isps = recordRepo.getISPs();
 
 		List<IspHistogramDisplayer> disp_list = new ArrayList<IspHistogramDisplayer>();
 		List<IspBoxplotDisplayer> boxplot_list = new ArrayList<IspBoxplotDisplayer>();
 		
-		
+		//TODO 
+		//Nowadays just shows the data from last month
+		 DateTime maxDate = new DateTime();
+		 DateTime minDate = maxDate.minusDays(30);
+		 
 		for (ISP isp : isps) {
 			int id = isp.getId();
 			String name = isp.getName();
 			List<Record> records = (List<Record>) recordRepo.getAllForIsp2(id, minDate,maxDate);
 			
+			System.out.println(minDate);
+			System.out.println(maxDate);
+			System.out.println("RECORDS: " + records);
 			//histograms
 			IspHistogramDisplayer disp = new IspHistogramDisplayer();
 			disp.setIsp_id(id);		
@@ -114,10 +120,12 @@ public class LoginController {
 			boxplot.setIsp_name(name);
 			List<double[]> boxplotdata = new ArrayList<double[]>();
 			boxplotdata = ChartUtils.generateBoxplot(records);
-			boxplot.setCongestionUpChart(boxplotdata.get(0));
-			boxplot.setCongestionDownChart(boxplotdata.get(1));
-			boxplot.setUtilizacionUpChart(boxplotdata.get(2));
-			boxplot.setUtilizacionDownChart(boxplotdata.get(3));
+			if (!boxplotdata.isEmpty()){
+				boxplot.setCongestionUpChart(boxplotdata.get(0));
+				boxplot.setCongestionDownChart(boxplotdata.get(1));
+				boxplot.setUtilizacionUpChart(boxplotdata.get(2));
+				boxplot.setUtilizacionDownChart(boxplotdata.get(3));		
+			}
 			boxplot_list.add(boxplot);
 			System.out.println(boxplot);
 		}

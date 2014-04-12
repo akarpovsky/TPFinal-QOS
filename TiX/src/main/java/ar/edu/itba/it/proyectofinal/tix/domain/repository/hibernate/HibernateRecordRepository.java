@@ -52,23 +52,14 @@ public class HibernateRecordRepository extends AbstractHibernateRepo implements 
 		return find("from Record r where user_id = ? and installation = ? and isp = ? order by r.timestamp asc ", user.getId(), installation, isp);
 	}
 
-	public List<? extends Record> getAllForIsp(ISP isp, DateTime minDate, DateTime maxDate){
-		if ( minDate != null && maxDate != null) {
-			return find("from Record r where isp = ? and r.timestamp >= ? and r.timestamp <= ? order by r.timestamp asc", isp, minDate, maxDate);
-		}
-		System.out.println("ISP: " +  isp);
-//		return find("from Record r where isp = ? order by r.timestamp asc ", isp);
-		 return find("from Record r where isp_id = 1 order by r.timestamp asc ");
-	}
-	
 	public List<? extends Record> getAllForIsp2(int isp, DateTime minDate, DateTime maxDate){
 		if ( minDate != null && maxDate != null) {
-			return find("from Record r where isp = ? and r.timestamp >= ? and r.timestamp <= ? order by r.timestamp asc", isp, minDate, maxDate);
+			return find("from Record r where isp_id = ? and r.timestamp >= ? and r.timestamp <= ? order by r.timestamp asc", isp, minDate, maxDate);
 		}
 		System.out.println("ISP: " +  isp);
 	    return find("from Record r where isp_id = ? order by r.timestamp asc ", isp);
 	}
-	
+
 	public List<ISP> getISPs(){
 		return find("from ISP ");
 	}
@@ -95,6 +86,13 @@ public class HibernateRecordRepository extends AbstractHibernateRepo implements 
 		Session session = getSession();
 		String hql = "delete from Record r where r.installation = ?";
 		session.createQuery(hql).setEntity(0, installation).executeUpdate();
+	}
+
+	@Override
+	public List<? extends Record> getAllForIsp(ISP isp, DateTime minDate,
+			DateTime maxDate) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
