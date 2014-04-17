@@ -35,7 +35,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
               	<li><a href="../installation/allinstallations"><i class="icon-pencil"></i>Editar instalaci&oacute;nes</a></li>
 	          <li class="divider"></li>
             <li><a href="../account/edit"><i class="icon-cog"></i>Mi cuenta</a></li>
-	          	<li><a href="#">Ayuda</a></li>
+	          <li><a href="#">Ayuda</a></li>
+            <li><a href="#">Exportar CSV</a></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

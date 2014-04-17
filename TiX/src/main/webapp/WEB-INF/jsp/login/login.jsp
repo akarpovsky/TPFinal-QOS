@@ -114,10 +114,6 @@
 
 					</p>
 				</div>
-				<div class="span12">
-					<br/>
-						<a class="btn btn-large" href="ispcharts">Ver graficos de utilizaci&oacute;n y congesti&oacute;n</a>
-				</div>
 			</div>
 			<hr />
 		</div>

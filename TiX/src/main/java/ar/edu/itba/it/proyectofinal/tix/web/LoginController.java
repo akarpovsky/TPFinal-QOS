@@ -79,8 +79,20 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
+	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView getcsv( 
+			HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		List<ISP> isps = recordRepo.getISPs();
+		return mav;
+
+
+	}
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	
 	public ModelAndView ispcharts( 
 			HttpSession session) {
 		ModelAndView mav = new ModelAndView();
