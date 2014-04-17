@@ -31,6 +31,7 @@ public class ChartUtils {
 
 		List<double[]> values = new ArrayList<double[]>();
 		
+		
 		if (records.size() == 0){
 			return values;
 		}

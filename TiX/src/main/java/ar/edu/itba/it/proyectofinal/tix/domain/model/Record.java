@@ -10,6 +10,7 @@ import javax.validation.constraints.Max;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.util.privilegedactions.GetConstructor;
 import org.joda.time.DateTime;
 
 @Entity
@@ -129,6 +130,10 @@ public class Record extends DBPersistentObject {
 	@Override
 	public String toString() {
 		return "Record for " + user.getNickname() + " calidad_Up=" + calidad_Up + " calidad_Down=" + calidad_Down + " utiliz_Up=" + utiliz_Up + " utiliz_Down=" + utiliz_Down;
+	}
+	
+	public String toCSV(){
+		return getId() +"," + getH_RS_Down() +"," +getH_RS_Up() +"," + getH_Wave_Down() +"," + getH_RS_Up() +","+getCalidadDown()+","+getCalidadUp()+","+getTimestamp()+","+isUserDownCongestion()+","+isUserUpCongestion()+","+getUtilizacionDownstream()+","+getUtilizacionUpstream()+","+getInstallation()+","+getIsp()+","+getUser();
 	}
 
 	public User getUser() {

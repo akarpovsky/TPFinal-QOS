@@ -13,6 +13,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 					<h2>Gráficos generales</h2>
 				</div>
 				<a class="btn btn-large" href="../login/ispcharts">Ver graficos de utilizaci&oacute;n y congesti&oacute;n</a>
+				<a class="btn btn-large" href="../login/ispcsv">Generar csv de utilizaci&oacute;n y congesti&oacute;n</a>
 		</section>
 
 		<hr/>

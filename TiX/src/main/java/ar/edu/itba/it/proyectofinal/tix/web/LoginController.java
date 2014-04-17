@@ -1,17 +1,22 @@
 package ar.edu.itba.it.proyectofinal.tix.web;
 
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.tools.ant.types.CommandlineJava.SysProperties;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.itba.it.proyectofinal.tix.domain.model.ISP;
@@ -80,19 +85,31 @@ public class LoginController {
 	}
 	
 	
-	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView getcsv( 
+	public void getcsv( 
 			HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		List<ISP> isps = recordRepo.getISPs();
-		return mav;
+		
+		List<? extends Record> records = recordRepo.getAll();
 
-
+		Writer writer = null;
+		try {
+		    writer = new BufferedWriter(new OutputStreamWriter( new FileOutputStream("tmp/records.cvs"), "utf-8"));
+		    for(Record r: records){
+		    	writer.write(r.toCSV()+ "\n");
+		    }
+		} catch (IOException ex) {
+		  System.out.println("Error writing csv file");
+		} finally {
+		   try {writer.close();} 
+		   catch (Exception ex) {}
+		}
+		System.out.println("CSV file successfully generated");
+		
 	}
+	
+	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
-	
 	public ModelAndView ispcharts( 
 			HttpSession session) {
 		ModelAndView mav = new ModelAndView();
