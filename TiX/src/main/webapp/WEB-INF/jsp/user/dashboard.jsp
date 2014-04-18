@@ -36,6 +36,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 	          <li class="divider"></li>
             <li><a href="../account/edit"><i class="icon-cog"></i>Mi cuenta</a></li>
 	          <li><a href="#">Ayuda</a></li>
+            <li><a href="userreport">Reporte de usuario</a></li>
             <li><a href="#">Exportar CSV</a></li>
             </ul>
           </div><!--/.well -->

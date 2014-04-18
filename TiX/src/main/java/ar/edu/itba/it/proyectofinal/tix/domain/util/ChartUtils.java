@@ -14,6 +14,64 @@ import ar.edu.itba.it.proyectofinal.tix.domain.model.Record;
 
 public class ChartUtils {
 
+	
+	public static List<Double> generateMedians(List<Record> records) {
+		Iterator<Record> it = records.iterator();
+		
+		List<Double> medians = new ArrayList<Double>();
+		
+		//medians[0] congestion up 
+		//medians[1] congestion down
+		//medians[2] utilizacion up
+		//medians[3] utilizacion down
+		
+		List<Double> congestionup_values = new ArrayList<Double>();
+		List<Double> congestiondown_values = new ArrayList<Double>();
+		List<Double> utilizacionup_values = new ArrayList<Double>();
+		List<Double> utilizaciondown_values = new ArrayList<Double>();
+		
+		int i = 0;
+		while (it.hasNext()) {
+			Record record = it.next();
+			double congestionup = record.getCalidadUp() ;
+			double congestiondown = record.getCalidadDown() ;
+			double utilizacionup = record.getUtilizacionUpstream() ;
+			double utilizaciondown = record.getUtilizacionDownstream() ;
+
+			// values
+			congestionup_values.add(congestionup);
+			congestiondown_values.add(congestiondown);
+			utilizacionup_values.add(utilizacionup);
+			utilizaciondown_values.add(utilizaciondown);
+
+			i++;
+		}
+		
+		// sorting
+		Collections.sort(congestionup_values);
+		Collections.sort(congestiondown_values);
+		Collections.sort(utilizacionup_values);
+		Collections.sort(utilizaciondown_values);
+		
+		boolean even = (i % 2 == 0) ? true : false;
+		
+		// medians
+		medians.add(0,even ? congestionup_values.get(i / 2)
+				: ((congestionup_values.get((i / 2) - 1) + congestionup_values
+						.get((i / 2) + 1))) / 2);
+		medians.add(1, !even ? congestiondown_values.get(i / 2)
+				: ((congestiondown_values.get((i / 2) - 1) + congestiondown_values
+						.get((i / 2) + 1))) / 2);
+		medians.add(2,!even ? utilizacionup_values.get(i / 2)
+				: ((utilizacionup_values.get((i / 2) - 1) + utilizacionup_values
+						.get((i / 2) + 1))) / 2);
+		medians.add(3,!even ? utilizaciondown_values.get(i / 2)
+				: ((utilizaciondown_values.get((i / 2) - 1) + utilizaciondown_values
+						.get((i / 2) + 1))) / 2);
+		
+		return medians;
+	}
+	
 	public static List<double[]> generateBoxplot(List<Record> records) {
 
 
@@ -85,6 +143,10 @@ public class ChartUtils {
 		Collections.sort(congestiondown_values);
 		Collections.sort(utilizacionup_values);
 		Collections.sort(utilizaciondown_values);
+		
+		
+
+		
 
 		System.out.println("SORTED LIST: " + utilizacionup_values);
 

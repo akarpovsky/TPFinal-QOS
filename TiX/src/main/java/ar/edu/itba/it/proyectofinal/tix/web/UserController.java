@@ -286,4 +286,41 @@ public class UserController {
 		return mav;
 
 	}
+	
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView userreport( 
+			HttpSession session) {
+		
+		//TODO
+		//poner gráfico de usuario mensual
+		//hacer tablita de medias
+		ModelAndView mav = new ModelAndView();		
+		List<ISP> isps = recordRepo.getISPs();
+		
+		List<String> ispNames = new ArrayList<String>();
+		
+		//TODO 
+		//Nowadays just shows the data from last 6 months
+		 DateTime maxDate = new DateTime();
+		 DateTime minDate = maxDate.minusDays(180);
+		 List<Double> medians = new ArrayList<Double>();
+		 List<List<Double>> medianList = new ArrayList<List<Double>>();
+		 
+		for (ISP isp : isps) {
+				int id = isp.getId();
+				String name = isp.getName();
+				List<Record> records = (List<Record>) recordRepo.getAllForIsp2(id, minDate,maxDate);
+				medians = ChartUtils.generateMedians(records);		
+				ispNames.add(name);
+				System.out.println("hadjhaskjdhakjshdjahs:::::::::::::::" + name);
+				medianList.add(medians);
+		}
+
+		mav.addObject("ispNames", ispNames);
+		mav.addObject("medianList", medianList);
+		
+		return mav;
+	}
 }
