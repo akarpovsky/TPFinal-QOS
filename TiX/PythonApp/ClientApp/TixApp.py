@@ -23,6 +23,7 @@ import keygeneration
 import os, ctypes, platform
 import subprocess
 import shutil
+import base64
 
 
 
@@ -183,7 +184,7 @@ def select_installation(self, old_popup,instance):
                 publicKey = rsa.PublicKey.load_pkcs1(publicKeyFile.read())
 
                 # publicEncryptionKey = keygeneration.generateKeyPair(installDirUnix+'tix_key.priv',installDirUnix+'tix_key.pub')
-                payload = {'user_id': str(globalUserId), 'password': globalUserPassword, 'installation_name': self.text, 'encryption_key': publicKey.save_pkcs1(format='PEM')}
+                payload = {'user_id': str(globalUserId), 'password': globalUserPassword, 'installation_name': self.text, 'encryption_key': base64.b64encode(publicKey.save_pkcs1(format='PEM'))}
                 headers = {'content-type': 'application/json'}
 
                 r = requests.post(tixBaseUrl + 'bin/api/newInstallationPost', data=json.dumps(payload), headers=headers)

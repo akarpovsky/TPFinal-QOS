@@ -124,7 +124,7 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
           if len(large_package_msg)>=3 and large_package_msg[0]=='DATA':
             # Tengo datos para procesar dentro del mensaje largo
             #Cliente envia al server: DATA|publicKeyPlain|signedMeessage|msg
-
+            client_pub_key_str_b64 = large_package_msg[1]
             client_pub_key_str = b64decode(large_package_msg[1])
             client_signed_msg = b64decode(large_package_msg[2])
             client_msg_filename = large_package_msg[3]
@@ -141,7 +141,7 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
 
             if rsa.verify(client_plain_msg, client_signed_msg, pubKey): 
               logger.debug("Chequeo de integridad satisfactorio para " + client_msg_filename)
-              client_data = dbmanager.DBManager.getInstallationAndClientId(client_pub_key_str)
+              client_data = dbmanager.DBManager.getInstallationAndClientId(client_pub_key_str_b64)
               
               if client_data is not None:
                 installation_id = client_data[0]
