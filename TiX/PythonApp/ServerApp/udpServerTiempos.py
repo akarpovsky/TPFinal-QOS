@@ -144,7 +144,7 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
           client_msg_filename = large_package_msg[3]
           client_plain_msg = b64decode(large_package_msg[4])
 
-          logger.info("Se ha recibido el siguiente paquete de datos: " + client_pub_key_str_b64)
+          logger.info("Se ha recibido el siguiente paquete de datos: " + client_msg_filename)
           # print "<public key>\n" + client_pub_key_str + "\n</public key>\n"
           # print "Signed msg: " + client_signed_msg
           # print "Filename: " + client_msg_filename
@@ -155,7 +155,7 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
 
           if rsa.verify(client_plain_msg, client_signed_msg, pubKey): 
             logger.debug("Chequeo de integridad satisfactorio para " + client_msg_filename)
-            client_data = dbmanager.DBManager.getInstallationAndClientId(client_pub_key_str)
+            client_data = dbmanager.DBManager.getInstallationAndClientId(client_pub_key_str_b64)
             
             if client_data is not None:
               installation_id = client_data[0]
