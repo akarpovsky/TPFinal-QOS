@@ -87,6 +87,7 @@ def pingUniq(num_uniq, logfile,t0, t0_filename, check,told):
 	if (num_uniq % 2 == 0) :
 		message = t1 + '!!' + t2 + '!!' + t3 + '!!' + t4
 	else:
+		file_tobe_deleted = logfile + str(told)
 		relleno_largo_msg = relleno_largo(4400,check,str(told),logfile)
 		message = t1 + '!!' + t2 + '!!' + t3 + '!!' + t4 + '!!' + relleno_largo_msg
 		file_with_data = relleno_largo_msg.startswith('DATA;;') # Para luego borrar el archivo una vez enviado
@@ -98,7 +99,7 @@ def pingUniq(num_uniq, logfile,t0, t0_filename, check,told):
 		client.sendto(message + "\n", (TEST_HOST, TEST_PORT)) 
 		if file_with_data == True:
 			#Delete data file
-			os.remove(installDirUnix + "/app/" + log_file) 
+			os.remove(installDirUnix + "/app/" + file_tobe_deleted) 
 			file_with_data = False
 	
 		data = client.recv(8192)#(2048) para el mensaje largo
