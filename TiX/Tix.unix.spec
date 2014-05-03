@@ -20,7 +20,7 @@ def collect_many(paths, base_path):
     print "==================================================== Preparing analysis for %s" % filename
     a = Analysis(['%s/%s' % (base_path, path)],
                  pathex=[os.getcwd()])
-    ans.append([a, filename, filename.replace("\\.py", "")])
+    ans.append([a, filename, filename.replace(".py", "")])
 
   MERGE(*ans)
 
@@ -43,7 +43,7 @@ def collect_many(paths, base_path):
 
     args = [exe, a.binaries, a.zipfiles, a.datas]
 
-    if exename == 'TixApp.py':
+    if exename == 'TixApp':
       args.append(Tree(base_path))
 
     coll = COLLECT(*args,
@@ -53,8 +53,8 @@ def collect_many(paths, base_path):
                    name=os.path.join('dist',exename))
 
   for a, basename, exename in ans: 
-    if exename == 'TixApp.py': 
+    if exename == 'TixApp': 
       continue
-    os.system("bash -c 'cp dist/%s/* dist/TixApp.py/'" % exename)
+    os.system("bash -c 'cp dist/%s/* dist/TixApp/'" % exename)
 
 collect_many(paths, base_path)

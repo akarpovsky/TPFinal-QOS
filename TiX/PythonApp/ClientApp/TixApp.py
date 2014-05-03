@@ -25,40 +25,6 @@ import subprocess
 import shutil
 import base64
 
-print "=======================RSA================"
-print rsa
-print "=======================RSA================"
-import rsa
-
-# Load the old key somehow.
-old_pub_key = {
-        'e': 65537,
-            'n': 31698122414741849421263704398157795847591L
-            }
-
-old_priv_key = {
-        'd': 7506520894712811128876594754922157377793L,
-            'p': 4169414332984308880603L,
-                'q': 7602535963858869797L
-                }
-
-# Create new key objects like this:
-pub_key = rsa.PublicKey(n=old_pub_key['n'], e=old_pub_key['e'])
-
-priv_key = rsa.PrivateKey(n=old_pub_key['n'], e=old_pub_key['e'],
-        d=old_priv_key['d'], p=old_priv_key['p'], q=old_priv_key['q'])
-
-
-# Or use this shorter notation:
-pub_key = rsa.PublicKey(**old_pub_key)
-
-old_priv_key.update(old_pub_key)
-priv_key = rsa.PrivateKey(**old_priv_key)
-
-print "=======================RSA================"
-print priv_key
-print "=======================RSA================"
-
 sys.path.append('./InstallerFiles/')
 
 Config.set('graphics', 'width', '600')
