@@ -103,7 +103,8 @@ public class LoginController {
 		   catch (Exception ex) {}
 		}
 		System.out.println("CSV file successfully generated");
-		
+	
+
 	}
 	
 	
@@ -160,6 +161,7 @@ public class LoginController {
 		
 		mav.addObject("disp_list", disp_list);
 		mav.addObject("boxplot_list", boxplot_list);
+		
 		
 		return mav;
 
