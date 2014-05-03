@@ -21,6 +21,10 @@ import sys
 import json
 import keygeneration
 import os, ctypes, platform
+import subprocess
+import shutil
+import base64
+
 
 
 sys.path.append('./InstallerFiles/')
@@ -187,7 +191,7 @@ def select_installation(self, old_popup,instance):
                 publicKey = rsa.PublicKey.load_pkcs1(publicKeyFile.read())
 
                 # publicEncryptionKey = keygeneration.generateKeyPair(installDirUnix+'tix_key.priv',installDirUnix+'tix_key.pub')
-                payload = {'user_id': str(globalUserId), 'password': globalUserPassword, 'installation_name': self.text, 'encryption_key': publicKey.save_pkcs1(format='PEM')}
+                payload = {'user_id': str(globalUserId), 'password': globalUserPassword, 'installation_name': self.text, 'encryption_key': base64.b64encode(publicKey.save_pkcs1(format='PEM'))}
                 headers = {'content-type': 'application/json'}
 
                 r = requests.post(tixBaseUrl + 'bin/api/newInstallationPost', data=json.dumps(payload), headers=headers)
@@ -214,7 +218,7 @@ def execute_installation():
 
                 sys_return = subprocess.call(['gksudo','python ./InstallerFiles/installStartupUDPClient.py']) # Must change python for the executable
         if globalPlatformName == "Darwin":
-                sys_return = os.system("""osascript -e 'do shell script "python ./InstallerFiles/installStartupUDPClient.py" with administrator privileges'""")
+                sys_return = os.system("python ./InstallerFiles/installStartupUDPClient.py")
         return sys_return
 
 def installation_result_popup(installation_return,sys_return):
@@ -250,7 +254,11 @@ def deleteExistingInstallation(self):
                 sys_return = subprocess.call(['gksudo','python ./InstallerFiles/uninstallStartupUDPClient.py'])
         
         if globalPlatformName == "Darwin":
-                sys_return = os.system("""osascript -e 'do shell script "python ./InstallerFiles/uninstallStartupUDPClient.py" with administrator privileges'""")
+                sys_return = os.system("launchctl remove com.user.loginscript")
+                if os.path.isfile("~/Library/LaunchAgents/com.user.loginscript.plist"):
+                        os.remove("~/Library/LaunchAgents/com.user.loginscript.plist")
+                if os.path.exists("/etc/TIX/"):
+                        shutil.rmtree("/etc/TIX/")
         
         if(sys_return == 0): # Call to installation procedure
                 installation_return = 'Se ha borrado con exito la desinstalacion de TiX. Retornando al SO...'

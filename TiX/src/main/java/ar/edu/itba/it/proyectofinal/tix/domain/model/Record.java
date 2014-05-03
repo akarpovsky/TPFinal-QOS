@@ -10,6 +10,7 @@ import javax.validation.constraints.Max;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.util.privilegedactions.GetConstructor;
 import org.joda.time.DateTime;
 
 @Entity
@@ -32,19 +33,19 @@ public class Record extends DBPersistentObject {
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float calidad_up; // Calidad upstream
+	private float calidad_Up; 
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float calidad_down; // Calidad downstream
+	private float calidad_Down; 
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float utiliz_down; // Utilizacion downstream
+	private float utiliz_Down; 
 	
 	@Column(nullable=false)
 	@Max(value=100)
-	private float utiliz_up; // Utilizacion upstream
+	private float utiliz_Up;
 	
 	@Column(nullable=false)
 	@Max(value=100)
@@ -63,7 +64,7 @@ public class Record extends DBPersistentObject {
 	private float H_Wave_Down;
 	
 	public float getH_Wave_Up() {
-		return H_Wave_Up;
+		return H_Wave_Up*100;
 	}
 
 	public void setH_Wave_Up(float h_Wave_Up) {
@@ -71,7 +72,7 @@ public class Record extends DBPersistentObject {
 	}
 
 	public float getH_Wave_Down() {
-		return H_Wave_Down;
+		return H_Wave_Down*100;
 	}
 
 	public void setH_Wave_Down(float h_Wave_Down) {
@@ -87,7 +88,7 @@ public class Record extends DBPersistentObject {
 	}
 
 	public float getH_RS_Up() {
-		return H_RS_Up;
+		return H_RS_Up*100;
 	}
 
 	public void setH_RS_Up(float h_RS_Up) {
@@ -95,7 +96,7 @@ public class Record extends DBPersistentObject {
 	}
 
 	public float getH_RS_Down() {
-		return H_RS_Down;
+		return H_RS_Down*100;
 	}
 
 	public void setH_RS_Down(float h_RS_Down) {
@@ -128,7 +129,11 @@ public class Record extends DBPersistentObject {
 
 	@Override
 	public String toString() {
-		return "Record for " + user.getNickname() + " calidad_up=" + calidad_up + " calidad_down=" + calidad_down + " utiliz_up=" + utiliz_up + " utiliz_down=" + utiliz_down;
+		return "Record for " + user.getNickname() + " calidad_Up=" + calidad_Up + " calidad_Down=" + calidad_Down + " utiliz_Up=" + utiliz_Up + " utiliz_Down=" + utiliz_Down;
+	}
+	
+	public String toCSV(){
+		return getId() +"," + getH_RS_Down() +"," +getH_RS_Up() +"," + getH_Wave_Down() +"," + getH_RS_Up() +","+getCalidadDown()+","+getCalidadUp()+","+getTimestamp()+","+isUserDownCongestion()+","+isUserUpCongestion()+","+getUtilizacionDownstream()+","+getUtilizacionUpstream()+","+getInstallation()+","+getIsp()+","+getUser();
 	}
 
 	public User getUser() {
@@ -147,8 +152,12 @@ public class Record extends DBPersistentObject {
 		this.timestamp = timestamp;
 	}
 
-	public float getCalidad_up() {
-		return calidad_up;
+	public float getUpstream() {
+		return calidad_Up*100;
+	}
+	
+	public float getCalidadUp() {
+		return calidad_Up*100;
 	}
 
 	public boolean isUserDownCongestion() {
@@ -181,45 +190,49 @@ public class Record extends DBPersistentObject {
 		}
 	}
 
-	public void setCalidad_up(float calidad_up) {
-		if(calidad_up <= 100){
-			this.calidad_up = calidad_up;
+	public void setUpstream(float upstream) {
+		if(upstream <= 100){
+			this.calidad_Up = upstream;
 		}else{
 			throw new IllegalArgumentException("Percentage must be between 0 and 100");
 		}
 	}
 
-	public float getCalidad_down() {
-		return calidad_down;
+	public float getDownstream() {
+		return calidad_Down*100;
+	}
+	
+	public float getCalidadDown() {
+		return calidad_Down*100;
 	}
 
-	public void setCalidad_down(float calidad_down) {
-		if(calidad_down <= 100){
-			this.calidad_down = calidad_down;
+	public void setDownstream(float downstream) {
+		if(downstream <= 100){
+			this.calidad_Down = downstream;
 		}else{
 			throw new IllegalArgumentException("Percentage must be between 0 and 100");
 		}
 	}
 
-	public float getUtiliz_down() {
-		return utiliz_down;
+	public float getUtilizacionDownstream() {
+		return utiliz_Down*100;
 	}
 
-	public void setUtiliz_down(float utiliz_down) {
-		if(utiliz_down <= 100){
-			this.utiliz_down = utiliz_down;
+	public void setUtilizacionDownstream(float utilizacionDownstream) {
+		if(utilizacionDownstream <= 100){
+			this.utiliz_Down = utilizacionDownstream;
 		}else{
 			throw new IllegalArgumentException("Percentage must be between 0 and 100");
 		}
 	}
 
-	public float getUtiliz_up() {
-		return utiliz_up;
+	public float getUtilizacionUpstream() {
+		return utiliz_Up*100;
 	}
 
-	public void setUtiliz_up(float utiliz_up) {
-		if(utiliz_up <= 100){
-			this.utiliz_up = utiliz_up;
+	public void setUtilizacionUpstream(float utilizacionUpstream) {
+		if(utilizacionUpstream <= 100){
+			this.utiliz_Up = utilizacionUpstream;
 		}else{
 			throw new IllegalArgumentException("Percentage must be between 0 and 100");
 		}

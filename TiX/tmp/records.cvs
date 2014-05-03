@@ -1,0 +1,986 @@
+1,53.48,58.3,46.88,58.3,0.0,0.0,2014-01-14T02:41:05.000-03:00,false,false,17.633333,39.86667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+2,52.21,54.36,48.559998,54.36,0.0,0.0,2014-01-14T02:50:08.000-03:00,false,false,19.933334,27.233332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+3,51.73,56.440002,53.320004,56.440002,0.0,0.0,2014-01-14T02:59:13.000-03:00,false,false,19.8,34.13333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+4,52.12,53.100002,33.98,53.100002,0.0,0.0,2014-01-14T03:08:18.000-03:00,false,false,15.333334,32.033333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+5,50.770004,51.31,48.8,51.31,0.0,0.0,2014-01-14T03:17:23.000-03:00,false,false,17.833332,29.466667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+6,52.530003,54.49,54.63,54.49,0.0,0.0,2014-01-14T03:26:28.000-03:00,false,false,21.633333,35.666664,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+7,52.469997,58.05,57.68,58.05,0.0,0.0,2014-01-14T03:35:33.000-03:00,false,false,24.6,39.7,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+8,49.69,59.69,47.960003,59.69,0.0,0.0,2014-01-14T03:44:38.000-03:00,false,false,20.366667,37.933334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+9,50.950005,57.480003,46.59,57.480003,0.0,0.0,2014-01-14T03:53:42.000-03:00,false,false,22.333332,35.966667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+10,53.13,58.84,52.460003,58.84,0.0,0.0,2014-01-14T04:02:47.000-03:00,false,false,21.333334,0.13333333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+11,52.21,52.62,49.42,52.62,0.0,0.0,2014-01-14T04:11:52.000-03:00,false,false,17.866667,0.23333332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+12,52.51,53.13,46.51,53.13,0.0,0.0,2014-01-14T04:20:57.000-03:00,false,false,16.733334,5.5333333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+13,52.52,57.77,46.8,57.77,0.0,0.0,2014-01-14T04:30:02.000-03:00,false,false,22.033333,40.56667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+14,53.05,56.1,53.890003,56.1,0.0,0.0,2014-01-14T04:39:07.000-03:00,false,false,19.300001,2.5666666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+15,53.26,57.230003,47.920002,57.230003,0.0,0.0,2014-01-14T04:48:12.000-03:00,false,false,18.433334,76.433334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+16,53.02,57.760002,51.920002,57.760002,0.0,0.0,2014-01-14T04:57:16.000-03:00,false,false,24.466667,33.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+17,52.359997,56.25,54.879997,56.25,0.0,0.0,2014-01-14T05:06:21.000-03:00,false,false,22.2,29.266666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+18,51.36,60.48,56.770004,60.48,0.0,0.0,2014-01-14T05:15:26.000-03:00,false,false,19.333332,29.866665,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+19,49.54,55.879997,53.52,55.879997,0.0,0.0,2014-01-14T05:24:31.000-03:00,false,false,22.066666,0.56666666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+20,50.86,54.23,47.55,54.23,0.0,0.0,2014-01-14T05:33:36.000-03:00,false,false,17.833332,1.4000001,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+21,49.27,57.84,40.49,57.84,0.0,0.0,2014-01-14T05:42:40.000-03:00,false,false,20.133333,31.433332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+22,49.64,55.82,49.579998,55.82,0.0,0.0,2014-01-14T05:51:45.000-03:00,false,false,21.1,0.23333332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+23,53.13,62.159996,45.76,62.159996,0.0,0.0,2014-01-14T06:00:50.000-03:00,false,false,60.333336,34.63333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+24,53.19,62.809998,74.0,62.809998,10.0,0.0,2014-01-14T06:09:54.000-03:00,false,false,17.5,0.33333334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+25,51.920002,62.269997,41.07,62.269997,0.0,30.000002,2014-01-14T06:18:56.000-03:00,false,false,21.766666,26.800001,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+26,55.769997,57.74,58.679996,57.74,0.0,40.0,2014-01-14T08:06:54.000-03:00,false,false,19.733334,31.433332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+27,54.37,58.359997,61.64,58.359997,0.0,10.0,2014-01-14T08:15:58.000-03:00,false,false,21.633333,66.86667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+28,63.58,65.729996,64.060005,65.729996,20.0,100.0,2014-01-14T08:25:02.000-03:00,false,false,40.86667,6.2,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+29,60.030003,61.0,57.9,61.0,0.0,30.000002,2014-01-14T08:34:07.000-03:00,false,false,15.533334,39.2,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+30,63.0,55.369995,59.76,55.369995,10.0,0.0,2014-01-14T08:43:11.000-03:00,false,false,13.933333,0.5333333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+31,71.73,58.88,76.83,58.88,90.0,0.0,2014-01-14T08:52:15.000-03:00,false,false,53.433334,46.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+32,60.97,55.4,50.75,55.4,0.0,0.0,2014-01-14T09:01:18.000-03:00,false,false,21.366667,37.9,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+33,56.379997,54.79,40.72,54.79,0.0,0.0,2014-01-14T09:10:23.000-03:00,false,false,17.800001,38.333332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+34,52.389996,56.35,54.100002,56.35,0.0,0.0,2014-01-14T09:19:27.000-03:00,false,false,23.133333,1.6666667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+35,53.250004,57.68,53.289997,57.68,0.0,0.0,2014-01-14T09:28:32.000-03:00,false,false,35.3,51.0,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+36,49.239998,57.67,41.29,57.67,0.0,0.0,2014-01-14T09:37:36.000-03:00,false,false,26.366667,40.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+37,47.850002,56.86,39.42,56.86,0.0,0.0,2014-01-14T09:46:41.000-03:00,false,false,26.800001,37.4,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+38,50.18,55.43,40.99,55.43,0.0,0.0,2014-01-14T09:55:46.000-03:00,false,false,26.199999,0.1,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+39,53.109997,54.25,44.63,54.25,0.0,0.0,2014-01-14T10:04:50.000-03:00,false,false,26.066668,39.233334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+40,53.2,56.370003,53.350002,56.370003,0.0,0.0,2014-01-14T10:13:55.000-03:00,false,false,24.699999,40.233334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+41,50.129997,55.909996,42.16,55.909996,0.0,0.0,2014-01-14T10:23:00.000-03:00,false,false,23.3,41.633335,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+42,52.319996,56.39,51.33,56.39,0.0,0.0,2014-01-14T10:32:04.000-03:00,false,false,25.933334,40.4,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+43,54.62,58.27,53.8,58.27,0.0,0.0,2014-01-14T10:41:09.000-03:00,false,false,23.633333,71.76667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+44,55.839996,56.71,58.55,56.71,0.0,0.0,2014-01-14T10:50:14.000-03:00,false,false,25.266665,35.733334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+45,50.700005,59.77,46.99,59.77,0.0,0.0,2014-01-14T10:59:19.000-03:00,false,false,22.0,31.166666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+46,51.120003,55.58,40.59,55.58,0.0,0.0,2014-01-14T11:08:23.000-03:00,false,false,30.066666,36.899998,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+47,55.08,56.5,51.62,56.5,0.0,0.0,2014-01-14T11:17:28.000-03:00,false,false,26.333332,40.13333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+48,55.75,56.15,53.250004,56.15,0.0,0.0,2014-01-14T11:26:33.000-03:00,false,false,31.866667,34.36667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+49,57.340004,59.48,58.469997,59.48,0.0,0.0,2014-01-14T11:30:08.000-03:00,false,false,28.400002,48.166664,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+50,54.84,57.08,57.43,57.08,0.0,0.0,2014-01-14T11:35:38.000-03:00,false,false,26.4,37.533333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+51,49.579998,60.170002,48.010002,60.170002,0.0,0.0,2014-01-14T11:40:08.000-03:00,false,false,25.733334,31.766668,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+53,57.25,58.81,51.86,58.81,0.0,0.0,2014-01-14T11:44:43.000-03:00,false,false,30.033333,38.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+54,49.99,60.65,47.48,60.65,0.0,0.0,2014-01-14T11:49:11.000-03:00,false,false,20.6,0.0,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+55,65.56,67.95,66.36,67.95,40.0,40.0,2014-01-14T11:50:23.000-03:00,false,false,29.366667,0.9333333,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+56,55.21,59.460003,59.640003,59.460003,0.0,0.0,2014-01-14T11:53:47.000-03:00,false,false,27.5,41.033333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+57,52.109997,58.34,53.710003,58.34,0.0,50.0,2014-01-14T11:59:09.000-03:00,false,false,1.7666665,0.26666665,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+58,53.170002,57.38,50.520004,57.38,0.0,0.0,2014-01-14T12:02:52.000-03:00,false,false,21.033333,37.933334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+59,56.269997,58.2,60.57,58.2,0.0,0.0,2014-01-14T12:11:57.000-03:00,false,false,18.766666,34.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+60,55.010002,55.269997,59.170002,55.269997,0.0,0.0,2014-01-14T12:21:02.000-03:00,false,false,21.133333,36.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+61,53.69,55.75,48.899998,55.75,0.0,0.0,2014-01-14T12:30:07.000-03:00,false,false,24.333334,36.899998,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+62,57.690002,61.629997,49.03,61.629997,10.0,10.0,2014-01-14T12:34:22.000-03:00,false,false,22.266666,58.899998,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+63,58.81,56.980003,60.96,56.980003,0.0,10.0,2014-01-14T12:35:18.000-03:00,false,false,17.7,0.16666667,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+64,55.159996,56.39,53.55,56.39,0.0,0.0,2014-01-14T12:39:12.000-03:00,false,false,22.300001,37.933334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+65,61.32,55.949997,55.18,55.949997,10.0,0.0,2014-01-14T12:47:22.000-03:00,false,false,15.299999,40.63333,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+66,55.510002,54.170002,58.569996,54.170002,0.0,0.0,2014-01-14T12:48:18.000-03:00,false,false,20.366667,39.033333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+67,62.35,55.519997,54.420002,55.519997,0.0,0.0,2014-01-14T12:48:22.000-03:00,false,false,16.566668,42.266666,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+68,61.440002,55.89,57.71,55.89,0.0,0.0,2014-01-14T12:49:17.000-03:00,false,false,2.1333332,66.26667,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+69,62.15,53.710003,63.010002,53.710003,0.0,0.0,2014-01-14T12:53:16.000-03:00,false,false,1.8333333,69.96667,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+70,54.8,55.12,53.460003,55.12,0.0,0.0,2014-01-14T12:57:22.000-03:00,false,false,57.36667,0.33333334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+71,63.520004,52.09,61.870003,52.09,10.0,0.0,2014-01-14T13:02:19.000-03:00,false,false,1.3333334,73.13333,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+72,61.059998,56.58,62.29,56.58,30.000002,10.0,2014-01-14T13:06:26.000-03:00,false,false,21.066668,46.733334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+73,64.15,57.370003,87.71,57.370003,80.0,70.0,2014-01-14T13:11:19.000-03:00,false,false,1.3666667,1.5666667,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+74,60.250004,57.99,94.04,57.99,100.0,100.0,2014-01-14T13:15:31.000-03:00,false,false,28.0,46.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+75,62.61,55.05,78.74,55.05,50.0,60.000004,2014-01-14T13:20:22.000-03:00,false,false,19.0,47.2,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+76,58.45,56.660004,47.74,56.660004,20.0,20.0,2014-01-14T13:26:36.000-03:00,false,false,28.400002,43.2,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+77,63.129997,54.3,51.670002,54.3,10.0,0.0,2014-01-14T13:29:22.000-03:00,false,false,1.8,45.033333,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+78,62.15,55.35,69.36,55.35,70.0,0.0,2014-01-14T13:35:41.000-03:00,false,false,22.833334,37.966667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+79,63.9,55.989998,73.2,55.989998,50.0,0.0,2014-01-14T13:38:24.000-03:00,false,false,6.8333335,43.666668,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+80,64.560005,56.96,65.88,56.96,40.0,0.0,2014-01-14T13:44:45.000-03:00,false,false,32.4,43.1,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+81,60.78,55.17,60.82,55.17,30.000002,0.0,2014-01-14T13:47:26.000-03:00,false,false,8.299999,42.2,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+82,61.949997,55.65,90.03,55.65,80.0,0.0,2014-01-14T13:53:49.000-03:00,false,false,25.2,4.633333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+83,59.609997,55.97,80.2,55.97,60.000004,0.0,2014-01-14T13:56:27.000-03:00,false,false,21.0,41.7,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+84,59.37,54.93,71.61,54.93,50.0,0.0,2014-01-14T14:02:54.000-03:00,false,false,22.933332,45.566666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+85,58.87,57.620003,52.819996,57.620003,20.0,0.0,2014-01-14T14:05:29.000-03:00,false,false,2.2666667,66.7,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+86,56.410004,57.99,58.23,57.99,0.0,0.0,2014-01-14T14:11:59.000-03:00,false,false,24.033333,46.666668,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+87,56.480003,60.2,45.37,60.2,0.0,0.0,2014-01-14T14:14:31.000-03:00,false,false,2.0333333,76.8,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+88,54.91,58.48,50.340004,58.48,0.0,0.0,2014-01-14T14:21:03.000-03:00,false,false,28.033335,49.666668,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+89,56.46,62.190002,47.52,62.190002,0.0,0.0,2014-01-14T14:23:33.000-03:00,false,false,55.933334,71.26667,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+90,53.100002,61.22,50.0,61.22,0.0,0.0,2014-01-14T14:30:08.000-03:00,false,false,29.666666,49.2,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+91,55.4,62.949997,46.07,62.949997,0.0,0.0,2014-01-14T14:32:37.000-03:00,false,false,36.766666,78.1,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+92,54.82,62.370003,47.52,62.370003,0.0,0.0,2014-01-14T14:39:12.000-03:00,false,false,26.499998,47.1,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+93,55.800003,63.940002,52.03,63.940002,0.0,0.0,2014-01-14T14:41:42.000-03:00,false,false,3.7,60.766666,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+94,56.46,64.240005,50.059998,64.240005,0.0,10.0,2014-01-14T14:48:17.000-03:00,false,false,25.033335,45.333336,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+95,54.62,66.64,51.94,66.64,0.0,10.0,2014-01-14T14:50:45.000-03:00,false,false,17.5,68.566666,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+96,55.129997,64.32,53.280003,64.32,0.0,0.0,2014-01-14T14:57:22.000-03:00,false,false,32.466667,43.333332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+97,58.73,68.29,52.23,68.29,0.0,0.0,2014-01-14T14:59:48.000-03:00,false,false,35.466667,71.933334,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+98,56.22,61.92,50.910004,61.92,0.0,0.0,2014-01-14T15:06:26.000-03:00,false,false,24.733334,45.833336,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+99,61.489998,68.14,57.690002,68.14,0.0,0.0,2014-01-14T15:08:49.000-03:00,false,false,30.166668,71.86667,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+100,53.500004,61.870003,51.49,61.870003,0.0,0.0,2014-01-14T15:15:31.000-03:00,false,false,27.333334,41.733334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+101,59.149998,59.600002,54.070004,59.600002,0.0,0.0,2014-01-14T15:17:50.000-03:00,false,false,3.0666666,79.933334,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+102,55.22,66.28999,50.230003,66.28999,0.0,0.0,2014-01-14T15:24:36.000-03:00,false,false,26.033333,44.866665,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+103,58.350002,64.090004,58.8,64.090004,0.0,0.0,2014-01-14T15:26:44.000-03:00,false,false,1.5,6.0,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+104,53.09,66.54,51.18,66.54,0.0,60.000004,2014-01-14T15:33:41.000-03:00,false,false,26.199999,42.2,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+105,60.55,63.92,59.829998,63.92,0.0,30.000002,2014-01-14T15:36:44.000-03:00,false,false,27.900002,45.233334,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+106,56.54,66.46999,52.69,66.46999,0.0,0.0,2014-01-14T15:42:46.000-03:00,false,false,28.7,60.9,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+107,59.350002,63.870003,59.44,63.870003,0.0,0.0,2014-01-14T15:44:44.000-03:00,false,false,0.33333334,45.766666,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+108,59.27,69.15,61.799995,69.15,0.0,60.000004,2014-01-14T15:51:50.000-03:00,false,false,27.033333,48.100002,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+109,60.82,65.45,59.820004,65.45,0.0,20.0,2014-01-14T15:53:46.000-03:00,false,false,23.3,41.433334,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+110,57.300003,67.51,56.78,67.51,0.0,20.0,2014-01-14T16:00:55.000-03:00,false,false,19.666668,52.033337,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+111,61.29,64.72,65.79,64.72,0.0,0.0,2014-01-14T16:02:47.000-03:00,false,false,2.0333333,9.633333,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+112,56.339996,67.31,48.31,67.31,0.0,30.000002,2014-01-14T16:10:00.000-03:00,false,false,34.166668,13.2,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+113,59.069996,66.439995,57.56,66.439995,0.0,20.0,2014-01-14T16:11:49.000-03:00,false,false,22.066666,13.0,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+114,60.45,68.48,55.46,68.48,0.0,30.000002,2014-01-14T16:19:04.000-03:00,false,false,30.433332,54.100002,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+115,64.490005,66.729996,58.28,66.729996,10.0,50.0,2014-01-14T16:20:49.000-03:00,false,false,25.433334,51.5,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+116,61.690002,69.2,56.97,69.2,0.0,0.0,2014-01-14T16:28:08.000-03:00,false,false,24.466667,47.333332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+117,65.72,65.85,61.839996,65.85,10.0,0.0,2014-01-14T16:29:50.000-03:00,false,false,0.2,44.100002,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+118,68.28,69.39,66.369995,69.39,30.000002,10.0,2014-01-14T16:37:12.000-03:00,false,false,33.199997,59.7,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+119,76.16,67.659996,64.72,67.659996,70.0,10.0,2014-01-14T16:38:52.000-03:00,false,false,27.366669,54.033333,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+120,72.61,68.37,151.94,68.37,100.0,0.0,2014-01-14T16:46:34.000-03:00,false,false,33.1,63.966667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+121,73.22,72.57,120.799995,72.57,100.0,100.0,2014-01-14T16:47:54.000-03:00,false,false,27.566666,58.600002,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+122,63.78,70.22,70.51,70.22,30.000002,30.000002,2014-01-14T16:55:42.000-03:00,false,false,37.3,58.433334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+123,58.74,80.81,52.51,80.81,0.0,50.0,2014-01-14T17:04:47.000-03:00,false,false,33.733334,62.800003,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+124,62.260002,87.73,57.72,87.73,0.0,90.0,2014-01-14T17:13:52.000-03:00,false,false,42.233334,63.1,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+125,76.89,87.91,127.5,87.91,100.0,80.0,2014-01-14T17:17:04.000-03:00,false,false,9.4,36.333336,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+126,62.1,86.2,56.89,86.2,0.0,0.0,2014-01-14T17:22:57.000-03:00,false,false,43.733334,92.833336,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+127,60.26,81.12,56.35,81.12,0.0,60.000004,2014-01-14T17:32:05.000-03:00,false,false,29.699999,72.76667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+128,62.9,79.07,59.640003,79.07,0.0,100.0,2014-01-14T17:41:10.000-03:00,false,false,26.666668,59.333332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+129,65.92,76.72,74.82,76.72,70.0,100.0,2014-01-14T17:49:50.000-03:00,false,false,28.733334,26.266666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+130,69.42,79.299995,90.9,79.299995,90.0,80.0,2014-01-14T17:54:14.000-03:00,false,false,36.1,60.266666,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+131,69.32,79.84,91.07,79.84,100.0,90.0,2014-01-14T17:55:13.000-03:00,false,false,37.36667,56.966667,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+132,69.2,79.47,86.22,79.47,80.0,90.0,2014-01-14T17:56:11.000-03:00,false,false,38.100002,58.033337,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+133,68.21,77.89,81.87,77.89,80.0,0.0,2014-01-14T17:57:09.000-03:00,false,false,25.6,78.899994,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+134,63.260002,73.659996,73.32,73.659996,50.0,40.0,2014-01-14T17:59:55.000-03:00,false,false,48.833336,69.833336,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+135,52.59,67.229996,52.49,67.229996,0.0,70.0,2014-01-14T18:09:00.000-03:00,false,false,58.36667,59.399998,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+136,59.210003,65.7,58.350002,65.7,0.0,10.0,2014-01-14T18:10:13.000-03:00,false,false,37.266666,72.86667,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+137,57.57,65.41,57.66,65.41,0.0,30.000002,2014-01-14T18:11:11.000-03:00,false,false,3.4333334,68.066666,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+138,57.75,65.17,53.13,65.17,0.0,20.0,2014-01-14T18:12:10.000-03:00,false,false,48.3,65.433334,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+139,58.84,62.739998,59.030003,62.739998,0.0,10.0,2014-01-14T18:13:08.000-03:00,false,false,45.633335,61.833336,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+140,52.62,59.149998,57.25,59.149998,0.0,0.0,2014-01-14T18:18:05.000-03:00,false,false,46.86667,47.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+141,56.92,59.780003,51.59,59.780003,0.0,10.0,2014-01-14T18:48:13.000-03:00,false,false,48.166664,59.13333,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+142,56.72,56.68,44.54,56.68,0.0,0.0,2014-01-14T18:54:23.000-03:00,false,false,23.4,41.4,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+143,57.4,57.73,54.56,57.73,0.0,0.0,2014-01-14T18:56:15.000-03:00,false,false,42.133335,53.2,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+144,55.58,54.77,58.719997,54.77,0.0,0.0,2014-01-14T19:03:28.000-03:00,false,false,33.199997,46.233334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+145,59.37,58.59,60.02,58.59,0.0,0.0,2014-01-14T19:05:15.000-03:00,false,false,4.9666667,60.63333,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+146,58.07,56.57,60.37,56.57,0.0,0.0,2014-01-14T19:15:34.000-03:00,false,false,37.933334,50.9,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+147,57.71,58.579998,47.18,58.579998,0.0,0.0,2014-01-14T19:16:17.000-03:00,false,false,42.2,65.53333,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+148,57.11,59.359997,62.47,59.359997,0.0,0.0,2014-01-14T19:23:38.000-03:00,false,false,24.733334,46.36667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+149,57.1,58.569996,46.37,58.569996,0.0,0.0,2014-01-14T19:25:18.000-03:00,false,false,0.76666665,1.6333334,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+150,61.53,65.48,44.15,65.48,0.0,60.000004,2014-01-14T20:19:59.000-03:00,false,false,3.1,42.2,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+151,55.17,71.69,49.97,71.69,0.0,100.0,2014-01-14T20:29:03.000-03:00,false,false,47.266666,22.866667,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+152,56.510002,78.6,49.329998,78.6,0.0,50.0,2014-01-14T20:38:07.000-03:00,false,false,52.2,69.46667,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+153,55.18,73.7,57.03,73.7,0.0,90.0,2014-01-14T20:47:12.000-03:00,false,false,46.9,63.666664,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+154,61.43,73.67,57.97,73.67,0.0,100.0,2014-01-14T20:56:16.000-03:00,false,false,41.5,51.300003,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+155,60.41,74.049995,58.3,74.049995,0.0,100.0,2014-01-14T21:06:20.000-03:00,false,false,68.73334,49.3,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+156,55.58,60.000004,53.500004,60.000004,0.0,0.0,2014-01-14T21:12:35.000-03:00,false,false,26.300001,41.100002,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+157,59.19,77.5,48.23,77.5,0.0,100.0,2014-01-14T21:15:24.000-03:00,false,false,38.366665,52.566666,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+158,56.61,76.48,54.9,76.48,0.0,100.0,2014-01-14T21:24:28.000-03:00,false,false,34.2,54.63333,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+159,59.87,72.71999,52.039997,72.71999,0.0,60.000004,2014-01-14T21:33:32.000-03:00,false,false,65.433334,60.833336,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+160,61.449997,71.060005,64.62,71.060005,0.0,0.0,2014-01-14T21:42:36.000-03:00,false,false,44.533333,88.13333,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+161,61.03,75.23,59.329998,75.23,0.0,90.0,2014-01-14T21:51:41.000-03:00,false,false,45.6,57.666664,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+162,59.49,78.909996,60.3,78.909996,0.0,100.0,2014-01-14T22:00:45.000-03:00,false,false,63.4,51.2,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+163,59.24,79.56,55.12,79.56,0.0,100.0,2014-01-14T22:09:49.000-03:00,false,false,40.8,43.93333,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+164,56.989998,75.97,52.609997,75.97,0.0,80.0,2014-01-14T22:18:54.000-03:00,false,false,34.0,53.933334,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+165,54.89,75.700005,56.14,75.700005,0.0,100.0,2014-01-14T22:27:58.000-03:00,false,false,42.399998,37.833332,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+166,54.7,75.4,39.39,75.4,0.0,100.0,2014-01-14T22:38:03.000-03:00,false,false,39.3,44.9,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+167,55.339996,75.54,48.0,75.54,0.0,0.0,2014-01-14T22:47:07.000-03:00,false,false,47.13333,74.03333,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+168,57.190002,73.799995,47.81,73.799995,0.0,20.0,2014-01-14T22:56:11.000-03:00,false,false,40.63333,76.76666,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+169,57.550003,77.25,48.769997,77.25,0.0,20.0,2014-01-14T23:05:16.000-03:00,false,false,42.86667,73.066666,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+170,55.309998,79.619995,56.03,79.619995,0.0,80.0,2014-01-14T23:14:20.000-03:00,false,false,39.5,58.233334,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+171,54.9,82.130005,52.76,82.130005,0.0,100.0,2014-01-14T23:23:25.000-03:00,false,false,42.1,58.466667,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+172,53.41,81.67,52.31,81.67,0.0,70.0,2014-01-14T23:32:28.000-03:00,false,false,45.233334,68.2,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+173,54.98,79.49,47.52,79.49,0.0,100.0,2014-01-14T23:41:32.000-03:00,false,false,40.7,62.233334,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+174,59.219997,80.56,52.179996,80.56,0.0,100.0,2014-01-14T23:50:37.000-03:00,false,false,37.166668,44.033333,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+175,58.07,81.06,53.81,81.06,0.0,100.0,2014-01-14T23:59:41.000-03:00,false,false,40.833332,40.033333,Installation: CASA-LAVALLE,Installation: Telefonica de Argentina,nloreti@gmail.com
+176,54.57,61.339996,46.129997,61.339996,0.0,0.0,2014-01-15T00:53:25.000-03:00,false,false,24.1,65.166664,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+177,56.03,62.440002,52.99,62.440002,0.0,0.0,2014-01-15T01:02:30.000-03:00,false,false,33.199997,53.63333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+178,53.850002,62.440002,51.46,62.440002,0.0,20.0,2014-01-15T01:11:34.000-03:00,false,false,22.966667,38.7,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+179,53.59,59.719997,49.07,59.719997,0.0,0.0,2014-01-15T01:20:39.000-03:00,false,false,21.966665,45.466667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+180,59.899998,60.79,60.600002,60.79,0.0,0.0,2014-01-15T01:29:44.000-03:00,false,false,20.900002,41.033333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+181,53.320004,58.44,63.260002,58.44,0.0,0.0,2014-01-15T01:38:49.000-03:00,false,false,84.96667,33.7,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+182,55.18,55.92,58.49,55.92,0.0,0.0,2014-01-15T01:47:52.000-03:00,false,false,22.0,40.56667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+183,55.800003,55.269997,55.589996,55.269997,0.0,0.0,2014-01-15T01:56:57.000-03:00,false,false,17.4,44.7,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+184,56.78,59.44,58.32,59.44,0.0,0.0,2014-01-15T02:06:01.000-03:00,false,false,21.9,46.8,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+185,57.84,58.1,57.46,58.1,0.0,0.0,2014-01-15T02:15:06.000-03:00,false,false,21.866667,50.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+186,55.47,56.940002,60.24,56.940002,0.0,0.0,2014-01-15T02:24:10.000-03:00,false,false,18.866667,47.866665,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+187,56.050003,56.300003,50.65,56.300003,0.0,0.0,2014-01-15T02:33:15.000-03:00,false,false,16.633333,49.533333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+188,56.449997,58.56,60.399998,58.56,0.0,0.0,2014-01-15T02:42:22.000-03:00,false,false,16.866667,49.566666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+189,57.920002,60.2,68.61,60.2,30.000002,0.0,2014-01-15T02:51:26.000-03:00,false,false,15.433333,42.6,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+190,53.66,60.79,57.43,60.79,0.0,0.0,2014-01-15T03:00:31.000-03:00,false,false,21.333334,41.100002,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+191,54.18,57.309998,53.27,57.309998,0.0,0.0,2014-01-15T03:09:36.000-03:00,false,false,20.4,35.2,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+192,56.32,56.370003,65.56,56.370003,0.0,0.0,2014-01-15T03:18:41.000-03:00,false,false,26.433334,47.333332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+193,58.170002,59.079998,66.57,59.079998,0.0,0.0,2014-01-15T03:27:45.000-03:00,false,false,30.066666,39.8,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+194,57.130005,60.9,61.71,60.9,0.0,0.0,2014-01-15T03:36:50.000-03:00,false,false,34.466667,43.7,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+195,51.58,54.26,59.420002,54.26,0.0,0.0,2014-01-15T03:45:55.000-03:00,false,false,34.1,48.699997,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+196,52.91,59.170002,49.97,59.170002,0.0,0.0,2014-01-15T03:55:00.000-03:00,false,false,25.9,47.0,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+197,53.329998,57.57,51.36,57.57,0.0,0.0,2014-01-15T04:04:04.000-03:00,false,false,27.8,48.699997,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+198,54.97,59.649998,59.34,59.649998,0.0,0.0,2014-01-15T04:13:09.000-03:00,false,false,55.433334,43.6,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+199,52.14,58.920002,49.26,58.920002,0.0,0.0,2014-01-15T04:22:14.000-03:00,false,false,28.466665,48.133335,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+200,55.559998,59.81,66.03,59.81,10.0,0.0,2014-01-15T04:31:18.000-03:00,false,false,20.133333,34.0,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+201,60.34,58.859997,64.310005,58.859997,0.0,0.0,2014-01-15T04:40:23.000-03:00,false,false,75.5,36.1,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+202,56.29,58.07,71.29,58.07,10.0,0.0,2014-01-15T04:49:28.000-03:00,false,false,18.199999,34.9,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+203,56.120003,56.58,61.86,56.58,0.0,0.0,2014-01-15T04:58:32.000-03:00,false,false,22.666668,35.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+204,57.18,58.55,59.530003,58.55,0.0,0.0,2014-01-15T05:07:37.000-03:00,false,false,20.766666,32.7,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+205,54.04,55.39,68.39,55.39,0.0,0.0,2014-01-15T05:16:42.000-03:00,false,false,20.0,34.4,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+206,57.46,56.6,70.450005,56.6,0.0,0.0,2014-01-15T05:25:46.000-03:00,false,false,20.800001,32.300003,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+207,60.41,57.32,60.390003,57.32,0.0,0.0,2014-01-15T05:34:51.000-03:00,false,false,18.166668,43.066666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+208,58.94,57.5,57.82,57.5,0.0,0.0,2014-01-15T05:43:56.000-03:00,false,false,17.433334,41.13333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+209,55.68,57.480003,58.84,57.480003,0.0,0.0,2014-01-15T05:53:01.000-03:00,false,false,16.266666,41.633335,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+210,51.86,60.86,51.38,60.86,0.0,0.0,2014-01-15T06:02:05.000-03:00,false,false,21.266666,37.36667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+211,54.47,60.250004,56.1,60.250004,0.0,0.0,2014-01-15T06:11:10.000-03:00,false,false,22.300001,42.899998,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+212,57.72,59.069996,62.269997,59.069996,0.0,0.0,2014-01-15T06:20:15.000-03:00,false,false,19.5,42.966667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+213,59.390003,58.06,57.52,58.06,0.0,0.0,2014-01-15T06:29:19.000-03:00,false,false,15.366666,47.2,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+214,61.18,58.399998,54.879997,58.399998,10.0,0.0,2014-01-15T06:38:24.000-03:00,false,false,22.8,38.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+215,63.510002,56.449997,112.51,56.449997,90.0,20.0,2014-01-15T06:47:29.000-03:00,false,false,21.933334,29.800001,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+216,58.44,58.969997,78.39,58.969997,40.0,0.0,2014-01-15T06:56:34.000-03:00,false,false,26.199999,68.4,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+217,52.679996,58.11,48.899998,58.11,0.0,0.0,2014-01-15T07:05:38.000-03:00,false,false,24.033333,42.833336,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+218,52.999996,55.449997,54.49,55.449997,0.0,0.0,2014-01-15T07:14:43.000-03:00,false,false,20.566666,34.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+219,58.219997,57.440002,57.83,57.440002,0.0,0.0,2014-01-15T07:23:48.000-03:00,false,false,21.3,33.1,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+220,63.15,58.749996,75.35,58.749996,70.0,0.0,2014-01-15T07:32:52.000-03:00,false,false,21.633333,29.366667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+221,60.12,62.64,67.46,62.64,10.0,0.0,2014-01-15T07:41:57.000-03:00,false,false,18.7,69.36666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+222,57.059998,62.21,54.01,62.21,0.0,0.0,2014-01-15T07:51:02.000-03:00,false,false,30.866667,43.7,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+223,57.98,58.69,68.88,58.69,10.0,0.0,2014-01-15T08:00:07.000-03:00,false,false,14.7,44.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+224,54.100002,56.4,55.909996,56.4,0.0,0.0,2014-01-15T08:09:11.000-03:00,false,false,22.300001,42.133335,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+225,51.969997,55.11,54.75,55.11,0.0,0.0,2014-01-15T08:18:16.000-03:00,false,false,21.833334,41.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+226,55.18,54.73,55.86,54.73,0.0,0.0,2014-01-15T08:27:21.000-03:00,false,false,15.566667,35.333332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+227,57.510002,55.22,62.059998,55.22,0.0,0.0,2014-01-15T08:36:25.000-03:00,false,false,19.300001,42.033333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+228,59.469997,57.480003,61.37,57.480003,0.0,0.0,2014-01-15T08:45:30.000-03:00,false,false,22.733334,38.166664,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+229,56.14,60.329998,61.85,60.329998,0.0,0.0,2014-01-15T08:54:35.000-03:00,false,false,24.333334,36.1,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+230,57.239998,63.129997,62.54,63.129997,0.0,10.0,2014-01-15T09:03:40.000-03:00,false,false,25.666666,43.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+231,58.14,65.33,58.16,65.33,0.0,40.0,2014-01-15T09:12:44.000-03:00,false,false,19.766666,35.8,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+232,59.48,62.71,62.0,62.71,0.0,10.0,2014-01-15T09:21:49.000-03:00,false,false,36.933334,41.766666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+233,56.1,58.16,55.190002,58.16,0.0,0.0,2014-01-15T09:30:53.000-03:00,false,false,52.133335,62.300003,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+234,54.69,54.210003,54.02,54.210003,0.0,0.0,2014-01-15T09:39:58.000-03:00,false,false,30.933332,64.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+235,53.289997,56.4,45.98,56.4,0.0,0.0,2014-01-15T09:52:05.000-03:00,false,false,19.300001,34.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+236,53.969997,57.94,54.83,57.94,0.0,0.0,2014-01-15T10:01:09.000-03:00,false,false,27.266666,48.866665,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+237,51.75,58.499996,60.2,58.499996,0.0,0.0,2014-01-15T10:10:14.000-03:00,false,false,16.699999,39.2,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+238,52.829998,61.39,52.469997,61.39,0.0,10.0,2014-01-15T10:19:19.000-03:00,false,false,15.099999,34.266666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+239,56.690002,58.649998,64.91,58.649998,0.0,0.0,2014-01-15T11:18:07.000-03:00,false,false,23.166666,42.1,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+240,55.93,61.83,51.27,61.83,0.0,30.000002,2014-01-15T11:27:11.000-03:00,false,false,18.0,66.9,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+241,55.870003,61.68,54.76,61.68,0.0,30.000002,2014-01-15T11:36:16.000-03:00,false,false,27.8,0.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+242,56.489998,59.899998,58.329998,59.899998,0.0,0.0,2014-01-15T11:45:20.000-03:00,false,false,23.366667,0.06666666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+243,55.769997,58.32,44.83,58.32,0.0,0.0,2014-01-15T11:54:25.000-03:00,false,false,27.666668,49.433334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+244,63.1,57.72,59.600002,57.72,0.0,0.0,2014-01-15T12:03:29.000-03:00,false,false,23.133333,37.6,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+245,63.690002,58.56,55.739998,58.56,0.0,0.0,2014-01-15T12:12:33.000-03:00,false,false,19.300001,69.76666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+246,59.570004,54.96,63.520004,54.96,40.0,40.0,2014-01-15T12:21:38.000-03:00,false,false,19.166666,62.199997,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+247,60.57,55.379997,67.909996,55.379997,20.0,30.000002,2014-01-15T12:30:43.000-03:00,false,false,32.7,36.566666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+248,57.38,53.460003,60.92,53.460003,0.0,0.0,2014-01-15T12:39:47.000-03:00,false,false,46.233334,54.266666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+249,56.309998,57.75,55.839996,57.75,0.0,0.0,2014-01-15T12:48:52.000-03:00,false,false,23.966667,41.433334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+250,57.98,58.719997,61.07,58.719997,0.0,20.0,2014-01-15T12:57:56.000-03:00,false,false,28.933334,45.666668,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+251,57.38,57.920002,59.16,57.920002,0.0,10.0,2014-01-15T13:07:01.000-03:00,false,false,30.566666,39.833336,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+252,56.339996,53.600002,56.120003,53.600002,0.0,0.0,2014-01-15T13:16:06.000-03:00,false,false,21.699999,8.366667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+253,57.410004,57.59,61.199997,57.59,0.0,0.0,2014-01-15T13:25:10.000-03:00,false,false,25.9,41.766666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+254,55.71,55.549995,55.739998,55.549995,0.0,0.0,2014-01-15T13:34:15.000-03:00,false,false,24.4,48.833336,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+255,54.19,57.97,56.39,57.97,0.0,0.0,2014-01-15T13:43:20.000-03:00,false,false,27.333334,41.9,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+256,55.559998,57.96,58.77,57.96,0.0,0.0,2014-01-15T13:52:24.000-03:00,false,false,27.933332,47.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+257,55.339996,60.100002,54.91,60.100002,0.0,0.0,2014-01-15T14:01:29.000-03:00,false,false,29.166666,49.966667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+258,53.41,60.140003,53.420002,60.140003,0.0,60.000004,2014-01-15T14:10:34.000-03:00,false,false,29.666666,51.133335,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+259,54.84,57.39,55.059998,57.39,0.0,20.0,2014-01-15T14:19:38.000-03:00,false,false,29.333332,44.13333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+260,54.9,53.06,52.81,53.06,0.0,0.0,2014-01-15T14:28:43.000-03:00,false,false,55.766666,37.933334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+261,53.850002,55.0,54.25,55.0,0.0,0.0,2014-01-15T14:37:47.000-03:00,false,false,31.133333,48.899998,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+262,57.1,56.4,50.880005,56.4,0.0,0.0,2014-01-15T14:46:52.000-03:00,false,false,26.199999,44.433334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+263,56.75,55.96,53.81,55.96,0.0,0.0,2014-01-15T14:55:57.000-03:00,false,false,31.033335,45.933334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+264,57.28,56.879997,50.21,56.879997,0.0,0.0,2014-01-15T15:05:01.000-03:00,false,false,31.766668,48.333332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+265,56.230003,55.68,54.210003,55.68,0.0,0.0,2014-01-15T15:14:06.000-03:00,false,false,34.833332,49.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+266,54.68,59.329998,57.309998,59.329998,0.0,0.0,2014-01-15T15:23:10.000-03:00,false,false,29.233334,50.766666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+267,55.879997,55.61,56.46,55.61,0.0,0.0,2014-01-15T15:32:15.000-03:00,false,false,32.833336,47.36667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+268,56.660004,59.02,53.99,59.02,0.0,0.0,2014-01-15T15:41:20.000-03:00,false,false,19.1,47.966667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+269,57.42,60.81,62.129997,60.81,0.0,0.0,2014-01-15T15:50:24.000-03:00,false,false,29.233334,43.466667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+270,56.11,61.269997,56.370003,61.269997,0.0,0.0,2014-01-15T15:59:29.000-03:00,false,false,49.566666,38.933334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+271,57.46,61.03,52.819996,61.03,0.0,0.0,2014-01-15T16:08:33.000-03:00,false,false,29.300001,45.666668,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+272,54.210003,59.170002,57.47,59.170002,0.0,0.0,2014-01-15T16:17:38.000-03:00,false,false,30.766666,45.8,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+273,55.15,60.81,55.909996,60.81,0.0,0.0,2014-01-15T16:26:43.000-03:00,false,false,22.8,43.63333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+274,53.329998,61.85,47.4,61.85,0.0,0.0,2014-01-15T16:35:47.000-03:00,false,false,36.166668,50.366665,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+275,56.25,70.490005,51.04,70.490005,0.0,60.000004,2014-01-15T16:44:51.000-03:00,false,false,35.100002,57.1,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+276,58.09,67.259995,47.670002,67.259995,0.0,100.0,2014-01-15T16:53:56.000-03:00,false,false,26.199999,54.966663,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+277,53.94,58.14,54.579998,58.14,0.0,20.0,2014-01-15T17:03:00.000-03:00,false,false,21.833334,43.733334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+278,56.489998,55.89,54.420002,55.89,0.0,0.0,2014-01-15T17:12:05.000-03:00,false,false,23.666666,41.833332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+279,54.9,56.449997,52.31,56.449997,0.0,0.0,2014-01-15T17:21:09.000-03:00,false,false,21.466667,38.666664,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+280,56.480003,55.71,49.72,55.71,0.0,0.0,2014-01-15T17:30:14.000-03:00,false,false,25.766668,38.666664,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+282,57.45,57.86,52.609997,57.86,0.0,0.0,2014-01-15T17:39:18.000-03:00,false,false,29.466667,40.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+283,58.2,60.110004,79.57,60.110004,70.0,0.0,2014-01-15T17:43:40.000-03:00,false,false,23.833332,35.633335,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+284,54.77,57.1,56.980003,57.1,0.0,0.0,2014-01-15T17:48:22.000-03:00,false,false,30.466667,40.56667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+286,53.899998,57.190002,57.95,57.190002,0.0,0.0,2014-01-15T17:57:27.000-03:00,false,false,31.3,34.43333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+344,53.24,63.79,49.399998,63.79,0.0,60.000004,2014-01-15T21:55:30.000-03:00,false,false,21.633333,50.4,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+285,61.199997,59.859997,57.79,59.859997,10.0,0.0,2014-01-15T17:52:43.000-03:00,false,false,1.4333333,31.833332,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+287,66.18,60.16,53.640003,60.16,0.0,0.0,2014-01-15T18:01:45.000-03:00,false,false,0.6333333,2.2,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+288,55.019997,57.81,60.43,57.81,0.0,0.0,2014-01-15T18:06:31.000-03:00,false,false,26.6,34.666668,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+289,72.67,64.08,68.78,64.08,0.0,50.0,2014-01-15T18:10:48.000-03:00,false,false,83.666664,1.8333333,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+290,56.46,59.530003,54.070004,59.530003,0.0,0.0,2014-01-15T18:15:36.000-03:00,false,false,40.533333,38.666664,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+291,77.18,65.3,75.51,65.3,0.0,40.0,2014-01-15T18:19:51.000-03:00,false,false,93.933334,2.7666667,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+292,56.04,61.629997,56.08,61.629997,0.0,10.0,2014-01-15T18:24:40.000-03:00,false,false,57.566666,55.933334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+293,78.78,63.090004,84.46,63.090004,0.0,20.0,2014-01-15T18:28:54.000-03:00,false,false,92.16667,1.6666667,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+294,55.229996,57.130005,51.73,57.130005,0.0,0.0,2014-01-15T18:33:45.000-03:00,false,false,26.4,45.966667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+295,77.91,64.14,94.28,64.14,0.0,0.0,2014-01-15T18:37:56.000-03:00,false,false,97.066666,61.366665,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+296,54.879997,54.43,52.94,54.43,0.0,0.0,2014-01-15T18:42:49.000-03:00,false,false,24.266666,37.166668,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+298,53.73,53.460003,51.33,53.460003,0.0,0.0,2014-01-15T18:52:54.000-03:00,false,false,29.033333,45.433334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+299,58.579998,62.83,62.39,62.83,20.0,20.0,2014-01-15T18:56:02.000-03:00,false,false,43.6,3.3666666,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+300,53.84,58.11,42.37,58.11,0.0,30.000002,2014-01-15T19:01:59.000-03:00,false,false,28.0,49.1,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+301,55.78,65.89,59.320004,65.89,0.0,30.000002,2014-01-15T19:05:05.000-03:00,false,false,22.533333,1.2333332,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+302,55.980003,60.54,50.61,60.54,0.0,0.0,2014-01-15T19:11:03.000-03:00,false,false,18.733334,44.800003,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+303,54.71,68.54,49.21,68.54,0.0,60.000004,2014-01-15T19:14:08.000-03:00,false,false,17.866667,31.966665,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+304,56.93,58.12,59.81,58.12,0.0,0.0,2014-01-15T19:20:08.000-03:00,false,false,29.933334,46.066666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+305,52.07,67.299995,55.229996,67.299995,0.0,60.000004,2014-01-15T19:23:10.000-03:00,false,false,23.1,30.533335,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+306,56.71,55.97,54.64,55.97,0.0,0.0,2014-01-15T19:29:12.000-03:00,false,false,29.699999,47.7,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+307,55.53,64.35,45.11,64.35,0.0,50.0,2014-01-15T19:32:13.000-03:00,false,false,25.233334,34.6,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+308,56.35,57.1,61.3,57.1,0.0,0.0,2014-01-15T19:38:17.000-03:00,false,false,31.133333,48.633335,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+309,54.63,64.240005,54.55,64.240005,0.0,0.0,2014-01-15T19:41:16.000-03:00,false,false,24.1,35.633335,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+310,57.15,56.78,51.020004,56.78,0.0,0.0,2014-01-15T19:47:22.000-03:00,false,false,33.833332,52.733334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+311,53.49,66.89,48.07,66.89,0.0,60.000004,2014-01-15T19:50:19.000-03:00,false,false,28.099998,35.066666,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+312,56.620003,59.73,62.14,59.73,0.0,0.0,2014-01-15T19:56:26.000-03:00,false,false,33.199997,53.13333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+313,55.96,64.990005,48.190002,64.990005,0.0,30.000002,2014-01-15T19:59:21.000-03:00,false,false,24.5,36.86667,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+314,55.97,60.75,60.68,60.75,0.0,0.0,2014-01-15T20:05:30.000-03:00,false,false,55.633335,55.800003,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+315,57.46,63.010002,55.72,63.010002,0.0,0.0,2014-01-15T20:08:24.000-03:00,false,false,27.1,1.9333333,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+316,54.329998,61.33,49.17,61.33,0.0,0.0,2014-01-15T20:14:35.000-03:00,false,false,28.099998,53.333336,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+317,58.749996,68.54,65.060005,68.54,0.0,100.0,2014-01-15T20:17:28.000-03:00,false,false,21.1,29.433334,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+318,56.489998,61.25,51.89,61.25,0.0,10.0,2014-01-15T20:23:39.000-03:00,false,false,28.099998,52.133335,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+319,58.999996,70.270004,45.82,70.270004,0.0,80.0,2014-01-15T20:26:31.000-03:00,false,false,22.400002,38.7,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+320,56.14,60.45,55.839996,60.45,0.0,30.000002,2014-01-15T20:32:43.000-03:00,false,false,54.933334,48.833336,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+321,55.21,68.76,43.81,68.76,0.0,90.0,2014-01-15T20:35:34.000-03:00,false,false,25.9,39.5,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+322,55.089996,56.96,55.6,56.96,0.0,0.0,2014-01-15T20:41:47.000-03:00,false,false,23.233334,46.066666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+323,50.410004,66.52,56.17,66.52,20.0,80.0,2014-01-15T20:44:37.000-03:00,false,false,23.566666,43.0,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+324,55.190002,58.02,51.04,58.02,0.0,10.0,2014-01-15T20:50:52.000-03:00,false,false,55.800003,44.066666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+325,51.86,66.1,59.49,66.1,0.0,80.0,2014-01-15T20:53:39.000-03:00,false,false,24.433332,43.533333,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+326,52.45,58.04,51.33,58.04,0.0,0.0,2014-01-15T20:59:56.000-03:00,false,false,23.800001,40.233334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+327,56.840004,69.02,51.7,69.02,0.0,50.0,2014-01-15T21:02:43.000-03:00,false,false,27.599998,45.833336,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+328,53.12,55.809998,48.010002,55.809998,0.0,0.0,2014-01-15T21:09:01.000-03:00,false,false,23.233334,38.0,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+329,57.160004,62.690002,51.18,62.690002,0.0,10.0,2014-01-15T21:11:46.000-03:00,false,false,22.066666,42.533333,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+330,54.72,54.87,56.71,54.87,0.0,0.0,2014-01-15T21:18:05.000-03:00,false,false,27.133333,46.86667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+331,58.1,61.36,52.149998,61.36,0.0,10.0,2014-01-15T21:20:49.000-03:00,false,false,22.933332,44.866665,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+332,59.81,62.42,67.18,62.42,10.0,20.0,2014-01-15T21:26:02.000-03:00,false,false,1.4333333,45.100002,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+333,56.449997,54.78,62.660004,54.78,0.0,0.0,2014-01-15T21:28:15.000-03:00,false,false,56.566666,0.16666667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+334,62.18,62.07,66.439995,62.07,10.0,10.0,2014-01-15T21:29:05.000-03:00,false,false,0.1,48.133335,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+335,57.130005,60.579998,46.97,60.579998,0.0,0.0,2014-01-15T21:29:55.000-03:00,false,false,18.633333,41.566666,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+336,63.370003,66.1,69.38,66.1,50.0,30.000002,2014-01-15T21:34:05.000-03:00,false,false,0.3,7.0333333,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+337,57.690002,59.329998,59.320004,59.329998,0.0,20.0,2014-01-15T21:36:18.000-03:00,false,false,47.4,44.933334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+338,54.79,67.06,48.89,67.06,0.0,40.0,2014-01-15T21:38:58.000-03:00,false,false,88.333336,51.5,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+339,59.890003,65.79,59.920002,65.79,0.0,70.0,2014-01-15T21:44:47.000-03:00,false,false,2.2333333,0.0,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+340,59.890003,65.79,59.920002,65.79,0.0,70.0,2014-01-15T21:44:49.000-03:00,false,false,2.1,0.0,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+341,55.229996,61.979996,56.809998,61.979996,0.0,80.0,2014-01-15T21:46:27.000-03:00,false,false,25.566668,49.266666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+342,56.660004,67.28,59.420002,67.28,0.0,90.0,2014-01-15T21:49:04.000-03:00,false,false,24.6,52.733334,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+343,60.82,65.67,60.06,65.67,0.0,60.000004,2014-01-15T21:52:45.000-03:00,false,false,32.766666,2.8666666,Installation: Ubuntu,Installation: Prima S.A.,admin@admin.com
+345,57.21,67.95,53.390003,67.95,0.0,80.0,2014-01-15T21:58:09.000-03:00,false,false,21.033333,61.0,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+346,54.91,66.38,56.28,66.38,0.0,80.0,2014-01-16T01:05:50.000-03:00,false,false,19.866667,55.333336,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+347,53.55,63.04,51.34,63.04,0.0,30.000002,2014-01-16T01:14:53.000-03:00,false,false,23.1,38.633335,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+348,54.41,60.05,52.649998,60.05,0.0,10.0,2014-01-16T01:23:58.000-03:00,false,false,30.733332,0.9333333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+349,53.899998,58.07,55.479996,58.07,0.0,0.0,2014-01-16T01:33:02.000-03:00,false,false,27.766666,42.399998,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+350,52.679996,53.01,52.789997,53.01,0.0,0.0,2014-01-16T01:42:07.000-03:00,false,false,28.600002,1.6333334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+351,58.39,55.620003,49.7,55.620003,10.0,20.0,2014-01-16T01:51:12.000-03:00,false,false,25.733334,44.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+352,60.43,63.36,96.590004,63.36,100.0,70.0,2014-01-16T02:00:16.000-03:00,false,false,25.966667,46.966667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+353,59.030003,61.16,57.38,61.16,20.0,30.000002,2014-01-16T02:09:20.000-03:00,false,false,25.666666,56.833332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+354,55.22,60.34,59.8,60.34,0.0,0.0,2014-01-16T02:18:24.000-03:00,false,false,28.9,52.63333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+355,56.75,58.98,54.82,58.98,0.0,0.0,2014-01-16T02:27:28.000-03:00,false,false,30.833334,52.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+356,55.61,61.22,55.159996,61.22,0.0,40.0,2014-01-16T02:36:33.000-03:00,false,false,22.333332,49.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+357,56.33,67.04,60.52,67.04,0.0,100.0,2014-01-16T02:45:38.000-03:00,false,false,20.966667,45.100002,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+358,59.570004,64.71,62.739998,64.71,0.0,10.0,2014-01-16T02:54:42.000-03:00,false,false,47.1,52.86667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+359,55.97,61.129997,66.46,61.129997,10.0,10.0,2014-01-16T03:03:47.000-03:00,false,false,28.333334,48.266666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+360,55.61,60.329998,53.350002,60.329998,0.0,0.0,2014-01-16T03:12:52.000-03:00,false,false,29.166666,48.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+361,56.239998,57.47,58.749996,57.47,0.0,0.0,2014-01-16T03:21:56.000-03:00,false,false,27.5,44.533333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+362,58.12,55.67,57.43,55.67,0.0,0.0,2014-01-16T03:31:01.000-03:00,false,false,20.4,0.0,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+363,56.21,58.670002,59.69,58.670002,0.0,0.0,2014-01-16T03:40:06.000-03:00,false,false,20.633333,0.06666666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+364,55.870003,57.7,58.8,57.7,0.0,0.0,2014-01-16T03:49:11.000-03:00,false,false,24.0,0.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+365,54.27,56.1,49.8,56.1,0.0,0.0,2014-01-16T03:59:16.000-03:00,false,false,19.933334,40.466667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+366,56.010002,58.420002,50.47,58.420002,0.0,0.0,2014-01-16T04:08:21.000-03:00,false,false,18.5,48.333332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+367,55.12,62.940002,54.65,62.940002,0.0,0.0,2014-01-16T04:17:25.000-03:00,false,false,24.733334,41.800003,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+368,54.38,58.91,57.58,58.91,0.0,0.0,2014-01-16T04:26:30.000-03:00,false,false,24.8,34.766666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+369,54.32,59.44,58.999996,59.44,0.0,0.0,2014-01-16T04:35:35.000-03:00,false,false,21.5,30.233332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+370,53.649998,58.850002,57.72,58.850002,0.0,0.0,2014-01-16T04:44:39.000-03:00,false,false,26.333332,30.266666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+371,52.91,60.76,54.16,60.76,0.0,0.0,2014-01-16T04:53:44.000-03:00,false,false,24.566668,36.399998,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+372,52.350002,59.3,57.090004,59.3,0.0,0.0,2014-01-16T05:02:49.000-03:00,false,false,21.333334,0.33333334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+373,51.66,57.57,67.21,57.57,0.0,0.0,2014-01-16T05:11:54.000-03:00,false,false,23.133333,41.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+374,49.38,61.979996,42.57,61.979996,0.0,0.0,2014-01-16T05:20:58.000-03:00,false,false,24.933334,0.26666665,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+375,51.29,61.14,53.01,61.14,0.0,0.0,2014-01-16T05:30:03.000-03:00,false,false,19.533333,38.100002,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+376,55.08,60.13,57.45,60.13,0.0,0.0,2014-01-16T05:39:08.000-03:00,false,false,22.333332,39.533333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+377,56.050003,59.3,55.08,59.3,0.0,0.0,2014-01-16T05:48:12.000-03:00,false,false,21.233334,37.6,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+378,57.050003,56.480003,65.130005,56.480003,0.0,0.0,2014-01-16T05:57:17.000-03:00,false,false,21.1,41.666664,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+379,58.2,58.56,61.39,58.56,0.0,0.0,2014-01-16T06:06:22.000-03:00,false,false,69.26666,35.9,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+380,56.57,56.629997,59.890003,56.629997,0.0,0.0,2014-01-16T06:15:26.000-03:00,false,false,27.133333,0.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+381,54.71,53.23,56.870003,53.23,0.0,0.0,2014-01-16T06:24:31.000-03:00,false,false,26.0,0.46666664,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+382,53.100002,54.63,53.49,54.63,0.0,0.0,2014-01-16T06:33:36.000-03:00,false,false,28.099998,35.833332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+383,51.03,56.83,52.719997,56.83,0.0,0.0,2014-01-16T06:42:41.000-03:00,false,false,28.966665,37.233334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+384,51.82,59.13,45.13,59.13,0.0,0.0,2014-01-16T06:51:45.000-03:00,false,false,32.300003,34.533333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+385,52.289997,57.07,50.75,57.07,0.0,0.0,2014-01-16T07:00:50.000-03:00,false,false,26.466667,38.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+386,53.109997,58.45,60.71,58.45,0.0,0.0,2014-01-16T07:09:55.000-03:00,false,false,21.066668,42.066666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+387,51.59,59.3,47.65,59.3,0.0,0.0,2014-01-16T07:18:59.000-03:00,false,false,21.866667,34.4,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+388,49.649998,57.020004,44.890003,57.020004,0.0,0.0,2014-01-16T07:28:04.000-03:00,false,false,24.266666,29.033333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+389,52.359997,56.309998,58.710003,56.309998,0.0,0.0,2014-01-16T07:37:09.000-03:00,false,false,22.233334,32.13333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+390,53.84,58.719997,51.85,58.719997,0.0,0.0,2014-01-16T07:46:13.000-03:00,false,false,24.833334,35.100002,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+391,53.070004,60.66,50.61,60.66,0.0,0.0,2014-01-16T07:55:18.000-03:00,false,false,29.966667,35.466667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+392,55.559998,58.350002,64.62,58.350002,0.0,0.0,2014-01-16T08:04:22.000-03:00,false,false,25.366667,36.6,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+393,55.909996,60.23,60.49,60.23,0.0,0.0,2014-01-16T08:14:28.000-03:00,false,false,32.533333,38.466667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+394,56.68,62.54,57.370003,62.54,0.0,0.0,2014-01-16T08:23:32.000-03:00,false,false,24.166666,37.13333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+395,59.170002,66.27,66.829994,66.27,0.0,70.0,2014-01-16T08:32:37.000-03:00,false,false,19.133333,40.833332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+396,55.71,64.37,57.160004,64.37,0.0,50.0,2014-01-16T08:41:41.000-03:00,false,false,25.2,43.0,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+397,53.530003,55.15,49.16,55.15,0.0,0.0,2014-01-16T08:50:46.000-03:00,false,false,20.4,37.033333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+398,56.36,55.299995,49.34,55.299995,0.0,0.0,2014-01-16T08:59:51.000-03:00,false,false,18.033333,69.833336,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+399,58.05,55.82,61.65,55.82,0.0,0.0,2014-01-16T09:08:56.000-03:00,false,false,25.3,38.9,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+400,57.510002,55.549995,60.579998,55.549995,0.0,0.0,2014-01-16T09:18:00.000-03:00,false,false,21.366667,69.066666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+401,58.19,58.49,63.190002,58.49,0.0,0.0,2014-01-16T09:27:05.000-03:00,false,false,69.26666,40.9,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+402,56.629997,58.06,58.350002,58.06,0.0,0.0,2014-01-16T09:36:09.000-03:00,false,false,23.666666,42.366665,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+403,57.75,58.14,56.809998,58.14,0.0,0.0,2014-01-16T09:45:14.000-03:00,false,false,29.166666,38.666664,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+404,61.059998,59.109997,71.47,59.109997,30.000002,0.0,2014-01-16T09:54:19.000-03:00,false,false,23.4,43.233334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+405,60.100002,55.89,96.86,55.89,80.0,0.0,2014-01-16T10:03:24.000-03:00,false,false,28.433332,38.9,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+406,53.039997,59.429996,54.149998,59.429996,10.0,0.0,2014-01-16T10:12:29.000-03:00,false,false,26.1,42.8,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+407,51.87,59.579998,45.68,59.579998,0.0,0.0,2014-01-16T10:21:33.000-03:00,false,false,39.3,40.266666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+408,52.819996,57.84,51.66,57.84,0.0,0.0,2014-01-16T10:30:38.000-03:00,false,false,27.533335,39.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+409,56.730003,57.74,54.51,57.74,0.0,0.0,2014-01-16T10:39:43.000-03:00,false,false,24.6,72.66667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+410,54.49,57.32,51.18,57.32,0.0,0.0,2014-01-16T10:48:48.000-03:00,false,false,39.566666,2.6333334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+411,53.62,54.24,52.329998,54.24,0.0,0.0,2014-01-16T10:57:53.000-03:00,false,false,22.7,37.4,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+412,49.95,52.850002,40.56,52.850002,0.0,0.0,2014-01-16T11:06:58.000-03:00,false,false,30.766666,41.733334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+413,54.079998,54.6,51.71,54.6,0.0,0.0,2014-01-16T11:16:04.000-03:00,false,false,47.4,41.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+414,56.9,53.210003,63.620003,53.210003,0.0,0.0,2014-01-16T11:25:10.000-03:00,false,false,21.633333,0.23333332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+415,53.49,54.51,49.739998,54.51,0.0,0.0,2014-01-16T11:34:15.000-03:00,false,false,42.033333,53.166668,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+416,55.04,56.9,53.750004,56.9,0.0,0.0,2014-01-16T11:43:21.000-03:00,false,false,31.0,0.03333333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+417,51.56,59.609997,43.63,59.609997,0.0,0.0,2014-01-16T11:53:27.000-03:00,false,false,30.8,37.86667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+418,54.97,57.66,54.420002,57.66,0.0,0.0,2014-01-16T12:02:32.000-03:00,false,false,24.733334,29.300001,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+419,57.04,58.74,60.65,58.74,10.0,0.0,2014-01-16T12:11:37.000-03:00,false,false,25.833332,33.399998,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+420,54.47,62.54,46.43,62.54,0.0,0.0,2014-01-16T12:20:41.000-03:00,false,false,36.233334,47.033333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+421,58.170002,59.350002,54.39,59.350002,0.0,0.0,2014-01-16T12:29:46.000-03:00,false,false,27.266666,43.2,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+422,57.059998,61.239998,52.81,61.239998,0.0,40.0,2014-01-16T12:38:51.000-03:00,false,false,25.333332,42.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+423,58.81,63.43,54.05,63.43,0.0,30.000002,2014-01-16T13:00:52.000-03:00,false,false,25.966667,64.8,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+424,58.639996,58.429996,58.329998,58.429996,0.0,0.0,2014-01-16T13:09:57.000-03:00,false,false,28.933334,37.233334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+425,57.5,58.38,53.84,58.38,0.0,0.0,2014-01-16T13:19:02.000-03:00,false,false,22.933332,40.666668,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+426,57.059998,56.370003,60.27,56.370003,0.0,0.0,2014-01-16T13:28:06.000-03:00,false,false,36.566666,46.033333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+427,59.45,60.96,59.44,60.96,10.0,10.0,2014-01-16T13:37:10.000-03:00,false,false,39.399998,43.7,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+428,62.840004,60.989998,61.619995,60.989998,0.0,0.0,2014-01-16T13:46:15.000-03:00,false,false,52.0,45.333336,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+429,59.469997,57.87,53.48,57.87,0.0,0.0,2014-01-16T13:55:19.000-03:00,false,false,26.966667,45.100002,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+430,63.6,57.08,61.879997,57.08,0.0,0.0,2014-01-16T14:04:23.000-03:00,false,false,20.366667,45.866665,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+431,57.94,58.81,57.39,58.81,0.0,0.0,2014-01-16T14:13:28.000-03:00,false,false,24.033333,45.133335,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+432,59.140003,58.420002,46.219997,58.420002,0.0,0.0,2014-01-16T14:22:33.000-03:00,false,false,27.966667,43.93333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+433,58.99,60.149998,46.16,60.149998,0.0,0.0,2014-01-16T14:31:37.000-03:00,false,false,24.866667,45.133335,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+434,54.25,54.739998,50.449997,54.739998,0.0,0.0,2014-01-16T14:40:42.000-03:00,false,false,32.066666,49.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+435,52.37,53.399998,48.67,53.399998,0.0,0.0,2014-01-16T14:49:47.000-03:00,false,false,32.2,47.966667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+436,55.909996,54.13,38.2,54.13,0.0,0.0,2014-01-16T14:58:55.000-03:00,false,false,34.13333,45.899998,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+437,58.0,56.019997,56.08,56.019997,0.0,0.0,2014-01-16T15:08:00.000-03:00,false,false,40.733334,46.93333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+438,65.76,54.72,63.21,54.72,40.0,0.0,2014-01-16T15:17:05.000-03:00,false,false,26.199999,43.8,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+439,62.65,51.93,119.86001,51.93,100.0,0.0,2014-01-16T15:26:09.000-03:00,false,false,41.3,53.2,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+440,58.98,56.04,60.24,56.04,20.0,0.0,2014-01-16T15:35:13.000-03:00,false,false,43.033333,59.26667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+441,58.37,62.339996,45.0,62.339996,0.0,0.0,2014-01-16T15:44:18.000-03:00,false,false,30.833334,46.033333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+442,57.42,57.03,42.68,57.03,0.0,0.0,2014-01-16T15:53:23.000-03:00,false,false,33.933334,45.533333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+443,56.15,53.539997,58.929996,53.539997,0.0,0.0,2014-01-16T16:02:28.000-03:00,false,false,24.1,42.633335,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+444,56.480003,53.780003,55.190002,53.780003,0.0,0.0,2014-01-16T16:11:32.000-03:00,false,false,26.366667,43.133335,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+445,51.85,54.82,38.4,54.82,0.0,0.0,2014-01-16T16:20:37.000-03:00,false,false,33.433334,49.399998,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+446,50.61,61.729996,46.9,61.729996,0.0,20.0,2014-01-16T16:29:41.000-03:00,false,false,24.133333,42.1,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+447,55.03,59.890003,56.79,59.890003,0.0,80.0,2014-01-16T16:38:46.000-03:00,false,false,26.333332,43.266666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+448,56.58,55.83,54.809998,55.83,0.0,0.0,2014-01-16T16:47:51.000-03:00,false,false,25.366667,46.433334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+449,55.159996,62.57,58.7,62.57,0.0,0.0,2014-01-16T16:56:56.000-03:00,false,false,27.066666,37.066666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+450,56.43,59.460003,59.01,59.460003,0.0,0.0,2014-01-16T17:06:01.000-03:00,false,false,37.1,36.666668,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+451,54.000004,58.2,49.88,58.2,0.0,10.0,2014-01-16T17:15:06.000-03:00,false,false,31.033335,42.433334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+452,55.22,55.870003,57.260002,55.870003,0.0,20.0,2014-01-16T17:24:11.000-03:00,false,false,20.6,40.966667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+453,58.1,61.33,58.829998,61.33,0.0,0.0,2014-01-16T17:33:16.000-03:00,false,false,21.533333,44.9,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+454,60.320004,63.25,68.55,63.25,10.0,60.000004,2014-01-16T17:42:21.000-03:00,false,false,23.833332,40.166668,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+455,61.809998,60.390003,68.049995,60.390003,30.000002,20.0,2014-01-16T17:51:26.000-03:00,false,false,35.266666,3.7666667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+456,55.25,55.479996,55.229996,55.479996,0.0,0.0,2014-01-16T18:00:31.000-03:00,false,false,26.933332,48.933334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+457,53.329998,53.860004,48.18,53.860004,0.0,0.0,2014-01-16T18:09:36.000-03:00,false,false,32.9,47.533333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+458,52.45,57.22,48.21,57.22,0.0,30.000002,2014-01-16T18:18:40.000-03:00,false,false,28.600002,48.2,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+459,55.379997,60.96,50.65,60.96,0.0,0.0,2014-01-16T18:27:46.000-03:00,false,false,32.466667,48.766666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+460,57.53,58.37,60.95,58.37,0.0,0.0,2014-01-16T18:36:51.000-03:00,false,false,25.3,42.366665,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+461,56.309998,58.469997,55.79,58.469997,0.0,0.0,2014-01-16T18:45:55.000-03:00,false,false,27.633333,42.433334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+462,56.53,58.850002,56.18,58.850002,0.0,0.0,2014-01-16T18:55:00.000-03:00,false,false,22.833334,45.766666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+463,57.59,57.9,59.170002,57.9,0.0,0.0,2014-01-16T19:04:05.000-03:00,false,false,24.966665,41.833332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+464,56.910004,56.870003,56.269997,56.870003,0.0,0.0,2014-01-16T19:13:10.000-03:00,false,false,23.3,67.9,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+465,52.780003,57.86,46.2,57.86,0.0,0.0,2014-01-16T19:22:15.000-03:00,false,false,25.6,44.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+466,51.899998,59.030003,53.69,59.030003,0.0,0.0,2014-01-17T19:33:30.000-03:00,false,false,24.033333,48.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+467,56.6,59.27,38.99,59.27,0.0,0.0,2014-01-17T19:42:35.000-03:00,false,false,22.333332,2.6333334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+468,58.04,57.0,66.77,57.0,40.0,0.0,2014-01-17T19:51:39.000-03:00,false,false,17.3,41.933334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+469,57.190002,55.739998,36.989998,55.739998,0.0,10.0,2014-01-17T20:00:43.000-03:00,false,false,21.266666,63.300003,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+470,58.1,57.200005,58.429996,57.200005,0.0,40.0,2014-01-17T20:09:48.000-03:00,false,false,21.133333,42.533333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+471,56.370003,52.38,56.910004,52.38,0.0,0.0,2014-01-17T20:18:53.000-03:00,false,false,43.033333,48.100002,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+472,54.43,53.76,48.89,53.76,0.0,0.0,2014-01-17T20:27:58.000-03:00,false,false,29.733334,44.9,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+473,52.999996,54.62,54.69,54.62,0.0,0.0,2014-01-17T20:37:02.000-03:00,false,false,29.566666,41.600002,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+474,54.98,57.0,53.320004,57.0,0.0,0.0,2014-01-17T20:46:07.000-03:00,false,false,31.333334,39.1,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+475,59.609997,58.27,62.85,58.27,10.0,0.0,2014-01-17T20:55:11.000-03:00,false,false,30.599998,44.433334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+476,58.73,59.219997,64.64,59.219997,0.0,0.0,2014-01-17T21:04:16.000-03:00,false,false,42.566666,44.366665,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+477,53.81,54.64,56.260002,54.64,0.0,0.0,2014-01-17T21:13:20.000-03:00,false,false,36.399998,37.56667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+478,54.59,58.06,52.359997,58.06,0.0,0.0,2014-01-17T21:22:25.000-03:00,false,false,20.033333,39.633335,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+479,58.07,57.32,54.51,57.32,0.0,0.0,2014-01-17T21:31:30.000-03:00,false,false,23.633333,33.633335,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+480,56.54,55.22,64.05,55.22,0.0,0.0,2014-01-17T21:40:35.000-03:00,false,false,53.73333,38.7,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+481,56.129997,57.059998,47.68,57.059998,0.0,0.0,2014-01-17T21:49:39.000-03:00,false,false,24.933334,52.0,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+482,54.73,58.37,57.73,58.37,0.0,0.0,2014-01-17T21:58:44.000-03:00,false,false,26.666668,42.6,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+483,58.639996,58.749996,56.64,58.749996,0.0,0.0,2014-01-17T22:08:50.000-03:00,false,false,19.466667,45.366665,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+484,59.12,58.09,59.179996,58.09,0.0,0.0,2014-01-17T22:17:54.000-03:00,false,false,24.166666,47.4,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+485,55.199997,61.05,54.85,61.05,0.0,10.0,2014-01-17T22:26:59.000-03:00,false,false,21.733334,44.466667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+486,54.070004,63.14,50.800003,63.14,0.0,0.0,2014-01-17T22:36:03.000-03:00,false,false,28.8,43.166668,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+487,56.82,60.48,55.22,60.48,0.0,0.0,2014-01-17T22:45:08.000-03:00,false,false,25.266665,44.833332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+488,57.42,65.26,59.649998,65.26,0.0,30.000002,2014-01-17T22:54:13.000-03:00,false,false,26.466667,43.833332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+489,53.94,65.59,58.46,65.59,0.0,10.0,2014-01-17T23:03:18.000-03:00,false,false,29.633335,40.3,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+490,56.950005,66.03,49.36,66.03,0.0,10.0,2014-01-17T23:12:22.000-03:00,false,false,36.666668,47.13333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+491,59.829998,63.84,58.1,63.84,10.0,0.0,2014-01-17T23:21:27.000-03:00,false,false,32.866665,5.2999997,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+492,58.12,64.8,56.04,64.8,0.0,0.0,2014-01-17T23:30:32.000-03:00,false,false,28.133333,49.7,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+493,58.45,68.78,58.12,68.78,0.0,60.000004,2014-01-17T23:39:37.000-03:00,false,false,22.566668,48.933334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+494,57.65,68.25,53.48,68.25,0.0,50.0,2014-01-17T23:48:41.000-03:00,false,false,47.666664,65.53333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+495,58.600002,67.15,61.43,67.15,0.0,0.0,2014-01-17T23:57:47.000-03:00,false,false,31.433332,56.1,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+297,69.68,64.1,92.04,64.1,10.0,30.000002,2014-01-15T18:46:59.000-03:00,false,false,88.566666,3.0333333,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+496,60.74,66.659996,58.710003,66.659996,0.0,0.0,2014-01-22T00:40:15.000-03:00,false,false,39.433334,4.1,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+497,54.949997,53.829998,56.010002,53.829998,0.0,0.0,2014-01-30T04:17:01.000-03:00,false,false,25.7,30.833334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+498,54.37,55.03,60.13,55.03,0.0,0.0,2014-01-30T04:26:05.000-03:00,false,false,30.433332,0.06666666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+499,54.809998,59.320004,62.019997,59.320004,0.0,0.0,2014-01-30T04:35:10.000-03:00,false,false,28.133333,32.166664,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+500,54.89,55.739998,55.33,55.739998,0.0,0.0,2014-01-30T04:44:14.000-03:00,false,false,36.399998,42.699997,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+501,52.14,57.57,43.64,57.57,0.0,0.0,2014-01-30T04:53:18.000-03:00,false,false,34.766666,47.733334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+502,52.170002,56.08,47.16,56.08,0.0,0.0,2014-01-30T05:02:22.000-03:00,false,false,24.466667,38.733334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+503,53.38,62.440002,41.670002,62.440002,0.0,20.0,2014-01-30T05:11:26.000-03:00,false,false,23.766666,65.0,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+504,51.18,65.58,50.730003,65.58,0.0,60.000004,2014-01-30T05:20:30.000-03:00,false,false,23.9,38.066666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+505,56.18,60.34,57.21,60.34,0.0,0.0,2014-01-30T05:29:34.000-03:00,false,false,36.066666,32.866665,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+506,51.54,55.800003,45.559998,55.800003,0.0,0.0,2014-01-30T05:38:38.000-03:00,false,false,27.633333,40.066666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+507,50.730003,58.84,48.66,58.84,0.0,0.0,2014-01-30T05:47:43.000-03:00,false,false,27.599998,27.966667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+508,51.059998,57.28,41.95,57.28,0.0,0.0,2014-01-30T05:56:47.000-03:00,false,false,26.800001,33.233334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+509,52.039997,59.600002,41.780003,59.600002,0.0,0.0,2014-01-30T06:05:51.000-03:00,false,false,24.566668,34.86667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+510,55.010002,59.77,53.430004,59.77,0.0,0.0,2014-01-30T06:14:55.000-03:00,false,false,21.633333,37.13333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+511,55.54,57.91,50.690002,57.91,0.0,0.0,2014-01-30T06:23:59.000-03:00,false,false,19.433332,41.266666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+512,52.31,61.67,47.82,61.67,0.0,0.0,2014-01-30T06:33:03.000-03:00,false,false,17.466667,39.2,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+513,53.399998,57.760002,43.93,57.760002,0.0,0.0,2014-01-30T06:42:07.000-03:00,false,false,17.533333,45.866665,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+514,52.52,63.0,44.36,63.0,0.0,20.0,2014-01-30T06:51:11.000-03:00,false,false,20.2,42.433334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+515,51.98,59.56,47.5,59.56,0.0,10.0,2014-01-30T07:00:15.000-03:00,false,false,26.866665,0.6666667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+516,57.14,60.47,50.39,60.47,0.0,0.0,2014-01-30T07:09:19.000-03:00,false,false,25.166666,34.766666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+517,59.850002,57.99,56.940002,57.99,0.0,0.0,2014-01-30T07:18:23.000-03:00,false,false,23.666666,70.63333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+518,55.0,55.85,53.27,55.85,0.0,0.0,2014-01-30T07:27:28.000-03:00,false,false,27.666668,0.03333333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+519,52.52,55.809998,55.980003,55.809998,0.0,0.0,2014-01-30T07:36:32.000-03:00,false,false,26.866665,30.966667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+520,53.27,55.190002,52.319996,55.190002,0.0,0.0,2014-01-30T07:45:36.000-03:00,false,false,54.666668,33.733334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+521,53.02,59.170002,50.840004,59.170002,0.0,0.0,2014-01-30T07:54:40.000-03:00,false,false,17.7,36.133335,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+522,53.76,59.039997,48.78,59.039997,0.0,0.0,2014-01-30T08:03:44.000-03:00,false,false,29.366667,0.0,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+523,51.94,61.18,41.280003,61.18,0.0,0.0,2014-01-30T08:12:48.000-03:00,false,false,67.5,31.566668,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+524,55.449997,61.909996,35.690002,61.909996,0.0,0.0,2014-01-30T08:21:52.000-03:00,false,false,41.2,36.86667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+525,54.22,63.67,49.5,63.67,0.0,30.000002,2014-01-30T08:30:56.000-03:00,false,false,36.666668,0.16666667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+526,54.85,61.729996,47.45,61.729996,0.0,10.0,2014-01-30T08:40:00.000-03:00,false,false,37.666668,52.966667,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+527,57.61,61.35,50.089996,61.35,0.0,0.0,2014-01-30T08:49:04.000-03:00,false,false,28.366667,44.63333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+528,52.920002,59.280003,49.579998,59.280003,0.0,0.0,2014-01-30T08:58:08.000-03:00,false,false,28.433332,39.266666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+529,52.399998,61.6,43.44,61.6,0.0,0.0,2014-01-30T09:07:12.000-03:00,false,false,26.300001,40.4,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+530,53.81,63.42,49.03,63.42,0.0,10.0,2014-01-30T09:16:17.000-03:00,false,false,62.9,0.13333333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+531,57.53,61.449997,45.879997,61.449997,0.0,0.0,2014-01-30T09:25:20.000-03:00,false,false,32.366665,37.933334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+532,56.980003,59.59,57.08,59.59,10.0,0.0,2014-01-30T09:34:24.000-03:00,false,false,57.0,56.766666,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+533,55.07,60.88,52.06,60.88,0.0,0.0,2014-01-30T09:43:28.000-03:00,false,false,38.13333,37.833332,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+534,53.649998,60.36,50.019997,60.36,0.0,0.0,2014-01-30T09:52:32.000-03:00,false,false,30.899998,37.933334,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+535,55.82,60.87,47.66,60.87,0.0,0.0,2014-01-30T10:01:37.000-03:00,false,false,31.933334,33.1,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+536,60.530003,60.82,57.230003,60.82,0.0,0.0,2014-01-30T10:11:42.000-03:00,false,false,43.166668,0.5,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+537,66.39,63.53,73.06,63.53,70.0,0.0,2014-01-30T10:22:47.000-03:00,false,false,51.8,63.03333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+539,56.67,60.170002,68.13,60.170002,20.0,0.0,2014-02-03T12:41:54.000-03:00,false,false,36.266666,32.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+540,52.98,57.920002,49.75,57.920002,0.0,0.0,2014-02-03T12:51:57.000-03:00,false,false,29.499998,33.166668,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+541,52.84,56.1,43.39,56.1,0.0,0.0,2014-02-03T13:02:01.000-03:00,false,false,42.333336,39.7,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+542,56.17,57.89,53.140003,57.89,0.0,0.0,2014-02-03T13:11:04.000-03:00,false,false,43.466667,36.7,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+543,57.28,59.750004,54.9,59.750004,0.0,0.0,2014-02-03T13:20:07.000-03:00,false,false,33.833332,40.2,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+544,57.690002,58.149998,56.239998,58.149998,0.0,0.0,2014-02-03T13:29:10.000-03:00,false,false,36.633335,41.100002,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+545,55.409996,59.719997,52.829998,59.719997,0.0,0.0,2014-02-03T13:38:14.000-03:00,false,false,32.5,0.2,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+546,53.539997,59.359997,44.010002,59.359997,0.0,0.0,2014-02-03T13:47:17.000-03:00,false,false,35.833332,0.4,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+547,53.460003,59.2,63.98,59.2,0.0,10.0,2014-02-03T13:56:20.000-03:00,false,false,32.533333,39.8,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+548,53.59,53.63,47.04,53.63,0.0,0.0,2014-02-03T14:05:23.000-03:00,false,false,24.866667,55.533333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+549,53.100002,58.649998,46.46,58.649998,0.0,0.0,2014-02-03T14:15:27.000-03:00,false,false,29.6,33.066666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+550,55.22,60.140003,50.230003,60.140003,0.0,40.0,2014-02-03T14:24:30.000-03:00,false,false,32.2,0.13333333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+551,55.32,55.909996,55.29,55.909996,0.0,0.0,2014-02-03T14:34:33.000-03:00,false,false,31.433332,0.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+552,56.03,50.989998,57.260002,50.989998,0.0,0.0,2014-02-03T14:44:36.000-03:00,false,false,32.266666,53.166668,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+553,56.46,55.309998,54.61,55.309998,0.0,0.0,2014-02-03T14:53:40.000-03:00,false,false,26.766666,49.433334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+554,54.75,56.010002,46.98,56.010002,0.0,0.0,2014-02-03T15:02:43.000-03:00,false,false,32.766666,53.63333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+555,56.04,55.549995,46.56,55.549995,0.0,0.0,2014-02-03T15:11:46.000-03:00,false,false,27.000002,49.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+556,55.690002,55.479996,46.43,55.479996,0.0,0.0,2014-02-03T15:21:49.000-03:00,false,false,29.566666,54.733337,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+557,58.49,59.280003,57.65,59.280003,0.0,10.0,2014-02-03T16:09:05.000-03:00,false,false,35.600002,52.26667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+558,60.69,61.729996,65.69,61.729996,10.0,0.0,2014-02-03T16:18:09.000-03:00,false,false,33.266666,36.833336,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+559,57.58,54.949997,65.64,54.949997,0.0,0.0,2014-02-03T16:27:12.000-03:00,false,false,31.466665,50.666664,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+560,55.15,55.14,48.92,55.14,0.0,0.0,2014-02-03T16:36:15.000-03:00,false,false,36.3,53.3,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+561,54.92,58.999996,52.579998,58.999996,0.0,0.0,2014-02-03T16:45:18.000-03:00,false,false,31.633333,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+562,58.19,55.839996,71.08,55.839996,40.0,0.0,2014-02-03T16:54:21.000-03:00,false,false,33.466667,51.5,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+563,55.96,58.780003,69.6,58.780003,20.0,0.0,2014-02-03T17:03:24.000-03:00,false,false,32.866665,33.966667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+564,56.059998,57.52,41.98,57.52,0.0,0.0,2014-02-03T17:12:27.000-03:00,false,false,22.433332,52.133335,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+565,55.769997,57.57,68.33,57.57,0.0,0.0,2014-02-03T17:21:30.000-03:00,false,false,27.2,50.5,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+566,55.489998,55.85,62.769997,55.85,0.0,0.0,2014-02-03T17:30:33.000-03:00,false,false,27.466667,52.033337,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+567,53.210003,55.760002,45.09,55.760002,0.0,0.0,2014-02-03T17:39:37.000-03:00,false,false,33.399998,34.43333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+568,55.620003,57.38,54.44,57.38,0.0,0.0,2014-02-03T17:48:40.000-03:00,false,false,32.7,30.4,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+569,56.120003,51.96,53.62,51.96,0.0,0.0,2014-02-03T17:57:43.000-03:00,false,false,35.0,53.100002,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+570,56.870003,57.550003,54.92,57.550003,0.0,0.0,2014-02-03T18:06:46.000-03:00,false,false,49.733334,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+571,58.649998,56.510002,49.079998,56.510002,0.0,0.0,2014-02-03T18:15:49.000-03:00,false,false,46.3,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+572,54.87,57.63,63.440002,57.63,0.0,0.0,2014-02-03T18:24:52.000-03:00,false,false,35.7,33.733334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+573,55.549995,54.64,55.15,54.64,0.0,0.0,2014-02-03T18:33:55.000-03:00,false,false,38.9,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+574,53.430004,56.21,54.070004,56.21,0.0,0.0,2014-02-03T18:58:07.000-03:00,false,false,52.999996,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+575,57.63,57.73,53.070004,57.73,0.0,0.0,2014-02-03T19:48:33.000-03:00,false,false,55.833332,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+576,54.59,58.23,50.6,58.23,0.0,0.0,2014-02-03T19:49:32.000-03:00,false,false,31.666666,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+577,55.72,56.489998,46.48,56.489998,0.0,0.0,2014-02-03T19:50:30.000-03:00,false,false,31.7,33.899998,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+578,55.29,59.280003,49.38,59.280003,0.0,0.0,2014-02-03T19:51:28.000-03:00,false,false,50.233334,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+579,53.99,59.23,42.86,59.23,0.0,0.0,2014-02-03T20:06:34.000-03:00,false,false,36.233334,36.199997,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+580,57.86,57.72,53.74,57.72,0.0,0.0,2014-02-03T20:07:32.000-03:00,false,false,45.866665,0.06666666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+581,57.91,58.59,52.52,58.59,0.0,0.0,2014-02-03T20:08:31.000-03:00,false,false,46.333332,0.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+582,58.19,59.859997,57.47,59.859997,0.0,0.0,2014-02-03T20:09:29.000-03:00,false,false,42.5,0.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+583,52.600002,57.160004,52.37,57.160004,0.0,0.0,2014-02-03T20:10:27.000-03:00,false,false,37.266666,32.733334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+584,52.3,58.429996,57.42,58.429996,0.0,0.0,2014-02-03T20:17:29.000-03:00,false,false,35.766666,33.5,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+585,56.550003,53.98,55.809998,53.98,0.0,0.0,2014-02-03T20:25:31.000-03:00,false,false,31.3,58.76667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+586,57.73,57.89,70.380005,57.89,10.0,0.0,2014-02-03T20:34:35.000-03:00,false,false,27.2,55.166668,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+587,56.79,53.69,69.08,53.69,30.000002,0.0,2014-02-03T20:43:38.000-03:00,false,false,31.2,54.6,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+588,54.6,52.960003,56.43,52.960003,0.0,0.0,2014-02-03T20:52:41.000-03:00,false,false,30.433332,51.633335,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+589,56.21,54.56,54.62,54.56,0.0,0.0,2014-02-03T21:01:44.000-03:00,false,false,26.499998,56.633335,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+590,53.850002,51.63,45.46,51.63,0.0,0.0,2014-02-03T21:10:47.000-03:00,false,false,29.499998,52.433334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+591,54.86,52.469997,48.71,52.469997,0.0,0.0,2014-02-03T21:20:51.000-03:00,false,false,28.666666,58.566666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+592,55.760002,55.18,63.380005,55.18,0.0,0.0,2014-02-03T21:29:54.000-03:00,false,false,30.666668,52.733334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+593,56.370003,58.52,47.95,58.52,0.0,0.0,2014-02-03T21:38:57.000-03:00,false,false,31.400002,55.6,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+594,56.53,57.8,51.1,57.8,0.0,0.0,2014-02-03T21:49:00.000-03:00,false,false,33.399998,55.4,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+595,58.649998,56.800003,65.869995,56.800003,10.0,0.0,2014-02-03T21:58:03.000-03:00,false,false,36.466667,35.366665,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+596,54.24,57.99,65.15,57.99,0.0,0.0,2014-02-03T22:07:06.000-03:00,false,false,35.100002,33.366665,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+597,54.73,54.63,30.37,54.63,0.0,0.0,2014-02-03T22:17:10.000-03:00,false,false,32.233334,32.7,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+598,56.43,56.300003,56.050003,56.300003,0.0,0.0,2014-02-03T22:26:13.000-03:00,false,false,34.733334,50.233334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+599,56.93,56.840004,63.98,56.840004,0.0,0.0,2014-02-03T22:35:16.000-03:00,false,false,35.600002,32.600002,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+600,55.980003,56.440002,64.5,56.440002,0.0,0.0,2014-02-03T22:44:19.000-03:00,false,false,32.033333,0.16666667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+601,58.819996,54.070004,70.17,54.070004,10.0,0.0,2014-02-03T22:53:22.000-03:00,false,false,30.366669,53.100002,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+602,59.850002,55.39,64.16,55.39,0.0,0.0,2014-02-03T23:02:25.000-03:00,false,false,38.466667,37.733334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+603,60.070004,55.489998,57.9,55.489998,0.0,0.0,2014-02-03T23:11:28.000-03:00,false,false,32.4,55.800003,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+604,59.710003,57.72,67.59,57.72,10.0,0.0,2014-02-03T23:20:31.000-03:00,false,false,36.333336,53.63333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+605,55.379997,55.39,50.449997,55.39,0.0,0.0,2014-02-03T23:29:34.000-03:00,false,false,36.3,49.166668,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+606,57.73,56.300003,64.700005,56.300003,30.000002,0.0,2014-02-03T23:38:37.000-03:00,false,false,29.9,48.4,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+607,56.809998,63.940002,54.4,63.940002,10.0,50.0,2014-02-05T14:50:07.000-03:00,false,false,42.433334,1.8333333,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+608,60.989998,63.65,58.34,63.65,20.0,0.0,2014-02-05T14:59:10.000-03:00,false,false,26.199999,33.633335,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+609,62.68,67.42,77.48,67.42,70.0,80.0,2014-02-05T15:08:14.000-03:00,false,false,30.033333,0.23333332,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+610,59.789997,66.81,60.19,66.81,0.0,40.0,2014-02-05T15:17:17.000-03:00,false,false,37.6,42.466667,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+611,61.519997,68.87,41.08,68.87,0.0,40.0,2014-02-05T15:26:20.000-03:00,false,false,36.533333,2.7333333,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+612,64.200005,68.19,99.21,68.19,90.0,70.0,2014-02-05T15:35:23.000-03:00,false,false,36.1,36.066666,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+613,61.699997,66.97,85.53,66.97,60.000004,80.0,2014-02-05T15:44:27.000-03:00,false,false,35.533333,37.5,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+614,60.44,68.92,59.87,68.92,0.0,40.0,2014-02-05T15:53:30.000-03:00,false,false,40.9,1.6,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+615,64.170006,74.04,52.079998,74.04,0.0,100.0,2014-02-05T16:02:34.000-03:00,false,false,27.633333,40.033333,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+616,69.6,76.83,71.450005,76.83,40.0,50.0,2014-02-05T16:11:37.000-03:00,false,false,61.96667,70.53333,Installation: Lenovo X200,Installation: Telecentro S.A.,ignalvarez@gmail.com
+617,60.070004,57.42,68.8,57.42,80.0,90.0,2014-02-06T14:20:35.000-03:00,false,false,35.633335,50.266666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+618,61.25,53.59,67.09,53.59,100.0,100.0,2014-02-06T14:29:38.000-03:00,false,false,33.199997,50.86667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+619,58.07,56.449997,51.2,56.449997,100.0,100.0,2014-02-06T14:39:42.000-03:00,false,false,31.166666,51.300003,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+620,56.590004,55.35,52.679996,55.35,100.0,100.0,2014-02-06T14:48:45.000-03:00,false,false,31.600002,31.366667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+621,54.9,54.140003,53.100002,54.140003,100.0,100.0,2014-02-06T14:57:48.000-03:00,false,false,27.333334,0.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+622,52.23,57.67,46.2,57.67,100.0,100.0,2014-02-06T15:06:51.000-03:00,false,false,31.466665,35.3,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+623,52.23,58.14,46.85,58.14,100.0,100.0,2014-02-06T15:15:54.000-03:00,false,false,29.199999,0.13333333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+624,53.280003,54.170002,55.800003,54.170002,100.0,100.0,2014-02-06T15:24:57.000-03:00,false,false,35.933334,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+625,54.71,55.260002,63.590004,55.260002,100.0,100.0,2014-02-06T15:34:00.000-03:00,false,false,31.900002,0.16666667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+626,59.12,55.089996,51.78,55.089996,100.0,100.0,2014-02-06T15:45:03.000-03:00,false,false,24.233334,0.03333333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+627,59.69,53.820004,55.57,53.820004,90.0,100.0,2014-02-06T15:55:07.000-03:00,false,false,31.366667,0.33333334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+628,62.699997,58.27,74.24,58.27,50.0,100.0,2014-02-06T16:08:12.000-03:00,false,false,33.833332,0.13333333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+629,58.710003,55.089996,62.260002,55.089996,90.0,100.0,2014-02-06T16:13:13.000-03:00,false,false,38.0,0.16666667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+630,55.4,57.96,54.63,57.96,100.0,100.0,2014-02-06T16:24:17.000-03:00,false,false,31.666666,34.466667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+631,55.379997,57.97,67.97,57.97,90.0,100.0,2014-02-06T16:33:20.000-03:00,false,false,29.466667,30.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+632,64.41,57.090004,61.07,57.090004,60.000004,100.0,2014-02-06T16:47:25.000-03:00,false,false,38.333332,0.16666667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+633,68.27,61.75,73.2,61.75,40.0,90.0,2014-02-06T16:51:25.000-03:00,false,false,41.633335,0.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+634,71.350006,65.96,96.15,65.96,60.000004,80.0,2014-02-06T17:01:29.000-03:00,false,false,73.1,0.13333333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+635,58.66,63.6,83.700005,63.6,80.0,100.0,2014-02-06T17:10:31.000-03:00,false,false,66.833336,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+636,50.61,59.34,54.84,59.34,100.0,100.0,2014-02-06T17:19:34.000-03:00,false,false,33.666668,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+637,50.92,53.109997,54.93,53.109997,100.0,100.0,2014-02-06T17:28:37.000-03:00,false,false,29.233334,0.26666665,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+638,54.53,53.51,50.71,53.51,100.0,100.0,2014-02-06T17:37:40.000-03:00,false,false,32.5,0.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+639,50.43,55.28,41.64,55.28,100.0,100.0,2014-02-06T17:46:43.000-03:00,false,false,26.833334,0.16666667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+640,51.260002,57.54,45.91,57.54,100.0,100.0,2014-02-06T17:55:46.000-03:00,false,false,28.366667,32.5,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+641,55.089996,57.090004,60.38,57.090004,100.0,100.0,2014-02-06T18:04:49.000-03:00,false,false,26.033333,0.16666667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+642,52.98,58.19,53.91,58.19,100.0,90.0,2014-02-06T18:13:52.000-03:00,false,false,2.2,0.16666667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+643,54.22,58.19,42.609997,58.19,100.0,100.0,2014-02-06T18:22:55.000-03:00,false,false,29.533333,32.9,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+644,54.48,56.770004,50.89,56.770004,100.0,100.0,2014-02-06T18:31:58.000-03:00,false,false,29.666666,34.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+645,53.640003,56.39,47.65,56.39,100.0,90.0,2014-02-06T18:41:01.000-03:00,false,false,31.433332,0.6,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+646,55.92,53.390003,49.57,53.390003,100.0,100.0,2014-02-06T18:50:03.000-03:00,false,false,27.266666,0.13333333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+647,56.93,58.25,53.66,58.25,100.0,100.0,2014-02-06T18:59:06.000-03:00,false,false,33.899998,0.16666667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+648,56.36,56.989998,56.059998,56.989998,100.0,100.0,2014-02-06T19:08:09.000-03:00,false,false,39.2,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+649,57.08,55.82,48.07,55.82,100.0,100.0,2014-02-06T19:17:12.000-03:00,false,false,36.666668,0.2,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+650,54.31,56.660004,59.109997,56.660004,100.0,100.0,2014-02-06T19:27:15.000-03:00,false,false,37.43333,0.16666667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+651,54.86,53.19,43.85,53.19,100.0,100.0,2014-02-06T19:36:18.000-03:00,false,false,32.4,29.300001,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+652,55.6,56.36,55.61,56.36,90.0,100.0,2014-02-06T19:45:21.000-03:00,false,false,33.86667,0.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+653,57.059998,57.58,59.77,57.58,100.0,100.0,2014-02-06T19:55:24.000-03:00,false,false,35.4,36.399998,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+654,56.64,58.16,56.339996,58.16,100.0,100.0,2014-02-06T20:05:27.000-03:00,false,false,37.966667,0.3,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+655,55.75,56.36,48.53,56.36,100.0,100.0,2014-02-06T20:14:30.000-03:00,false,false,37.36667,0.16666667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+656,56.72,58.8,70.700005,58.8,80.0,100.0,2014-02-06T20:23:33.000-03:00,false,false,43.333332,40.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+657,57.010002,58.26,60.2,58.26,100.0,100.0,2014-02-06T20:32:36.000-03:00,false,false,33.0,33.6,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+658,56.17,58.23,45.77,58.23,100.0,100.0,2014-02-06T20:41:39.000-03:00,false,false,31.233334,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+659,55.79,56.86,42.12,56.86,100.0,100.0,2014-02-06T20:50:42.000-03:00,false,false,33.8,0.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+660,52.66,57.160004,61.309998,57.160004,100.0,100.0,2014-02-06T20:59:45.000-03:00,false,false,33.266666,36.333336,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+661,53.66,53.780003,41.27,53.780003,100.0,100.0,2014-02-06T21:08:48.000-03:00,false,false,39.366665,32.666664,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+662,51.31,53.41,41.4,53.41,100.0,100.0,2014-02-06T21:17:51.000-03:00,false,false,40.86667,36.6,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+663,54.149998,53.74,52.899998,53.74,100.0,100.0,2014-02-06T21:26:54.000-03:00,false,false,35.066666,34.733334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+664,55.53,56.1,58.07,56.1,100.0,100.0,2014-02-06T21:35:57.000-03:00,false,false,35.233334,40.2,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+665,53.8,60.3,46.62,60.3,100.0,100.0,2014-02-06T21:45:00.000-03:00,false,false,39.0,35.733334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+666,53.13,60.44,53.37,60.44,100.0,100.0,2014-02-06T21:54:03.000-03:00,false,false,35.966667,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+667,53.41,58.81,61.809998,58.81,100.0,100.0,2014-02-06T22:03:06.000-03:00,false,false,38.733334,40.43333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+668,54.809998,54.67,45.38,54.67,100.0,100.0,2014-02-06T22:12:09.000-03:00,false,false,42.633335,42.233334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+669,57.370003,57.260002,50.260002,57.260002,100.0,100.0,2014-02-06T22:21:11.000-03:00,false,false,39.066666,0.3,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+670,60.92,61.04,67.49,61.04,90.0,100.0,2014-02-06T22:30:14.000-03:00,false,false,41.600002,0.26666665,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+671,60.63,57.230003,55.78,57.230003,100.0,100.0,2014-02-06T22:39:17.000-03:00,false,false,38.5,0.16666667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+672,57.21,58.24,52.98,58.24,100.0,100.0,2014-02-06T22:49:20.000-03:00,false,false,40.7,0.26666665,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+673,57.260002,59.789997,63.65,59.789997,90.0,100.0,2014-02-06T22:59:23.000-03:00,false,false,30.766666,0.13333333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+674,58.289997,57.94,61.479996,57.94,90.0,100.0,2014-02-06T23:08:26.000-03:00,false,false,42.2,0.23333332,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+675,55.46,65.4,56.75,65.4,100.0,90.0,2014-02-06T23:17:29.000-03:00,false,false,41.7,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+676,54.41,57.87,42.66,57.87,100.0,100.0,2014-02-06T23:26:32.000-03:00,false,false,36.533333,0.16666667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+677,59.16,65.45,56.61,65.45,100.0,100.0,2014-02-06T23:27:08.000-03:00,false,false,0.4,1.9333333,Installation: Lenovo X200,Installation: Prima S.A.,ignalvarez@gmail.com
+678,57.93,56.79,58.2,56.79,90.0,100.0,2014-02-06T23:35:35.000-03:00,false,false,1.9,33.8,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+679,59.06,62.15,58.539997,62.15,100.0,100.0,2014-02-06T23:36:12.000-03:00,false,false,40.86667,53.7,Installation: Lenovo X200,Installation: Prima S.A.,ignalvarez@gmail.com
+680,59.170002,54.34,39.21,54.34,100.0,100.0,2014-02-06T23:44:38.000-03:00,false,false,39.86667,33.766666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+681,63.03,61.339996,53.850002,61.339996,100.0,100.0,2014-02-06T23:45:15.000-03:00,false,false,36.966667,55.0,Installation: Lenovo X200,Installation: Prima S.A.,ignalvarez@gmail.com
+682,55.019997,59.680004,51.58,59.680004,100.0,100.0,2014-02-06T23:54:19.000-03:00,false,false,38.7,57.93333,Installation: Lenovo X200,Installation: Prima S.A.,ignalvarez@gmail.com
+683,57.9,54.82,69.13,54.82,80.0,100.0,2014-02-10T14:56:22.000-03:00,false,false,44.2,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+684,57.370003,54.47,60.95,54.47,100.0,100.0,2014-02-10T15:07:24.000-03:00,false,false,39.566666,57.033337,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+685,55.21,54.05,51.190002,54.05,100.0,100.0,2014-02-10T15:16:26.000-03:00,false,false,37.56667,53.066666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+686,52.7,55.190002,51.66,55.190002,100.0,100.0,2014-02-10T15:26:28.000-03:00,false,false,33.566666,50.9,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+687,53.48,54.280003,45.78,54.280003,100.0,100.0,2014-02-10T15:35:30.000-03:00,false,false,33.466667,45.899998,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+688,56.67,53.750004,55.46,53.750004,100.0,100.0,2014-02-10T15:44:32.000-03:00,false,false,34.9,47.233334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+689,57.760002,55.64,58.0,55.64,90.0,100.0,2014-02-10T15:53:33.000-03:00,false,false,29.800001,48.5,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+690,58.850002,56.21,58.960003,56.21,100.0,100.0,2014-02-10T16:02:35.000-03:00,false,false,30.4,51.033337,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+691,57.84,56.059998,46.85,56.059998,100.0,100.0,2014-02-10T16:11:37.000-03:00,false,false,31.7,47.3,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+692,55.440002,56.58,57.010002,56.58,100.0,100.0,2014-02-10T16:20:38.000-03:00,false,false,30.4,47.966667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+693,54.53,59.41,55.29,59.41,100.0,90.0,2014-02-10T16:29:40.000-03:00,false,false,31.5,50.566666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+694,53.27,56.190002,50.85,56.190002,100.0,100.0,2014-02-10T16:38:42.000-03:00,false,false,35.633335,51.033337,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+695,54.01,51.45,41.690002,51.45,100.0,100.0,2014-02-10T16:47:44.000-03:00,false,false,31.666666,44.5,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+696,57.07,51.96,59.51,51.96,100.0,100.0,2014-02-10T16:56:46.000-03:00,false,false,33.033333,45.066666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+697,57.25,52.45,58.77,52.45,100.0,100.0,2014-02-10T17:31:59.000-03:00,false,false,32.366665,45.033333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+698,56.57,53.149998,61.949997,53.149998,100.0,100.0,2014-02-10T17:32:57.000-03:00,false,false,33.166668,43.333332,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+699,57.79,56.04,66.1,56.04,70.0,100.0,2014-02-10T17:33:55.000-03:00,false,false,34.0,41.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+700,57.71,56.36,75.2,56.36,50.0,100.0,2014-02-10T17:35:54.000-03:00,false,false,33.233334,40.733334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+701,57.6,55.9,69.520004,55.9,90.0,100.0,2014-02-10T19:07:32.000-03:00,false,false,35.2,51.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+702,56.39,56.25,67.64,56.25,90.0,100.0,2014-02-10T19:08:30.000-03:00,false,false,34.966667,50.033333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+703,55.64,57.239998,59.87,57.239998,100.0,90.0,2014-02-10T19:09:28.000-03:00,false,false,34.43333,51.5,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+704,55.440002,57.72,58.829998,57.72,100.0,100.0,2014-02-10T19:10:26.000-03:00,false,false,35.13333,49.766666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+705,55.940002,59.429996,61.729996,59.429996,100.0,100.0,2014-02-10T19:11:24.000-03:00,false,false,34.766666,50.43333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+706,55.449997,59.31,55.14,59.31,100.0,100.0,2014-02-10T19:12:22.000-03:00,false,false,34.5,48.866665,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+707,54.45,60.110004,49.51,60.110004,100.0,100.0,2014-02-10T19:13:20.000-03:00,false,false,32.966667,46.5,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+708,54.62,57.97,49.88,57.97,100.0,100.0,2014-02-10T19:14:19.000-03:00,false,false,32.300003,45.066666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+709,53.390003,60.250004,44.74,60.250004,100.0,100.0,2014-02-10T19:15:17.000-03:00,false,false,33.733334,42.433334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+710,53.62,61.39,47.19,61.39,100.0,100.0,2014-02-10T19:16:15.000-03:00,false,false,29.733334,44.13333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+711,52.399998,61.379997,41.34,61.379997,100.0,90.0,2014-02-10T19:17:13.000-03:00,false,false,29.9,49.2,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+712,54.97,59.179996,48.48,59.179996,100.0,100.0,2014-02-10T19:26:15.000-03:00,false,false,37.13333,54.466663,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+713,56.739998,56.15,47.84,56.15,100.0,100.0,2014-02-10T19:35:17.000-03:00,false,false,37.4,56.833332,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+714,54.66,57.82,48.13,57.82,100.0,90.0,2014-02-10T19:44:19.000-03:00,false,false,35.966667,53.966667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+715,57.93,60.110004,59.56,60.110004,100.0,100.0,2014-02-10T19:54:21.000-03:00,false,false,39.133335,51.7,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+716,56.71,58.49,55.479996,58.49,100.0,90.0,2014-02-10T20:03:22.000-03:00,false,false,41.600002,50.800003,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+717,53.350002,55.510002,37.09,55.510002,100.0,100.0,2014-02-10T20:12:24.000-03:00,false,false,29.433334,40.466667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+718,55.29,54.92,44.350002,54.92,100.0,90.0,2014-02-10T20:22:26.000-03:00,false,false,32.966667,45.699997,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+719,60.72,55.89,54.25,55.89,100.0,90.0,2014-02-10T20:31:27.000-03:00,false,false,39.766666,49.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+720,66.79,61.03,92.659996,61.03,20.0,100.0,2014-02-10T20:40:29.000-03:00,false,false,44.7,60.399998,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+721,68.86,57.760002,96.03001,57.760002,10.0,100.0,2014-02-10T20:49:31.000-03:00,false,false,51.86667,59.73333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+722,61.93,56.97,66.39,56.97,80.0,100.0,2014-02-10T20:58:33.000-03:00,false,false,46.433334,50.4,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+723,58.39,51.160004,47.07,51.160004,100.0,90.0,2014-02-10T21:07:35.000-03:00,false,false,39.6,54.9,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+724,56.629997,55.479996,56.010002,55.479996,100.0,100.0,2014-02-10T21:16:36.000-03:00,false,false,36.6,49.133335,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+725,59.710003,56.309998,55.190002,56.309998,100.0,100.0,2014-02-10T21:25:37.000-03:00,false,false,45.266666,49.5,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+726,60.05,54.12,49.67,54.12,100.0,100.0,2014-02-10T21:34:39.000-03:00,false,false,41.600002,53.2,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+727,59.48,50.480003,59.789997,50.480003,100.0,100.0,2014-02-10T21:43:41.000-03:00,false,false,37.8,42.066666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+728,56.510002,51.45,61.440002,51.45,100.0,100.0,2014-02-10T21:52:43.000-03:00,false,false,35.233334,41.5,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+729,57.65,53.850002,66.02,53.850002,90.0,100.0,2014-02-12T16:32:05.000-03:00,false,false,44.066666,43.166668,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+730,59.7,55.05,62.809998,55.05,100.0,70.0,2014-02-12T16:33:04.000-03:00,false,false,42.833336,45.766666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+731,60.23,56.379997,61.989998,56.379997,90.0,100.0,2014-02-12T16:34:02.000-03:00,false,false,42.699997,46.833332,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+732,59.13,54.2,56.47,54.2,100.0,100.0,2014-02-12T16:35:00.000-03:00,false,false,43.7,47.666664,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+733,54.24,55.04,44.780003,55.04,100.0,100.0,2014-02-12T20:03:21.000-03:00,false,false,38.9,48.4,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+734,53.930004,55.909996,45.53,55.909996,100.0,100.0,2014-02-12T20:04:21.000-03:00,false,false,38.433334,49.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+735,54.210003,55.1,44.84,55.1,100.0,100.0,2014-02-12T20:05:18.000-03:00,false,false,37.833332,49.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+736,54.079998,54.69,46.62,54.69,100.0,100.0,2014-02-12T20:06:19.000-03:00,false,false,37.533333,49.133335,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+737,53.31,53.37,46.59,53.37,100.0,100.0,2014-02-12T20:07:18.000-03:00,false,false,37.13333,49.5,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+738,53.31,53.37,46.59,53.37,100.0,100.0,2014-02-12T20:08:18.000-03:00,false,false,37.13333,49.5,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+739,52.98,54.98,48.33,54.98,100.0,100.0,2014-02-12T20:09:14.000-03:00,false,false,37.56667,49.666668,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+740,53.2,54.65,46.55,54.65,100.0,100.0,2014-02-12T20:11:14.000-03:00,false,false,38.600002,49.733334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+741,53.2,54.65,46.55,54.65,100.0,100.0,2014-02-12T20:12:16.000-03:00,false,false,38.600002,49.733334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+742,52.579998,53.649998,47.21,53.649998,100.0,100.0,2014-02-12T20:13:14.000-03:00,false,false,39.366665,51.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+743,52.679996,53.76,46.03,53.76,100.0,100.0,2014-02-12T20:14:13.000-03:00,false,false,40.2,51.2,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+744,53.850002,54.43,46.26,54.43,100.0,100.0,2014-02-12T20:15:10.000-03:00,false,false,40.533333,51.300003,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+745,52.98,53.59,45.68,53.59,100.0,100.0,2014-02-12T20:16:07.000-03:00,false,false,41.666664,50.9,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+746,52.539997,54.01,47.66,54.01,100.0,100.0,2014-02-12T20:17:06.000-03:00,false,false,40.5,52.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+747,53.73,53.899998,46.2,53.899998,100.0,100.0,2014-02-12T20:18:04.000-03:00,false,false,41.0,52.066666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+748,52.24,53.24,45.93,53.24,100.0,100.0,2014-02-12T20:19:01.000-03:00,false,false,43.466667,51.266663,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+749,53.73,54.149998,45.29,54.149998,100.0,100.0,2014-02-12T20:20:00.000-03:00,false,false,43.93333,51.43333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+750,52.079998,53.100002,45.25,53.100002,100.0,100.0,2014-02-12T20:20:58.000-03:00,false,false,43.533333,51.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+751,52.789997,53.399998,44.170002,53.399998,100.0,100.0,2014-02-12T20:21:56.000-03:00,false,false,40.166668,51.766663,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+752,52.929996,55.85,47.11,55.85,100.0,100.0,2014-02-16T15:00:49.000-03:00,false,false,33.966667,62.56667,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+753,54.73,56.15,47.09,56.15,100.0,100.0,2014-02-16T15:12:54.000-03:00,false,false,33.233334,62.466667,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+754,56.71,56.160004,49.43,56.160004,100.0,100.0,2014-02-16T15:21:58.000-03:00,false,false,31.266666,70.63333,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+755,52.09,56.660004,43.17,56.660004,100.0,100.0,2014-02-16T15:31:02.000-03:00,false,false,24.666668,81.666664,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+756,49.829998,58.899998,43.3,58.899998,100.0,100.0,2014-02-16T15:40:06.000-03:00,false,false,12.833333,55.0,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+757,51.29,59.2,39.92,59.2,100.0,100.0,2014-02-16T15:49:11.000-03:00,false,false,30.199999,48.333332,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+758,55.9,58.219997,56.75,58.219997,100.0,100.0,2014-02-16T15:58:14.000-03:00,false,false,24.566668,54.56667,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+759,61.02,54.62,56.79,54.62,100.0,100.0,2014-02-16T16:07:18.000-03:00,false,false,45.033333,66.73333,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+760,70.18,53.74,66.17,53.74,70.0,100.0,2014-02-16T16:16:22.000-03:00,false,false,35.5,61.233337,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+761,67.31,57.410004,79.189995,57.410004,10.0,100.0,2014-02-16T16:25:25.000-03:00,false,false,23.4,55.466663,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+762,54.8,57.17,51.050003,57.17,100.0,100.0,2014-02-16T16:34:02.000-03:00,false,false,41.933334,67.333336,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+763,66.02,56.980003,80.4,56.980003,10.0,100.0,2014-02-16T16:34:28.000-03:00,false,false,41.933334,68.1,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+764,54.51,56.620003,52.48,56.620003,100.0,100.0,2014-02-16T16:43:06.000-03:00,false,false,35.666664,67.23334,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+765,58.26,56.730003,56.15,56.730003,100.0,100.0,2014-02-16T16:43:32.000-03:00,false,false,36.199997,65.8,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+766,59.81,60.26,55.019997,60.26,100.0,100.0,2014-02-16T16:52:36.000-03:00,false,false,36.633335,70.933334,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+767,54.44,59.320004,47.91,59.320004,100.0,100.0,2014-02-16T16:53:10.000-03:00,false,false,33.0,68.96667,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+768,61.479996,59.52,75.96,59.52,30.000002,100.0,2014-02-16T17:01:39.000-03:00,false,false,28.166666,69.23334,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+769,54.63,59.59,50.730003,59.59,100.0,90.0,2014-02-16T17:03:15.000-03:00,false,false,30.433332,64.76667,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+770,63.6,58.609997,84.020004,58.609997,40.0,100.0,2014-02-16T17:10:43.000-03:00,false,false,38.733334,69.63333,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+771,54.4,54.79,54.46,54.79,100.0,100.0,2014-02-16T17:12:20.000-03:00,false,false,37.2,70.4,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+772,66.479996,56.629997,59.579998,56.629997,80.0,100.0,2014-02-16T17:19:47.000-03:00,false,false,28.133333,65.166664,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+773,56.730003,55.35,48.32,55.35,100.0,100.0,2014-02-16T17:21:24.000-03:00,false,false,32.233334,65.3,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+774,63.120003,59.23,70.87,59.23,70.0,100.0,2014-02-16T17:28:51.000-03:00,false,false,26.466667,59.966667,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+775,57.28,60.61,59.09,60.61,100.0,100.0,2014-02-16T17:30:28.000-03:00,false,false,38.9,67.9,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+776,66.1,62.67,59.16,62.67,80.0,100.0,2014-02-16T17:37:54.000-03:00,false,false,23.633333,65.33333,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+777,61.589996,66.39,55.78,66.39,100.0,100.0,2014-02-16T17:39:32.000-03:00,false,false,51.8,78.5,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+778,71.16,67.75,80.34,67.75,20.0,90.0,2014-02-16T17:46:59.000-03:00,false,false,36.5,67.6,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+780,70.79,65.65,74.65,65.65,30.000002,100.0,2014-02-16T17:58:02.000-03:00,false,false,47.933334,82.933334,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+782,70.72,68.82,74.92,68.82,30.000002,100.0,2014-02-16T18:07:04.000-03:00,false,false,35.9,76.066666,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+783,67.02,73.27,84.83,73.27,30.000002,60.000004,2014-02-16T18:09:45.000-03:00,false,false,53.666668,67.46667,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+784,74.65,76.0,95.53,76.0,0.0,100.0,2014-02-16T18:16:10.000-03:00,false,false,41.800003,74.23334,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+785,66.88,75.12,99.08,75.12,10.0,100.0,2014-02-16T18:18:49.000-03:00,false,false,47.06667,79.76667,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+786,68.78,74.1,73.94,74.1,20.0,100.0,2014-02-16T18:25:13.000-03:00,false,false,47.63333,80.03333,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+787,57.18,69.9,58.76,69.9,90.0,100.0,2014-02-16T18:27:54.000-03:00,false,false,54.8,80.53333,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+788,64.33,70.880005,61.78,70.880005,80.0,90.0,2014-02-16T18:34:17.000-03:00,false,false,32.5,72.23333,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+789,52.37,70.61,46.02,70.61,100.0,100.0,2014-02-16T18:36:57.000-03:00,false,false,40.13333,77.200005,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+790,60.91,73.57,55.159996,73.57,100.0,50.0,2014-02-16T18:44:23.000-03:00,false,false,34.933334,68.9,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+791,51.76,74.56,43.03,74.56,100.0,0.0,2014-02-16T18:47:02.000-03:00,false,false,30.333334,59.399998,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+781,63.190002,69.29,66.07,69.29,90.0,30.000002,2014-02-16T17:59:41.000-03:00,true,false,39.7,65.8,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+792,65.28,76.37,64.380005,76.37,60.000004,60.000004,2014-02-16T18:53:28.000-03:00,false,false,29.233334,72.933334,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+793,54.87,73.93,53.84,73.93,100.0,20.0,2014-02-16T18:56:06.000-03:00,false,false,23.5,61.6,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+794,70.520004,75.81,73.869995,75.81,10.0,90.0,2014-02-16T19:02:33.000-03:00,false,false,30.1,73.6,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+795,55.1,74.53,51.899998,74.53,100.0,0.0,2014-02-16T19:05:10.000-03:00,false,false,27.033333,62.06667,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+796,62.18,77.100006,62.129997,77.100006,100.0,70.0,2014-02-16T19:11:39.000-03:00,false,false,24.233334,71.066666,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+797,59.45,80.19,54.27,80.19,100.0,0.0,2014-02-16T19:15:14.000-03:00,false,false,34.63333,64.933334,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+798,66.13,76.380005,58.469997,76.380005,90.0,10.0,2014-02-16T19:20:44.000-03:00,false,false,21.5,64.666664,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+799,69.2,71.04,85.71,71.04,10.0,70.0,2014-02-16T19:29:50.000-03:00,false,false,35.766666,72.833336,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+800,59.469997,60.85,53.329998,60.85,100.0,100.0,2014-02-16T19:38:55.000-03:00,false,false,40.86667,64.3,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+801,59.84,55.449997,60.31,55.449997,100.0,100.0,2014-02-16T19:48:00.000-03:00,false,false,23.466665,47.733334,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+802,60.88,54.22,54.09,54.22,100.0,100.0,2014-02-16T19:57:05.000-03:00,false,false,36.466667,65.23333,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+803,59.039997,55.229996,54.5,55.229996,100.0,100.0,2014-02-16T20:06:10.000-03:00,false,false,36.1,63.300003,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+804,59.640003,54.739998,55.519997,54.739998,100.0,100.0,2014-02-16T20:58:38.000-03:00,false,false,29.666666,52.966667,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+805,58.679996,54.61,36.079998,54.61,100.0,100.0,2014-02-16T21:09:44.000-03:00,false,false,32.333332,54.63333,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+806,55.61,58.859997,52.0,58.859997,100.0,40.0,2014-02-16T21:18:49.000-03:00,false,false,29.1,56.366665,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+808,55.53,60.24,55.760002,60.24,100.0,50.0,2014-02-16T21:29:53.000-03:00,false,false,34.43333,65.76667,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+809,53.06,57.22,49.64,57.22,100.0,100.0,2014-02-16T21:38:57.000-03:00,false,false,34.8,68.53333,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+810,53.69,59.890003,46.44,59.890003,100.0,90.0,2014-02-16T21:40:21.000-03:00,false,false,31.166666,3.1,Installation: macbook air chino,Installation: CABLEVISION S.A.,jose.galindo@ofw.de
+811,56.33,57.98,54.44,57.98,100.0,100.0,2014-02-16T21:48:01.000-03:00,false,false,42.833336,59.666668,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+812,67.079994,63.0,51.84,63.0,80.0,60.000004,2014-02-16T21:49:26.000-03:00,false,false,22.866667,42.86667,Installation: macbook air chino,Installation: CABLEVISION S.A.,jose.galindo@ofw.de
+813,59.069996,63.410004,57.260002,63.410004,100.0,80.0,2014-02-16T21:57:05.000-03:00,false,false,41.100002,57.766663,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+814,61.78,60.55,96.55,60.55,0.0,50.0,2014-02-16T21:58:30.000-03:00,false,false,25.966667,45.0,Installation: macbook air chino,Installation: CABLEVISION S.A.,jose.galindo@ofw.de
+815,56.129997,60.49,55.17,60.49,100.0,100.0,2014-02-16T22:06:09.000-03:00,false,false,44.166668,66.299995,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+816,59.140003,52.469997,61.96,52.469997,80.0,100.0,2014-02-16T22:07:34.000-03:00,false,false,28.233334,45.2,Installation: macbook air chino,Installation: CABLEVISION S.A.,jose.galindo@ofw.de
+817,53.99,60.91,51.72,60.91,100.0,60.000004,2014-02-16T22:15:13.000-03:00,false,false,43.533333,65.100006,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+818,61.71,63.57,41.780003,63.57,100.0,80.0,2014-02-16T22:16:38.000-03:00,false,false,27.133333,45.133335,Installation: macbook air chino,Installation: CABLEVISION S.A.,jose.galindo@ofw.de
+819,54.55,62.83,44.93,62.83,100.0,90.0,2014-02-16T22:26:18.000-03:00,false,false,52.966667,67.03333,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+820,65.84,70.420006,68.46,70.420006,30.000002,0.0,2014-02-16T22:26:42.000-03:00,false,false,25.933334,48.5,Installation: macbook air chino,Installation: CABLEVISION S.A.,jose.galindo@ofw.de
+821,54.04,66.92,49.86,66.92,100.0,100.0,2014-02-16T22:35:22.000-03:00,false,false,58.666664,72.399994,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+822,63.78,64.86,74.24,64.86,60.000004,30.000002,2014-02-16T22:35:47.000-03:00,false,false,27.3,49.6,Installation: macbook air chino,Installation: CABLEVISION S.A.,jose.galindo@ofw.de
+823,58.03,65.63,58.2,65.63,100.0,100.0,2014-02-16T22:44:26.000-03:00,false,false,56.866665,73.66667,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+824,58.28,55.83,25.529999,55.83,100.0,100.0,2014-02-16T22:44:51.000-03:00,false,false,24.133333,43.066666,Installation: macbook air chino,Installation: CABLEVISION S.A.,jose.galindo@ofw.de
+825,57.300003,60.65,48.969997,60.65,100.0,100.0,2014-02-16T22:53:30.000-03:00,false,false,57.7,77.76667,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+826,66.18,54.66,69.78,54.66,30.000002,100.0,2014-02-16T22:53:55.000-03:00,false,false,28.9,50.5,Installation: macbook air chino,Installation: CABLEVISION S.A.,jose.galindo@ofw.de
+827,57.25,58.37,47.350002,58.37,100.0,100.0,2014-02-16T23:02:33.000-03:00,false,false,51.43333,81.833336,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+828,62.97,58.350002,64.15,58.350002,60.000004,100.0,2014-02-16T23:03:00.000-03:00,false,false,32.2,75.9,Installation: macbook air chino,Installation: CABLEVISION S.A.,jose.galindo@ofw.de
+829,56.42,62.92,58.8,62.92,100.0,100.0,2014-02-16T23:11:37.000-03:00,false,false,31.033335,56.9,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+830,59.13,62.72,53.600002,62.72,100.0,90.0,2014-02-16T23:12:04.000-03:00,false,false,32.2,50.9,Installation: macbook air chino,Installation: CABLEVISION S.A.,jose.galindo@ofw.de
+831,64.8,65.86,41.12,65.86,80.0,20.0,2014-02-16T23:21:08.000-03:00,false,false,33.933334,46.133335,Installation: macbook air chino,Installation: CABLEVISION S.A.,jose.galindo@ofw.de
+832,58.600002,62.230003,57.059998,62.230003,100.0,100.0,2014-02-16T23:21:41.000-03:00,false,false,39.7,80.8,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+833,69.73,66.909996,118.04,66.909996,0.0,30.000002,2014-02-16T23:30:12.000-03:00,false,false,31.366667,45.333336,Installation: macbook air chino,Installation: CABLEVISION S.A.,jose.galindo@ofw.de
+834,55.39,60.49,49.93,60.49,100.0,100.0,2014-02-16T23:30:44.000-03:00,false,false,54.366665,83.433334,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+835,73.15,67.63,115.36,67.63,0.0,50.0,2014-02-16T23:39:16.000-03:00,false,false,34.766666,47.2,Installation: macbook air chino,Installation: CABLEVISION S.A.,jose.galindo@ofw.de
+836,53.66,61.3,42.469997,61.3,100.0,100.0,2014-02-16T23:39:48.000-03:00,false,false,53.7,71.100006,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+837,70.71,69.25,99.46,69.25,10.0,0.0,2014-02-16T23:48:20.000-03:00,false,false,30.7,51.8,Installation: macbook air chino,Installation: CABLEVISION S.A.,jose.galindo@ofw.de
+838,56.690002,61.619995,54.11,61.619995,100.0,100.0,2014-02-16T23:48:52.000-03:00,false,false,43.966667,71.5,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+839,57.7,57.08,50.43,57.08,100.0,100.0,2014-02-16T23:57:56.000-03:00,false,false,38.433334,68.73334,Installation: cris,Installation: Prima S.A.,criis.pereyra@gmail.com
+779,65.19,69.92,66.86,69.92,50.0,30.000002,2014-02-16T17:48:37.000-03:00,true,false,43.133335,65.200005,Installation: macbook air chino,Installation: Prima S.A.,jose.galindo@ofw.de
+840,63.17,59.81,77.69,59.81,40.0,100.0,2014-03-05T23:58:07.000-03:00,false,false,8.166666,0.13333333,Installation: KHome,Installation: Prima S.A.,admin@admin.com
+841,55.61,59.710003,57.309998,59.710003,100.0,100.0,2014-03-20T12:16:12.000-03:00,false,false,60.366665,52.466667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+842,56.019997,61.15,57.14,61.15,100.0,100.0,2014-03-20T12:18:10.000-03:00,false,false,63.833332,46.63333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+843,57.120003,60.68,56.370003,60.68,100.0,100.0,2014-03-20T12:20:09.000-03:00,false,false,66.2,47.433334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+844,57.89,59.109997,51.72,59.109997,100.0,90.0,2014-03-20T12:22:09.000-03:00,false,false,64.066666,54.9,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+845,58.39,62.370003,45.699997,62.370003,100.0,100.0,2014-03-20T12:24:06.000-03:00,false,false,66.66667,50.53333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+846,55.71,60.079998,37.42,60.079998,100.0,100.0,2014-03-20T12:26:06.000-03:00,false,false,58.499996,54.63333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+847,56.370003,58.87,33.309998,58.87,100.0,90.0,2014-03-20T12:28:04.000-03:00,false,false,54.766666,52.26667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+848,56.53,59.329998,37.149998,59.329998,100.0,100.0,2014-03-20T12:30:03.000-03:00,false,false,51.43333,53.13333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+849,53.87,57.83,32.38,57.83,100.0,100.0,2014-03-20T12:32:01.000-03:00,false,false,52.966667,53.666668,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+850,53.680004,57.230003,35.24,57.230003,100.0,100.0,2014-03-20T12:34:00.000-03:00,false,false,48.899998,51.566666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+851,56.160004,60.250004,37.05,60.250004,100.0,100.0,2014-03-20T12:35:59.000-03:00,false,false,47.3,48.266666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+852,51.59,55.72,35.15,55.72,100.0,100.0,2014-03-20T12:37:57.000-03:00,false,false,42.433334,41.233334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+853,50.15,54.170002,32.18,54.170002,100.0,100.0,2014-03-20T12:39:56.000-03:00,false,false,38.866665,32.7,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+854,49.43,53.649998,33.86,53.649998,100.0,100.0,2014-03-20T12:41:56.000-03:00,false,false,32.100002,20.900002,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+855,49.6,52.3,29.58,52.3,100.0,100.0,2014-03-20T12:43:56.000-03:00,false,false,28.033335,13.966666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+856,47.22,50.4,30.689999,50.4,100.0,100.0,2014-03-20T12:45:51.000-03:00,false,false,23.833332,7.2999997,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+857,49.9,51.93,37.86,51.93,100.0,100.0,2014-03-20T12:47:51.000-03:00,false,false,28.566668,7.7,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+858,49.39,49.93,37.05,49.93,100.0,100.0,2014-03-20T12:49:50.000-03:00,false,false,25.400002,5.133333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+859,49.81,47.65,32.760002,47.65,100.0,100.0,2014-03-20T12:51:49.000-03:00,false,false,23.333334,5.5333333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+860,54.19,46.53,33.66,46.53,100.0,100.0,2014-03-20T12:53:48.000-03:00,false,false,22.866667,5.4666667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+861,54.77,46.74,30.93,46.74,100.0,100.0,2014-03-20T12:55:44.000-03:00,false,false,20.800001,5.0666666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+862,55.980003,46.96,37.98,46.96,100.0,100.0,2014-03-20T12:57:43.000-03:00,false,false,15.466666,4.7,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+863,58.14,48.859997,38.33,48.859997,100.0,100.0,2014-03-20T12:59:42.000-03:00,false,false,9.666666,3.6666665,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+864,57.39,47.510002,40.99,47.510002,100.0,100.0,2014-03-20T13:00:40.000-03:00,false,false,8.1,3.266667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+865,57.35,47.620003,40.46,47.620003,100.0,100.0,2014-03-20T13:01:39.000-03:00,false,false,5.5,2.6333334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+866,58.8,49.94,40.03,49.94,100.0,100.0,2014-03-20T13:02:38.000-03:00,false,false,4.9,2.6000001,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+867,58.920002,48.559998,44.73,48.559998,100.0,100.0,2014-03-20T13:03:37.000-03:00,false,false,2.7,2.3,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+868,60.3,50.089996,50.910004,50.089996,100.0,100.0,2014-03-20T13:04:35.000-03:00,false,false,1.2333332,1.9666666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+869,58.920002,48.699997,54.55,48.699997,100.0,100.0,2014-03-20T13:05:34.000-03:00,false,false,0.23333332,1.8,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+870,59.73,48.859997,53.399998,48.859997,100.0,100.0,2014-03-20T13:06:33.000-03:00,false,false,0.16666667,1.9333333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+871,60.85,49.44,53.56,49.44,100.0,100.0,2014-03-20T13:07:33.000-03:00,false,false,0.16666667,1.8,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+872,58.899998,48.23,55.549995,48.23,100.0,100.0,2014-03-20T13:08:36.000-03:00,false,false,0.0,2.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+873,60.070004,47.940002,52.51,47.940002,100.0,100.0,2014-03-20T13:10:34.000-03:00,false,false,0.0,20.666666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+874,57.04,51.56,53.359997,51.56,100.0,100.0,2014-03-20T13:11:41.000-03:00,false,false,0.0,8.766666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+875,59.84,47.06,44.74,47.06,100.0,100.0,2014-03-20T13:12:21.000-03:00,false,false,26.066668,31.7,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+876,61.989998,46.8,59.74,46.8,90.0,100.0,2014-03-20T13:13:20.000-03:00,false,false,24.699999,29.266666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+877,55.190002,52.469997,50.950005,52.469997,100.0,100.0,2014-03-20T15:06:21.000-03:00,false,false,16.5,37.033333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+878,55.190002,51.41,51.25,51.41,100.0,100.0,2014-03-20T15:07:19.000-03:00,false,false,16.933334,35.833332,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+879,55.97,51.25,50.5,51.25,100.0,100.0,2014-03-20T15:08:17.000-03:00,false,false,18.033333,34.9,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+880,55.11,52.07,50.760002,52.07,100.0,100.0,2014-03-20T15:09:15.000-03:00,false,false,17.5,34.033333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+881,53.91,51.75,48.04,51.75,100.0,100.0,2014-03-20T15:10:13.000-03:00,false,false,18.199999,33.333336,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+882,54.39,51.78,46.11,51.78,100.0,100.0,2014-03-20T15:11:11.000-03:00,false,false,18.033333,32.5,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+883,53.100002,51.18,46.2,51.18,100.0,100.0,2014-03-20T15:12:10.000-03:00,false,false,16.866667,32.066666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+884,54.29,52.48,45.87,52.48,100.0,100.0,2014-03-20T15:13:09.000-03:00,false,false,17.433334,31.433332,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+885,55.299995,52.62,40.83,52.62,100.0,100.0,2014-03-20T15:14:07.000-03:00,false,false,16.933334,30.933332,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+886,55.82,53.710003,31.85,53.710003,100.0,100.0,2014-03-20T15:15:05.000-03:00,false,false,15.800001,33.6,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+887,56.160004,51.91,30.03,51.91,100.0,100.0,2014-03-20T15:16:03.000-03:00,false,false,15.233334,33.766666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+888,54.64,53.750004,31.68,53.750004,100.0,100.0,2014-03-20T15:17:02.000-03:00,false,false,15.4,34.86667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+889,55.97,51.46,36.079998,51.46,80.0,100.0,2014-03-20T15:18:00.000-03:00,false,false,15.099999,37.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+890,55.35,52.999996,43.2,52.999996,100.0,100.0,2014-03-20T15:18:58.000-03:00,false,false,17.133333,37.266666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+891,56.800003,54.62,46.5,54.62,100.0,100.0,2014-03-20T15:19:57.000-03:00,false,false,17.4,40.56667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+892,58.420002,53.16,47.64,53.16,100.0,100.0,2014-03-20T15:20:55.000-03:00,false,false,16.966667,41.733334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+893,57.96,52.929996,45.789997,52.929996,90.0,100.0,2014-03-20T15:22:53.000-03:00,false,false,17.266666,42.966667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+894,57.89,55.82,43.0,55.82,100.0,100.0,2014-03-20T15:23:51.000-03:00,false,false,16.166666,42.2,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+895,57.11,53.56,47.45,53.56,90.0,100.0,2014-03-20T15:24:49.000-03:00,false,false,16.300001,44.033333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+896,57.94,52.27,51.57,52.27,90.0,100.0,2014-03-20T15:57:32.000-03:00,false,false,16.466667,43.399998,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+897,57.38,53.77,51.81,53.77,100.0,100.0,2014-03-20T15:58:30.000-03:00,false,false,16.599998,44.2,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+898,59.24,53.55,53.570004,53.55,90.0,100.0,2014-03-20T15:59:29.000-03:00,false,false,16.733334,44.566666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+899,58.859997,52.859997,52.039997,52.859997,100.0,100.0,2014-03-20T16:00:27.000-03:00,false,false,17.800001,45.633335,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+900,60.460003,52.249996,56.699997,52.249996,100.0,100.0,2014-03-20T16:01:25.000-03:00,false,false,18.9,46.2,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+901,61.879997,52.05,55.589996,52.05,90.0,100.0,2014-03-20T16:02:23.000-03:00,false,false,21.533333,47.833332,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+902,62.510002,52.609997,68.049995,52.609997,60.000004,100.0,2014-03-20T16:10:25.000-03:00,false,false,31.633333,52.2,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+903,60.66,53.109997,66.82,53.109997,40.0,90.0,2014-03-20T16:19:27.000-03:00,false,false,28.266665,48.3,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+904,55.08,54.65,70.32,54.65,70.0,100.0,2014-03-20T16:28:29.000-03:00,false,false,18.266666,41.3,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+905,44.47,52.789997,31.57,52.789997,100.0,100.0,2014-03-20T16:37:31.000-03:00,false,false,14.1,35.7,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+906,60.84,61.549995,47.13,61.549995,100.0,100.0,2014-03-20T17:10:45.000-03:00,false,false,20.666666,21.033333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+907,65.96,57.050003,55.47,57.050003,100.0,100.0,2014-03-20T17:11:43.000-03:00,false,false,22.2,21.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+908,58.63,55.309998,44.670002,55.309998,100.0,100.0,2014-03-20T17:12:41.000-03:00,false,false,17.533333,40.86667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+909,60.65,60.079998,48.989998,60.079998,100.0,100.0,2014-03-20T17:15:40.000-03:00,false,false,11.5,19.400002,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+910,63.32,57.77,60.64,57.77,90.0,100.0,2014-03-20T17:24:42.000-03:00,false,false,13.6,19.166666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+911,57.82,53.87,54.2,53.87,100.0,100.0,2014-03-20T17:34:45.000-03:00,false,false,13.0,16.966667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+912,55.83,55.269997,48.18,55.269997,100.0,100.0,2014-03-20T17:44:47.000-03:00,false,false,11.533334,11.433333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+913,55.379997,53.079998,48.57,53.079998,100.0,100.0,2014-03-20T17:53:49.000-03:00,false,false,12.266665,9.766666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+914,50.36,58.350002,44.37,58.350002,100.0,100.0,2014-03-20T18:02:52.000-03:00,false,false,13.666667,16.8,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+915,53.420002,62.97,52.670002,62.97,100.0,90.0,2014-03-20T18:11:54.000-03:00,false,false,28.333334,36.966667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+916,58.420002,60.97,54.68,60.97,100.0,90.0,2014-03-20T18:33:02.000-03:00,false,false,27.8,32.566666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+917,61.57,61.57,56.6,61.57,100.0,100.0,2014-03-20T18:37:02.000-03:00,false,false,12.0,15.233334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+918,61.559998,63.730003,55.03,63.730003,100.0,90.0,2014-03-20T18:39:00.000-03:00,false,false,12.3,17.066666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+919,63.7,59.56,57.270004,59.56,90.0,90.0,2014-03-20T18:48:02.000-03:00,false,false,21.166668,17.433334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+920,62.629997,58.26,58.749996,58.26,100.0,70.0,2014-03-20T18:58:05.000-03:00,false,false,13.500001,14.966667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+921,59.579998,58.48,56.590004,58.48,100.0,100.0,2014-03-20T19:08:07.000-03:00,false,false,32.566666,34.2,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+922,55.17,61.29,53.37,61.29,100.0,100.0,2014-03-20T19:17:09.000-03:00,false,false,16.233334,16.599998,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+923,57.620003,65.25,54.280003,65.25,100.0,80.0,2014-03-20T19:26:11.000-03:00,false,false,32.833336,35.866665,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+924,56.379997,63.42,47.29,63.42,100.0,70.0,2014-03-20T19:35:13.000-03:00,false,false,40.4,34.666668,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+925,58.87,59.34,56.86,59.34,100.0,100.0,2014-03-20T19:44:16.000-03:00,false,false,22.400002,14.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+926,52.420002,59.63,43.93,59.63,100.0,100.0,2014-03-20T19:53:18.000-03:00,false,false,11.0,18.099998,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+927,64.12,60.670002,57.36,60.670002,100.0,100.0,2014-03-20T20:29:33.000-03:00,false,false,12.633332,13.333334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+928,62.199997,62.690002,54.100002,62.690002,100.0,100.0,2014-03-20T20:30:31.000-03:00,false,false,12.1,17.5,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+929,60.87,64.0,51.77,64.0,100.0,100.0,2014-03-20T20:31:30.000-03:00,false,false,11.200001,17.800001,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+930,63.36,58.719997,59.77,58.719997,100.0,100.0,2014-03-20T20:32:28.000-03:00,false,false,12.466667,12.9,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+931,69.28,65.25,57.8,65.25,80.0,100.0,2014-03-20T20:42:30.000-03:00,false,false,11.633334,15.800001,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+932,83.32,62.85,85.72,62.85,100.0,100.0,2014-03-20T21:08:40.000-03:00,false,false,99.96667,92.16667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+933,86.54,61.79,86.549995,61.79,100.0,100.0,2014-03-20T21:09:39.000-03:00,false,false,100.0,91.066666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+934,87.91,60.77,89.73,60.77,100.0,100.0,2014-03-20T21:10:37.000-03:00,false,false,100.0,86.666664,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+935,86.31,62.300003,100.5,62.300003,100.0,100.0,2014-03-20T21:15:37.000-03:00,false,false,100.0,87.96667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+936,85.159996,61.129997,107.93001,61.129997,100.0,100.0,2014-03-20T21:24:39.000-03:00,false,false,99.13333,99.066666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+937,75.5,64.47,84.08,64.47,100.0,100.0,2014-03-20T21:33:41.000-03:00,false,false,82.83333,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+938,70.58,60.579998,79.149994,60.579998,20.0,100.0,2014-03-20T21:43:44.000-03:00,false,false,55.533333,49.066666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+939,69.19,62.809998,81.93,62.809998,0.0,100.0,2014-03-20T21:52:46.000-03:00,false,false,48.733334,43.9,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+940,87.86,64.880005,109.31,64.880005,70.0,90.0,2014-03-20T22:43:08.000-03:00,false,false,79.73334,57.266663,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+941,86.43,64.07,111.979996,64.07,80.0,80.0,2014-03-20T22:44:06.000-03:00,false,false,83.63333,61.033333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+942,69.48,59.88,70.340004,59.88,80.0,100.0,2014-03-20T23:02:12.000-03:00,false,false,61.866665,50.800003,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+943,68.43,58.960003,72.78,58.960003,60.000004,100.0,2014-03-20T23:03:10.000-03:00,false,false,58.666664,48.899998,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+944,71.310005,63.03,70.55,63.03,10.0,60.000004,2014-03-21T19:42:27.000-03:00,false,false,31.166666,34.56667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+945,73.71,62.489998,68.82,62.489998,0.0,70.0,2014-03-21T19:43:25.000-03:00,false,false,30.000002,34.13333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+946,69.97,63.03,70.19,63.03,50.0,60.000004,2014-03-21T19:44:23.000-03:00,false,false,29.166666,33.5,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+947,74.43,58.12,81.28,58.12,0.0,100.0,2014-03-21T19:45:21.000-03:00,false,false,34.6,35.066666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+948,76.24,59.02,80.46,59.02,0.0,100.0,2014-03-21T19:46:20.000-03:00,false,false,30.833334,34.233334,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+949,72.53999,63.730003,65.93,63.730003,40.0,40.0,2014-03-21T19:47:18.000-03:00,false,false,24.5,31.7,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+950,71.91,65.19,65.28,65.19,30.000002,60.000004,2014-03-21T19:48:16.000-03:00,false,false,26.333332,32.2,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+951,76.64,59.49,70.53,59.49,40.0,100.0,2014-03-21T19:49:14.000-03:00,false,false,34.56667,34.466667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+952,76.94,60.829998,70.21,60.829998,30.000002,100.0,2014-03-21T19:50:12.000-03:00,false,false,31.966665,33.833332,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+953,71.170006,58.679996,74.479996,58.679996,10.0,100.0,2014-03-21T20:20:25.000-03:00,false,false,24.966665,39.266666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+954,74.33,61.07,82.76,61.07,0.0,100.0,2014-03-21T20:32:29.000-03:00,false,false,36.933334,40.7,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+955,65.33,59.16,57.11,59.16,100.0,100.0,2014-03-21T20:33:28.000-03:00,false,false,14.566668,16.766666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+956,63.04,56.54,61.269997,56.54,90.0,100.0,2014-03-21T20:34:26.000-03:00,false,false,12.433333,15.033333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+957,63.57,58.69,63.309998,58.69,100.0,100.0,2014-03-21T20:35:24.000-03:00,false,false,11.033333,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+958,64.35,56.480003,64.170006,56.480003,90.0,100.0,2014-03-21T20:36:22.000-03:00,false,false,9.633333,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+959,61.53,56.840004,58.399998,56.840004,100.0,100.0,2014-03-21T20:37:20.000-03:00,false,false,8.233334,11.933332,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+960,62.89,58.04,64.18,58.04,100.0,100.0,2014-03-21T20:38:19.000-03:00,false,false,9.733334,11.966667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+961,64.490005,58.789997,65.11,58.789997,90.0,100.0,2014-03-21T20:39:17.000-03:00,false,false,9.866667,11.4,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+962,65.61,58.74,66.869995,58.74,60.000004,100.0,2014-03-21T20:40:15.000-03:00,false,false,10.566667,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+963,63.63,57.93,52.890003,57.93,100.0,100.0,2014-03-21T20:41:13.000-03:00,false,false,7.4,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+964,68.14,58.1,55.67,58.1,90.0,100.0,2014-03-21T20:42:11.000-03:00,false,false,11.666667,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+965,69.1,57.28,53.91,57.28,80.0,100.0,2014-03-21T20:43:09.000-03:00,false,false,11.133333,10.366667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+966,66.939995,56.42,53.399998,56.42,90.0,100.0,2014-03-21T20:44:08.000-03:00,false,false,8.900001,11.4,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+967,70.32,57.120003,57.340004,57.120003,60.000004,100.0,2014-03-21T20:45:06.000-03:00,false,false,11.0,9.533333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+968,69.520004,55.909996,51.72,55.909996,70.0,100.0,2014-03-21T20:46:04.000-03:00,false,false,11.633334,10.8,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+969,74.81,56.989998,58.219997,56.989998,60.000004,100.0,2014-03-21T20:47:02.000-03:00,false,false,11.1,7.9666667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+970,73.95,57.410004,62.71,57.410004,50.0,100.0,2014-03-21T20:48:01.000-03:00,false,false,11.166666,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+971,89.15,56.03,105.31,56.03,100.0,100.0,2014-03-21T22:49:01.000-03:00,false,false,100.0,2.3333333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+972,88.62,53.45,105.270004,53.45,100.0,100.0,2014-03-21T22:49:59.000-03:00,false,false,100.0,2.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+973,87.86,53.3,106.18,53.3,100.0,100.0,2014-03-21T22:50:58.000-03:00,false,false,100.0,1.9333333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+974,89.78001,56.18,102.66,56.18,100.0,100.0,2014-03-21T22:51:56.000-03:00,false,false,100.0,2.0333333,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+975,66.32,52.890003,56.940002,52.890003,100.0,100.0,2014-03-21T22:52:55.000-03:00,false,false,0.0,0.3,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+976,85.59,52.88,101.07,52.88,100.0,100.0,2014-03-21T22:53:52.000-03:00,false,false,83.83333,22.166666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+977,86.52,52.999996,96.48,52.999996,100.0,100.0,2014-03-21T22:54:50.000-03:00,false,false,86.299995,21.366667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+978,68.18,55.559998,66.13,55.559998,70.0,100.0,2014-03-21T22:55:48.000-03:00,false,false,0.0,0.56666666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+979,64.89,55.690002,65.16,55.690002,80.0,100.0,2014-03-21T22:56:46.000-03:00,false,false,0.0,0.36666664,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+980,60.61,60.61,46.219997,60.61,100.0,100.0,2014-03-21T22:57:46.000-03:00,false,false,0.16666667,0.16666667,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+981,61.08,60.88,52.170002,60.88,100.0,100.0,2014-03-21T22:58:46.000-03:00,false,false,0.0,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+982,59.81,59.81,52.09,59.81,100.0,100.0,2014-03-21T22:59:47.000-03:00,false,false,0.0,0.0,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+983,85.479996,57.04,98.5,57.04,100.0,100.0,2014-03-21T23:01:38.000-03:00,false,false,99.76666,2.8999999,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+984,86.93,56.72,104.88,56.72,100.0,100.0,2014-03-21T23:02:36.000-03:00,false,false,99.8,59.166664,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+985,83.36,63.78,102.58,63.78,100.0,100.0,2014-03-21T23:05:35.000-03:00,false,false,99.566666,92.666664,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+986,76.79,59.84,93.57,59.84,70.0,90.0,2014-03-21T23:14:37.000-03:00,false,false,84.433334,22.166666,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+987,61.85,56.910004,59.38,56.910004,90.0,90.0,2014-03-21T23:23:39.000-03:00,false,false,36.633335,0.26666665,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+988,55.309998,57.95,51.03,57.95,100.0,100.0,2014-03-21T23:32:42.000-03:00,false,false,12.866667,0.2,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+989,52.819996,53.23,41.63,53.23,100.0,100.0,2014-03-21T23:41:44.000-03:00,false,false,13.133333,5.2000003,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com
+990,50.71,53.539997,44.59,53.539997,100.0,100.0,2014-03-21T23:52:47.000-03:00,false,false,9.133333,0.1,Installation: ITBA,Installation: Telecom Argentina S.A.,ignalvarez@gmail.com

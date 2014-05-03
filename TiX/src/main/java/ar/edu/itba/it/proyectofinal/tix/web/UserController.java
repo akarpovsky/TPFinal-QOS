@@ -1,5 +1,6 @@
 package ar.edu.itba.it.proyectofinal.tix.web;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -19,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.itba.it.proyectofinal.tix.domain.model.ISP;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.Installation;
+import ar.edu.itba.it.proyectofinal.tix.domain.model.IspBoxplotDisplayer;
+import ar.edu.itba.it.proyectofinal.tix.domain.model.IspHistogramDisplayer;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.Record;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.User;
 import ar.edu.itba.it.proyectofinal.tix.domain.model.UserType;
@@ -84,7 +87,7 @@ public class UserController {
 		return mav;
 
 	}
-	
+
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
@@ -166,7 +169,6 @@ public class UserController {
 		if (records.isEmpty()) {
 			noRecords = true;
 		} else {
-
 			switch (graphtype) {
 			case UPSTREAM_GRAPH:
 				chart = ChartUtils
@@ -179,7 +181,7 @@ public class UserController {
 								"Gráfico del Upstream para "
 										+ reqProfile.getNickname() +
 						((minDate != null && maxDate != null) ? " (" + getFormattedDate(minDate) + " - " + getFormattedDate(maxDate) + ")":""),
-										
+
 								ChartType.UPSTREAM_GRAPH);
 				break;
 			case DOWNSTREAM_GRAPH:
@@ -217,6 +219,8 @@ public class UserController {
 		return mav;
 	}
 
+
+
 	private User getSessionUser(HttpSession session) {
 		Integer userId = (Integer) session.getAttribute("userId");
 		return (userId == null) ? null : userRepo.get(userId);
@@ -236,12 +240,12 @@ public class UserController {
 		}
 
 	}
-	
+
 	public static String getFormattedDate(DateTime date){
-		
+
 		if(date != null)
 			return date.getDayOfMonth() + "/" + date.getMonthOfYear() + "/" + date.getYear();
-		
+
 		return null;
 	}
 
@@ -251,11 +255,11 @@ public class UserController {
 		System.out.println("ENTRO");
 		return null;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView changeCongestionStatus(HttpSession session, @RequestParam(value = "id",required=true) Record r,@RequestParam(value = "type",required=true) String type ) {
-	
+
 		ModelAndView mav = new ModelAndView();
 		User me = getSessionUser(session);
 
@@ -276,10 +280,47 @@ public class UserController {
 			mav.setViewName("error");
 			return mav;
 		}
-		
+
 		r.changeCongestionStatus(type);
 		mav.setView(ControllerUtil.redirectView("/user/dashboard?nickname=" + me.getNickname() + "&graphtype=GENERAL_GRAPH"));
 		return mav;
 
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView userreport( 
+			HttpSession session) {
+		
+		//TODO
+		//poner gráfico de usuario mensual
+		//hacer tablita de medias
+		ModelAndView mav = new ModelAndView();		
+		List<ISP> isps = recordRepo.getISPs();
+		
+		List<String> ispNames = new ArrayList<String>();
+		
+		//TODO 
+		//Nowadays just shows the data from last 6 months
+		 DateTime maxDate = new DateTime();
+		 DateTime minDate = maxDate.minusDays(180);
+		 List<Double> medians = new ArrayList<Double>();
+		 List<List<Double>> medianList = new ArrayList<List<Double>>();
+		 
+		for (ISP isp : isps) {
+				int id = isp.getId();
+				String name = isp.getName();
+				List<Record> records = (List<Record>) recordRepo.getAllForIsp2(id, minDate,maxDate);
+				medians = ChartUtils.generateMedians(records);		
+				ispNames.add(name);
+				System.out.println("hadjhaskjdhakjshdjahs:::::::::::::::" + name);
+				medianList.add(medians);
+		}
+
+		mav.addObject("ispNames", ispNames);
+		mav.addObject("medianList", medianList);
+		
+		return mav;
 	}
 }

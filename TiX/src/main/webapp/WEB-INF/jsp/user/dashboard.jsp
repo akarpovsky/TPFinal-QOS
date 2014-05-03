@@ -34,8 +34,10 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
               	<li><a href="../installation/downloadapp"><i class="icon-plus-sign"></i>Nueva instalaci&oacute;n</a></li>
               	<li><a href="../installation/allinstallations"><i class="icon-pencil"></i>Editar instalaci&oacute;nes</a></li>
 	          <li class="divider"></li>
-           		<li><a href="../account/edit"><i class="icon-cog"></i>Mi cuenta</a></li>
-	          	<li><a href="#">Ayuda</a></li>
+            <li><a href="../account/edit"><i class="icon-cog"></i>Mi cuenta</a></li>
+	          <li><a href="#">Ayuda</a></li>
+            <li><a href="userreport">Reporte de usuario</a></li>
+            <li><a href="#">Exportar CSV</a></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
@@ -73,7 +75,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 			        <div class="row" style="margin: 10 0 20 0;">
 						<div class="text-center">
 							<p>
-								<img src="<c:url value='/img/congestiondown.png'/>"/> Congestion Upstream <img src="<c:url value='/img/congestionup.png'/>"/> Congestion Downstream
+								<img src="<c:url value='/img/congestiondown.png'/>"/> Utilizaci&oacute;n Upstream <img src="<c:url value='/img/congestionup.png'/>"/> Utilizaci&oacute;n Downstream
 							</p>
 								Location: ${currentInstallation.location.translationKey}
 							<p>
@@ -108,20 +110,31 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 					</div>
 
         		</c:otherwise>
-	        </c:choose>	
-		
+	        </c:choose>
+
         </div><!--/span-->
       </div><!--/row-->
-    
+
 	</div>
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
-<script type="text/javascript">                        
+<script type="text/javascript">
             $(function () {
             	 var datos =  ${javaChart.JSONString};
+            	 for (var i=0;i<datos.length;i++){
+            	  	for (var j=0;j<datos[i].data.length;j++){
+            	  		if(datos[i].data[j] == -1){
+            	  			datos[i].data[j] = null;// = null;
+            	  		}else if (datos[i].data[j].y == -1){
+            			 	datos[i].data[j].y = null;
+            			}
+            		}
+            	 }
+
+
                  var fechas = ${javaChart.timestamps};
                  var title = "${javaChart.title}";
-                 var redmarker = ${javaChart.redmarker};
+                 //var redmarker = ${javaChart.redmarker};
                  var subtitle = "${javaChart.subtitle}";
                 for (var i=0;i<fechas.length;i++){
                 	fechas[i] = new Date(fechas[i]);
@@ -132,7 +145,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                         chart: {
                             renderTo: 'graphcontainer',
                           	marginRight: 130,
-                           	marginBottom: 25
+                           	marginBottom: 40
                         },
                         title: {
                             text: title,
@@ -142,15 +155,16 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                             text: subtitle,
                             x: -20
                         },
-                        xAxis: {        
-                            type: 'datetime',
-                            max: 144,
-                            plotBands: redmarker, 
+                        xAxis: {
+                            max: 50,
+                        	type: 'datetime',
+                            //plotBands: redmarker,
                             categories: fechas,
+                            tickInterval: 10,
                             labels: {
-                            	enabled: false,
+                            	enabled: true,
                                 formatter: function() {
-                                    return Highcharts.dateFormat('%d/%m (%H:%M)', this.value);
+                                    return Highcharts.dateFormat('%d/%m <br/>(%H:%Mhs)', this.value);
                                 },
                             },
                         },
@@ -163,7 +177,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                                     width: 1,
                                     color: '#808080'
                                 }],
-                           	min: 0, max: 1    
+                           	min: 0, max: 100
                         },
                          plotOptions: {
                 series: {
@@ -171,11 +185,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                     point: {
                         events: {
                             click: function() {
-                                $.holdReady(true); 
+                                $.holdReady(true);
                                 $.get("./changeCongestionStatus?id=" + this.id + "&type=" + this.type, function() {
 								  $.holdReady(false);
 								});
-                              //  $.sleep(800);    
+                              //  $.sleep(800);
 							//	$(location).attr('href', $(location).attr('href')).delay(2000);
 							var delay = 500; //Your delay in milliseconds
 								setTimeout(function(){ window.location = $(location).attr('href'); }, delay);
@@ -188,7 +202,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                 }
             },
                         tooltip: {
-                           
+
                             shared: true,
                             crosshairs: true
                         },
@@ -207,12 +221,12 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                     });
                 });
             });
-        
+
         </script>
 <script type="text/javascript">
         var nowTemp = new Date();
 var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
- 
+
 var checkin = $('#dpd1').datepicker({
   format: 'dd/mm/yyyy',
   onRender: function(date) {

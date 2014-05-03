@@ -2,7 +2,7 @@ import psycopg2
 import ConfigParser
 
 config = ConfigParser.ConfigParser()
-config.read('tixserver.cfg')
+config.read('/home/pfitba/ServerAppProduction/tixserver.cfg')
 databaseName = config.get("TiXServer", "databaseName")
 databaseHost = config.get("TiXServer", "databaseHost")
 databasePort = config.get("TiXServer", "databasePort")
@@ -35,12 +35,12 @@ class DBManager(object):
 		return self.INSTANCE
 
 	@classmethod
-	def insert_record(cls, downstream,downstreamcongestion,h_rs_down,h_wave_down,timestamp,upstream,upstreamcongestion,h_rs_up,h_wave_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id):
+	def insert_record(cls, calidad_down,utiliz_down,h_rs_down,h_wave_down,timestamp,calidad_up,utiliz_up,h_rs_up,h_wave_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id):
 		DBManagerInst = DBManager.get_instance()
 		conn = DBManagerInst.get_connection()
 		cursor = conn.cursor()
 		try:
-			cursor.execute("""INSERT INTO records(downstream,downstreamcongestion,h_rs_down,h_wave_down,timestamp,upstream,upstreamcongestion,h_rs_up,h_wave_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""", [downstream,downstreamcongestion,h_rs_down,h_wave_down,timestamp,upstream,upstreamcongestion,h_rs_up,h_wave_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id])
+			cursor.execute("""INSERT INTO records(calidad_down,utiliz_down,h_rs_down,h_wave_down,timestamp,calidad_up,utiliz_up,h_rs_up,h_wave_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""", [calidad_down,utiliz_down,h_rs_down,h_wave_down,timestamp,calidad_up,utiliz_up,h_rs_up,h_wave_up,userdowncongestion,userupcongestion,installation_id,isp_id,user_id])
 			cursor.query
 		except Exception, e:
 			cursor.query
@@ -62,10 +62,15 @@ class DBManager(object):
 
 if __name__ == "__main__":
 	# DBManager.insert_record(11100,20,53,'2013-04-14 16:20:12.345678',55,50,"false","false",1,1,1)
-	key = """-----BEGIN PUBLIC KEY-----
-MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDFlr7W90AKh5BDcROE0aPCfJJX
-QfAZvppve3C6Ddb8HsCYthPfEqtu7D7kXVHNJISC79g3Mzz4x9wZvk2RWRYs6v/+
-KH7nn6+HOEqggqNGgaIPr6tysbRSTemuWu7RU0gsRlGUn8nik/fpz6HPK9Gfg0Em
-y5unpkQ9s5kDOCwi7wIDAQAB
------END PUBLIC KEY-----"""
+	key = "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1FZ0NRUUN4MHlHNHp0bDhoMy9oSkNMNEVtZTBtdCtxM3Z4VWJ3LzV6MWFBTTJhWDBFRUpHQ3lsenUxNUwrdUUKZVhQWW8yYWF4dDhCZ0l1MWpMRlgrSnh0OGo5eEFnTUJBQUU9Ci0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
+	key2 = """-----BEGIN RSA PUBLIC KEY-----
+MEgCQQCgNdYXbjBaXkkHqcTUrUKLfVOTIw2IG248G1GBvoT4uHuSfgxrLf09H1DU
+irG0ncvFZVdMworutHgcbWGUfY4HAgMBAAE=
+-----END RSA PUBLIC KEY-----"""
+	key3 = """-----BEGIN RSA PUBLIC KEY-----
+MEgCQQDPy+46xqQe4fCFKEde3rBlQWJPu1YuhYW3xnORrIgsfo6XphuFXBeIyV7I
+vnp1RBrZYnYWV2ml704ONkidCie3AgMBAAE=
+-----END RSA PUBLIC KEY-----"""
+
+
 	print DBManager.getInstallationAndClientId(key)

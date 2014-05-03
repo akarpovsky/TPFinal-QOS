@@ -9,7 +9,7 @@
 <%-- <base href="${fn:substring(url, 0, fn:length(url) - fn:length(uri))}${req.contextPath}/" /> --%>
 
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 
 <link rel="icon" type="image/ico" href="<c:url value='/img/favicon.ico2'/>">
 

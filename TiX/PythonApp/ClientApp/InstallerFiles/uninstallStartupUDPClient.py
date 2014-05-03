@@ -20,7 +20,8 @@ def unInstallingStartup():
         os.system("update-rc.d "+ startupAppCaller + " remove")
     if os_system == "Darwin":
         print "Estoy en MAC"
-        os.system("osascript -e 'tell application \"System Events\" to delete login item \""+startupAppCaller +"\"' ")
+        os.system("launchctl remove com.user.loginscript")
+        os.remove("~/Library/LaunchAgents/com.user.loginscript.plist")
         if os.path.exists(installDirUnix):
             shutil.rmtree(installDirUnix)
     if os_system == "Windows":

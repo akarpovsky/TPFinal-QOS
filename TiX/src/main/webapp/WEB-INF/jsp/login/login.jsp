@@ -38,6 +38,7 @@
 							permite efectuar una medici&oacute;n de la calidad de su acceso a
 							Internet.</p>
 						<a class="btn btn-info btn-large" href="../account/register">Instalar TiX</a>
+
 					</div>
 				</div>
 				<div class="clear"></div>
@@ -110,6 +111,7 @@
 						su PC y/o computadora port&aacute;til aqu&iacute;:  <a
 							class="btn btn-info" href="../account/register">Instalar
 							TiX</a>
+
 					</p>
 				</div>
 			</div>

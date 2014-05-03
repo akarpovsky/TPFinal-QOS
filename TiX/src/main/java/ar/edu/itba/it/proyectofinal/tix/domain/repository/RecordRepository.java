@@ -21,10 +21,16 @@ public interface RecordRepository {
 	
 	public List<? extends Record> getAllForISP(User user, Installation installation, ISP isp, DateTime minDate, DateTime maxDate);
 	
+	public List<? extends Record> getAllForIsp(ISP isp, DateTime minDate, DateTime maxDate);
+	
+	public List<? extends Record> getAllForIsp2(int isp, DateTime minDate, DateTime maxDate);
+
 	public List<ISP> getISPsForInstallation(User user, Installation installation);
 	
 	public Record get(int id);
 
 	public void removeAll(Installation installation);
+
+	public List<ISP> getISPs();
 
 }

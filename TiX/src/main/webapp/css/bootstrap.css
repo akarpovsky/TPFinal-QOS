@@ -6323,3 +6323,14 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+
+.beta-banner{
+	color:white;
+	background-color:#dd9914;
+	text-align:center;
+	border-bottom: 1px solid #FF9900;
+	width:auto;
+	font-size: 12px;
+	height: 18px;
+}
+}

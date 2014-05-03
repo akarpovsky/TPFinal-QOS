@@ -29,5 +29,6 @@
 			</div>
 		</div>
 	</div>
+	<div class="beta-banner">Versi&oacute;n Beta</div>
 </div>
 

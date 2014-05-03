@@ -7,8 +7,18 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="/WEB-INF/jsp/head.jsp"%>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
-
 	<div class="hero-unit" style="z-index: 1; position: relative;">
+		<section id="charts">
+				<div class="page-header">
+					<h2>Gráficos generales</h2>
+				</div>
+				<a class="btn btn-large" href="../login/ispcharts">Ver graficos de utilizaci&oacute;n y congesti&oacute;n</a>
+				<a class="btn btn-large" href="../login/ispcsv">Generar csv de utilizaci&oacute;n y congesti&oacute;n</a>
+		</section>
+
+		<hr/>
+
+
 		<section id="tables">
 			<div class="page-header">
 				<h2>Usuarios del sistema</h2>
@@ -40,6 +50,10 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 				</c:otherwise>
 			</c:choose>
 		</section>
+
+
+
+
 	</div>
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 </body>
