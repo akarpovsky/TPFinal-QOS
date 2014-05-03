@@ -56,18 +56,20 @@ public class ChartUtils {
 		boolean even = (i % 2 == 0) ? true : false;
 		
 		// medians
-		medians.add(0,even ? congestionup_values.get(i / 2)
-				: ((congestionup_values.get((i / 2) - 1) + congestionup_values
-						.get((i / 2) + 1))) / 2);
-		medians.add(1, !even ? congestiondown_values.get(i / 2)
-				: ((congestiondown_values.get((i / 2) - 1) + congestiondown_values
-						.get((i / 2) + 1))) / 2);
-		medians.add(2,!even ? utilizacionup_values.get(i / 2)
-				: ((utilizacionup_values.get((i / 2) - 1) + utilizacionup_values
-						.get((i / 2) + 1))) / 2);
-		medians.add(3,!even ? utilizaciondown_values.get(i / 2)
-				: ((utilizaciondown_values.get((i / 2) - 1) + utilizaciondown_values
-						.get((i / 2) + 1))) / 2);
+		if(congestionup_values.size() != 0){
+			medians.add(0,even ? congestionup_values.get(i / 2)
+					: ((congestionup_values.get((i / 2) - 1) + congestionup_values
+							.get((i / 2) + 1))) / 2);
+			medians.add(1, !even ? congestiondown_values.get(i / 2)
+					: ((congestiondown_values.get((i / 2) - 1) + congestiondown_values
+							.get((i / 2) + 1))) / 2);
+			medians.add(2,!even ? utilizacionup_values.get(i / 2)
+					: ((utilizacionup_values.get((i / 2) - 1) + utilizacionup_values
+							.get((i / 2) + 1))) / 2);
+			medians.add(3,!even ? utilizaciondown_values.get(i / 2)
+					: ((utilizaciondown_values.get((i / 2) - 1) + utilizaciondown_values
+							.get((i / 2) + 1))) / 2);
+		}
 		
 		return medians;
 	}
