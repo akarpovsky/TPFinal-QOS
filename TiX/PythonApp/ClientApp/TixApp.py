@@ -39,6 +39,8 @@ tixBaseUrl = config.get("TiXClient", "tixBaseUrl")
 installDirUnix = config.get("TiXClient", "installDirUnix")
 
 
+installationPath = os.getcwd()
+
 globalUsername = ""
 globalUserId = ""
 globalUserPassword = ""
@@ -47,7 +49,6 @@ globalPlatformName = platform.system()
 globalIsAdmin = False
 
 class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el boton de aceptar
-
   def __init__(self, **kwargs):
         super(LoginScreen, self).__init__(**kwargs)
 
@@ -216,7 +217,7 @@ def execute_installation():
 
                 sys_return = subprocess.call(['gksudo','python ./InstallerFiles/installStartupUDPClient.py']) # Must change python for the executable
         if globalPlatformName == "Darwin":
-                sys_return = os.system("python ./InstallerFiles/installStartupUDPClient.py")
+                sys_return = os.system("%s/installStartupUDPClient" % installationPath)
         return sys_return
 
 def installation_result_popup(installation_return,sys_return):
