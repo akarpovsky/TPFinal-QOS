@@ -15,7 +15,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <spanclass="icon-bar">
 					</span> <span class="icon-bar"></span></a>
 				<a class="brand" href="${pageContext.servletContext.contextPath}/bin/user/home">TiX</a>
-					
+
 
 				<div class="nav-collapse"></div>
 			</div>
@@ -54,7 +54,121 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 				</div>
 		</div>
 	</div>
+	<div class="container-fluid">
+	 <!-- para cada una de las instalaciones tengo que mostrar el gráfico del usuario -->
 
+	 <c:forEach items="${javaChart_list}" var="entry" varStatus="status">
+			<div id="graphcontainer${status.index}"></div>
+	 </c:forEach>
+
+	</div>
 
 </body>
+<c:forEach items="${javaChart_list}" var="entry" varStatus="status">
+	<script type="text/javascript">
+	            $(function () {
+	            	 var datos =  ${entry.JSONString};
+	            	 for (var i=0;i<datos.length;i++){
+	            	  	for (var j=0;j<datos[i].data.length;j++){
+	            	  		if(datos[i].data[j] == -1){
+	            	  			datos[i].data[j] = null;// = null;
+	            	  		}else if (datos[i].data[j].y == -1){
+	            			 	datos[i].data[j].y = null;
+	            			}
+	            		}
+	            	 }
+
+
+	                 var fechas = ${entry.timestamps};
+	                 var title = "${entry.title}";
+	                 //var redmarker = ${javaChart.redmarker};
+	                 var subtitle = "${entry.subtitle}";
+	                for (var i=0;i<fechas.length;i++){
+	                	fechas[i] = new Date(fechas[i]);
+	                }
+	                var chart;
+	                $(document).ready(function() {
+	                    chart = new Highcharts.Chart({
+	                        chart: {
+	                            renderTo: 'graphcontainer${status.index}',
+	                          	marginRight: 130,
+	                           	marginBottom: 40
+	                        },
+	                        title: {
+	                            text: title,
+	                            x: -20 //center
+	                        },
+	                        subtitle: {
+	                            text: subtitle,
+	                            x: -20
+	                        },
+	                        xAxis: {
+	                            max: 50,
+	                        	type: 'datetime',
+	                            //plotBands: redmarker,
+	                            categories: fechas,
+	                            tickInterval: 10,
+	                            labels: {
+	                            	enabled: true,
+	                                formatter: function() {
+	                                    return Highcharts.dateFormat('%d/%m <br/>(%H:%Mhs)', this.value);
+	                                },
+	                            },
+	                        },
+	                        yAxis: {
+	                            title: {
+	                                text: '% de utilizacion'
+	                            },
+	                            plotLines: [{
+	                                    value: 0,
+	                                    width: 1,
+	                                    color: '#808080'
+	                                }],
+	                           	min: 0, max: 100
+	                        },
+	                         plotOptions: {
+	                series: {
+	                    cursor: 'pointer',
+	                    point: {
+	                        events: {
+	                            click: function() {
+	                                $.holdReady(true);
+	                                $.get("./changeCongestionStatus?id=" + this.id + "&type=" + this.type, function() {
+									  $.holdReady(false);
+									});
+	                              //  $.sleep(800);
+								//	$(location).attr('href', $(location).attr('href')).delay(2000);
+								var delay = 500; //Your delay in milliseconds
+									setTimeout(function(){ window.location = $(location).attr('href'); }, delay);
+	                            }
+	                        }
+	                    },
+	                    marker: {
+	                        lineWidth: 1
+	                    }
+	                }
+	            },
+	                        tooltip: {
+
+	                            shared: true,
+	                            crosshairs: true
+	                        },
+	                        legend: {
+	                            layout: 'vertical',
+	                            align: 'right',
+	                            verticalAlign: 'top',
+	                            x: -10,
+	                            y: 100,
+	                            borderWidth: 0
+	                        },
+	                        scrollbar: {
+	                            enabled: true
+	                        },
+	                        series: datos
+	                    });
+	                });
+	            });
+
+	        </script>
+</c:forEach>
 </html>
