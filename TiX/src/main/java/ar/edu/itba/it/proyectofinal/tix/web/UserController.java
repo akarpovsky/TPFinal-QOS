@@ -220,7 +220,6 @@ public class UserController {
 	}
 
 
-
 	private User getSessionUser(HttpSession session) {
 		Integer userId = (Integer) session.getAttribute("userId");
 		return (userId == null) ? null : userRepo.get(userId);
@@ -286,41 +285,72 @@ public class UserController {
 		return mav;
 
 	}
-	
-	
+
+
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView userreport( 
-			HttpSession session) {
-		
+	public ModelAndView userreport(HttpSession session,
+				@RequestParam(value = "nickname", defaultValue = "") String nickname,
+				@RequestParam(value = "graphtype", defaultValue = "GENERAL_GRAPH") ChartType graphtype,
+				@RequestParam(value = "ins", required = false) Installation requiredInstallation,
+				@RequestParam(value = "isp", required = false) ISP requiredISP,
+				@RequestParam(value = "minDate", required = false) DateTime miniDate,
+				@RequestParam(value = "maxDate", required = false) DateTime maxiDate,
+				@RequestParam(value = "test", required = false) String test) {
+
 		//TODO
 		//poner gráfico de usuario mensual
 		//hacer tablita de medias
-		ModelAndView mav = new ModelAndView();		
+		ModelAndView mav = new ModelAndView();
+
 		List<ISP> isps = recordRepo.getISPs();
-		
+
 		List<String> ispNames = new ArrayList<String>();
-		
-		//TODO 
+
+		//TODO
 		//Nowadays just shows the data from last 6 months
 		 DateTime maxDate = new DateTime();
 		 DateTime minDate = maxDate.minusDays(180);
 		 List<Double> medians = new ArrayList<Double>();
 		 List<List<Double>> medianList = new ArrayList<List<Double>>();
-		 
+
 		for (ISP isp : isps) {
 				int id = isp.getId();
 				String name = isp.getName();
 				List<Record> records = (List<Record>) recordRepo.getAllForIsp2(id, minDate,maxDate);
-				medians = ChartUtils.generateMedians(records);		
+				medians = ChartUtils.generateMedians(records);
 				ispNames.add(name);
 				System.out.println("hadjhaskjdhakjshdjahs:::::::::::::::" + name);
 				medianList.add(medians);
 		}
 
+		User reqProfile = userRepo.get(nickname);
+		List<Installation> userInstallations = reqProfile.getInstallations();
+		List<HighChart> javaChart_list = new ArrayList<HighChart>();
+
+		for (Installation install: userInstallations){
+			List<Record> records = (List<Record>) recordRepo.getAll(reqProfile,
+					install, minDate, maxDate);
+
+			HighChart chart = ChartUtils.generateHighChart(records,
+						"Porcentaje de Utilización de Ancho de Banda en "
+						+ install.getName()
+						+ ((requiredISP == null) ? "" : " ["
+						+ requiredISP.getName() + "]"),
+						"Gráfico General para " + reqProfile.getNickname() +
+						((minDate != null && maxDate != null) ? " (" + getFormattedDate(minDate) + " - " + getFormattedDate(maxDate) + ")":""),
+						ChartType.GENERAL_GRAPH);
+
+			javaChart_list.add(chart);
+
+		}
+
+		System.out.println(":::::::::::::::DALE QUE VA:::::::::::::::::: " + javaChart_list);
+
+		mav.addObject("javaChart_list", javaChart_list);
 		mav.addObject("ispNames", ispNames);
 		mav.addObject("medianList", medianList);
-		
+
 		return mav;
 	}
 }

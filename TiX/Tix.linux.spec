@@ -12,7 +12,7 @@ a = Analysis(['%s/TixApp.py' % base_path],
              )
 pyz = PYZ(a.pure)
 exe = EXE(pyz,
-	  Tree(base_path),
+          Tree(base_path),
           a.scripts,
           a.binaries,
           a.zipfiles,

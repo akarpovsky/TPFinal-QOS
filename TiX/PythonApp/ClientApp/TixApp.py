@@ -25,8 +25,6 @@ import subprocess
 import shutil
 import base64
 
-
-
 sys.path.append('./InstallerFiles/')
 
 Config.set('graphics', 'width', '600')

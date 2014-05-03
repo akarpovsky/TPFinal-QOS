@@ -17,7 +17,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 </head>
 <body>
-	<h2>El archivo cvs fue generado correctamente</h2>
+	<h2>El archivo csv fue generado correctamente</h2>
 	
 </body>
 
