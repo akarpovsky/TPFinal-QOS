@@ -56,7 +56,7 @@ public class ChartUtils {
 		boolean even = (i % 2 == 0) ? true : false;
 		
 		// medians
-		if(congestionup_values.size() != 0){
+		if(congestionup_values.size() != 0 || congestiondown_values.size() != 0 || utilizacionup_values.size() != 0 || utilizaciondown_values.size() != 0 ){
 			medians.add(0,even ? congestionup_values.get(i / 2)
 					: ((congestionup_values.get((i / 2) - 1) + congestionup_values
 							.get((i / 2) + 1))) / 2);
