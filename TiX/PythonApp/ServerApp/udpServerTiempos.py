@@ -182,7 +182,6 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                 logger.info("La instalacion " + client_server_folder + " tiene 1h de datos. Empezando procesamiento ...")
 
                 # print "Starting calculation for the following files:"
-                logger.info("get_files_by_mdate")
                 files_to_process = get_files_by_mdate(client_records_server_folder)
 
                 # print files_to_process
@@ -190,12 +189,11 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                 if len(files_to_process) < 60:
                   logger.error("Error al procesar los archivos de " + client_server_folder)
                 else:
-                  logger.info("os_getcwd")
                   cwd = os.getcwd()
                   os.chdir('/home/pfitba/ServerAppProduction/data_processing')
                   ansDictionary = completo_III.analyse_data(files_to_process)
                   os.chdir(cwd)
-                  #logger.debug("AndsDictionary: " + ansDictionary)
+
                   # Remove 10 oldest logs        
                   for count in range(0,9):
                     if os.path.isfile(files_to_process[count]) == True:
@@ -205,19 +203,18 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                     logger.debug("ISP NAME = " + new_isp_name)
                   except Exception, e:
                     new_isp_name = 'Unknown'
+                    logger.debug("ISP not found for IP: " + str(client_ip))
                   payload = {'isp_name': str(new_isp_name)}
                   headers = {'content-type': 'application/json'}
 
-                  #r = requests.post(tixBaseUrl + 'bin/api/newISPPost', data=json.dumps(payload), headers=headers)
-                  
-                  r = None
+                  r = requests.post(tixBaseUrl + 'bin/api/newISPPost', data=json.dumps(payload), headers=headers)
+
                   jsonUserData = []
                   
                   try:
                           jsonUserData = json.loads(r.text) # Parseo la respuesta JSON de la API de TiX
                   except Exception, e:
                           isp_id = 0
-                  logger.debug("SEGUI COMO CAMION SIN FRENO")
 
                   if(r is not None and len(jsonUserData) > 0):
                           isp_id = jsonUserData['id']
@@ -225,8 +222,12 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                           logger.error("No se ha podido insertar el nuevo ISP en la DB, se utilizara default (" + client_server_folder + ")")
                           isp_id = 0
 
-                  dbmanager.DBManager.insert_record(ansDictionary['calidad_Down'],ansDictionary['utiliz_Down'],ansDictionary['H_RS_Down'],ansDictionary['H_Wave_Down'],time.strftime('%Y-%m-%d %H:%M:%S'),ansDictionary['calidad_Up'],ansDictionary['utiliz_Up'],ansDictionary['H_RS_Up'],ansDictionary['H_Wave_Up'],False,False,installation_id,isp_id,client_id)
-                  logger.debug("Insertado nuevo record")
+                  logger.debug("Intentando insertar nuevo record en la DB de la carpeta: " +  client_records_server_folder)
+                  try:
+                          dbmanager.DBManager.insert_record(ansDictionary['calidad_Down'],ansDictionary['utiliz_Down'],ansDictionary['H_RS_Down'],ansDictionary['H_Wave_Down'],time.strftime('%Y-%m-%d %H:%M:%S'),ansDictionary['calidad_Up'],ansDictionary['utiliz_Up'],ansDictionary['H_RS_Up'],ansDictionary['H_Wave_Up'],False,False,installation_id,isp_id,client_id)
+                  except Exception, e:
+                          logger.error("Error al insertar nuevo record en la DB de la carpeta: " + client_records_server_folder)        
+                          logger.error(e)
 
 class ThreadingUDPServer(SocketServer.ThreadingMixIn, SocketServer.UDPServer):
     pass
