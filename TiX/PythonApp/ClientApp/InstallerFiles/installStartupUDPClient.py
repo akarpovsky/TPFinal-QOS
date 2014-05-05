@@ -17,7 +17,7 @@ import shutil,errno,os,stat,platform,sys,getopt,subprocess,inspect, ConfigParser
 startupAppCaller = "startupAppCaller.sh" #This app will call on startup to the UDP Client app
 installDirUnix = "/etc/TIX"
 installDirUnixApp = installDirUnix + '/app'
-udpClientFile = "TixClientApp"
+udpClientFile = "TixClientApp.py"
 udpClientFileCFG = "udpclienttiempos.cfg"
 installDirUnixAppExecutable = installDirUnixApp + '/' + udpClientFile
 
