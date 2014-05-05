@@ -26,7 +26,6 @@ def findpaisxip(octeto):
 
     sql = 'SELECT * FROM afrinic where afrinic.ip_afrinic regexp "^' + octeto + '\\." UNION SELECT * FROM apnic WHERE apnic.ip_apnic regexp "^' + octeto + '\\." UNION SELECT * FROM arin WHERE arin.ip_arin regexp "^' + octeto + '\\." UNION SELECT * FROM lacnic WHERE lacnic.ip_lacnic regexp "^' + octeto + '\\." UNION SELECT * FROM ripe WHERE ripe.ip_ripe regexp "^' + octeto + '\\.";'
 
-    #print sql
     cursor.execute(sql)
     resultado=cursor.fetchall()
     cursor.close()
