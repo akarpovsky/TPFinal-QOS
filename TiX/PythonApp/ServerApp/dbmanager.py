@@ -2,7 +2,7 @@ import psycopg2
 import ConfigParser
 
 config = ConfigParser.ConfigParser()
-config.read('/home/pfitba/ServerAppProduction/tixserver.cfg')
+config.read('/home/pfitba/ServerAppProduction/tixserver-deploy.cfg')
 databaseName = config.get("TiXServer", "databaseName")
 databaseHost = config.get("TiXServer", "databaseHost")
 databasePort = config.get("TiXServer", "databasePort")

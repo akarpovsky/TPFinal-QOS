@@ -121,6 +121,10 @@ public class ApiController {
 		String ispName = body.get("isp_name");
 		System.out.println(ispName);
 		JSONObject o = new JSONObject();
+		if(ispName == null){ // Unknown ISP or malformed JSon
+			ispName = "Unknown";
+		}
+		
 		ISP isp = ispRepo.get(ispName);
 		if(isp == null){ // ISP not found, add new ISP
 			try {
@@ -128,10 +132,9 @@ public class ApiController {
 			} catch (ISPExistsException e) {
 			}
 		}
-		
 		ISP newISP = ispRepo.get(ispName);
 		try {
-			o.put("id", newISP.getId());
+				o.put("id", newISP.getId());
 		} catch (JSONException e) {
 		}
 		return o.toString();
