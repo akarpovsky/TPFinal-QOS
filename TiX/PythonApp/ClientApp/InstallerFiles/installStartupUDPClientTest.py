@@ -60,7 +60,7 @@ class TestInstallStartupUdpClientCopyFiles(unittest.TestCase):
 @patch("installStartupUDPClient.cp_rf")
 @patch("installStartupUDPClient.generateKeyPair")
 @patch("installStartupUDPClient.os")
-class TestInstallStartupUdpClientDarwin(unittest.TestCase):
+class TestInstallScriptDarwin(unittest.TestCase):
     # Mute the bothering output of the scripts
     def setUp(self):
       import sys
@@ -84,7 +84,7 @@ class TestInstallStartupUdpClientDarwin(unittest.TestCase):
 @patch("installStartupUDPClient.cp_rf")
 @patch("installStartupUDPClient.generateKeyPair")
 @patch("installStartupUDPClient.os")
-class TestInstallStartupUdpClientLinux(unittest.TestCase):
+class TestInstallScriptLinux(unittest.TestCase):
     # Mute the bothering output of the scripts
     def setUp(self):
       import sys
