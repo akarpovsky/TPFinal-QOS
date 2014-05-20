@@ -78,7 +78,6 @@ def installingStartup():
         print "Instalacion Finalizada!"
     if os_system == "Darwin":
         print "Estoy en MAC"
-        #opyanything("./udpClientFileTiempos.py","/Applications/udpClientFileTiempos.py")
         print "Creando Directorios..."
         if not os.path.exists("/etc/TIX"):
             os.makedirs("/etc/TIX")
@@ -89,18 +88,27 @@ def installingStartup():
         generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')    
         
         print "Copiando el ejecutable..."
+
+        # Copy udpClientFile and make executable
         script_st = os.stat('./InstallerFiles/toBeCopied/' + udpClientFile)
-        os.chmod('./InstallerFiles/toBeCopied/' + udpClientFile, script_st.st_mode | stat.S_IEXEC)
-        copyanything("./InstallerFiles/toBeCopied/" + udpClientFile,installDirUnixApp + '/' + udpClientFile)
+        os.chmod(           './InstallerFiles/toBeCopied/' + udpClientFile, script_st.st_mode | stat.S_IEXEC)
+        copyanything(       './InstallerFiles/toBeCopied/' + udpClientFile,installDirUnixApp + '/' + udpClientFile)
+
+        # Copy udpClientFile configuration
         copyanything("./InstallerFiles/toBeCopied/" + udpClientFileCFG,installDirUnixApp + '/' + udpClientFileCFG)
+
+        # Copy startupAppCaller
         st = os.stat('./InstallerFiles/toBeCopied/' + startupAppCaller)
-        os.chmod('./InstallerFiles/toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
-        copyanything("./InstallerFiles/toBeCopied/" + startupAppCaller,installDirUnixApp + '/' + startupAppCaller)
+        os.chmod(    './InstallerFiles/toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
+        copyanything('./InstallerFiles/toBeCopied/' + startupAppCaller,installDirUnixApp + '/' + startupAppCaller)
 
         print "Instalando cliente TIX en el arranque..."
-        os.system("sudo chown root ./InstallerFiles/toBeCopied/com.user.loginscript.plist")
-        copyanything("./InstallerFiles/toBeCopied/com.user.loginscript.plist", os.getenv("HOME") + "/Library/LaunchAgents/com.user.loginscript.plist")
-        sys_return = os.system("sudo launchctl load ./InstallerFiles/toBeCopied/com.user.loginscript.plist")
+
+        # Run loginscript
+        os.system(                 'sudo chown root ./InstallerFiles/toBeCopied/com.user.loginscript.plist')
+        copyanything(                              './InstallerFiles/toBeCopied/com.user.loginscript.plist', os.getenv("HOME") + '/Library/LaunchAgents/com.user.loginscript.plist')
+
+        sys_return = os.system('sudo launchctl load ./InstallerFiles/toBeCopied/com.user.loginscript.plist')
 
         #os.system("launchctl start com.user.loginscript")
         #os.system("osascript -e 'tell application \"System Events\" to make login item at end with properties {path:\""+installDirUnixApp + '/' + startupAppCaller +"\", hidden:false}'")

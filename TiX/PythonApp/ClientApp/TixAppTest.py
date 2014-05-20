@@ -82,6 +82,8 @@ class TestSequenceFunctions(unittest.TestCase):
 
     ### Removal
 
+    ### On Darwin
+
     # Expect the installer remove the loginscript in the launchctl
     def test_removes_userscript_on_delete_existing_installation(self):
         import os
@@ -108,7 +110,7 @@ class TestSequenceFunctions(unittest.TestCase):
           TixApp.deleteExistingInstallation(TixApp)
           fn.assert_called_with("~/Library/LaunchAgents/com.user.loginscript.plist")
 
-    # Expect the installer remove all the files in the folder /etc/TIX/
+    # Expect the installer to remove all the files in the folder /etc/TIX/
     @patch("os.path.exists", ** { 'return_value' : True })
     @patch("os.system", ** { 'return_value' : True })
     def test_removes_data_on_delete_existing_installation(self, _, __):
