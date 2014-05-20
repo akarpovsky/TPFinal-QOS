@@ -16,6 +16,8 @@ installDirUnixAppExecutable = installDirUnixApp + '/' + udpClientFile
 darwinLaunchFile = 'com.user.loginscript.plist'
 darwinLaunchScriptsFolder = 'Library/LaunchAgents'
 
+initPath = "/etc/init.d"
+
 def generateKeyPair(privateKeyFile, publicKeyFile):
     (pubkey, privkey) = rsa.newkeys(512)
     exportableKeys = []
@@ -48,6 +50,9 @@ def chmod_x(file):
 def src_path(file):
   return toCopyPath + "/" + file
 
+def init_path(file):
+  return initPath + "/" + file
+
 def dest_path(file):
   return installDirUnixApp + "/" + file
 
@@ -74,7 +79,12 @@ def darwin_install_client():
   sys_return = os.system('sudo launchctl load %s' % src_path(darwinLaunchFile))
 
 def linux_install_client():
-  pass;
+  chmod_x(src_path(startupAppCaller))
+  cp_rf(src_path(startupAppCaller),init_path(startupAppCaller))
+
+  # TODO: Test this ones
+  os.system("update-rc.d " + startupAppCaller + " defaults")
+  os.spawnl(os.P_NOWAIT, "sudo /etc/TIX/app/TixClientApp log")
 
 def installingStartup():
     os_system = platform.system()
@@ -99,15 +109,10 @@ def installingStartup():
           darwin_install_client()
         else:
           linux_install_client()
-          # st = os.stat('./InstallerFiles/toBeCopied/' + startupAppCaller)
-          # os.chmod('./InstallerFiles/toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
-          # cp_rf("./InstallerFiles/toBeCopied/" + startupAppCaller,"/etc/init.d/" + startupAppCaller)
-          # os.system("update-rc.d " + startupAppCaller + " defaults")
-          # os.spawnl(os.P_NOWAIT, "sudo /etc/TIX/app/TixClientApp log")
-
 
         installation_ok = True
     if os_system == "Windows":
+        # TODO: Windows setup
         os_type = platform.release();
         if os_type == "XP":
             print "Estoy en Windows XP"
