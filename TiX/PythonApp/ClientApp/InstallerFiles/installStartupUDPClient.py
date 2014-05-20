@@ -19,6 +19,7 @@ installDirUnix = "/etc/TIX"
 installDirUnixApp = installDirUnix + '/app'
 udpClientFile = "TixClientApp.py"
 udpClientFileCFG = "udpclienttiempos.cfg"
+toCopyPath = './InstallerFiles/toBeCopied'
 installDirUnixAppExecutable = installDirUnixApp + '/' + udpClientFile
 
 def generateKeyPair(privateKeyFile, publicKeyFile):
@@ -36,13 +37,26 @@ def generateKeyPair(privateKeyFile, publicKeyFile):
 
     return exportableKeys[1]
 
-def copyanything(src, dst):
+# Copy recursively files
+def cp_rf(src, dst):
     try:
         shutil.copytree(src, dst)
     except OSError as exc: # python >2.5
         if exc.errno == errno.ENOTDIR:
             shutil.copy(src, dst)
         else: raise
+
+# Change permissions to execute on a given file
+def chmod_x(file):
+    script_st = os.stat(file)
+    os.chmod(file, script_st.st_mode | stat.S_IEXEC)
+
+def src_path(file):
+  return toCopyPath + "/" + file
+
+def dest_path(file):
+  return installDirUnixApp + "/" + file
+
 
 def installingStartup():
     os_system = platform.system()
@@ -59,19 +73,24 @@ def installingStartup():
         print "Creando par de claves publica y privada para la instalacion.."
         generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')
 
-        print "Copiando el ejecutable..."
-        script_st = os.stat('./InstallerFiles/toBeCopied/' + udpClientFile)
-        os.chmod('./InstallerFiles/toBeCopied/' + udpClientFile, script_st.st_mode | stat.S_IEXEC)
-        copyanything("./InstallerFiles/toBeCopied/" + udpClientFile,installDirUnixApp + '/' + udpClientFile)
-        copyanything("./InstallerFiles/toBeCopied/" + udpClientFileCFG,installDirUnixApp + '/' + udpClientFileCFG)
-        st = os.stat('./InstallerFiles/toBeCopied/' + startupAppCaller)
-        os.chmod('./InstallerFiles/toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
-        copyanything("./InstallerFiles/toBeCopied/" + startupAppCaller,installDirUnixApp + '/' + startupAppCaller)
+        # Copy udpClientFile and make executable
+
+        chmod_x(src_path(udpClientFile))
+        cp_rf(src_path(udpClientFile),dest_path(udpClientFile))
+
+        # Copy udpClientFile configuration
+
+        cp_rf(src_path(udpClientFileCFG),dest_path(udpClientFileCFG))
+
+        # Copy startupAppCaller and make executable
+
+        chmod_x(src_path(startupAppCaller))
+        cp_rf(src_path(startupAppCaller),dest_path(startupAppCaller))
 
         print "Instalando aplicacion en arranque..."
         st = os.stat('./InstallerFiles/toBeCopied/' + startupAppCaller)
         os.chmod('./InstallerFiles/toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
-        copyanything("./InstallerFiles/toBeCopied/" + startupAppCaller,"/etc/init.d/" + startupAppCaller)
+        cp_rf("./InstallerFiles/toBeCopied/" + startupAppCaller,"/etc/init.d/" + startupAppCaller)
         os.system("update-rc.d " + startupAppCaller + " defaults")
         os.spawnl(os.P_NOWAIT, "sudo /etc/TIX/app/TixClientApp log")
         installation_ok = True
@@ -90,23 +109,24 @@ def installingStartup():
         print "Copiando el ejecutable..."
 
         # Copy udpClientFile and make executable
-        script_st = os.stat('./InstallerFiles/toBeCopied/' + udpClientFile)
-        os.chmod(           './InstallerFiles/toBeCopied/' + udpClientFile, script_st.st_mode | stat.S_IEXEC)
-        copyanything(       './InstallerFiles/toBeCopied/' + udpClientFile,installDirUnixApp + '/' + udpClientFile)
+
+        chmod_x(src_path(udpClientFile))
+        cp_rf(src_path(udpClientFile),dest_path(udpClientFile))
 
         # Copy udpClientFile configuration
-        copyanything("./InstallerFiles/toBeCopied/" + udpClientFileCFG,installDirUnixApp + '/' + udpClientFileCFG)
 
-        # Copy startupAppCaller
-        st = os.stat('./InstallerFiles/toBeCopied/' + startupAppCaller)
-        os.chmod(    './InstallerFiles/toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
-        copyanything('./InstallerFiles/toBeCopied/' + startupAppCaller,installDirUnixApp + '/' + startupAppCaller)
+        cp_rf(src_path(udpClientFileCFG),dest_path(udpClientFileCFG))
+
+        # Copy startupAppCaller and make executable
+
+        chmod_x(src_path(startupAppCaller))
+        cp_rf(src_path(startupAppCaller),dest_path(startupAppCaller))
 
         print "Instalando cliente TIX en el arranque..."
 
         # Run loginscript
         os.system(                 'sudo chown root ./InstallerFiles/toBeCopied/com.user.loginscript.plist')
-        copyanything(                              './InstallerFiles/toBeCopied/com.user.loginscript.plist', os.getenv("HOME") + '/Library/LaunchAgents/com.user.loginscript.plist')
+        cp_rf(                              './InstallerFiles/toBeCopied/com.user.loginscript.plist', os.getenv("HOME") + '/Library/LaunchAgents/com.user.loginscript.plist')
 
         sys_return = os.system('sudo launchctl load ./InstallerFiles/toBeCopied/com.user.loginscript.plist')
 

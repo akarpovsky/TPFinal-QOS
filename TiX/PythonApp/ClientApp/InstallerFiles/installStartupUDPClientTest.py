@@ -7,7 +7,7 @@ from mock import patch, MagicMock, Mock, call
 from ludibrio import Dummy
 
 @patch("platform.system", ** { 'return_value' : "Darwin" })
-@patch("installStartupUDPClient.copyanything")
+@patch("installStartupUDPClient.cp_rf")
 @patch("installStartupUDPClient.generateKeyPair")
 @patch("installStartupUDPClient.os")
 class TestInstallStartupUdpClientDarwin(unittest.TestCase):
@@ -17,7 +17,7 @@ class TestInstallStartupUdpClientDarwin(unittest.TestCase):
       class NullDevice():
             def write(self, s):
                 pass
-      sys.stdout = NullDevice()
+      # sys.stdout = NullDevice()
 
     ### DARWIN
     # It should return directly if there is an installation
@@ -68,7 +68,7 @@ class TestInstallStartupUdpClientDarwin(unittest.TestCase):
 
 
 @patch("platform.system", ** { 'return_value' : "Linux" })
-@patch("installStartupUDPClient.copyanything")
+@patch("installStartupUDPClient.cp_rf")
 @patch("installStartupUDPClient.generateKeyPair")
 @patch("installStartupUDPClient.os")
 class TestInstallStartupUdpClientLinux(unittest.TestCase):
@@ -124,7 +124,7 @@ class TestInstallStartupUdpClientLinux(unittest.TestCase):
       installer.installingStartup()
 
       # assert copy.mock_calls[3] == call("./InstallerFiles/toBeCopied/" + installer.startupAppCaller, \
-                                     # "/etc/TIX" + "/" + installer.startupAppCaller)
+      #                                "/etc/TIX" + "/" + installer.startupAppCaller)
 
 
 
