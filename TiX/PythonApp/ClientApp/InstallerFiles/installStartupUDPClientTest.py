@@ -17,7 +17,7 @@ class TestInstallStartupUdpClientDarwin(unittest.TestCase):
       class NullDevice():
             def write(self, s):
                 pass
-      # sys.stdout = NullDevice()
+      sys.stdout = NullDevice()
 
     ### DARWIN
     # It should return directly if there is an installation
@@ -61,6 +61,8 @@ class TestInstallStartupUdpClientDarwin(unittest.TestCase):
       mock_os.path.exists.return_value = False
 
       installer.installingStartup()
+
+      print copy.mock_calls[3]
 
       assert copy.mock_calls[3] == call("./InstallerFiles/toBeCopied/com.user.loginscript.plist", \
                                      mock_os.getenv("HOME") + "/Library/LaunchAgents/com.user.loginscript.plist")

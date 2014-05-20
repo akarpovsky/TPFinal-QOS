@@ -2,25 +2,19 @@
 
 import shutil,errno,os,stat,platform,sys,getopt,subprocess,inspect, ConfigParser, rsa
 
-# currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-# parentdir = os.path.dirname(currentdir)
-# sys.path.insert(0,parentdir) 
+startupAppCaller = "startupAppCaller.sh"
 
-# import keygeneration
-
-# Tomo data del archivo de configuracion
-#config = ConfigParser.ConfigParser()
-#config.read('installclient.cfg')
-#startupAppCaller = config.get("tixclient", "startupAppCaller")
-#installDirUnix = config.get("tixclient", "installDirUnix")
-
-startupAppCaller = "startupAppCaller.sh" #This app will call on startup to the UDP Client app
 installDirUnix = "/etc/TIX"
 installDirUnixApp = installDirUnix + '/app'
+
 udpClientFile = "TixClientApp.py"
 udpClientFileCFG = "udpclienttiempos.cfg"
+
 toCopyPath = './InstallerFiles/toBeCopied'
 installDirUnixAppExecutable = installDirUnixApp + '/' + udpClientFile
+
+darwinLaunchFile = 'com.user.loginscript.plist'
+darwinLaunchScriptsFolder = 'Library/LaunchAgents'
 
 def generateKeyPair(privateKeyFile, publicKeyFile):
     (pubkey, privkey) = rsa.newkeys(512)
@@ -57,82 +51,61 @@ def src_path(file):
 def dest_path(file):
   return installDirUnixApp + "/" + file
 
+def darwin_launch_path(file):
+  return os.getenv("HOME") + ("/" + darwinLaunchScriptsFolder + "/" + file)
+
+
+def unix_common_files_copy():
+  # Copy udpClientFile and make executable
+  chmod_x(src_path(udpClientFile))
+  cp_rf(src_path(udpClientFile),dest_path(udpClientFile))
+
+  # Copy udpClientFile configuration
+  cp_rf(src_path(udpClientFileCFG),dest_path(udpClientFileCFG))
+
+  # Copy startupAppCaller and make executable
+  chmod_x(src_path(startupAppCaller))
+  cp_rf(src_path(startupAppCaller),dest_path(startupAppCaller))
+
+def darwin_install_client():
+  # Set as root, copy to launchers, and tell osx we're inside
+  os.system('sudo chown root %s' % src_path(darwinLaunchFile))
+  cp_rf('%s' % src_path(darwinLaunchFile), darwin_launch_path(darwinLaunchFile))
+  sys_return = os.system('sudo launchctl load %s' % src_path(darwinLaunchFile))
+
+def linux_install_client():
+  pass;
 
 def installingStartup():
     os_system = platform.system()
     installation_ok = False
     print os_system
-    if os_system == "Linux":
+    if os_system == "Linux" or os_system == "Darwin":
         print "Creando Directorios..."
         if not os.path.exists(installDirUnix):
             os.makedirs(installDirUnix)
             os.makedirs(installDirUnixApp)
         else: # No deberia existir el directorio TiX si es una instalacion nueva; esto ya se valida en TixApp
-            return False   
-        print "Instalando cliente TIX..."
-        print "Creando par de claves publica y privada para la instalacion.."
-        generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')
-
-        # Copy udpClientFile and make executable
-
-        chmod_x(src_path(udpClientFile))
-        cp_rf(src_path(udpClientFile),dest_path(udpClientFile))
-
-        # Copy udpClientFile configuration
-
-        cp_rf(src_path(udpClientFileCFG),dest_path(udpClientFileCFG))
-
-        # Copy startupAppCaller and make executable
-
-        chmod_x(src_path(startupAppCaller))
-        cp_rf(src_path(startupAppCaller),dest_path(startupAppCaller))
-
-        print "Instalando aplicacion en arranque..."
-        st = os.stat('./InstallerFiles/toBeCopied/' + startupAppCaller)
-        os.chmod('./InstallerFiles/toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
-        cp_rf("./InstallerFiles/toBeCopied/" + startupAppCaller,"/etc/init.d/" + startupAppCaller)
-        os.system("update-rc.d " + startupAppCaller + " defaults")
-        os.spawnl(os.P_NOWAIT, "sudo /etc/TIX/app/TixClientApp log")
-        installation_ok = True
-        print "Instalacion Finalizada!"
-    if os_system == "Darwin":
-        print "Estoy en MAC"
-        print "Creando Directorios..."
-        if not os.path.exists("/etc/TIX"):
-            os.makedirs("/etc/TIX")
-            os.makedirs(installDirUnixApp)
-        else: # No deberia existir el directorio TiX si es una instalacion nueva; esto ya se valida en TixApp
             return False
+
         print "Creando par de claves publica y privada para la instalacion.."
         generateKeyPair(installDirUnix+'/tix_key.priv',installDirUnix+'/tix_key.pub')    
         
         print "Copiando el ejecutable..."
-
-        # Copy udpClientFile and make executable
-
-        chmod_x(src_path(udpClientFile))
-        cp_rf(src_path(udpClientFile),dest_path(udpClientFile))
-
-        # Copy udpClientFile configuration
-
-        cp_rf(src_path(udpClientFileCFG),dest_path(udpClientFileCFG))
-
-        # Copy startupAppCaller and make executable
-
-        chmod_x(src_path(startupAppCaller))
-        cp_rf(src_path(startupAppCaller),dest_path(startupAppCaller))
+        unix_common_files_copy()
 
         print "Instalando cliente TIX en el arranque..."
+        if os_system == "Darwin":
+          darwin_install_client()
+        else:
+          linux_install_client()
+          # st = os.stat('./InstallerFiles/toBeCopied/' + startupAppCaller)
+          # os.chmod('./InstallerFiles/toBeCopied/' + startupAppCaller, st.st_mode | stat.S_IEXEC)
+          # cp_rf("./InstallerFiles/toBeCopied/" + startupAppCaller,"/etc/init.d/" + startupAppCaller)
+          # os.system("update-rc.d " + startupAppCaller + " defaults")
+          # os.spawnl(os.P_NOWAIT, "sudo /etc/TIX/app/TixClientApp log")
 
-        # Run loginscript
-        os.system(                 'sudo chown root ./InstallerFiles/toBeCopied/com.user.loginscript.plist')
-        cp_rf(                              './InstallerFiles/toBeCopied/com.user.loginscript.plist', os.getenv("HOME") + '/Library/LaunchAgents/com.user.loginscript.plist')
 
-        sys_return = os.system('sudo launchctl load ./InstallerFiles/toBeCopied/com.user.loginscript.plist')
-
-        #os.system("launchctl start com.user.loginscript")
-        #os.system("osascript -e 'tell application \"System Events\" to make login item at end with properties {path:\""+installDirUnixApp + '/' + startupAppCaller +"\", hidden:false}'")
-        #os.spawnl(os.P_NOWAIT, "/etc/init.d/" + startupAppCaller)
         installation_ok = True
     if os_system == "Windows":
         os_type = platform.release();
