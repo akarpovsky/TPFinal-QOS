@@ -6,12 +6,8 @@ import installStartupUDPClient as installer
 from mock import patch, MagicMock, Mock, call
 from ludibrio import Dummy
 
-@patch("platform.system", ** { 'return_value' : "Darwin" })
-@patch("installStartupUDPClient.cp_rf")
-@patch("installStartupUDPClient.generateKeyPair")
-@patch("installStartupUDPClient.os")
-class TestInstallStartupUdpClientCopyFiles(unittest.TestCase):
-    # Mute the bothering output of the scripts
+
+class Base(unittest.TestCase):
     def setUp(self):
       import sys
       class NullDevice():
@@ -19,6 +15,11 @@ class TestInstallStartupUdpClientCopyFiles(unittest.TestCase):
                 pass
       sys.stdout = NullDevice()
 
+@patch("platform.system", ** { 'return_value' : "Darwin" })
+@patch("installStartupUDPClient.cp_rf")
+@patch("installStartupUDPClient.generateKeyPair")
+@patch("installStartupUDPClient.os")
+class TestInstallStartupUdpClientCopyFiles(Base):
     @patch("os.path.exists", ** { 'return_value' : True })
     def test_returns_directly_if_there_is_an_installation(self, *args):
       assert installer.installingStartup() == False
@@ -60,16 +61,7 @@ class TestInstallStartupUdpClientCopyFiles(unittest.TestCase):
 @patch("installStartupUDPClient.cp_rf")
 @patch("installStartupUDPClient.generateKeyPair")
 @patch("installStartupUDPClient.os")
-class TestInstallScriptDarwin(unittest.TestCase):
-    # Mute the bothering output of the scripts
-    def setUp(self):
-      import sys
-      class NullDevice():
-            def write(self, s):
-                pass
-      sys.stdout = NullDevice()
-
-
+class TestInstallScriptDarwin(Base):
     def test_copies_startup_app_caller_file_on_install_target(self, mock_os,keygen,copy,*args):
       mock_os.path.exists.return_value = False
 
@@ -84,15 +76,7 @@ class TestInstallScriptDarwin(unittest.TestCase):
 @patch("installStartupUDPClient.cp_rf")
 @patch("installStartupUDPClient.generateKeyPair")
 @patch("installStartupUDPClient.os")
-class TestInstallScriptLinux(unittest.TestCase):
-    # Mute the bothering output of the scripts
-    def setUp(self):
-      import sys
-      class NullDevice():
-            def write(self, s):
-                pass
-      sys.stdout = NullDevice()
-
+class TestInstallScriptLinux(Base):
     def test_copies_startup_app_caller_file_on_install_target(self, mock_os,keygen,copy,*args):
       mock_os.path.exists.return_value = False
 
