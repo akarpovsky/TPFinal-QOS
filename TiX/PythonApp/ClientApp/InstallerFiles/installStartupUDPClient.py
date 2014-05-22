@@ -7,7 +7,7 @@ startupAppCaller = "startupAppCaller.sh"
 installDirUnix = "/etc/TIX"
 installDirUnixApp = installDirUnix + '/app'
 
-udpClientFile = "TixClientApp.py"
+udpClientFile = "TixClientApp"
 udpClientFileCFG = "udpclienttiempos.cfg"
 
 toCopyPath = './InstallerFiles/toBeCopied'
@@ -42,6 +42,10 @@ def cp_rf(src, dst):
             shutil.copy(src, dst)
         else: raise
 
+def link(src, dst):
+    os.system("sudo ln -s %s %s" % (os.path.abspath(src),os.path.abspath(dst)))
+
+
 # Change permissions to execute on a given file
 def chmod_x(file):
     script_st = os.stat(file)
@@ -62,21 +66,21 @@ def darwin_launch_path(file):
 
 def unix_common_files_copy():
   # Copy udpClientFile and make executable
-  chmod_x(src_path(udpClientFile))
-  cp_rf(src_path(udpClientFile),dest_path(udpClientFile))
+  link(udpClientFile,dest_path(udpClientFile))
 
   # Copy udpClientFile configuration
-  cp_rf(src_path(udpClientFileCFG),dest_path(udpClientFileCFG))
+  link(src_path(udpClientFileCFG),dest_path(udpClientFileCFG))
 
   # Copy startupAppCaller and make executable
   chmod_x(src_path(startupAppCaller))
-  cp_rf(src_path(startupAppCaller),dest_path(startupAppCaller))
+  link(src_path(startupAppCaller),dest_path(startupAppCaller))
 
 def darwin_install_client():
   # Set as root, copy to launchers, and tell osx we're inside
-  os.system('sudo chown root %s' % src_path(darwinLaunchFile))
-  cp_rf('%s' % src_path(darwinLaunchFile), darwin_launch_path(darwinLaunchFile))
-  sys_return = os.system('sudo launchctl load %s' % src_path(darwinLaunchFile))
+  # os.system('sudo chown root %s' % src_path(darwinLaunchFile))
+  # cp_rf('%s' % src_path(darwinLaunchFile), darwin_launch_path(darwinLaunchFile))
+  # sys_return = os.system('sudo launchctl load %s' % src_path(darwinLaunchFile))
+  pass;
 
 def linux_install_client():
   chmod_x(src_path(startupAppCaller))

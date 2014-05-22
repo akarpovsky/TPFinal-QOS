@@ -17,6 +17,7 @@ class Base(unittest.TestCase):
 
 @patch("platform.system", ** { 'return_value' : "Darwin" })
 @patch("installStartupUDPClient.cp_rf")
+@patch("installStartupUDPClient.link")
 @patch("installStartupUDPClient.generateKeyPair")
 @patch("installStartupUDPClient.os")
 class TestInstallStartupUdpClientCopyFiles(Base):
@@ -31,33 +32,34 @@ class TestInstallStartupUdpClientCopyFiles(Base):
       installer.installingStartup()
       assert keygen.called
 
-    def test_copies_udp_client_file(self,mock_os,keygen,copy,*args):
+    def test_copies_udp_client_file(self,mock_os,keygen,link,*args):
       mock_os.path.exists.return_value = False
 
       installer.installingStartup()
 
-      assert copy.mock_calls[0] == call("./InstallerFiles/toBeCopied/" + installer.udpClientFile, \
-                                     installer.installDirUnixApp + "/" + installer.udpClientFile)
+      assert link.mock_calls[0] == call(installer.udpClientFile, \
+                                        installer.installDirUnixApp + "/" + installer.udpClientFile)
 
-    def test_copies_udp_config_client_file(self, mock_os,keygen,copy,*args):
+    def test_copies_udp_config_client_file(self, mock_os,keygen,link,*args):
       mock_os.path.exists.return_value = False
 
       installer.installingStartup()
 
-      assert copy.mock_calls[1] == call("./InstallerFiles/toBeCopied/" + installer.udpClientFileCFG, \
-                                     installer.installDirUnixApp + "/" + installer.udpClientFileCFG)
+      assert link.mock_calls[1] == call(installer.toCopyPath        + "/" + installer.udpClientFileCFG, \
+                                        installer.installDirUnixApp + "/" + installer.udpClientFileCFG)
 
 
-    def test_copies_startup_app_caller_file(self, mock_os,keygen,copy,*args):
+    def test_copies_startup_app_caller_file(self, mock_os,keygen,link,*args):
       mock_os.path.exists.return_value = False
 
       installer.installingStartup()
 
-      assert copy.mock_calls[2] == call("./InstallerFiles/toBeCopied/" + installer.startupAppCaller, \
-                                     installer.installDirUnixApp + "/" + installer.startupAppCaller)
+      assert link.mock_calls[2] == call(installer.toCopyPath        + "/" + installer.startupAppCaller, \
+                                        installer.installDirUnixApp + "/" + installer.startupAppCaller)
 
 
 @patch("platform.system", ** { 'return_value' : "Darwin" })
+@patch("installStartupUDPClient.link")
 @patch("installStartupUDPClient.cp_rf")
 @patch("installStartupUDPClient.generateKeyPair")
 @patch("installStartupUDPClient.os")
@@ -67,7 +69,7 @@ class TestInstallScriptDarwin(Base):
 
       installer.installingStartup()
 
-      assert copy.mock_calls[3] == call("./InstallerFiles/toBeCopied/com.user.loginscript.plist", \
+      assert copy.mock_calls[0] == call("./InstallerFiles/toBeCopied/com.user.loginscript.plist", \
                                      mock_os.getenv("HOME") + "/Library/LaunchAgents/com.user.loginscript.plist")
 
 
@@ -82,7 +84,7 @@ class TestInstallScriptLinux(Base):
 
       installer.installingStartup()
 
-      assert copy.mock_calls[3] == call("./InstallerFiles/toBeCopied/" + installer.startupAppCaller, \
+      assert copy.mock_calls[0] == call("./InstallerFiles/toBeCopied/" + installer.startupAppCaller, \
                                         "/etc/init.d" + "/" + installer.startupAppCaller)
 
 

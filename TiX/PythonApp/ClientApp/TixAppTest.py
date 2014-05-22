@@ -78,7 +78,7 @@ class TestSequenceFunctions(unittest.TestCase):
         installationPath = TixApp.installationPath
         with patch.object(os, 'system') as fn:
           TixApp.execute_installation()
-          fn.assert_called_with("%s/installStartupUDPClient" % installationPath)
+          fn.assert_called_with("sudo %s/installStartupUDPClient" % installationPath)
 
     ### Removal
 
