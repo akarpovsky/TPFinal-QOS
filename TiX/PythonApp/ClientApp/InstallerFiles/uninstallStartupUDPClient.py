@@ -20,10 +20,11 @@ def unInstallingStartup():
         os.system("update-rc.d "+ startupAppCaller + " remove")
     if os_system == "Darwin":
         print "Estoy en MAC"
-        os.system("launchctl remove com.user.loginscript")
-        os.remove("~/Library/LaunchAgents/com.user.loginscript.plist")
-        if os.path.exists(installDirUnix):
-            shutil.rmtree(installDirUnix)
+        os.system("sudo launchctl unload com.user.loginscript")
+        os.system("sudo rm /Library/LaunchAgents/com.user.loginscript.plist")
+        os.system("sudo rm -rf /etc/TIX/")
+        # if os.path.exists(installDirUnix):
+        #     shutil.rmtree(installDirUnix)
     if os_system == "Windows":
         os_type = platform.release();
         if os_type == "XP":

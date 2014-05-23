@@ -254,11 +254,7 @@ def deleteExistingInstallation(self):
                 sys_return = subprocess.call(['gksudo','python ./InstallerFiles/uninstallStartupUDPClient.py'])
         
         if globalPlatformName == "Darwin":
-                sys_return = os.system("launchctl remove com.user.loginscript")
-                if os.path.isfile("~/Library/LaunchAgents/com.user.loginscript.plist"):
-                        os.remove("~/Library/LaunchAgents/com.user.loginscript.plist")
-                if os.path.exists("/etc/TIX/"):
-                        shutil.rmtree("/etc/TIX/")
+                sys_return = os.system("""osascript -e 'do shell script "./uninstallStartupUDPClient" with administrator privileges'""")
         
         if(sys_return == 0): # Call to installation procedure
                 installation_return = 'Se ha borrado con exito la desinstalacion de TiX. Retornando al SO...'
