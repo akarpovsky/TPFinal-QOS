@@ -54,10 +54,13 @@ class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el bo
 
         self.analyze_is_admin()
 
-        if os.path.exists(installDirUnix):
-          self.show_already_installed_popup()
-        else:        
-          self.show_install_form()
+        if platform.system() == "Darwin" and not os.getcwd().startswith("/Applications"):
+          self.show_run_on_apps_popup()
+        else:
+          if os.path.exists(installDirUnix):
+            self.show_already_installed_popup()
+          else:        
+            self.show_install_form()
 
   def analyze_is_admin(self):
     try:
@@ -94,6 +97,16 @@ class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el bo
     self.password.set_next(loginButton)
     self.add_widget(loginButton)
     loginButton.bind(on_press=partial(loginButtonOnClick,self.username,self.password)) #Accion que realizara el loginButton
+
+  def show_run_on_apps_popup(self):
+    btnclose = Button(text='Salir', size_hint_y=None, height='30sp')
+    content = BoxLayout(orientation='vertical', spacing=10)
+    content.add_widget(Label(text='Por favor, instale la aplicación en la carpeta de aplicaciones antes de correr este ejecutable'))
+    content.add_widget(btnclose)
+    popup = Popup(title='Error',content=content,size_hint=(None, None), size=(600, 200), auto_dismiss=False)
+    btnclose.bind(on_release=partial(return_to_so,0))
+    popup.open()
+
         
   def show_already_installed_popup(self):
     btnclose = Button(text='Salir', size_hint_y=None, height='30sp')
