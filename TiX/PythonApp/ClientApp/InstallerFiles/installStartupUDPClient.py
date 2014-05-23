@@ -87,7 +87,7 @@ def linux_install_client():
 
   # TODO: Test this ones
   os.system("update-rc.d " + startupAppCaller + " defaults")
-  os.spawnl(os.P_NOWAIT, "sudo /etc/TIX/app/TixClientApp log")
+  os.spawnl(os.P_NOWAIT, "sudo startupAppCaller.sh")
 
 def installingStartup():
     os_system = platform.system()

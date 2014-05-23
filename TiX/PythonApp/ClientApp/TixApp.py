@@ -228,7 +228,7 @@ def execute_installation():
                 except OSError as e:
                         popup = create_information_popup('Error','Debe ejecutar este programa con permisos de adminsitrador', partial(return_to_so,1)).open()
 
-                sys_return = subprocess.call(['gksudo','python ./InstallerFiles/installStartupUDPClient.py']) # Must change python for the executable
+                sys_return = subprocess.call(['gksudo','./installStartupUDPClient']) # Must change python for the executable
         if globalPlatformName == "Darwin":
                 sys_return = os.system("""osascript -e 'do shell script "./installStartupUDPClient" with administrator privileges'""")
                 # sys_return = os.system("sudo %s/installStartupUDPClient" % installationPath)
