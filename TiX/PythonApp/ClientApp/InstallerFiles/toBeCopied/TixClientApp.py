@@ -3,6 +3,7 @@
 import time
 import datetime
 import sys, urllib, xmlrpclib, socket
+import logging
 import subprocess
 import binascii
 import random
@@ -122,7 +123,8 @@ def pingUniq(num_uniq, logfile,t0, t0_filename, check,told):
 		#print data #debuging
 		#msg_completo = str(data).split('|')  
 		#print len(data) #debuging
-	except:
+	except Exception, e:
+		logging.exception(e)
 		print "[" + datetime.datetime.fromtimestamp(time.time()).strftime('%d-%m-%Y %H:%M:%S') + "] Timeout: no hubo respuesta del servidor."
 		client.close()
 		

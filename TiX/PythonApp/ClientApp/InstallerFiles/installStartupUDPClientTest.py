@@ -70,7 +70,7 @@ class TestInstallScriptDarwin(Base):
       installer.installingStartup()
 
       assert copy.mock_calls[0] == call("./InstallerFiles/toBeCopied/com.user.loginscript.plist", \
-                                     mock_os.getenv("HOME") + "/Library/LaunchAgents/com.user.loginscript.plist")
+                                        "/Library/LaunchAgents/com.user.loginscript.plist")
 
 
 

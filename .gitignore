@@ -19,3 +19,4 @@ include
 lib
 share
 Tix.dmg
+*.pkg

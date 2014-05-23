@@ -61,7 +61,7 @@ def dest_path(file):
   return installDirUnixApp + "/" + file
 
 def darwin_launch_path(file):
-  return os.getenv("HOME") + ("/" + darwinLaunchScriptsFolder + "/" + file)
+  return ("/" + darwinLaunchScriptsFolder + "/" + file)
 
 
 def unix_common_files_copy():
@@ -77,10 +77,9 @@ def unix_common_files_copy():
 
 def darwin_install_client():
   # Set as root, copy to launchers, and tell osx we're inside
-  # os.system('sudo chown root %s' % src_path(darwinLaunchFile))
-  # cp_rf('%s' % src_path(darwinLaunchFile), darwin_launch_path(darwinLaunchFile))
-  # sys_return = os.system('sudo launchctl load %s' % src_path(darwinLaunchFile))
-  pass;
+  os.system('sudo chown root %s' % src_path(darwinLaunchFile))
+  cp_rf('%s' % src_path(darwinLaunchFile), darwin_launch_path(darwinLaunchFile))
+  sys_return = os.system('sudo launchctl load %s' % darwin_launch_path(darwinLaunchFile))
 
 def linux_install_client():
   chmod_x(src_path(startupAppCaller))
