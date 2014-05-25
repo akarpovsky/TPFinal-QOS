@@ -9,21 +9,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html>
 <%@ include file="/WEB-INF/jsp/head.jsp"%>
 <body>
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <spanclass="icon-bar">
-					</span> <span class="icon-bar"></span></a>
-				<a class="brand" href="${pageContext.servletContext.contextPath}/bin/user/home">TiX</a>
-
-
-				<div class="nav-collapse"></div>
-			</div>
-		</div>
-		<div class="beta-banner">Versi&oacute;n Beta</div>
-	</div>
-
+	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<h3>
