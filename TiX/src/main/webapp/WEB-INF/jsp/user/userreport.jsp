@@ -20,8 +20,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 						<thead>
 							<tr>
 								<th>ISP</th>
-								<th>Congestion Subida</th>
-								<th>Congestion Bajada</th>
+								<th>Calidad Subida</th>
+								<th>Calidad Bajada</th>
 								<th>Utilizacion Subida</th>
 								<th>Utilizacion Bajada</th>
 							</tr>
