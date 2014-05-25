@@ -320,7 +320,6 @@ public class UserController {
 				List<Record> records = (List<Record>) recordRepo.getAllForIsp2(id, minDate,maxDate);
 				medians = ChartUtils.generateMedians(records);
 				ispNames.add(name);
-				System.out.println("hadjhaskjdhakjshdjahs:::::::::::::::" + name);
 				medianList.add(medians);
 		}
 
@@ -345,7 +344,6 @@ public class UserController {
 
 		}
 
-		System.out.println(":::::::::::::::DALE QUE VA:::::::::::::::::: " + javaChart_list);
 
 		mav.addObject("javaChart_list", javaChart_list);
 		mav.addObject("ispNames", ispNames);

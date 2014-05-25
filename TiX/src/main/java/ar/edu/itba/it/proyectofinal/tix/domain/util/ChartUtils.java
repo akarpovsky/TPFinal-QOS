@@ -1,5 +1,7 @@
 package ar.edu.itba.it.proyectofinal.tix.domain.util;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -72,6 +74,8 @@ public class ChartUtils {
 							.get((i / 2) + 1))) / 2);
 		}
 		
+
+	
 		return medians;
 	}
 	

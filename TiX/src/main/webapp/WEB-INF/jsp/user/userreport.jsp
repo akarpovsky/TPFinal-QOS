@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@
 taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <html>
 <%@ include file="/WEB-INF/jsp/head.jsp"%>
@@ -43,10 +44,10 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 							<c:forEach items="${ispNames}"  var="entry " varStatus="status">
 								<tr>
 										<td>${ispNames[status.index]}</td>
-										<td>${medianList[status.index][0]}</td>
-										<td>${medianList[status.index][1]}</td>
-										<td>${medianList[status.index][2]}</td>
-										<td>${medianList[status.index][3]}</td>
+										<td><fmt:formatNumber value="${medianList[status.index][0]}" pattern="0.00"/></td>
+										<td><fmt:formatNumber value="${medianList[status.index][1]}" pattern="0.00"/></td>
+										<td><fmt:formatNumber value="${medianList[status.index][2]}" pattern="0.00"/></td>
+										<td><fmt:formatNumber value="${medianList[status.index][3]}" pattern="0.00"/></td>
 								</tr>
 							</c:forEach>
 						</tbody>
