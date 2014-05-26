@@ -1,5 +1,7 @@
 package ar.edu.itba.it.proyectofinal.tix.domain.util;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -56,7 +58,8 @@ public class ChartUtils {
 		boolean even = (i % 2 == 0) ? true : false;
 		
 		// medians
-		if(congestionup_values.size() != 0 || congestiondown_values.size() != 0 || utilizacionup_values.size() != 0 || utilizaciondown_values.size() != 0 ){
+
+		if(congestionup_values.size() != 0 && congestiondown_values.size() != 0 && utilizacionup_values.size() != 0 && utilizaciondown_values.size() != 0 ){
 			medians.add(0,even ? congestionup_values.get(i / 2)
 					: ((congestionup_values.get((i / 2) - 1) + congestionup_values
 							.get((i / 2) + 1))) / 2);
@@ -71,6 +74,8 @@ public class ChartUtils {
 							.get((i / 2) + 1))) / 2);
 		}
 		
+
+	
 		return medians;
 	}
 	

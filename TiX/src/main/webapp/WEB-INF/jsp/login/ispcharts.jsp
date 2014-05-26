@@ -7,6 +7,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <html>
 <head>
+
 <title>Histograms</title>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
@@ -22,7 +23,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:forEach items="${disp_list}" var="entry">
     <div class="isp-container row-fluid" style="margin: 50px 180px 100px 180px; height:600px;">
         <h3 class="isp-name">${entry.isp_name}</h3>
-            <!-- Congestion -->
+            <!-- calidad -->
             <div class="row-fluid span12">
                 <div id="congestionup${entry.isp_id}" class="pull-left" style="height: 300px; width: 465px"></div>
                 <div id="congestiondown${entry.isp_id}" class="pull-right" style="height: 300px; width: 465px"></div>
@@ -56,7 +57,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                 type: 'column'
             },
             title: {
-                text: 'Histograma congestion subida',
+                text: 'Histograma calidad subida',
                 x: -20 //center
             },
 
@@ -78,7 +79,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
             },
 
             series: [{
-                name:'congestion subida',
+                name:'calidad subida',
                 data: [${entry.congestionUpChart[0]}, ${entry.congestionUpChart[1]}, ${entry.congestionUpChart[2]}, ${entry.congestionUpChart[3]}, ${entry.congestionUpChart[4]}, ${entry.congestionUpChart[5]}, ${entry.congestionUpChart[6]}, ${entry.congestionUpChart[7]}, ${entry.congestionUpChart[8]}, ${entry.congestionUpChart[9]}]
             }]
 
@@ -90,7 +91,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
             type: 'column'
         },
         title: {
-            text: 'Histograma congestion bajada',
+            text: 'Histograma calidad bajada',
             x: -20 //center
         },
 
@@ -113,7 +114,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
         },
 
         series: [{
-            name:'congestion bajada',
+            name:'calidad bajada',
             data: [${entry.congestionDownChart[0]}, ${entry.congestionDownChart[1]}, ${entry.congestionDownChart[2]}, ${entry.congestionDownChart[3]}, ${entry.congestionDownChart[4]}, ${entry.congestionDownChart[5]}, ${entry.congestionDownChart[6]}, ${entry.congestionDownChart[7]}, ${entry.congestionDownChart[8]}, ${entry.congestionDownChart[9]}]
         }]
 
@@ -221,7 +222,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
         xAxis: {
             minTickInterval: 1,
-            categories: ['congestion subida', 'congestion bajada', 'utilizacion subida', 'utilizacion bajada']
+            categories: ['calidad subida', 'calidad bajada', 'utilizacion subida', 'utilizacion bajada']
         },
 
         yAxis:{
