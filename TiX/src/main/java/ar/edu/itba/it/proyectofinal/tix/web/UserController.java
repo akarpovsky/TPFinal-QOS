@@ -75,7 +75,7 @@ public class UserController {
 		User me = getSessionUser(session);
 
 		if (me == null) {
-			mav.setView(ControllerUtil.redirectView("/login/login"));
+			mav.setView(ControllerUtil.redirectView("/login/"));
 			return mav;
 		}
 
