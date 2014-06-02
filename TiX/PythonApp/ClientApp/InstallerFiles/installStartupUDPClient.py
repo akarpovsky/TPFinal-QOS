@@ -82,19 +82,20 @@ def darwin_install_client():
   sys_return = os.system('sudo launchctl load %s' % darwin_launch_path(darwinLaunchFile))
 
 def linux_install_client():
+  print "about to copy"
   chmod_x(src_path(startupAppCaller))
   cp_rf(src_path(startupAppCaller),init_path(startupAppCaller))
 
   # TODO: Test this ones
+  print "update-rc.d " + startupAppCaller + " defaults"
   os.system("update-rc.d " + startupAppCaller + " defaults")
-  os.spawnl(os.P_NOWAIT, "sudo startupAppCaller.sh")
 
 def installingStartup():
     os_system = platform.system()
     installation_ok = False
     print os_system
     if os_system == "Linux" or os_system == "Darwin":
-        print "Creando Directorios..."
+        print "Creando Directorios... ... hola mama"
         if not os.path.exists(installDirUnix):
             os.makedirs(installDirUnix)
             os.makedirs(installDirUnixApp)
