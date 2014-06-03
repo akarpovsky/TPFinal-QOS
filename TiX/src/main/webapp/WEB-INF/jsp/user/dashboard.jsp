@@ -127,6 +127,13 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                 for (var i=0;i<fechas.length;i++){
                 	fechas[i] = new Date(fechas[i]);
                 }
+                
+                Highcharts.setOptions({
+        global: {
+            timezoneOffset: 3 * 60
+        }
+    });
+    
                 var chart;
                 $(document).ready(function() {
                     chart = new Highcharts.Chart({
@@ -148,11 +155,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                         	type: 'datetime',
                             //plotBands: redmarker,
                             categories: fechas,
-                            tickInterval: 10,
+                            tickInterval: 5,
                             labels: {
                             	enabled: true,
                                 formatter: function() {
-                                    return Highcharts.dateFormat('%d/%m <br/>(%H:%Mhs)', this.value);
+                                    return Highcharts.dateFormat('%d/%m <br/>%H:%M', this.value);
                                 },
                             },
                         },
