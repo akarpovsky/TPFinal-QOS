@@ -84,87 +84,8 @@ public class LoginController {
 	}
 	
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public void getcsv( 
-			HttpSession session) {
-		
-		List<? extends Record> records = recordRepo.getAll();
-
-		Writer writer = null;
-		try {
-		    writer = new BufferedWriter(new OutputStreamWriter( new FileOutputStream("tmp/records.cvs"), "utf-8"));
-		    for(Record r: records){
-		    	writer.write(r.toCSV()+ "\n");
-		    }
-		} catch (IOException ex) {
-		  System.out.println("Error writing csv file");
-		} finally {
-		   try {writer.close();} 
-		   catch (Exception ex) {}
-		}
-		System.out.println("CSV file successfully generated");
-	
-
-	}
 	
 	
-	@SuppressWarnings("unchecked")
-	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView ispcharts( 
-			HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-				 
-
-		List<ISP> isps = recordRepo.getISPs();
-
-		List<IspHistogramDisplayer> disp_list = new ArrayList<IspHistogramDisplayer>();
-		List<IspBoxplotDisplayer> boxplot_list = new ArrayList<IspBoxplotDisplayer>();
-		
-		//TODO 
-		//Nowadays just shows the data from last 6 months
-		 DateTime maxDate = new DateTime();
-		 DateTime minDate = maxDate.minusDays(180);
-		 
-		for (ISP isp : isps) {
-			int id = isp.getId();
-			String name = isp.getName();
-			List<Record> records = (List<Record>) recordRepo.getAllForIsp2(id, minDate,maxDate);
-			
-			System.out.println(minDate);
-			System.out.println(maxDate);
-			System.out.println("RECORDS: " + records);
-			//histograms
-			IspHistogramDisplayer disp = new IspHistogramDisplayer();
-			disp.setIsp_id(id);		
-			disp.setIsp_name(name);
-			disp.setCongestionUpChart(ChartUtils.generateHistogramCongestionUp(records, "histograma congestion up"));
-			disp.setCongestionDownChart(ChartUtils.generateHistogramCongestionDown(records, "histograma congestion down"));
-			disp.setUtilizacionUpChart(ChartUtils.generateHistogramUtilizacionUp(records, "histograma utilizacion up"));
-			disp.setUtilizacionDownChart(ChartUtils.generateHistogramUtilizacionDown(records, "histograma utilizacion down"));
-			disp_list.add(disp);
-			
-			//boxplots
-			IspBoxplotDisplayer boxplot = new IspBoxplotDisplayer();
-			boxplot.setIsp_id((id));
-			boxplot.setIsp_name(name);
-			List<double[]> boxplotdata = new ArrayList<double[]>();
-			boxplotdata = ChartUtils.generateBoxplot(records);
-			if (!boxplotdata.isEmpty()){
-				boxplot.setCongestionUpChart(boxplotdata.get(0));
-				boxplot.setCongestionDownChart(boxplotdata.get(1));
-				boxplot.setUtilizacionUpChart(boxplotdata.get(2));
-				boxplot.setUtilizacionDownChart(boxplotdata.get(3));		
-			}
-			boxplot_list.add(boxplot);
-			System.out.println(boxplot);
-		}
-		
-		mav.addObject("disp_list", disp_list);
-		mav.addObject("boxplot_list", boxplot_list);
-		
-		
-		return mav;
-
-	}
+	
 
 }

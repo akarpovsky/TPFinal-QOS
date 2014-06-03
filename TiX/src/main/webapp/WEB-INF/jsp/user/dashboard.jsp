@@ -72,18 +72,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 					   		</form>
 		   			<div id="graphcontainer"></div><!-- Here the graph will be rendered -->
 					<hr>
-			        <div class="row" style="margin: 10 0 20 0;">
-						<div class="text-center">
-							<p>
-								<img src="<c:url value='/img/congestiondown.png'/>"/> Utilizaci&oacute;n Upstream <img src="<c:url value='/img/congestionup.png'/>"/> Utilizaci&oacute;n Downstream
-							</p>
-								Location: ${currentInstallation.location.translationKey}
-							<p>
-							</p>
-						</div>
-						<div class="">
-						</div>
-					</div>
 					<div class="hero-unit" style="z-index: 1;height: 53px;margin: 0px;padding: 0px;">
 			        <div class="row" style="margin-top: 10px; margin-bottom:20px;">
 						<div class="text-center">
