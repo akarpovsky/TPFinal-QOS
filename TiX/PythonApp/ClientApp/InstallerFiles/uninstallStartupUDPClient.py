@@ -18,11 +18,13 @@ def unInstallingStartup():
         if os.path.exists(installDirUnix):
             shutil.rmtree(installDirUnix)
         os.system("update-rc.d "+ startupAppCaller + " remove")
+        os.system("killall TixClientApp");
     if os_system == "Darwin":
         print "Estoy en MAC"
         os.system("sudo launchctl unload com.user.loginscript")
         os.system("sudo rm /Library/LaunchAgents/com.user.loginscript.plist")
         os.system("sudo rm -rf /etc/TIX/")
+        os.system("killall TixClientApp");
         # if os.path.exists(installDirUnix):
         #     shutil.rmtree(installDirUnix)
     if os_system == "Windows":

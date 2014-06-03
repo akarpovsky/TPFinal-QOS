@@ -13,6 +13,8 @@ udpClientFileCFG = "udpclienttiempos.cfg"
 toCopyPath = './InstallerFiles/toBeCopied'
 installDirUnixAppExecutable = installDirUnixApp + '/' + udpClientFile
 
+linuxTemplateFile = "TiX.desktop"
+
 darwinLaunchFile = 'com.user.loginscript.plist'
 darwinLaunchScriptsFolder = 'Library/LaunchAgents'
 
@@ -63,6 +65,13 @@ def dest_path(file):
 def darwin_launch_path(file):
   return ("/" + darwinLaunchScriptsFolder + "/" + file)
 
+def linux_replace_file_path():
+  with open(linuxTemplateFile) as thefile:
+    content = thefile.read() 
+    replacedText = content.replace("{{PATH}}", )
+  if replacedText != content:
+    with open(match, 'w') as thefile:
+      thefile.write(replacedText)
 
 def unix_common_files_copy():
   # Copy udpClientFile and make executable
