@@ -329,12 +329,12 @@ public class ChartUtils {
 				jump = false;
 				Record record = it.next();
 				DateTime dt = new DateTime(record.getTimestamp());
-				System.out.println("Salida: " + (aux_timestamp - dt.getMillis()));
+//				System.out.println("Salida: " + (aux_timestamp - dt.getMillis()));
 				if (aux_timestamp > 0
 						&& (aux_timestamp - dt.getMillis()) < -600000) {
 					jump = true;
 					timestamps.add((aux_timestamp - dt.getMillis()) / 2);
-					System.out.println("ENTRO");
+//					System.out.println("ENTRO");
 				}
 				if (record.isUserDownCongestion()) {
 					if (jump == true) {

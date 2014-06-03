@@ -255,13 +255,6 @@ public class UserController {
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView holaBien() {
-		System.out.println("ENTRO");
-		return null;
-	}
-
-	@SuppressWarnings("unchecked")
-	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView changeCongestionStatus(HttpSession session, @RequestParam(value = "id",required=true) Record r,@RequestParam(value = "type",required=true) String type ) {
 
 		ModelAndView mav = new ModelAndView();
