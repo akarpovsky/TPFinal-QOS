@@ -97,6 +97,17 @@ def remove_old_files(dirpath, client_msg_filename):
 
   return None
     
+def remove_1h_files(dirpath):
+	logger.info("Asegurando que la cantidad de logs en el directorio sea <= 60 para: " + dirpath)
+	a = [os.path.join(s) for s in os.listdir(dirpath)
+		if os.path.isfile(os.path.join(dirpath, s))]
+	a.sort(key=lambda x: os.stat(os.path.join(dirpath, x)).st_mtime)
+	while len(a) > 60:
+        	logger.debug('Hay ' + str(len(a)) + ' arhivos en el directorio ' + dirpath)
+	        file_to_remove = a.pop(0)
+        	logger.info("Eliminando log antiguo: " + dirpath + "/" + file_to_remove)
+	        os.remove(dirpath + "/" + file_to_remove)
+        	a.sort(key=lambda x: os.stat(os.path.join(dirpath, x)).st_mtime)
 
 class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
     """
@@ -176,6 +187,9 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
 
               # Check if there are old unusable files and remove them; we always need to keep only the REAL last hour of data
               remove_old_files(client_records_server_folder, client_msg_filename.split("/")[-1:][0])
+	     
+	      # Check if we have more than 60 files, remove oldest till we get exactly 60 or less 
+	      remove_1h_files(client_records_server_folder)
 
               # Check if we have at least 1hr (twelve 5 minutes files) of data
               if len(os.walk(client_records_server_folder).next()[2]) == 60:
@@ -192,6 +206,7 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                   cwd = os.getcwd()
                   os.chdir('/home/pfitba/ServerAppProduction/data_processing')
                   ansDictionary = completo_III.analyse_data(files_to_process)
+		  logger.debug(ansDictionary)
                   os.chdir(cwd)
 
                   # Remove 10 oldest logs        
@@ -203,7 +218,6 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                     logger.debug("ISP NAME = " + new_isp_name)
                   except Exception, e:
                     new_isp_name = 'Unknown'
-                    logger.debug("ISP not found for IP: " + str(client_ip))
                   payload = {'isp_name': str(new_isp_name)}
                   headers = {'content-type': 'application/json'}
 
@@ -262,5 +276,3 @@ if __name__ == "__main__":
     # Activate the server; this will keep running until you
     # interrupt the program with Ctrl-C
     #server.serve_forever()
-    
-    
