@@ -151,7 +151,7 @@ public class UserController {
 
 		if (requiredInstallation == null) { // URL param "ins" not found, set
 											// default installation
-			requiredInstallation = userInstallations.get(0);
+			requiredInstallation = reqProfile.getDefaultInstallation();
 		}
 
 		HighChart chart = null;
@@ -221,6 +221,7 @@ public class UserController {
 		mav.addObject("noRecords", noRecords);
 		mav.addObject("requiredISP", requiredISP);
 		mav.addObject("user", reqProfile);
+		mav.addObject("loggedUser", me);
 		return mav;
 	}
 

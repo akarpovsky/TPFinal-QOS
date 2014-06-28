@@ -17,7 +17,8 @@ public enum AppError {
 	INVALID_IMAGE_TYPE("invalidImageType"), 
 	INVALID_IMAGE_SIZE("invalidImageSize"), 
 	IMAGE_UPLOAD_UNKNOWN("errorUploadingImage"),
-	USER_NOT_EXISTS("userNotExists"), 
+	USER_NOT_EXISTS("userNotExists"),
+	DEFAULT_INSTALLATION_NOT_MINE("defaultInstallationNotMine"),
 	INVALID_DAYS_AHEAD("invalidDaysAhead");
 	
 	public final String translationKey;

@@ -14,21 +14,39 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Instalaciones </li>
-              	<c:forEach items="${installationISPMap}" var="entry">
-            		<li class='<c:if test="${entry.key.id == currentInstallation.id}">active listExpanded</c:if><c:if test="${entry.key.id != currentInstallation.id}">listCollapsed</c:if>'>
-<!--             		<li class="listCollapsed"> -->
-						<a id="toggler" href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${entry.key.id}" data-toggle="collapse" class="toggler active" data-target="#${entry.key.id}_isps">
+              	<li class='<c:if test="${user.defaultInstallation.id == currentInstallation.id}">active listExpanded</c:if><c:if test="${user.defaultInstallation.id != currentInstallation.id}">listCollapsed</c:if>'>
+						<a id="toggler" href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${user.defaultInstallation.id}" data-toggle="collapse" class="toggler active" data-target="#${user.defaultInstallation.id}_isps">
 							<i class="icon-folder-open"></i>
 							<i class="icon-folder-close"></i>
-							${entry.key.name}
+							${user.defaultInstallation.name}
+							<i class="icon-bookmark" style="float: right;"></i>
 						</a>
-					</li>
-    				<ul id="${entry.key.id}_isps" class="<c:if test="${entry.key.id != currentInstallation.id}">collapse</c:if>">
-    					<li  class='<c:if test="${entry.key.id == currentInstallation.id && requiredISP == null}">activeISP</c:if>'><a  href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${entry.key.id}">General</a></li>
+				</li>
+				<ul id="${user.defaultInstallation.id}_isps" class="<c:if test="${user.defaultInstallation.id != currentInstallation.id}">collapse</c:if>">
+    					<li  class='<c:if test="${user.defaultInstallation.id == currentInstallation.id && requiredISP == null}">activeISP</c:if>'><a  href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${user.defaultInstallation.id}">General</a></li>
 	    				<c:forEach var="isp" items="${entry.value}">
-		              		<li class='<c:if test="${entry.key.id == currentInstallation.id && isp.id == requiredISP.id}">activeISP</c:if>'><a href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${entry.key.id}&isp=${isp.id}">${isp.name}</a></li>
+		              		<li class='<c:if test="${user.defaultInstallation.id == currentInstallation.id && isp.id == requiredISP.id}">activeISP</c:if>'><a href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${user.defaultInstallation.id}&isp=${isp.id}">${isp.name}</a></li>
 	              		</c:forEach>
-	              	</ul>
+              	</ul>
+              	<c:forEach items="${installationISPMap}" var="entry">
+	              	<c:if test="${entry.key.id != user.defaultInstallation.id}">
+	            		<li class='<c:if test="${entry.key.id == currentInstallation.id}">active listExpanded</c:if><c:if test="${entry.key.id != currentInstallation.id}">listCollapsed</c:if>'>
+							<a id="toggler" href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${entry.key.id}" data-toggle="collapse" class="toggler active" data-target="#${entry.key.id}_isps">
+								<i class="icon-folder-open"></i>
+								<i class="icon-folder-close"></i>
+								${entry.key.name}
+							</a>
+						</li>
+	    				<ul id="${entry.key.id}_isps" class="<c:if test="${entry.key.id != currentInstallation.id}">collapse</c:if>">
+	    					<li  class='<c:if test="${entry.key.id == currentInstallation.id && requiredISP == null}">activeISP</c:if>'><a  href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${entry.key.id}">General</a></li>
+		    				<c:forEach var="isp" items="${entry.value}">
+			              		<li class='<c:if test="${entry.key.id == currentInstallation.id && isp.id == requiredISP.id}">activeISP</c:if>'><a href="./dashboard?nickname=${user.nickname}&graphtype=${currentGraphType}&ins=${entry.key.id}&isp=${isp.id}">${isp.name}</a></li>
+		              		</c:forEach>
+   			              	<c:if test="${not loggedUser.admin}">
+		              			<li class="divider"></li><li style="text-align: center;list-style-type: none;"><a href="../installation/setAsDefaultInstallation?id=${currentInstallation.id}">Set as default installation <i class="icon-bookmark"></i></a></li>
+		              		</c:if>
+		              	</ul>
+		              </c:if>
 				</c:forEach>
   	          <li class="divider"></li>
               	<li><a href="../installation/downloadapp"><i class="icon-plus-sign"></i>Nueva instalaci&oacute;n</a></li>

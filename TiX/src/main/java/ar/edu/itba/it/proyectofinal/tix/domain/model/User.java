@@ -13,12 +13,10 @@ import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.Email;
 import org.postgresql.util.Base64;
 
@@ -57,9 +55,25 @@ public class User extends DBPersistentObject {
 	@Column(nullable=false)
 	private UserType type;
 	
+	@OneToOne(optional=true)
+	private Installation defaultInstallation;
+	
 	
 	User() {
 		// required by hibernate 
+	}
+	
+	public Installation getDefaultInstallation(){
+		return this.defaultInstallation;
+	}
+	
+	public void setDefaultInstallation(Installation i){
+		if(hasInstallation(i)){
+			this.defaultInstallation = i;
+		}else{
+			throw new InvalidParametersException(Collections.singletonList(AppError.DEFAULT_INSTALLATION_NOT_MINE));
+
+		}
 	}
 	
 	public Integer getBirthyear() {
@@ -142,6 +156,10 @@ public class User extends DBPersistentObject {
 	public void setType(UserType type) {
 		this.type = type;
 	}
+	
+	public boolean isAdmin(){
+		return this.type.equals(UserType.ADMIN);
+	}
 
 	public void setPasswordRecoveryRequestCode(String getPasswordRecoveryRequestCode) {
 		this.passwordRecoveryRequestCode = getPasswordRecoveryRequestCode;
@@ -189,6 +207,11 @@ public class User extends DBPersistentObject {
 	public void addInstallation(Installation newInstallation) {
 		newInstallation.setOwner(this);
 		this.installations.add(newInstallation);
+		
+		// If it's first installation, set it as default
+		if(this.installations.size() == 1){
+			setDefaultInstallation(newInstallation);
+		}
 	}
 
 	public void deleteInstallation(Installation i) {

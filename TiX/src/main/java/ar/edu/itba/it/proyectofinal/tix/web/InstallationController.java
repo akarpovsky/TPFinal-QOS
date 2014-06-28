@@ -107,7 +107,37 @@ public class InstallationController {
 		mav.addObject("installation", installation);
 		return mav;
 	}
-	
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView setAsDefaultInstallation(HttpSession session, @RequestParam(value="id", required=true) Installation i) {
+		ModelAndView mav = new ModelAndView();
+		User me = getSessionUser(session);
+		
+		if (me == null) {
+			mav.setView(ControllerUtil.redirectView("/login/login"));
+			return mav;
+		}
+		
+		if (me.getType().equals(UserType.ADMIN)) {
+			mav.addObject("errorDescription",
+					"No tiene permisos para acceder aquí.");
+			mav.setViewName("error");
+			return mav;
+		}
+		
+		if(i == null || (i != null && !me.hasInstallation(i))){
+			mav.addObject("errorDescription",
+					"No puede editar instalaciones que no le pertenecen.");
+			mav.setViewName("error");
+			return mav;
+		}
+		
+		me.setDefaultInstallation(i);
+		
+		mav.setView(ControllerUtil.redirectView("/user/dashboard"));
+		return mav;
+	}
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
