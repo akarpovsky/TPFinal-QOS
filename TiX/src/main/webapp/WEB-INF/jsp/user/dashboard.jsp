@@ -125,7 +125,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                  //var redmarker = ${javaChart.redmarker};
                  var subtitle = "${javaChart.subtitle}";
                 for (var i=0;i<fechas.length;i++){
-                	fechas[i] = new Date(fechas[i]);
+                	if (i>0 && (fechas[i] > 0) ){
+                		fechas[i] = new Date(fechas[i]);
+                	}else{
+                		fechas[i] = fechas[i-1];
+                	}
                 }
                 
                 Highcharts.setOptions({
@@ -135,7 +139,14 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
     });
     
                 var chart;
+               
                 $(document).ready(function() {
+               		if( (Object.keys(fechas).length) < 50 ){
+                            	auxMin = 0;
+                	}else{
+                            	auxMin = fechas.length -50;
+                	}
+                
                     chart = new Highcharts.Chart({
                         chart: {
                             renderTo: 'graphcontainer',
@@ -155,13 +166,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                         	type: 'datetime',
                             //plotBands: redmarker,
                             categories: fechas,
-                            tickInterval: 5,
+                            tickInterval: 6,
                             labels: {
                             	enabled: true,
                                 formatter: function() {
                                     return Highcharts.dateFormat('%d/%m <br/>%H:%M', this.value);
                                 },
                             },
+                            min: auxMin,
+                            max: fechas.lenght,
                         },
                         yAxis: {
                             title: {
@@ -248,3 +261,4 @@ format: 'dd/mm/yyyy',
 </script>
 
 </html>
+Status API Training Shop Blog About © 2014 GitHub, Inc. Terms Privacy Security Contact 
