@@ -58,13 +58,13 @@ logger.addHandler(hdlr)
 # logger.critical("critical message")
 
 def ts():
-  # time en microsegundos
-  timestamp= datetime.datetime.now().strftime("%H:%M:%S:%f").split(':')
-  en_microsegundos=float(timestamp[0])*3600*(10**6)+float(timestamp[1])*60*(10**6)+float(timestamp[2])*(10**6)+float(timestamp[3])
-  #print timestamp 
-  #print en_microsegundos
-  return str(int(en_microsegundos)) # <- en microsegundos, en hexa
-
+    # time en microsegundos
+    timestamp= datetime.datetime.now().strftime("%H:%M:%S:%f").split(':')
+    en_microsegundos=float(timestamp[0])*3600*(10**6)+float(timestamp[1])*60*(10**6)+float(timestamp[2])*(10**6)+float(timestamp[3])
+    #print timestamp 
+    #print en_microsegundos
+    return str(int(en_microsegundos)) # <- en microsegundos, en hexa
+  
 # Devuelve los archivos segun su orden de modificacion
 def get_files_by_mdate(dirpath):
     a = [os.path.join(dirpath, s) for s in os.listdir(dirpath)
@@ -77,37 +77,37 @@ def get_files_by_mdate(dirpath):
 # para hacer la comparacion
 
 def remove_old_files(dirpath, client_msg_filename):
-  # Get all files in directory
-  a = [os.path.join(s) for s in os.listdir(dirpath)
-         if os.path.isfile(os.path.join(dirpath, s))]
-  log_datetime = datetime.datetime.fromtimestamp(float(client_msg_filename.split("_")[1]))
-  for file_name in a:
-    try:
-      curr_file_datetime = datetime.datetime.fromtimestamp(float(file_name.split("_")[1]))
-      lapsed_time = (log_datetime-curr_file_datetime).total_seconds()
-      try:
-        if abs(lapsed_time) > 4500: #1.15 hs
-          os.remove(dirpath + "/" + file_name)
-          logger.info("Eliminando log antiguo: " + dirpath + "/" + file_name)
-
-      except Exception, e:
-        logger.error("No se ha podido eliminar el siguiente log antiguo: " + dirpath + "/" + file_name)
-    except Exception, e:
-     logger.error("El archivo de log tiene un nombre invalido: " + dirpath + "/" + file_name)
-
-  return None
-    
+    # Get all files in directory
+    a = [os.path.join(s) for s in os.listdir(dirpath)
+           if os.path.isfile(os.path.join(dirpath, s))]
+    log_datetime = datetime.datetime.fromtimestamp(float(client_msg_filename.split("_")[1]))
+    for file_name in a:
+        try:
+            curr_file_datetime = datetime.datetime.fromtimestamp(float(file_name.split("_")[1]))
+            lapsed_time = (log_datetime-curr_file_datetime).total_seconds()
+            try:
+                if abs(lapsed_time) > 5400: #1 hora y 30 minutos de ventana
+                    os.remove(dirpath + "/" + file_name)
+                    logger.info("Eliminando log antiguo: " + dirpath + "/" + file_name)
+          
+            except Exception, e:
+                logger.error("No se ha podido eliminar el siguiente log antiguo: " + dirpath + "/" + file_name)
+        except Exception, e:
+            logger.error("El archivo de log tiene un nombre invalido: " + dirpath + "/" + file_name)
+       
+    return None
+      
 def remove_1h_files(dirpath):
-	logger.info("Asegurando que la cantidad de logs en el directorio sea <= 60 para: " + dirpath)
-	a = [os.path.join(s) for s in os.listdir(dirpath)
-		if os.path.isfile(os.path.join(dirpath, s))]
-	a.sort(key=lambda x: os.stat(os.path.join(dirpath, x)).st_mtime)
-	while len(a) > 60:
-        	logger.debug('Hay ' + str(len(a)) + ' arhivos en el directorio ' + dirpath)
-	        file_to_remove = a.pop(0)
-        	logger.info("Eliminando log antiguo: " + dirpath + "/" + file_to_remove)
-	        os.remove(dirpath + "/" + file_to_remove)
-        	a.sort(key=lambda x: os.stat(os.path.join(dirpath, x)).st_mtime)
+    logger.info("Asegurando que la cantidad de logs en el directorio sea <= 60 para: " + dirpath)
+    a = [os.path.join(s) for s in os.listdir(dirpath)
+            if os.path.isfile(os.path.join(dirpath, s))]
+    a.sort(key=lambda x: os.stat(os.path.join(dirpath, x)).st_mtime)
+    while len(a) > 60:
+        logger.debug('Hay ' + str(len(a)) + ' arhivos en el directorio ' + dirpath)
+        file_to_remove = a.pop(0)
+        logger.info("Eliminando log antiguo: " + dirpath + "/" + file_to_remove)
+        os.remove(dirpath + "/" + file_to_remove)
+        a.sort(key=lambda x: os.stat(os.path.join(dirpath, x)).st_mtime)
 
 class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
     """
@@ -131,117 +131,121 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
 
         if len(msg)>4:# depende de si es un mensaje corto o un mensaje largo
         #Mensaje largo
-          socket.sendto(msg[0] + '|' + tstamp +'|' + str(ts()) + '|' + msg[3] + '|' + msg[4], self.client_address)
-          try:
-            #logger.info("Llamo thread " + str(threading.activeCount()))
-            thread = threading.Thread(target = self.worker_thread, args=(msg,))
-            thread.start()
-            thread.join()
-          except Exception, e:
-            logger.info("Error: No se pudo iniciar el thread")
-            logger.info(str(e))
+            socket.sendto(msg[0] + '|' + tstamp +'|' + str(ts()) + '|' + msg[3] + '|' + msg[4], self.client_address)
+            try:
+                #logger.info("Llamo thread " + str(threading.activeCount()))
+                thread = threading.Thread(target = self.worker_thread, args=(msg,))
+                thread.start()
+                thread.join()
+            except Exception, e:
+                logger.info("Error: No se pudo iniciar el thread")
+                logger.info(str(e))
         else:
         #Mensaje corto
-          socket.sendto(msg[0]+'|'+ tstamp +'|' + str(ts()) + '|' + msg[3], self.client_address)
-    
+            socket.sendto(msg[0]+'|'+ tstamp +'|' + str(ts()) + '|' + msg[3], self.client_address)
+      
     def worker_thread(self, msg):
         large_package_msg = msg[4].split(';;')
         if len(large_package_msg)>=3 and large_package_msg[0]=='DATA':
-          # Tengo datos para procesar dentro del mensaje largo
-          #Cliente envia al server: DATA|publicKeyPlain|signedMeessage|msg
-          client_pub_key_str_b64 = large_package_msg[1]
-          client_pub_key_str = b64decode(large_package_msg[1])
-          client_signed_msg = b64decode(large_package_msg[2])
-          client_msg_filename = large_package_msg[3]
-          client_plain_msg = b64decode(large_package_msg[4])
+            # Tengo datos para procesar dentro del mensaje largo
+            #Cliente envia al server: DATA|publicKeyPlain|signedMeessage|msg
+            client_pub_key_str_b64 = large_package_msg[1]
+            client_pub_key_str = b64decode(large_package_msg[1])
+            client_signed_msg = b64decode(large_package_msg[2])
+            client_msg_filename = large_package_msg[3]
+            client_plain_msg = b64decode(large_package_msg[4])
+  
+            logger.info("Se ha recibido el siguiente paquete de datos: " + client_msg_filename)
+            # print "<public key>\n" + client_pub_key_str + "\n</public key>\n"
+            # print "Signed msg: " + client_signed_msg
+            # print "Filename: " + client_msg_filename
+            # print "<plain msg>\n" + client_plain_msg + "\n</plain msg>\n"
+  
+            # En el servidor se hace el VERIFY, para esto se necesita tambien la firma!
+            pubKey = rsa.PublicKey.load_pkcs1(client_pub_key_str)
+  
+            if rsa.verify(client_plain_msg, client_signed_msg, pubKey): 
+                logger.debug("Chequeo de integridad satisfactorio para " + client_msg_filename)
+                client_data = dbmanager.DBManager.getInstallationAndClientId(client_pub_key_str_b64)
+                logger.debug("Se ha obtenido la siguiente client_data " + str(client_data))
 
-          logger.info("Se ha recibido el siguiente paquete de datos: " + client_msg_filename)
-          # print "<public key>\n" + client_pub_key_str + "\n</public key>\n"
-          # print "Signed msg: " + client_signed_msg
-          # print "Filename: " + client_msg_filename
-          # print "<plain msg>\n" + client_plain_msg + "\n</plain msg>\n"
-
-          # En el servidor se hace el VERIFY, para esto se necesita tambien la firma!
-          pubKey = rsa.PublicKey.load_pkcs1(client_pub_key_str)
-
-          if rsa.verify(client_plain_msg, client_signed_msg, pubKey): 
-            logger.debug("Chequeo de integridad satisfactorio para " + client_msg_filename)
-            client_data = dbmanager.DBManager.getInstallationAndClientId(client_pub_key_str_b64)
-            
-            if client_data is not None:
-              installation_id = client_data[0]
-              client_id = client_data[1]
-              client_ip = str(self.client_address[0])
-
-              #Client folder format: IP_cli_CLIENTID_ins_INSID
-              client_server_folder = client_ip + "_cli_" + str(client_id) + "_ins_" + str(installation_id) 
-              logger.info("Salvando " + client_msg_filename + " en " + client_server_folder)
-              client_records_server_folder = installDirUnix + "/records/" + client_server_folder
-              if not os.path.exists(client_records_server_folder):
-                logger.info("Creando directorio: " + client_server_folder)
-                os.makedirs(client_records_server_folder)
-                
-              logFile = open(client_records_server_folder + "/" + client_msg_filename.split("/")[-1:][0], 'wb')
-              logFile.write(client_plain_msg)
-              logFile.close()
-
-              # Check if there are old unusable files and remove them; we always need to keep only the REAL last hour of data
-              remove_old_files(client_records_server_folder, client_msg_filename.split("/")[-1:][0])
-	     
-	      # Check if we have more than 60 files, remove oldest till we get exactly 60 or less 
-	      remove_1h_files(client_records_server_folder)
-
-              # Check if we have at least 1hr (twelve 5 minutes files) of data
-              if len(os.walk(client_records_server_folder).next()[2]) == 60:
-                logger.info("La instalacion " + client_server_folder + " tiene 1h de datos. Empezando procesamiento ...")
-
-                # print "Starting calculation for the following files:"
-                files_to_process = get_files_by_mdate(client_records_server_folder)
-
-                # print files_to_process
-
-                if len(files_to_process) < 60:
-                  logger.error("Error al procesar los archivos de " + client_server_folder)
+                if client_data is not None:
+                    installation_id = client_data[0]
+                    client_id = client_data[1]
+                    client_ip = str(self.client_address[0])
+      
+                    #Client folder format: IP_cli_CLIENTID_ins_INSID
+                    client_server_folder = client_ip + "_cli_" + str(client_id) + "_ins_" + str(installation_id) 
+                    logger.info("Salvando " + client_msg_filename + " en " + client_server_folder)
+                    client_records_server_folder = installDirUnix + "/records/" + client_server_folder
+                    if not os.path.exists(client_records_server_folder):
+                        logger.info("Creando directorio: " + client_server_folder)
+                        os.makedirs(client_records_server_folder)
+                        
+                    logFile = open(client_records_server_folder + "/" + client_msg_filename.split("/")[-1:][0], 'wb')
+                    logFile.write(client_plain_msg)
+                    logFile.close()
+      
+                    # Check if there are old unusable files and remove them; we always need to keep only the REAL last hour of data
+                    remove_old_files(client_records_server_folder, client_msg_filename.split("/")[-1:][0])
+                   
+                    # Check if we have more than 60 files, remove oldest till we get exactly 60 or less 
+                    remove_1h_files(client_records_server_folder)
+      
+                    # Check if we have at least 1hr (twelve 5 minutes files) of data
+                    if len(os.walk(client_records_server_folder).next()[2]) == 60:
+                        logger.info("La instalacion " + client_server_folder + " tiene 1h de datos. Empezando procesamiento ...")
+        
+                        # print "Starting calculation for the following files:"
+                        files_to_process = get_files_by_mdate(client_records_server_folder)
+        
+                        # print files_to_process
+        
+                        if len(files_to_process) < 60:
+                            logger.error("Error al procesar los archivos de " + client_server_folder)
+                        else:
+                            cwd = os.getcwd()
+                            os.chdir('/home/pfitba/ServerAppProduction/data_processing')
+                            ansDictionary = completo_III.analyse_data(files_to_process)
+                            logger.debug(ansDictionary)
+                            os.chdir(cwd)
+          
+                            # Remove 10 oldest logs        
+                            for count in range(0,9):
+                                if os.path.isfile(files_to_process[count]) == True:
+                                    os.remove(files_to_process[count])
+                            try:
+                                new_isp_name = info.pais_num_name_nic(client_ip, 'EN' )[1]
+                                logger.debug("ISP NAME = " + new_isp_name)
+                            except Exception, e:
+                                new_isp_name = 'Unknown'
+                            payload = {'isp_name': str(new_isp_name)}
+                            headers = {'content-type': 'application/json'}
+                            r = requests.post(tixBaseUrl + 'bin/api/newISPPost', data=json.dumps(payload), headers=headers)
+          
+                            jsonUserData = []
+                            
+                            try:
+                                logger.debug("Parseo respuesta JSON de la API para newISPPost: " + str(jsonUserData))
+                                jsonUserData = json.loads(r.text) # Parseo la respuesta JSON de la API de TiX
+                            except Exception, e:
+                                isp_id = 0
+          
+                            if(r is not None and len(jsonUserData) > 0):
+                                isp_id = jsonUserData['id']
+                                logger.debug("Utilizando ISP = " + new_isp_name + " con ID = " + str(isp_id))
+                            else:
+                                logger.error("No se ha podido insertar el nuevo ISP en la DB, se utilizara default (" + client_server_folder + ") |  jsonUserData: " + str(jsonUserData))
+                                isp_id = 0
+          
+                            logger.debug("Intentando insertar nuevo record en la DB de la carpeta: " +  client_records_server_folder)
+                            try:
+                                dbmanager.DBManager.insert_record(ansDictionary['calidad_Down'],ansDictionary['utiliz_Down'],ansDictionary['H_RS_Down'],ansDictionary['H_Wave_Down'],time.strftime('%Y-%m-%d %H:%M:%S'),ansDictionary['calidad_Up'],ansDictionary['utiliz_Up'],ansDictionary['H_RS_Up'],ansDictionary['H_Wave_Up'],False,False,installation_id,isp_id,client_id)
+                            except Exception, e:
+                                logger.error("Error al insertar nuevo record en la DB de la carpeta: " + client_records_server_folder)        
+                                logger.error(e)
                 else:
-                  cwd = os.getcwd()
-                  os.chdir('/home/pfitba/ServerAppProduction/data_processing')
-                  ansDictionary = completo_III.analyse_data(files_to_process)
-		  logger.debug(ansDictionary)
-                  os.chdir(cwd)
-
-                  # Remove 10 oldest logs        
-                  for count in range(0,9):
-                    if os.path.isfile(files_to_process[count]) == True:
-                      os.remove(files_to_process[count])
-                  try:
-                    new_isp_name = info.pais_num_name_nic(client_ip, 'EN' )[1]
-                    logger.debug("ISP NAME = " + new_isp_name)
-                  except Exception, e:
-                    new_isp_name = 'Unknown'
-                  payload = {'isp_name': str(new_isp_name)}
-                  headers = {'content-type': 'application/json'}
-
-                  r = requests.post(tixBaseUrl + 'bin/api/newISPPost', data=json.dumps(payload), headers=headers)
-
-                  jsonUserData = []
-                  
-                  try:
-                          jsonUserData = json.loads(r.text) # Parseo la respuesta JSON de la API de TiX
-                  except Exception, e:
-                          isp_id = 0
-
-                  if(r is not None and len(jsonUserData) > 0):
-                          isp_id = jsonUserData['id']
-                  else:
-                          logger.error("No se ha podido insertar el nuevo ISP en la DB, se utilizara default (" + client_server_folder + ")")
-                          isp_id = 0
-
-                  logger.debug("Intentando insertar nuevo record en la DB de la carpeta: " +  client_records_server_folder)
-                  try:
-                          dbmanager.DBManager.insert_record(ansDictionary['calidad_Down'],ansDictionary['utiliz_Down'],ansDictionary['H_RS_Down'],ansDictionary['H_Wave_Down'],time.strftime('%Y-%m-%d %H:%M:%S'),ansDictionary['calidad_Up'],ansDictionary['utiliz_Up'],ansDictionary['H_RS_Up'],ansDictionary['H_Wave_Up'],False,False,installation_id,isp_id,client_id)
-                  except Exception, e:
-                          logger.error("Error al insertar nuevo record en la DB de la carpeta: " + client_records_server_folder)        
-                          logger.error(e)
+                    logger.debug("No se ha podido obtener la client_data para la siguiente pubKey= " + str(client_pub_key_str_b64))
 
 class ThreadingUDPServer(SocketServer.ThreadingMixIn, SocketServer.UDPServer):
     pass
@@ -252,10 +256,10 @@ if __name__ == "__main__":
     tix_server_path = "/etc/TIX"
     tix_server_records_path = "/etc/TIX/records"
     if not os.path.exists(tix_server_path):
-      logger.info("Directorios inexistentes, creando directorios en: " + tix_server_path)
-      os.makedirs(tix_server_path)
-      os.makedirs(tix_server_records_path)
-      
+        logger.info("Directorios inexistentes, creando directorios en: " + tix_server_path)
+        os.makedirs(tix_server_path)
+        os.makedirs(tix_server_records_path)
+        
     HOST, PORT = TEST_SERVER_HOST, TEST_SERVER_PORT 
 #   HOST='127.0.0.1'
 #   PORT=5005
