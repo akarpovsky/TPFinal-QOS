@@ -463,6 +463,8 @@ public class UserController {
 		if(tmpFile != null){
 			try {
 				response.setContentType("text/csv");
+				DateTime today = new org.joda.time.DateTime();
+				response.setHeader("Content-Disposition", "attachment; filename=\"records_" + today.toString("MMM") + "_" + today.getYear() +  ".csv\"");
 				// get your file as InputStream
 				InputStream is = new FileInputStream(tmpFile);
 				// copy it to response's OutputStream
