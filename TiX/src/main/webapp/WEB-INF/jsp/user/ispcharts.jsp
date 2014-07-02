@@ -57,7 +57,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                 type: 'column'
             },
             title: {
-                text: 'Histograma calidad subida',
+                text: 'Histograma Calidad Subida',
                 x: -20 //center
             },
 
@@ -79,7 +79,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
             },
 
             series: [{
-                name:'calidad subida',
+                name:'Calidad Subida',
                 data: [${entry.congestionUpChart[0]}, ${entry.congestionUpChart[1]}, ${entry.congestionUpChart[2]}, ${entry.congestionUpChart[3]}, ${entry.congestionUpChart[4]}, ${entry.congestionUpChart[5]}, ${entry.congestionUpChart[6]}, ${entry.congestionUpChart[7]}, ${entry.congestionUpChart[8]}, ${entry.congestionUpChart[9]}]
             }]
 
@@ -91,7 +91,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
             type: 'column'
         },
         title: {
-            text: 'Histograma calidad bajada',
+            text: 'Histograma Calidad Bajada',
             x: -20 //center
         },
 
@@ -114,7 +114,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
         },
 
         series: [{
-            name:'calidad bajada',
+            name:'Calidad Bajada',
             data: [${entry.congestionDownChart[0]}, ${entry.congestionDownChart[1]}, ${entry.congestionDownChart[2]}, ${entry.congestionDownChart[3]}, ${entry.congestionDownChart[4]}, ${entry.congestionDownChart[5]}, ${entry.congestionDownChart[6]}, ${entry.congestionDownChart[7]}, ${entry.congestionDownChart[8]}, ${entry.congestionDownChart[9]}]
         }]
 
@@ -127,7 +127,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
             type: 'column'
         },
         title: {
-            text: 'Histograma utilizacion subida',
+            text: 'Histograma Utilizacion Subida',
             x: -20 //center
         },
 
@@ -148,7 +148,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
         },
 
         series: [{
-            name:'utilizacion subida',
+            name:'Utilizacion Subida',
             data: [${entry.utilizacionUpChart[0]}, ${entry.utilizacionUpChart[1]}, ${entry.utilizacionUpChart[2]}, ${entry.utilizacionUpChart[3]}, ${entry.utilizacionUpChart[4]}, ${entry.utilizacionUpChart[5]}, ${entry.utilizacionUpChart[6]}, ${entry.utilizacionUpChart[7]}, ${entry.utilizacionUpChart[8]}, ${entry.utilizacionUpChart[9]}]
         }]
 
@@ -161,7 +161,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
             type: 'column'
         },
         title: {
-            text: 'Histograma utilizacion bajada',
+            text: 'Histograma Utilizacion Bajada',
             x: -20 //center
         },
 
@@ -183,7 +183,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
         },
 
         series: [{
-            name:'utilizacion bajada',
+            name:'Utilizacion Bajada',
             data: [${entry.utilizacionDownChart[0]}, ${entry.utilizacionDownChart[1]}, ${entry.utilizacionDownChart[2]}, ${entry.utilizacionDownChart[3]}, ${entry.utilizacionDownChart[4]}, ${entry.utilizacionDownChart[5]}, ${entry.utilizacionDownChart[6]}, ${entry.utilizacionDownChart[7]}, ${entry.utilizacionDownChart[8]}, ${entry.utilizacionDownChart[9]}]
         }]
 
@@ -222,7 +222,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
         xAxis: {
             minTickInterval: 1,
-            categories: ['calidad subida', 'calidad bajada', 'utilizacion subida', 'utilizacion bajada']
+            categories: ['Calidad Subida', 'Calidad Bajada', 'Utilizacion Subida', 'Utilizacion Bajada']
         },
 
         yAxis:{
