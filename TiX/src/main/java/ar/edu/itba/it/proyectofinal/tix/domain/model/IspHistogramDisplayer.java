@@ -69,7 +69,6 @@ public class IspHistogramDisplayer {
 		return utilizacionDownChart;
 	}
 
-
 	public void setUtilizacionDownChart(int[] utilizacionDownChart) {
 		this.utilizacionDownChart = utilizacionDownChart;
 	}
@@ -84,7 +83,5 @@ public class IspHistogramDisplayer {
 				+ ", utilizacionDownChart="
 				+ Arrays.toString(utilizacionDownChart) + "]";
 	}
-	
-	
 
 }

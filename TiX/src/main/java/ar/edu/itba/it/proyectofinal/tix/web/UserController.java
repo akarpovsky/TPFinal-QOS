@@ -1,8 +1,11 @@
 package ar.edu.itba.it.proyectofinal.tix.web;
 
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
@@ -13,8 +16,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.IOUtils;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -416,14 +421,13 @@ public class UserController {
 		mav.addObject("disp_list", disp_list);
 		mav.addObject("boxplot_list", boxplot_list);
 		
-		
 		return mav;
 
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void getcsv( 
-			HttpSession session) {
+			HttpSession session, HttpServletResponse response) {
 		
 		ModelAndView mav = new ModelAndView();
 		User me = getSessionUser(session);
@@ -442,8 +446,11 @@ public class UserController {
 		List<? extends Record> records = recordRepo.getAll();
 
 		Writer writer = null;
+//		String tmpFilename = "tmp/records.csv";
+		File tmpFile = null;
 		try {
-		    writer = new BufferedWriter(new OutputStreamWriter( new FileOutputStream("tmp/records.cvs"), "utf-8"));
+			tmpFile = File.createTempFile("records", "csv");
+		    writer = new BufferedWriter(new OutputStreamWriter( new FileOutputStream(tmpFile), "utf-8"));
 		    for(Record r: records){
 		    	writer.write(r.toCSV()+ "\n");
 		    }
@@ -453,8 +460,21 @@ public class UserController {
 		   try {writer.close();} 
 		   catch (Exception ex) {}
 		}
-		System.out.println("CSV file successfully generated");
-	
+		if(tmpFile != null){
+			try {
+				response.setContentType("text/csv");
+				// get your file as InputStream
+				InputStream is = new FileInputStream(tmpFile);
+				// copy it to response's OutputStream
+				IOUtils.copy(is, response.getOutputStream());
+				response.flushBuffer();
+			} catch (IOException ex) {
+				throw new RuntimeException("IOError writing file to output stream: " + tmpFile.getName());
+			}
+		}else{
+			System.out.println("Error while generating CSV file");
+		}
+		
 
 	}
 }
