@@ -11,7 +11,7 @@ from kivy.uix.dropdown import DropDown
 from functools import partial
 from kivy.config import Config
 from kivy.graphics import Color, Rectangle
-from kivy.uix.image import Image 
+from kivy.uix.image import Image
 import rsa
 import requests
 import subprocess
@@ -34,7 +34,7 @@ Config.set('graphics', 'height', '350')
 config = ConfigParser.ConfigParser()
 config.read('tixapp.cfg')
 config.get("TiXClient", "tixBaseUrl")
-config.get("TiXClient", "installDirUnix")
+config.get("TiXClient", "tixBaseUrl")
 tixBaseUrl = config.get("TiXClient", "tixBaseUrl")
 installDirUnix = config.get("TiXClient", "installDirUnix")
 
@@ -55,7 +55,7 @@ class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el bo
 
         if os.path.exists(installDirUnix):
           self.show_already_installed_popup()
-        else:        
+        else:
           self.show_install_form()
 
   def analyze_is_admin(self):
@@ -67,7 +67,7 @@ class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el bo
     global globalIsAdmin
     globalIsAdmin = is_admin
 
-  def show_install_form(self): 
+  def show_install_form(self):
     self.orientation = 'vertical'
     self.spacing='10sp'
 
@@ -93,7 +93,7 @@ class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el bo
     self.password.set_next(loginButton)
     self.add_widget(loginButton)
     loginButton.bind(on_press=partial(loginButtonOnClick,self.username,self.password)) #Accion que realizara el loginButton
-        
+
   def show_already_installed_popup(self):
     btnclose = Button(text='Salir', size_hint_y=None, height='30sp')
     content = BoxLayout(orientation='vertical', spacing=10)
@@ -181,7 +181,7 @@ def select_installation(self, old_popup,instance):
                 create_information_popup('Error','El nombre de la instalacion ya ha sido elegido previamente.', 'dismiss').open()
         else:
                 old_popup.dismiss()
-                
+
                 if execute_installation() == 1:
                         installation_result_popup('No se ha podido completar la instalacion',1)
 
@@ -198,7 +198,7 @@ def select_installation(self, old_popup,instance):
                 except Exception, e:
                         print "Malformed JSON server response. Exiting application..."
                         exit(1)
-                
+
                 if(r is not None and len(jsonUserData) > 0):
                         installation_result_popup('Instalacion Exitosa',0)
                 else:
@@ -250,14 +250,14 @@ def deleteExistingInstallation(self):
                         popup = create_information_popup('Error','Debe ejecutar este programa con permisos de adminsitrador', partial(return_to_so,1)).open()
 
                 sys_return = subprocess.call(['gksudo','python ./InstallerFiles/uninstallStartupUDPClient.py'])
-        
+
         if globalPlatformName == "Darwin":
                 sys_return = os.system("launchctl remove com.user.loginscript")
                 if os.path.isfile("~/Library/LaunchAgents/com.user.loginscript.plist"):
                         os.remove("~/Library/LaunchAgents/com.user.loginscript.plist")
                 if os.path.exists("/etc/TIX/"):
                         shutil.rmtree("/etc/TIX/")
-        
+
         if(sys_return == 0): # Call to installation procedure
                 installation_return = 'Se ha borrado con exito la desinstalacion de TiX. Retornando al SO...'
                 sys_return = 0
