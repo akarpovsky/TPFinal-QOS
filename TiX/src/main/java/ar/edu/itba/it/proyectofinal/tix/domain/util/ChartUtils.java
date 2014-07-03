@@ -330,8 +330,9 @@ public class ChartUtils {
 				Record record = it.next();
 				DateTime dt = new DateTime(record.getTimestamp());
 //				System.out.println("Salida: " + (aux_timestamp - dt.getMillis()));
+				// 20 minutos de de margen entre punto y punto 
 				if (aux_timestamp > 0
-						&& (aux_timestamp - dt.getMillis()) < -650000) {
+						&& (aux_timestamp - dt.getMillis()) < -(60 * 20 * 1000)) {
 					jump = true;
 					timestamps.add((aux_timestamp - dt.getMillis()) / 2);
 //					System.out.println("ENTRO");
