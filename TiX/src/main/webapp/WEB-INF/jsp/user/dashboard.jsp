@@ -149,22 +149,22 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
                 		fechas[i] = fechas[i-1];
                 	}
                 }
-                
+
                 Highcharts.setOptions({
         global: {
             timezoneOffset: 3 * 60
         }
     });
-    
+
                 var chart;
-               
+
                 $(document).ready(function() {
                		if( (Object.keys(fechas).length) < 50 ){
                             	auxMin = 0;
                 	}else{
                             	auxMin = fechas.length -50;
                 	}
-                
+
                     chart = new Highcharts.Chart({
                         chart: {
                             renderTo: 'graphcontainer',
@@ -279,4 +279,4 @@ format: 'dd/mm/yyyy',
 </script>
 
 </html>
-Status API Training Shop Blog About © 2014 GitHub, Inc. Terms Privacy Security Contact 
+Status API Training Shop Blog About © 2014 GitHub, Inc. Terms Privacy Security Contact
