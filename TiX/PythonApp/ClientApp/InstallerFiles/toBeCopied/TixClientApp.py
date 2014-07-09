@@ -100,7 +100,7 @@ def pingUniq(num_uniq, logfile,t0, t0_filename, check,told):
 		client.sendto(message + "\n", (TEST_HOST, TEST_PORT))
 		if file_with_data == True:
 			#Delete data file
-			if modo_debug == True:
+			if modo_debug == False:
 				os.remove(installDirUnix + "/app/" + file_tobe_deleted)
 			file_with_data = False
 
