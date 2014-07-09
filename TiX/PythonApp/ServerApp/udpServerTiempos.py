@@ -212,7 +212,7 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
 
                             # Remove 10 oldest logs
                             for count in range(0,9):
-                                if os.path.isfile(files_to_process[count]) == True
+                                if os.path.isfile(files_to_process[count]) == True:
                                     os.remove(files_to_process[count])
                             try:
                                 new_isp_name = info.pais_num_name_nic(client_ip, 'EN' )[1]
