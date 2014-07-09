@@ -23,6 +23,7 @@ TEST_HOST = config.get("UDPClient", "TEST_host")
 TEST_PORT = config.getint("UDPClient", "TEST_port")
 TEST2_HOST = config.get("UDPClient", "TEST2_host")
 TEST2_PORT = config.getint("UDPClient", "TEST2_port")
+modo_debug = config.getint("UDPClient", "modo_debug")
 
 def ts_filename():
   return time.time()
@@ -35,7 +36,7 @@ def ts():
 
 
 def relleno_largo(largo, check, told,log_file):
-	
+
 	if check == False:
 		relleno=""
 		for i in range(0,largo-1):
@@ -57,29 +58,29 @@ def relleno_largo(largo, check, told,log_file):
 	 		relleno= relleno + str(random.randint(0,9))
 	return relleno
 
-	
+
 def log_msg(log_file, msg):
-	
+
 	arch=open(installDirUnix + "/app/"+ log_file,"a")
 	print >>arch, datetime.datetime.now().strftime("%D|%H:%M:%S,%f"), msg
 	arch.close()
 	return
 
 
-	
+
 def pingUniq(num_uniq, logfile,t0, t0_filename, check,told):
-	
+
 	log_file = logfile + str(t0_filename)
 	#deberian ser 12 bytes, 32 bits por cada timestamp (en hexa)
 	_24hs='86400000000'
-	
-	t1 = _24hs 
+
+	t1 = _24hs
 	t2 = _24hs
 	t3 = _24hs
 	t4 = _24hs
-	
+
 	#Mensaje corto
-	
+
 	t1 = ts()
 	file_with_data = False
 	relleno_largo_msg = ''
@@ -91,20 +92,21 @@ def pingUniq(num_uniq, logfile,t0, t0_filename, check,told):
 		relleno_largo_msg = relleno_largo(4400,check,str(told),logfile)
 		message = t1 + '!!' + t2 + '!!' + t3 + '!!' + t4 + '!!' + relleno_largo_msg
 		file_with_data = relleno_largo_msg.startswith('DATA;;') # Para luego borrar el archivo una vez enviado
-	
+
 	client = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-	
+
 	try:
 		client.settimeout(5.0)
-		client.sendto(message + "\n", (TEST_HOST, TEST_PORT)) 
+		client.sendto(message + "\n", (TEST_HOST, TEST_PORT))
 		if file_with_data == True:
 			#Delete data file
-			os.remove(installDirUnix + "/app/" + file_tobe_deleted) 
+			if modo_debug == True:
+				os.remove(installDirUnix + "/app/" + file_tobe_deleted)
 			file_with_data = False
-	
+
 		data = client.recv(8192)#(2048) para el mensaje largo
 		msg = data.split('|')
-		data = msg[0] + '|' + msg[1] + '|' + msg[2] + '|' + ts()#+ '|' + msg[4], en msg[4] queda el contenido del mensaje largo sin imprimir 
+		data = msg[0] + '|' + msg[1] + '|' + msg[2] + '|' + ts()#+ '|' + msg[4], en msg[4] queda el contenido del mensaje largo sin imprimir
 		# print 'Received', repr(data)
 
 		iph=20 #longitud ip header (min. 20 bytes)
@@ -112,27 +114,27 @@ def pingUniq(num_uniq, logfile,t0, t0_filename, check,told):
 		if (num_uniq % 2 == 0) :
 		      payload=len(data) #longitud del mensaje en bytes
 		else:
-		      payload=len(data + '|'+ msg[4]) 
+		      payload=len(data + '|'+ msg[4])
 		      #data: solo los timestamps, en msg[4] esta el contenido del mensaje largo
-	
+
 		pack_len=str(iph + udph + payload)
 		log_msg(log_file, '|' + pack_len + '|' + data)
-		
+
 
 		#print data #debuging
-		#msg_completo = str(data).split('|')  
+		#msg_completo = str(data).split('|')
 		#print len(data) #debuging
 	except:
 		print "[" + datetime.datetime.fromtimestamp(time.time()).strftime('%d-%m-%Y %H:%M:%S') + "] Timeout: no hubo respuesta del servidor."
 		client.close()
-		
+
 
 if __name__ == "__main__":
-  
+
 	if len(sys.argv) < 2:
 	  print "usage: python <client>.py <logfile>\n"
 	  sys.exit()
-	  
+
 	log_file=sys.argv[1]+'_'
 
 	t0=ts()
@@ -143,14 +145,14 @@ if __name__ == "__main__":
 	t_old = 0;
 	tries = 0;
 	i=0
-	while True: 
+	while True:
   		#print i
   		if tries <= 0:
   			checker = False
 
   		tnow = datetime.datetime.fromtimestamp(time.time())
   		curr_lapsed_time = (tnow-t0_date).total_seconds()
-  		if (curr_lapsed_time > 60) or (curr_lapsed_time < 0): # 60 segundos o cambio de dia 
+  		if (curr_lapsed_time > 60) or (curr_lapsed_time < 0): # 60 segundos o cambio de dia
 			tries = 2
 			t_old = t0
 			t_old_filename = t0_filename
