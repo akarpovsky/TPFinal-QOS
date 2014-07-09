@@ -26,7 +26,6 @@ TEST_SERVER_HOST = config.get("TiXServer", "TEST_SERVER_HOST") #TODO: Change TES
 TEST_SERVER_PORT = config.getint("TiXServer", "TEST_SERVER_PORT")
 installDirUnix = config.get("TiXServer", "installDirUnix")
 tixBaseUrl = config.get("TiXServer", "tixBaseUrl")
-modo_debug = config.get("TixServer", "modo_debug")
 
 sys.path.append('/home/pfitba/ServerAppProduction/data_processing/')
 import completo_III
@@ -107,8 +106,7 @@ def remove_1h_files(dirpath):
         logger.debug('Hay ' + str(len(a)) + ' arhivos en el directorio ' + dirpath)
         file_to_remove = a.pop(0)
         logger.info("Eliminando log antiguo: " + dirpath + "/" + file_to_remove)
-        if modo_debug == True and modo_debug == True
-            os.remove(dirpath + "/" + file_to_remove)
+        os.remove(dirpath + "/" + file_to_remove)
         a.sort(key=lambda x: os.stat(os.path.join(dirpath, x)).st_mtime)
 
 class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
@@ -214,7 +212,7 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
 
                             # Remove 10 oldest logs
                             for count in range(0,9):
-                                if os.path.isfile(files_to_process[count]) == True and modo_debug == True:
+                                if os.path.isfile(files_to_process[count]) == True
                                     os.remove(files_to_process[count])
                             try:
                                 new_isp_name = info.pais_num_name_nic(client_ip, 'EN' )[1]
