@@ -20,3 +20,4 @@ lib
 share
 Tix.dmg
 *.pkg
+.settings
