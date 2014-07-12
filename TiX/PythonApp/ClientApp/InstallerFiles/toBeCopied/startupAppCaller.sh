@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo python /etc/TIX/app/TixClientApp.py log
+sudo /etc/TIX/app/TixClientApp log

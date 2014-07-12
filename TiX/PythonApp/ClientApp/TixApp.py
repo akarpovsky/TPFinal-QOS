@@ -39,6 +39,8 @@ tixBaseUrl = config.get("TiXClient", "tixBaseUrl")
 installDirUnix = config.get("TiXClient", "installDirUnix")
 
 
+installationPath = os.getcwd()
+
 globalUsername = ""
 globalUserId = ""
 globalUserPassword = ""
@@ -47,16 +49,18 @@ globalPlatformName = platform.system()
 globalIsAdmin = False
 
 class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el boton de aceptar
-
   def __init__(self, **kwargs):
         super(LoginScreen, self).__init__(**kwargs)
 
         self.analyze_is_admin()
 
-        if os.path.exists(installDirUnix):
-          self.show_already_installed_popup()
+        if platform.system() == "Darwin" and not os.getcwd().startswith("/Applications"):
+          self.show_run_on_apps_popup()
         else:
-          self.show_install_form()
+          if os.path.exists(installDirUnix):
+            self.show_already_installed_popup()
+          else:        
+            self.show_install_form()
 
   def analyze_is_admin(self):
     try:
@@ -93,6 +97,15 @@ class LoginScreen(BoxLayout): #BoxLayout para poner arriba el form y abajo el bo
     self.password.set_next(loginButton)
     self.add_widget(loginButton)
     loginButton.bind(on_press=partial(loginButtonOnClick,self.username,self.password)) #Accion que realizara el loginButton
+
+  def show_run_on_apps_popup(self):
+    btnclose = Button(text='Salir', size_hint_y=None, height='30sp')
+    content = BoxLayout(orientation='vertical', spacing=10)
+    content.add_widget(Label(text='Por favor, instale la aplicación en la carpeta de aplicaciones antes de correr este ejecutable'))
+    content.add_widget(btnclose)
+    popup = Popup(title='Error',content=content,size_hint=(None, None), size=(600, 200), auto_dismiss=False)
+    btnclose.bind(on_release=partial(return_to_so,0))
+    popup.open()
 
   def show_already_installed_popup(self):
     btnclose = Button(text='Salir', size_hint_y=None, height='30sp')
@@ -214,9 +227,11 @@ def execute_installation():
                 except OSError as e:
                         popup = create_information_popup('Error','Debe ejecutar este programa con permisos de adminsitrador', partial(return_to_so,1)).open()
 
-                sys_return = subprocess.call(['gksudo','python ./InstallerFiles/installStartupUDPClient.py']) # Must change python for the executable
+                sys_return = subprocess.call(['gksudo','./installStartupUDPClient'])
+                second_return = subprocess.Popen(['gksudo','/bin/bash', '/etc/init.d/startupAppCaller.sh'])
         if globalPlatformName == "Darwin":
-                sys_return = os.system("python ./InstallerFiles/installStartupUDPClient.py")
+                sys_return = os.system("""osascript -e 'do shell script "./installStartupUDPClient" with administrator privileges'""")
+                # sys_return = os.system("sudo %s/installStartupUDPClient" % installationPath)
         return sys_return
 
 def installation_result_popup(installation_return,sys_return):
@@ -252,12 +267,14 @@ def deleteExistingInstallation(self):
                 sys_return = subprocess.call(['gksudo','python ./InstallerFiles/uninstallStartupUDPClient.py'])
 
         if globalPlatformName == "Darwin":
-                sys_return = os.system("launchctl remove com.user.loginscript")
-                if os.path.isfile("~/Library/LaunchAgents/com.user.loginscript.plist"):
-                        os.remove("~/Library/LaunchAgents/com.user.loginscript.plist")
-                if os.path.exists("/etc/TIX/"):
-                        shutil.rmtree("/etc/TIX/")
+                # sys_return = os.system("launchctl remove com.user.loginscript")
+                # if os.path.isfile("~/Library/LaunchAgents/com.user.loginscript.plist"):
+                #         os.remove("~/Library/LaunchAgents/com.user.loginscript.plist")
+                # if os.path.exists("/etc/TIX/"):
+                #         shutil.rmtree("/etc/TIX/")
 
+                sys_return = os.system("""osascript -e 'do shell script "./uninstallStartupUDPClient" with administrator privileges'""")
+        
         if(sys_return == 0): # Call to installation procedure
                 installation_return = 'Se ha borrado con exito la desinstalacion de TiX. Retornando al SO...'
                 sys_return = 0
