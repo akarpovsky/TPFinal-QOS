@@ -43,9 +43,10 @@ def relleno_largo(largo, check, told,log_file):
 		for i in range(0,largo-1):
 	 		relleno= relleno + str(random.randint(0,9))
 	else:
-		filereg=open(installDirUnix + "/app/" + log_file+told,"r")
+    filereg=open(installDirUnix + "/app/" + log_file+told,"r")
 		print "[" + datetime.datetime.fromtimestamp(time.time()).strftime('%d-%m-%Y %H:%M:%S') + "] Enviando paquete largo con DATA al servidor de medicion (" + filereg.name + ")..."
-		msg = filereg.read()
+
+    msg = filereg.read()
 		privateKeyFile = open(installDirUnix + '/tix_key.priv','r')
 		publicKeyFile = open(installDirUnix + '/tix_key.pub','r')
 
@@ -86,6 +87,11 @@ def pingUniq(num_uniq, logfile,t0, t0_filename, check,told):
 	file_with_data = False
 	relleno_largo_msg = ''
 
+  # log for comparing timestamps
+  file_compare=open("log_compare_timestamps","a")
+  file_compare.write(datetime.datetime.now().strftime("%D|%H:%M:%S,%f")+"\t")
+  file_compare.close()
+
 	if (num_uniq % 2 == 0) :
 		message = t1 + '!!' + t2 + '!!' + t3 + '!!' + t4
 	else:
@@ -122,6 +128,10 @@ def pingUniq(num_uniq, logfile,t0, t0_filename, check,told):
 		log_msg(log_file, '|' + pack_len + '|' + data)
 
 
+    # log for comparing timestamps
+    file_compare=open("log_compare_timestamps","a")
+    file_compare.write(datetime.datetime.now().strftime("%D|%H:%M:%S,%f")+"\n")
+    file_compare.close()
 		#print data #debuging
 		#msg_completo = str(data).split('|')
 		#print len(data) #debuging
