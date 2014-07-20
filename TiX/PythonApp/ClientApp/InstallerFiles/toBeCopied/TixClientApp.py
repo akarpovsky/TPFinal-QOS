@@ -86,11 +86,6 @@ def pingUniq(num_uniq, logfile,t0, t0_filename, check,told):
 	file_with_data = False
 	relleno_largo_msg = ''
 
-	# log for comparing timestamps
-	file_compare=open("log_compare_timestamps","a")
-	file_compare.write(datetime.datetime.now().strftime("%D|%H:%M:%S,%f")+"\t")
-	file_compare.close()
-
 	if (num_uniq % 2 == 0) :
 		message = t1 + '!!' + t2 + '!!' + t3 + '!!' + t4
 	else:
@@ -103,6 +98,11 @@ def pingUniq(num_uniq, logfile,t0, t0_filename, check,told):
 
 	try:
 		client.settimeout(5.0)
+    # log for comparing timestamps
+    file_compare=open("log_compare_timestamps","a")
+    file_compare.write(datetime.datetime.now().strftime("%D|%H:%M:%S,%f")+"\t")
+    file_compare.close()
+
 		client.sendto(message + "\n", (TEST_HOST, TEST_PORT))
 		if file_with_data == True:
 			#Delete data file
@@ -110,6 +110,11 @@ def pingUniq(num_uniq, logfile,t0, t0_filename, check,told):
 				os.remove(installDirUnix + "/app/" + file_tobe_deleted)
 			file_with_data = False
 
+    # log for comparing timestamps
+    file_compare=open("log_compare_timestamps","a")
+    file_compare.write(datetime.datetime.now().strftime("%D|%H:%M:%S,%f")+"\n")
+    file_compare.close()
+    
 		data = client.recv(8192)#(2048) para el mensaje largo
 		msg = data.split('|')
 		data = msg[0] + '|' + msg[1] + '|' + msg[2] + '|' + ts()#+ '|' + msg[4], en msg[4] queda el contenido del mensaje largo sin imprimir
@@ -127,10 +132,6 @@ def pingUniq(num_uniq, logfile,t0, t0_filename, check,told):
 		log_msg(log_file, '|' + pack_len + '|' + data)
 
 
-		# log for comparing timestamps
-		file_compare=open("log_compare_timestamps","a")
-		file_compare.write(datetime.datetime.now().strftime("%D|%H:%M:%S,%f")+"\n")
-    		file_compare.close()
 		#print data #debuging
 		#msg_completo = str(data).split('|')
 		#print len(data) #debuging
