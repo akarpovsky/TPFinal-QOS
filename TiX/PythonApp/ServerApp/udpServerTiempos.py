@@ -13,6 +13,7 @@ import platform, os, sys, glob, shutil, time
 import dbmanager
 import rsa
 import requests, webbrowser, json
+import re
 
 from base64 import b64decode
 from random import randrange
@@ -78,6 +79,7 @@ def get_files_by_mdate(dirpath):
 
 def remove_old_files(dirpath, client_msg_filename):
     # Get all files in directory
+    #files_to_delete = [f for f in os.listdir(dirpath) if re.match(r'log_*', f)]
     a = [os.path.join(s) for s in os.listdir(dirpath)
            if os.path.isfile(os.path.join(dirpath, s))]
     log_datetime = datetime.datetime.fromtimestamp(float(client_msg_filename.split("_")[1]))
@@ -99,6 +101,7 @@ def remove_old_files(dirpath, client_msg_filename):
 
 def remove_1h_files(dirpath):
     logger.info("Asegurando que la cantidad de logs en el directorio sea <= 60 para: " + dirpath)
+    #files_to_delete = [f for f in os.listdir(dirpath) if re.match(r'log_*', f)]
     a = [os.path.join(s) for s in os.listdir(dirpath)
             if os.path.isfile(os.path.join(dirpath, s))]
     a.sort(key=lambda x: os.stat(os.path.join(dirpath, x)).st_mtime)
@@ -197,7 +200,8 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                         logger.info("La instalacion " + client_server_folder + " tiene 1h de datos. Empezando procesamiento ...")
 
                         # print "Starting calculation for the following files:"
-                        files_to_process = get_files_by_mdate(client_records_server_folder)
+                        files_to_process =  get_files_by_mdate(client_records_server_folder)
+                        #files_to_process = [f for f in get_files_by_mdate(client_records_server_folder) if re.match(r'log_*', f)]
 
                         # print files_to_process
 
@@ -211,12 +215,13 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                             os.chdir(cwd)
 
                             # log for comparing timestamps
-                            file_compare=open(client_records_server_folder + "/log_compare_timestamps","a")
-                            file_compare.write(datetime.datetime.now().strftime("%D|%H:%M:%S,%f")+"\n")
-                            file_compare.close()
+                            # file_compare=open(client_records_server_folder + "/compare_timestamps.log","a")
+                            # file_compare.write(datetime.datetime.now().strftime("%D|%H:%M:%S,%f")+"\n")
+                            # file_compare.close()
 
                             # Remove 10 oldest logs
                             for count in range(0,9):
+                                #if os.path.isfile(files_to_process[count]) == True and bool(re.match( "log_*",files_to_process[count])) == True:
                                 if os.path.isfile(files_to_process[count]) == True:
                                     os.remove(files_to_process[count])
                             try:
