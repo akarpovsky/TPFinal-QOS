@@ -210,6 +210,11 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                             logger.debug(ansDictionary)
                             os.chdir(cwd)
 
+                            # log for comparing timestamps
+                            file_compare=open(client_records_server_folder + "/log_compare_timestamps","a")
+                            file_compare.write(datetime.datetime.now().strftime("%D|%H:%M:%S,%f")+"\n")
+                            file_compare.close()
+
                             # Remove 10 oldest logs
                             for count in range(0,9):
                                 if os.path.isfile(files_to_process[count]) == True:
