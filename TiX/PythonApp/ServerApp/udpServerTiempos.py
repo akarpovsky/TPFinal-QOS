@@ -14,7 +14,7 @@ import dbmanager
 import rsa
 import requests, webbrowser, json
 import re
-
+import linecache
 from base64 import b64decode
 from random import randrange
 
@@ -211,8 +211,6 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                             logger.info("Creando directorio: " + client_server_folder)
                             os.makedirs(client_records_server_folder)
 
-                        logFile.close()
-
                         # Check if there are old unusable files and remove them; we always need to keep only the REAL last hour of data
                         remove_old_files(client_records_server_folder, client_msg_filename.split("/")[-1:][0])
 
@@ -240,8 +238,9 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
 
                                 logger.info("Completando logs en " + "compare_timestamps_"+ client_records_server_folder+".log" )
                                 file_compare=open("/etc/TIX/records/logs_compare/" + "compare_timestamps_"+ client_server_folder+".log","a")
-                                oldest_line = linecache.getline( get_oldest_file(client_records_server_folder), 1)
-                                newest_line = get_last_line( get_newest_file(client_records_server_folder))
+                                logger.info("oldest file: " + get_oldest_file(client_records_server_folder))
+                                oldest_line = linecache.getline( client_records_server_folder +"/"+ get_oldest_file(client_records_server_folder), 1)
+                                newest_line = get_last_line( client_records_server_folder +"/" + get_newest_file(client_records_server_folder))
                                 logger.info("oldest_line " + oldest_line)
                                 logger.info("newest_line " + newest_line)
                                 file_compare.write(oldest_line+"\n")
