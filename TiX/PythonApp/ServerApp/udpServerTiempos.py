@@ -281,13 +281,17 @@ if __name__ == "__main__":
     allow_reuse_address = True
     # Create the server, binding to localhost on port 9999
     #server = SocketServer.UDPServer((HOST, PORT), MyUDPHandler)
-    server = ThreadingUDPServer((HOST, PORT), ThreadingUDPRequestHandler)
-
-    #Threaded version
-    server_thread= threading.Thread(target=server.serve_forever)
-    logger.info("Starting server (" + str(HOST) + ":" + str(PORT) + ") thread " + server_thread.name)
-    # server_thread.daemon = True
-    server_thread.start()
+    try:
+       server = ThreadingUDPServer((HOST, PORT), ThreadingUDPRequestHandler)
+   
+       #Threaded version
+       server_thread= threading.Thread(target=server.serve_forever)
+       logger.info("Starting server (" + str(HOST) + ":" + str(PORT) + ") thread " + server_thread.name)
+       # server_thread.daemon = True
+       server_thread.start()
+    except:
+       rollbar.report_exc_info()
+       
 
     # Activate the server; this will keep running until you
     # interrupt the program with Ctrl-C
