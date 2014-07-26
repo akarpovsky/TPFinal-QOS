@@ -14,7 +14,7 @@ import dbmanager
 import rsa
 import requests, webbrowser, json
 import re
-
+import linecache
 from base64 import b64decode
 from random import randrange
 
@@ -238,8 +238,9 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
 
                                 logger.info("Completando logs en " + "compare_timestamps_"+ client_records_server_folder+".log" )
                                 file_compare=open("/etc/TIX/records/logs_compare/" + "compare_timestamps_"+ client_server_folder+".log","a")
-                                oldest_line = linecache.getline( get_oldest_file(client_records_server_folder), 1)
-                                newest_line = get_last_line( get_newest_file(client_records_server_folder))
+                                logger.info("oldest file: " + get_oldest_file(client_records_server_folder))
+                                oldest_line = linecache.getline( client_records_server_folder +"/"+ get_oldest_file(client_records_server_folder), 1)
+                                newest_line = get_last_line( client_records_server_folder +"/" + get_newest_file(client_records_server_folder))
                                 logger.info("oldest_line " + oldest_line)
                                 logger.info("newest_line " + newest_line)
                                 file_compare.write(oldest_line+"\n")
