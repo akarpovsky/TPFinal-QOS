@@ -253,7 +253,6 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                                 isp_id = jsonUserData['id']
                                 logger.debug("Utilizando ISP = " + new_isp_name + " con ID = " + str(isp_id))
                             else:
-                                rollbar.report_exc_info()
                                 logger.error("No se ha podido insertar el nuevo ISP en la DB, se utilizara default (" + client_server_folder + ") |  jsonUserData: " + str(jsonUserData))
                                 isp_id = 0
 
@@ -264,7 +263,6 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                                 logger.error("Error al insertar nuevo record en la DB de la carpeta: " + client_records_server_folder)
                                 logger.error(e)
                                 rollbar.report_exc_info()
-            else:
                 else:
                     logger.debug("No se ha podido obtener la client_data para la siguiente pubKey= " + str(client_pub_key_str_b64))
 
