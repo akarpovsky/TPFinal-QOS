@@ -123,31 +123,35 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
     """
 
     def handle(self):
-        tstamp=ts()
-        data = self.request[0].strip()
-        socket = self.request[1]
+        try:
+            tstamp=ts()
+            data = self.request[0].strip()
+            socket = self.request[1]
 
-        msg = data.split('!!')
-        #este_thread=threading.current_thread()
-        #threads_activos=threading.activeCount() #threading.enumerate()
+            msg = data.split('!!')
+            #este_thread=threading.current_thread()
+            #threads_activos=threading.activeCount() #threading.enumerate()
 
-        #print "{} wrote:".format(self.client_address[0])
-        # print msg[0]+'|'+msg[1]+'|'+msg[2]+'1'+msg[3]
+            #print "{} wrote:".format(self.client_address[0])
+            # print msg[0]+'|'+msg[1]+'|'+msg[2]+'1'+msg[3]
 
-        if len(msg)>4:# depende de si es un mensaje corto o un mensaje largo
-        #Mensaje largo
-            socket.sendto(msg[0] + '|' + tstamp +'|' + str(ts()) + '|' + msg[3] + '|' + msg[4], self.client_address)
-            try:
-                #logger.info("Llamo thread " + str(threading.activeCount()))
-                thread = threading.Thread(target = self.worker_thread, args=(msg,))
-                thread.start()
-                thread.join()
-            except Exception, e:
-                logger.info("Error: No se pudo iniciar el thread")
-                logger.info(str(e))
-        else:
-        #Mensaje corto
-            socket.sendto(msg[0]+'|'+ tstamp +'|' + str(ts()) + '|' + msg[3], self.client_address)
+            if len(msg)>4:# depende de si es un mensaje corto o un mensaje largo
+            #Mensaje largo
+                socket.sendto(msg[0] + '|' + tstamp +'|' + str(ts()) + '|' + msg[3] + '|' + msg[4], self.client_address)
+                try:
+                    #logger.info("Llamo thread " + str(threading.activeCount()))
+                    thread = threading.Thread(target = self.worker_thread, args=(msg,))
+                    thread.start()
+                    thread.join()
+                except Exception, e:
+                    logger.info("Error: No se pudo iniciar el thread")
+                    logger.info(str(e))
+                    rollbar.report_exc_info()
+            else:
+            #Mensaje corto
+                socket.sendto(msg[0]+'|'+ tstamp +'|' + str(ts()) + '|' + msg[3], self.client_address)
+        except:
+            rollbar.report_exc_info()
 
     def worker_thread(self, msg):
         large_package_msg = msg[4].split(';;')
@@ -230,6 +234,7 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                                 new_isp_name = info.pais_num_name_nic(client_ip, 'EN' )[1]
                                 logger.debug("ISP NAME = " + new_isp_name)
                             except Exception, e:
+                                rollbar.report_exc_info()
                                 new_isp_name = 'Unknown'
                             payload = {'isp_name': str(new_isp_name)}
                             headers = {'content-type': 'application/json'}
@@ -241,12 +246,14 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                                 logger.debug("Parseo respuesta JSON de la API para newISPPost: " + str(jsonUserData))
                                 jsonUserData = json.loads(r.text) # Parseo la respuesta JSON de la API de TiX
                             except Exception, e:
+                                rollbar.report_exc_info()
                                 isp_id = 0
 
                             if(r is not None and len(jsonUserData) > 0):
                                 isp_id = jsonUserData['id']
                                 logger.debug("Utilizando ISP = " + new_isp_name + " con ID = " + str(isp_id))
                             else:
+                                rollbar.report_exc_info()
                                 logger.error("No se ha podido insertar el nuevo ISP en la DB, se utilizara default (" + client_server_folder + ") |  jsonUserData: " + str(jsonUserData))
                                 isp_id = 0
 
@@ -256,6 +263,8 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                             except Exception, e:
                                 logger.error("Error al insertar nuevo record en la DB de la carpeta: " + client_records_server_folder)
                                 logger.error(e)
+                                rollbar.report_exc_info()
+            else:
                 else:
                     logger.debug("No se ha podido obtener la client_data para la siguiente pubKey= " + str(client_pub_key_str_b64))
 
