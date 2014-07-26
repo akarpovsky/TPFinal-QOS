@@ -9,8 +9,13 @@ role :web, %w{tix.innova-red.net}
 role :db,  %w{tix.innova-red.net}
 
 set :application, 'tix_staging_releases'
-set :deploy_to, "/home/pfitba/#{fetch(:application)}"
-set :install_to, "/home/pfitba/#{fetch(:application).gsub(/_releases/,"")}"
+
+# Python application release path
+set :deploy_to,   "/home/pfitba/#{fetch(:application)}"
+# Python application deployment path
+set :install_to,  "/home/pfitba/#{fetch(:application).gsub(/_releases/,"")}"
+# Web WAR filename
+set :war_filename,  "tix-staging.war"
 
 # Extended Server Syntax
 # ======================
