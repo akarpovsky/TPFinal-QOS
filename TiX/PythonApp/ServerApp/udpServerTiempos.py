@@ -173,7 +173,7 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
             rollbar.report_exc_info()
 
     def worker_thread(self, msg):
-        try: 
+        try:
             large_package_msg = msg[4].split(';;')
             if len(large_package_msg)>=3 and large_package_msg[0]=='DATA':
                 # Tengo datos para procesar dentro del mensaje largo
@@ -232,6 +232,53 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
 
                             if len(files_to_process) < 60:
                                 logger.error("Error al procesar los archivos de " + client_server_folder)
+                         else:
+                                cwd = os.getcwd()
+                                os.chdir('/home/pfitba/ServerAppProduction/data_processing')
+                                ansDictionary = completo_III.analyse_data(files_to_process)
+                                logger.debug(ansDictionary)
+                                os.chdir(cwd)
+
+                                logger.info("Completando logs en " + "compare_timestamps_"+ client_records_server_folder+".log" )
+                                file_compare=open("/etc/TIX/records/logs_compare/" + "compare_timestamps_"+ client_server_folder+".log","a")
+                                oldest_line = linecache.getline( get_oldest_file(client_records_server_folder), 1)
+                                newest_line = get_last_line( get_newest_file(client_records_server_folder))
+                                logger.info("oldest_line " + oldest_line)
+                                logger.info("newest_line " + newest_line)
+                                file_compare.write(oldest_line+"\n")
+                                file_compare.write(newest_line+"\n")
+                                file_compare.write("\n")
+                                file_compare.close()
+                                logger.info("Log completo" )
+
+
+                                # Remove 10 oldest logs
+                                for count in range(0,9):
+                                    #if os.path.isfile(files_to_process[count]) == True and bool(re.match( "log_*",files_to_process[count])) == True:
+                                    if os.path.isfile(files_to_process[count]) == True:
+                                        os.remove(files_to_process[count])
+                                try:
+                                    new_isp_name = info.pais_num_name_nic(client_ip, 'EN' )[1]
+                                    logger.debug("ISP NAME = " + new_isp_name)
+                                except Exception, e:
+                                    rollbar.report_exc_info()
+                                    new_isp_name = 'Unknown'
+                                payload = {'isp_name': str(new_isp_name)}
+                                headers = {'content-type': 'application/json'}
+                                r = requests.post(tixBaseUrl + 'bin/api/newISPPost', data=json.dumps(payload), headers=headers)
+
+                                jsonUserData = []
+
+                                try:
+                                    logger.debug("Parseo respuesta JSON de la API para newISPPost: " + str(jsonUserData))
+                                    jsonUserData = json.loads(r.text) # Parseo la respuesta JSON de la API de TiX
+                                except Exception, e:
+                                    rollbar.report_exc_info()
+                                    isp_id = 0
+
+                                if(r is not None and len(jsonUserData) > 0):
+                                    isp_id = jsonUserData['id']
+                                    logger.debug("Utilizando ISP = " + new_isp_name + " con ID = " + str(isp_id))
                             else:
                                 cwd = os.getcwd()
                                 os.chdir('/home/pfitba/ServerAppProduction/data_processing')
