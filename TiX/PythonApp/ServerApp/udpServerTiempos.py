@@ -124,13 +124,13 @@ def get_last_line(fname):
 
 def get_oldest_file(dir):
         filelist = os.listdir(dir)
-        filelist = filter(lambda x: not os.path.isdir(dir + x), filelist)
-        return min(filelist, key=lambda x: os.stat(dir + x).st_mtime)
+        filelist = filter(lambda x: not os.path.isdir(dir + "/" + x), filelist)
+        return min(filelist, key=lambda x: os.stat(dir + "/" x).st_mtime)
 
 def get_newest_file(dir):
         filelist = os.listdir(dir)
-        filelist = filter(lambda x: not os.path.isdir(dir  + x), filelist)
-        return max(filelist, key=lambda x: os.stat(dir + x).st_mtime)
+        filelist = filter(lambda x: not os.path.isdir(dir + "/" + x), filelist)
+        return max(filelist, key=lambda x: os.stat(dir + "/" + x).st_mtime)
 
 
 class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
@@ -239,7 +239,6 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                             os.chdir(cwd)
 
                             logger.info("Completando logs en " + "compare_timestamps_"+ client_records_server_folder+".log" )
-                            # log for comparing timestamps
                             file_compare=open("/etc/TIX/records/logs_compare/" + "compare_timestamps_"+ client_records_server_folder+".log","a")
                             oldest_line = linecache.getline( get_oldest_file(client_records_server_folder), 1)
                             newest_line = get_last_line( get_newest_file(client_records_server_folder))
