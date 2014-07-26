@@ -18,6 +18,8 @@ import re
 from base64 import b64decode
 from random import randrange
 
+import rollbar
+rollbar.init('bfb83f64a6e64b5998cd28f2376827e2', 'production')  # access_token, environment
 
 config = ConfigParser.ConfigParser()
 config.read('/home/pfitba/ServerAppProduction/tixserver-deploy.cfg')
