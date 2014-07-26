@@ -125,7 +125,7 @@ def get_last_line(fname):
 def get_oldest_file(dir):
         filelist = os.listdir(dir)
         filelist = filter(lambda x: not os.path.isdir(dir + "/" + x), filelist)
-        return min(filelist, key=lambda x: os.stat(dir + "/" x).st_mtime)
+        return min(filelist, key=lambda x: os.stat(dir + "/" + x).st_mtime)
 
 def get_newest_file(dir):
         filelist = os.listdir(dir)
