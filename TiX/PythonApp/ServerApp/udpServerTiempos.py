@@ -173,6 +173,7 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
             rollbar.report_exc_info()
 
     def worker_thread(self, msg):
+<<<<<<< Updated upstream
         try:
             large_package_msg = msg[4].split(';;')
             if len(large_package_msg)>=3 and large_package_msg[0]=='DATA':
@@ -232,53 +233,113 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
 
                             if len(files_to_process) < 60:
                                 logger.error("Error al procesar los archivos de " + client_server_folder)
-                         else:
-                                cwd = os.getcwd()
-                                os.chdir('/home/pfitba/ServerAppProduction/data_processing')
-                                ansDictionary = completo_III.analyse_data(files_to_process)
-                                logger.debug(ansDictionary)
-                                os.chdir(cwd)
+=======
+        large_package_msg = msg[4].split(';;')
+        if len(large_package_msg)>=3 and large_package_msg[0]=='DATA':
+            # Tengo datos para procesar dentro del mensaje largo
+            #Cliente envia al server: DATA|publicKeyPlain|signedMeessage|msg
+            client_pub_key_str_b64 = large_package_msg[1]
+            client_pub_key_str = b64decode(large_package_msg[1])
+            client_signed_msg = b64decode(large_package_msg[2])
+            client_msg_filename = large_package_msg[3]
+            client_plain_msg = b64decode(large_package_msg[4])
 
-                                logger.info("Completando logs en " + "compare_timestamps_"+ client_records_server_folder+".log" )
-                                file_compare=open("/etc/TIX/records/logs_compare/" + "compare_timestamps_"+ client_server_folder+".log","a")
-                                oldest_line = linecache.getline( get_oldest_file(client_records_server_folder), 1)
-                                newest_line = get_last_line( get_newest_file(client_records_server_folder))
-                                logger.info("oldest_line " + oldest_line)
-                                logger.info("newest_line " + newest_line)
-                                file_compare.write(oldest_line+"\n")
-                                file_compare.write(newest_line+"\n")
-                                file_compare.write("\n")
-                                file_compare.close()
-                                logger.info("Log completo" )
+            logger.info("Se ha recibido el siguiente paquete de datos: " + client_msg_filename)
+            # print "<public key>\n" + client_pub_key_str + "\n</public key>\n"
+            # print "Signed msg: " + client_signed_msg
+            # print "Filename: " + client_msg_filename
+            # print "<plain msg>\n" + client_plain_msg + "\n</plain msg>\n"
+
+            # En el servidor se hace el VERIFY, para esto se necesita tambien la firma!
+            pubKey = rsa.PublicKey.load_pkcs1(client_pub_key_str)
+
+            if rsa.verify(client_plain_msg, client_signed_msg, pubKey):
+                logger.debug("Chequeo de integridad satisfactorio para " + client_msg_filename)
+                client_data = dbmanager.DBManager.getInstallationAndClientId(client_pub_key_str_b64)
+                logger.debug("Se ha obtenido la siguiente client_data " + str(client_data))
+
+                if client_data is not None:
+                    installation_id = client_data[0]
+                    client_id = client_data[1]
+                    client_ip = str(self.client_address[0])
+
+                    #Client folder format: IP_cli_CLIENTID_ins_INSID
+                    client_server_folder = client_ip + "_cli_" + str(client_id) + "_ins_" + str(installation_id)
+                    logger.info("Salvando " + client_msg_filename + " en " + client_server_folder)
+                    client_records_server_folder = installDirUnix + "/records/" + client_server_folder
+                    if not os.path.exists(client_records_server_folder):
+                        logger.info("Creando directorio: " + client_server_folder)
+                        os.makedirs(client_records_server_folder)
+
+                    logFile = open(client_records_server_folder + "/" + client_msg_filename.split("/")[-1:][0], 'wb')
+                    logFile.write(client_plain_msg)
+                    logFile.close()
+
+                    # Check if there are old unusable files and remove them; we always need to keep only the REAL last hour of data
+                    remove_old_files(client_records_server_folder, client_msg_filename.split("/")[-1:][0])
+
+                    # Check if we have more than 60 files, remove oldest till we get exactly 60 or less
+                    remove_1h_files(client_records_server_folder)
+
+                    # Check if we have at least 1hr (twelve 5 minutes files) of data
+                    if len(os.walk(client_records_server_folder).next()[2]) == 60:
+                        logger.info("La instalacion " + client_server_folder + " tiene 1h de datos. Empezando procesamiento ...")
+
+                        # print "Starting calculation for the following files:"
+                        files_to_process =  get_files_by_mdate(client_records_server_folder)
+                        #files_to_process = [f for f in get_files_by_mdate(client_records_server_folder) if re.match(r'log_*', f)]
 
 
-                                # Remove 10 oldest logs
-                                for count in range(0,9):
-                                    #if os.path.isfile(files_to_process[count]) == True and bool(re.match( "log_*",files_to_process[count])) == True:
-                                    if os.path.isfile(files_to_process[count]) == True:
-                                        os.remove(files_to_process[count])
-                                try:
-                                    new_isp_name = info.pais_num_name_nic(client_ip, 'EN' )[1]
-                                    logger.debug("ISP NAME = " + new_isp_name)
-                                except Exception, e:
-                                    rollbar.report_exc_info()
-                                    new_isp_name = 'Unknown'
-                                payload = {'isp_name': str(new_isp_name)}
-                                headers = {'content-type': 'application/json'}
-                                r = requests.post(tixBaseUrl + 'bin/api/newISPPost', data=json.dumps(payload), headers=headers)
+                        if len(files_to_process) < 60:
+                            logger.error("Error al procesar los archivos de " + client_server_folder)
+                        else:
+                            cwd = os.getcwd()
+                            os.chdir('/home/pfitba/ServerAppProduction/data_processing')
+                            ansDictionary = completo_III.analyse_data(files_to_process)
+                            logger.debug(ansDictionary)
+                            os.chdir(cwd)
 
-                                jsonUserData = []
+                            logger.info("Completando logs en " + "compare_timestamps_"+ client_records_server_folder+".log" )
+                            file_compare=open("/etc/TIX/records/logs_compare/" + "compare_timestamps_"+ client_server_folder+".log","a")
+                            oldest_line = linecache.getline( get_oldest_file(client_records_server_folder), 1)
+                            newest_line = get_last_line( get_newest_file(client_records_server_folder))
+                            logger.info("oldest_line " + oldest_line)
+                            logger.info("newest_line " + newest_line)
+                            file_compare.write(oldest_line+"\n")
+                            file_compare.write(newest_line+"\n")
+                            file_compare.write("\n")
+                            file_compare.close()
+                            logger.info("Log completo" )
 
-                                try:
-                                    logger.debug("Parseo respuesta JSON de la API para newISPPost: " + str(jsonUserData))
-                                    jsonUserData = json.loads(r.text) # Parseo la respuesta JSON de la API de TiX
-                                except Exception, e:
-                                    rollbar.report_exc_info()
-                                    isp_id = 0
 
-                                if(r is not None and len(jsonUserData) > 0):
-                                    isp_id = jsonUserData['id']
-                                    logger.debug("Utilizando ISP = " + new_isp_name + " con ID = " + str(isp_id))
+                            # Remove 10 oldest logs
+                            for count in range(0,9):
+                                #if os.path.isfile(files_to_process[count]) == True and bool(re.match( "log_*",files_to_process[count])) == True:
+                                if os.path.isfile(files_to_process[count]) == True:
+                                    os.remove(files_to_process[count])
+                            try:
+                                new_isp_name = info.pais_num_name_nic(client_ip, 'EN' )[1]
+                                logger.debug("ISP NAME = " + new_isp_name)
+                            except Exception, e:
+                                rollbar.report_exc_info()
+                                new_isp_name = 'Unknown'
+                            payload = {'isp_name': str(new_isp_name)}
+                            headers = {'content-type': 'application/json'}
+                            r = requests.post(tixBaseUrl + 'bin/api/newISPPost', data=json.dumps(payload), headers=headers)
+
+                            jsonUserData = []
+
+                            try:
+                                logger.debug("Parseo respuesta JSON de la API para newISPPost: " + str(jsonUserData))
+                                jsonUserData = json.loads(r.text) # Parseo la respuesta JSON de la API de TiX
+                            except Exception, e:
+                                rollbar.report_exc_info()
+                                isp_id = 0
+
+                            if(r is not None and len(jsonUserData) > 0):
+                                isp_id = jsonUserData['id']
+                                logger.debug("Utilizando ISP = " + new_isp_name + " con ID = " + str(isp_id))
+>>>>>>> Stashed changes
                             else:
                                 cwd = os.getcwd()
                                 os.chdir('/home/pfitba/ServerAppProduction/data_processing')
