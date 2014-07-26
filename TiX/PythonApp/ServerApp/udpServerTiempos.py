@@ -114,6 +114,25 @@ def remove_1h_files(dirpath):
         os.remove(dirpath + "/" + file_to_remove)
         a.sort(key=lambda x: os.stat(os.path.join(dirpath, x)).st_mtime)
 
+def get_last_line(fname):
+        fh = open(fname, 'rb')
+        for line in fh:
+                pass
+        last = line
+        fh.close()
+        return last
+
+def get_oldest_file(dir):
+        filelist = os.listdir(dir)
+        filelist = filter(lambda x: not os.path.isdir(dir + x), filelist)
+        return min(filelist, key=lambda x: os.stat(dir + x).st_mtime)
+
+def get_newest_file(dir):
+        filelist = os.listdir(dir)
+        filelist = filter(lambda x: not os.path.isdir(dir  + x), filelist)
+        return max(filelist, key=lambda x: os.stat(dir + x).st_mtime)
+
+
 class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
     """
     This class works similar to the TCP handler class, except that
@@ -209,7 +228,6 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                         files_to_process =  get_files_by_mdate(client_records_server_folder)
                         #files_to_process = [f for f in get_files_by_mdate(client_records_server_folder) if re.match(r'log_*', f)]
 
-                        # print files_to_process
 
                         if len(files_to_process) < 60:
                             logger.error("Error al procesar los archivos de " + client_server_folder)
@@ -220,10 +238,17 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                             logger.debug(ansDictionary)
                             os.chdir(cwd)
 
+                            logger.info("Completando logs en " + "compare_timestamps_"+ client_records_server_folder+".log" )
                             # log for comparing timestamps
-                            # file_compare=open(client_records_server_folder + "/compare_timestamps.log","a")
-                            # file_compare.write(datetime.datetime.now().strftime("%D|%H:%M:%S,%f")+"\n")
-                            # file_compare.close()
+                            file_compare=open("/etc/TIX/records/logs_compare/" + "compare_timestamps_"+ client_records_server_folder+".log","a")
+                            oldest_line = linecache.getline( get_oldest_file(client_records_server_folder), 1)
+                            newest_line = get_last_line( get_newest_file(client_records_server_folder))
+                            file_compare.write(oldest_line+"\n")
+                            file_compare.write(newest_line+"\n")
+                            file_compare.write("\n")
+                            file_compare.close()
+                            logger.info("Log completo" )
+
 
                             # Remove 10 oldest logs
                             for count in range(0,9):
@@ -290,7 +315,7 @@ if __name__ == "__main__":
     #server = SocketServer.UDPServer((HOST, PORT), MyUDPHandler)
     try:
        server = ThreadingUDPServer((HOST, PORT), ThreadingUDPRequestHandler)
-   
+
        #Threaded version
        server_thread= threading.Thread(target=server.serve_forever)
        logger.info("Starting server (" + str(HOST) + ":" + str(PORT) + ") thread " + server_thread.name)
@@ -298,7 +323,7 @@ if __name__ == "__main__":
        server_thread.start()
     except:
        rollbar.report_exc_info()
-       
+
 
     # Activate the server; this will keep running until you
     # interrupt the program with Ctrl-C
