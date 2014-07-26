@@ -211,6 +211,10 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                             logger.info("Creando directorio: " + client_server_folder)
                             os.makedirs(client_records_server_folder)
 
+                        logFile = open(client_records_server_folder + "/" + client_msg_filename.split("/")[-1:][0], 'wb')
+                        logFile.write(client_plain_msg)
+                        logFile.close()
+
                         # Check if there are old unusable files and remove them; we always need to keep only the REAL last hour of data
                         remove_old_files(client_records_server_folder, client_msg_filename.split("/")[-1:][0])
 
@@ -253,8 +257,7 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                                 for count in range(0,9):
                                     #if os.path.isfile(files_to_process[count]) == True and bool(re.match( "log_*",files_to_process[count])) == True:
                                     if os.path.isfile(files_to_process[count]) == True:
-                                        os.remove(files_to_process[count])
-                                try:
+                                        os.remove(files_to_process[count]) try:
                                     new_isp_name = info.pais_num_name_nic(client_ip, 'EN' )[1]
                                     logger.debug("ISP NAME = " + new_isp_name)
                                 except Exception, e:
