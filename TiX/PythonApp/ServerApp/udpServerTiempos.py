@@ -211,8 +211,6 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                             logger.info("Creando directorio: " + client_server_folder)
                             os.makedirs(client_records_server_folder)
 
-                        logFile.close()
-
                         # Check if there are old unusable files and remove them; we always need to keep only the REAL last hour of data
                         remove_old_files(client_records_server_folder, client_msg_filename.split("/")[-1:][0])
 
