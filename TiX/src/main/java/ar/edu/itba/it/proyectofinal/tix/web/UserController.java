@@ -26,6 +26,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.itba.it.proyectofinal.tix.domain.model.ISP;
@@ -78,6 +79,21 @@ public class UserController {
 
 	}
 
+	@SuppressWarnings("unchecked")
+	@RequestMapping(method = RequestMethod.GET)
+	@ResponseBody
+	public String  users(HttpSession session) {
+		List<User> users = (List<User>) userRepo.getAll();
+		String user_names = "";
+		for (User u: users){
+			if( !u.getNickname().equals("admin@admin.com")){
+				user_names += u.getNickname() + ";";
+			}
+		}
+		return user_names;
+	}
+	
+	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView home(HttpSession session) {

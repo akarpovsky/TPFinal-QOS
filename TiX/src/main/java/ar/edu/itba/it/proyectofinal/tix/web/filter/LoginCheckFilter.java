@@ -29,7 +29,11 @@ public class LoginCheckFilter extends OncePerRequestFilter {
 		boolean isloggedIn = (userId != null);
 		req.setAttribute("isLogged", isloggedIn);
 		if (!isloggedIn) {
-			if (isAvaiableWithoutLogin(requestUrl)) {
+			if (isAvaiableWithoutLogin(requestUrl) || req.getServerName().equals("localhost")) {
+//				System.out.println("ADDDDDDDRESSSSSSS: " +  req.getRemoteAddr());
+//				System.out.println("ADDDDDDDRESSSSSSS2: " +  req.getLocalAddr());
+//				System.out.println("ADDDDDDDRESSSSSSS3: " +  req.getLocalName());
+//				System.out.println("ADDDDDDDRESSSSSSS3: " +  req.getServerName());
 				chain.doFilter(req, resp);
 			} else {
 				req.setAttribute("errorDescription", "No posee permisos suficientes para ver esta p&aacute;gina.");
@@ -44,7 +48,7 @@ public class LoginCheckFilter extends OncePerRequestFilter {
 		String[] availableUrl = {
 			"login/", "login/login", "user/home","account/register","account/recover",
 			"account/login", "account/recoverpassword", "static/about", "api/authenticate",
-			"api/newInstallation", "api/newISPPost"
+			"api/newInstallation", "api/newISPPost", "user/users"
 		};
 		for (String url: availableUrl) {
 			if (requestUrl.startsWith("bin/" + url)) {
