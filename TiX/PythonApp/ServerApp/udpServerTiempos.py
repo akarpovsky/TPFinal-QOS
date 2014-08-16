@@ -22,13 +22,19 @@ import rollbar
 rollbar.init('bfb83f64a6e64b5998cd28f2376827e2', 'production')  # access_token, environment
 
 config = ConfigParser.ConfigParser()
-config.read('/home/pfitba/ServerAppProduction/tixserver-deploy.cfg')
-SERVER_HOST = config.get("TiXServer", "SERVER_HOST") #TODO: Change TEST!
-SERVER_PORT = config.getint("TiXServer", "SERVER_PORT")
-TEST_SERVER_HOST = config.get("TiXServer", "TEST_SERVER_HOST") #TODO: Change TEST!
+
+if len(sys.argv) < 2:
+    configFilePath = '/home/pfitba/ServerAppProduction/tixserver-deploy.cfg'
+else:
+    configFilePath = sys.argv[1]
+
+config.read(configFilePath)
+SERVER_HOST      = config.get("TiXServer", "SERVER_HOST")
+SERVER_PORT      = config.getint("TiXServer", "SERVER_PORT")
+TEST_SERVER_HOST = config.get("TiXServer", "TEST_SERVER_HOST")
 TEST_SERVER_PORT = config.getint("TiXServer", "TEST_SERVER_PORT")
-installDirUnix = config.get("TiXServer", "installDirUnix")
-tixBaseUrl = config.get("TiXServer", "tixBaseUrl")
+installDirUnix   = config.get("TiXServer", "installDirUnix")
+tixBaseUrl       = config.get("TiXServer", "tixBaseUrl")
 
 sys.path.append('/home/pfitba/ServerAppProduction/data_processing/')
 import completo_III
