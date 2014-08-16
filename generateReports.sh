@@ -11,5 +11,8 @@ cd $curr_date
 for item in $(echo $a | sed 's/;/ /g'); do
  echo $item
  `wkhtmltopdf http://localhost:8080/bin/user/userreport?nickname=$item  $item.pdf`
+  cd ..
+  python sendUserReports.py --user $item 
+  cd $curr_date
  #`wkhtmltopdf http://localhost:8080/tix/bin/user/userreport?nickname=$item  $item.pdf`
 done;
