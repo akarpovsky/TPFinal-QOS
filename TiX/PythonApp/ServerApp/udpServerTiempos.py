@@ -42,9 +42,15 @@ sys.path.append('/home/pfitba/ServerAppProduction/ip_to_as/')
 import info
 
 import logging
+
+if len(sys.argv) < 3:
+    logFilePath = '/var/tmp/tixUDPServerTiempos.log'
+else:
+    logFilePath = sys.argv[2]
+
 # create logger
 logger = logging.getLogger('udpServerTiempos')
-hdlr = logging.FileHandler('/var/tmp/tixUDPServerTiempos.log')
+hdlr = logging.FileHandler(logFilePath)
 logger.setLevel(logging.DEBUG)
 
 # create console handler and set level to debug
