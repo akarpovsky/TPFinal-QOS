@@ -173,6 +173,7 @@ def resultados(file_name,leer,umbral_utiliz,umbral_H):
 	#rango_ajuste = range(len(tiempos_truncados) , len(tiempos_truncados)+1)
 	#print rango_ajuste
 	for el in rango_ajuste:
+                ################################## !!!!!!!  UNSAFE CODE! NO Bounds are set for the following two lines and len(xcorr) can be > len(ycorr) in some cases
 		xcorr = vector_tiempos[0:el+1]
 		ycorr = lista_frecuencias[0:len(xcorr)]
 		almaceno_tiempos[el] = xcorr

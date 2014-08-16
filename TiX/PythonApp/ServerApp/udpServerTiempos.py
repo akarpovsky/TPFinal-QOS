@@ -42,9 +42,15 @@ sys.path.append('/home/pfitba/ServerAppProduction/ip_to_as/')
 import info
 
 import logging
+
+if len(sys.argv) < 3:
+    logFilePath = '/var/tmp/tixUDPServerTiempos.log'
+else:
+    logFilePath = sys.argv[2]
+
 # create logger
 logger = logging.getLogger('udpServerTiempos')
-hdlr = logging.FileHandler('/var/tmp/tixUDPServerTiempos.log')
+hdlr = logging.FileHandler(logFilePath)
 logger.setLevel(logging.DEBUG)
 
 # create console handler and set level to debug
@@ -264,7 +270,8 @@ class ThreadingUDPRequestHandler(SocketServer.BaseRequestHandler):
                                     #if os.path.isfile(files_to_process[count]) == True and bool(re.match( "log_*",files_to_process[count])) == True:
                                     if os.path.isfile(files_to_process[count]) == True:
                                         os.remove(files_to_process[count])
-                                 try:
+
+                                try:
                                     new_isp_name = info.pais_num_name_nic(client_ip, 'EN' )[1]
                                     logger.debug("ISP NAME = " + new_isp_name)
                                 except Exception, e:
