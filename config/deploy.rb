@@ -36,7 +36,11 @@ namespace :deploy do
 
     after :package_war, :restart_tomcat do
       on roles(:app) do
-        execute :sudo, :cp, "/home/pfitba/#{fetch(:war_filename)} /var/lib/tomcat7/webapps/#{fetch(:war_filename)}"
+        if fetch(:application).match /production/
+          execute :sudo, :cp, "/home/pfitba/#{fetch(:war_filename)} /var/lib/tomcat7/webapps/ROOT.war"
+        else
+          execute :sudo, :cp, "/home/pfitba/#{fetch(:war_filename)} /var/lib/tomcat7/webapps/#{fetch(:war_filename)}"
+        end
       end
     end
   end
