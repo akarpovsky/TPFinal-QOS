@@ -36,6 +36,7 @@ namespace :deploy do
 
     after :package_war, :restart_tomcat do
       on roles(:app) do
+        execute "cd /home/pfitba/#{fetch(:war_filename)} /var/lib/tomcat7/webapps/#{fetch(:war_filename)}"
       end
     end
   end
