@@ -3,7 +3,7 @@ lock '3.2.1'
 set :application, 'tix_production'
 set :repo_url, 'git@github.com:akarpovsky/TPFinal-QOS.git'
 set :format, :pretty
-set :log_level, :info
+set :log_level, :debug
 set :pty, true
 set :keep_releases, 5
 
@@ -36,7 +36,7 @@ namespace :deploy do
 
     after :package_war, :restart_tomcat do
       on roles(:app) do
-        execute "cd /home/pfitba/#{fetch(:war_filename)} /var/lib/tomcat7/webapps/#{fetch(:war_filename)}"
+        execute :sudo, :cp, "/home/pfitba/#{fetch(:war_filename)} /var/lib/tomcat7/webapps/#{fetch(:war_filename)}"
       end
     end
   end
